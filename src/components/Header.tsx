@@ -1,0 +1,71 @@
+import { Link, useLocation } from 'wouter';
+import { Search } from './Search';
+import { MANIFEST } from '../lib/content';
+import { BookOpen, Github, Moon, Sun } from 'lucide-react';
+import { useState, useEffect } from 'react';
+
+export function Header() {
+  const [location] = useLocation();
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', dark);
+  }, [dark]);
+
+  return (
+    <header className="sticky top-0 z-40 h-16 bg-white/80 backdrop-blur-md border-b border-slate-100 flex items-center px-4 md:px-6 gap-4">
+      {/* Logo */}
+      <Link href="/" className="flex items-center gap-2.5 shrink-0 mr-4">
+        <div className="w-7 h-7 rounded-lg bg-violet-600 flex items-center justify-center">
+          <BookOpen className="w-3.5 h-3.5 text-white" />
+        </div>
+        <span className="font-bold text-slate-900 text-base tracking-tight hidden sm:block">CacheU</span>
+        <span className="text-xs text-slate-400 font-mono bg-slate-100 px-1.5 py-0.5 rounded-full hidden sm:block">docs</span>
+      </Link>
+
+      {/* Search */}
+      <div className="flex-1 max-w-md">
+        <Search manifest={MANIFEST} />
+      </div>
+
+      {/* Nav links */}
+      <nav className="hidden md:flex items-center gap-1 ml-auto">
+        {[
+          { href: '/', label: 'Home' },
+          { href: '/docs/getting-started', label: 'Docs' },
+          { href: '/docs/api-reference', label: 'API' },
+        ].map(({ href, label }) => (
+          <Link
+            key={href}
+            href={href}
+            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+              location === href
+                ? 'bg-violet-50 text-violet-700'
+                : 'text-slate-500 hover:text-slate-900 hover:bg-slate-50'
+            }`}
+          >
+            {label}
+          </Link>
+        ))}
+      </nav>
+
+      {/* Actions */}
+      <div className="flex items-center gap-2 ml-2">
+        <a
+          href="https://github.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+        >
+          <Github className="w-4 h-4" />
+        </a>
+        <button
+          onClick={() => setDark((d) => !d)}
+          className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+        >
+          {dark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+        </button>
+      </div>
+    </header>
+  );
+}
