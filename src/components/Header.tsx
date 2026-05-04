@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'wouter';
 import { Search } from './Search';
 import { MANIFEST } from '../lib/content';
-import { BookOpen, Github, Moon, Sun } from 'lucide-react';
+import { Github, Moon, Sun } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export function Header() {
@@ -16,11 +16,10 @@ export function Header() {
     <header className="sticky top-0 z-40 h-16 bg-white/80 backdrop-blur-md border-b border-slate-100 flex items-center px-4 md:px-6 gap-4">
       {/* Logo */}
       <Link href="/" className="flex items-center gap-2.5 shrink-0 mr-4">
-        <div className="w-7 h-7 rounded-lg bg-violet-600 flex items-center justify-center">
-          <BookOpen className="w-3.5 h-3.5 text-white" />
+        <div className="w-11 h-11 rounded-lg flex items-center justify-center">
+          <img src="/cacheu_logo.webp" alt="CacheU"/>
         </div>
         <span className="font-bold text-slate-900 text-base tracking-tight hidden sm:block">CacheU</span>
-        <span className="text-xs text-slate-400 font-mono bg-slate-100 px-1.5 py-0.5 rounded-full hidden sm:block">docs</span>
       </Link>
 
       {/* Search */}
