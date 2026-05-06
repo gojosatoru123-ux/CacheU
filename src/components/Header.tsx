@@ -15,7 +15,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 h-16 bg-white/80 backdrop-blur-md border-b border-slate-100 flex items-center px-4 md:px-6 gap-4">
       {/* Logo */}
-      <Link href="/" className="flex items-center gap-2.5 shrink-0 mr-4">
+      <Link href="/home" className="flex items-center gap-2.5 shrink-0 mr-4">
         <div className="w-11 h-11 rounded-lg flex items-center justify-center">
           <img src="/cacheu_logo.webp" alt="CacheU"/>
         </div>
@@ -30,7 +30,7 @@ export function Header() {
       {/* Nav links */}
       <nav className="hidden md:flex items-center gap-1 ml-auto">
         {[
-          { href: '/', label: 'Home' },
+          { href: '/home', label: 'Home' },
           { href: '/docs/getting-started', label: 'Docs' },
           { href: '/docs/api-reference', label: 'API' },
         ].map(({ href, label }) => (

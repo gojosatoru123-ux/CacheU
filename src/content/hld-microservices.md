@@ -9,6 +9,131 @@ order: 4
 
 Microservices is an architectural style that structures an application as a collection of small, independently deployable services, each running its own process and communicating via APIs.
 
+## Complete Microservices Ecosystem
+
+Here's how a modern microservices system comes together:
+
+```mermaid
+graph TB
+    subgraph "Client Layer"
+        WEB["🌐 Web App"]
+        MOBILE["📱 Mobile App"]
+        DESKTOP["💻 Desktop Client"]
+    end
+
+    subgraph "API Layer"
+        LB["Load Balancer"]
+        APIGW["API Gateway<br/>Auth, Rate Limiting,<br/>Routing, Caching"]
+    end
+
+    subgraph "Service Mesh"
+        subgraph "Core Services"
+            USER["👤 User Service<br/>Accounts, Profiles,<br/>Authentication"]
+            ORDER["📦 Order Service<br/>Orders, Cart,<br/>Checkout"]
+            PAYMENT["💳 Payment Service<br/>Billing, Invoices,<br/>Transactions"]
+            INVENTORY["📊 Inventory Service<br/>Stock Management,<br/>Availability"]
+            SHIPPING["🚚 Shipping Service<br/>Delivery,<br/>Tracking"]
+            NOTIFICATION["📧 Notification Service<br/>Email, SMS,<br/>Push Notifications"]
+        end
+
+        subgraph "Data Layer"
+            USERDB[("User DB<br/>PostgreSQL")]
+            ORDERDB[("Order DB<br/>PostgreSQL")]
+            CACHE[("Redis Cache<br/>Session,<br/>Data")]
+            SEARCH[("Elasticsearch<br/>Full-Text Search")]
+        end
+
+        subgraph "Message Queue"
+            KAFKA["Apache Kafka<br/>Event Stream"]
+        end
+
+        subgraph "Service Discovery"
+            REGISTRY["Service Registry<br/>Consul/Kubernetes DNS"]
+        end
+    end
+
+    subgraph "Observability & Operations"
+        LOGGING["📋 Logging<br/>ELK Stack"]
+        MONITORING["📈 Monitoring<br/>Prometheus + Grafana"]
+        TRACING["🔍 Distributed Tracing<br/>Jaeger"]
+        ALERTING["🔔 Alerting<br/>PagerDuty"]
+    end
+
+    subgraph "Infrastructure"
+        CONTAINER["Container Registry<br/>Docker Hub"]
+        ORCHESTRATION["Kubernetes Cluster<br/>Pod, Service,<br/>Ingress"]
+        CONFIG["Config Management<br/>Environment Variables,<br/>Secrets"]
+    end
+
+    WEB --> LB
+    MOBILE --> LB
+    DESKTOP --> LB
+    LB --> APIGW
+
+    APIGW --> USER
+    APIGW --> ORDER
+    APIGW --> PAYMENT
+
+    ORDER --> PAYMENT
+    ORDER --> INVENTORY
+    ORDER --> KAFKA
+    ORDER --> ORDERDB
+    PAYMENT --> KAFKA
+    INVENTORY --> KAFKA
+    USER --> USERDB
+    USER --> REGISTRY
+
+    KAFKA --> NOTIFICATION
+    KAFKA --> INVENTORY
+    KAFKA --> SHIPPING
+
+    NOTIFICATION --> KAFKA
+    SHIPPING --> KAFKA
+
+    USER --> CACHE
+    ORDER --> CACHE
+    PAYMENT --> CACHE
+
+    ORDER --> SEARCH
+    INVENTORY --> SEARCH
+
+    USER -.-> LOGGING
+    ORDER -.-> LOGGING
+    PAYMENT -.-> LOGGING
+    INVENTORY -.-> LOGGING
+    SHIPPING -.-> LOGGING
+    NOTIFICATION -.-> LOGGING
+
+    USER -.-> MONITORING
+    ORDER -.-> MONITORING
+    PAYMENT -.-> MONITORING
+
+    LOGGING --> MONITORING
+    MONITORING --> ALERTING
+
+    USER -.-> TRACING
+    ORDER -.-> TRACING
+    PAYMENT -.-> TRACING
+
+    style WEB fill:#e1f5ff
+    style MOBILE fill:#e1f5ff
+    style DESKTOP fill:#e1f5ff
+    style APIGW fill:#fff3e0
+    style KAFKA fill:#f3e5f5
+    style CACHE fill:#e8f5e9
+    style SEARCH fill:#fce4ec
+```
+
+This diagram shows:
+- **Client Layer** — Multiple frontend applications
+- **API Gateway** — Single entry point handling cross-cutting concerns
+- **Core Services** — Domain-driven services with independent databases
+- **Message Queue** — Asynchronous communication between services
+- **Data Layer** — Polyglot persistence (different DBs for different needs)
+- **Service Registry** — Services discover each other dynamically
+- **Observability** — Centralized logging, monitoring, tracing, and alerting
+- **Infrastructure** — Container orchestration and deployment
+
 ## Monolith vs Microservices
 
 ### Monolith
@@ -149,14 +274,47 @@ Traditional 2-phase commit doesn't work well in microservices. Use sagas instead
 
 Each service listens for events and publishes the next event.
 
-```
-Order Service: order.created →
-Payment Service: payment.processed →
-Inventory Service: inventory.reserved →
-Shipping Service: shipment.scheduled
+```mermaid
+sequenceDiagram
+    participant OS as Order Service
+    participant PS as Payment Service
+    participant IS as Inventory Service
+    participant SS as Shipping Service
+    participant KAFKA as Event Stream
+
+    OS->>KAFKA: order.created {orderId, amount}
+    activate KAFKA
+    KAFKA->>PS: 📨 order.created event
+    KAFKA->>IS: 📨 order.created event
+    deactivate KAFKA
+
+    PS->>PS: Process payment
+    PS->>KAFKA: ✅ payment.processed {orderId, transactionId}
+    activate KAFKA
+    KAFKA->>IS: 📨 payment.processed event
+    deactivate KAFKA
+
+    IS->>IS: Reserve inventory
+    IS->>KAFKA: ✅ inventory.reserved {orderId, items}
+    activate KAFKA
+    KAFKA->>SS: 📨 inventory.reserved event
+    deactivate KAFKA
+
+    SS->>SS: Schedule shipment
+    SS->>KAFKA: ✅ shipment.scheduled {orderId, trackingId}
+
+    alt Payment fails
+        PS->>KAFKA: ❌ payment.failed {orderId, reason}
+        activate KAFKA
+        KAFKA->>OS: 📨 payment.failed event
+        KAFKA->>IS: 📨 payment.failed event
+        deactivate KAFKA
+        OS->>OS: Cancel order
+        IS->>IS: Release inventory
+    end
 ```
 
-If payment fails → Payment Service emits `payment.failed` → Order Service cancels order.
+**Key Point:** If payment fails → Payment Service emits `payment.failed` → Order Service cancels order and Inventory Service releases stock automatically. No central coordinator needed!
 
 ### Orchestration Saga
 
@@ -176,11 +334,40 @@ Saga Orchestrator:
 
 ### Circuit Breaker
 
-Prevents cascading failures by stopping calls to a failing service.
+Prevents cascading failures by stopping calls to a failing service. Like an electrical circuit breaker, it trips when there's a "fault" to prevent damage.
 
+```mermaid
+stateDiagram-v2
+    [*] --> CLOSED
+
+    CLOSED --> OPEN: Failures exceed threshold (e.g., 5 errors)
+    note right of CLOSED
+        ✅ All requests pass through
+        Monitor failure count
+    end note
+
+    OPEN --> HALF_OPEN: Timeout expires (e.g., 30 seconds)
+    note right of OPEN
+        ❌ All requests fail immediately
+        Prevents cascading failures
+        Allows some time for service recovery
+    end note
+
+    HALF_OPEN --> CLOSED: Request succeeds
+    note right of HALF_OPEN
+        ⚠️ Allow one request to test
+        If success → open the circuit (CLOSED)
+        If failure → keep open (OPEN)
+    end note
+
+    HALF_OPEN --> OPEN: Request fails
 ```
-States: CLOSED → (failures exceed threshold) → OPEN → (timeout) → HALF-OPEN → (success) → CLOSED
-```
+
+**Circuit Breaker Flow:**
+1. **CLOSED** — Normal operation, requests pass through, failures counted
+2. **OPEN** — Too many failures detected, all new requests fail immediately (fail-fast)
+3. **HALF_OPEN** — After timeout, try one request to see if service recovered
+4. Back to **CLOSED** if successful, or back to **OPEN** if it fails again
 
 ```typescript
 class CircuitBreaker {
