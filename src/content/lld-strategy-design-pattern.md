@@ -487,9 +487,7 @@ Instead, it will delegate.
 
 # Example implementation
 
-## C++
-
-```cpp id="strategy_robot_cpp_01"
+```cpp
 #include <iostream>
 #include <memory>
 using namespace std;
@@ -598,12 +596,7 @@ int main() {
     return 0;
 }
 ```
-
----
-
-## Java
-
-```java id="strategy_robot_java_01"
+```java
 interface WalkBehavior {
     void walk();
 }
@@ -696,12 +689,7 @@ public class Main {
     }
 }
 ```
-
----
-
-## Python
-
-```python id="strategy_robot_python_01"
+```python
 from abc import ABC, abstractmethod
 
 class WalkBehavior(ABC):

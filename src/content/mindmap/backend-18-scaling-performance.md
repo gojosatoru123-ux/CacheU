@@ -89,8 +89,6 @@ articleSlug: scaling-performance-engineering
 * Payment delays
 * Export slowdowns
 
----
-
 ## Latency Distribution
 
 ### Fast Requests
@@ -107,8 +105,6 @@ articleSlug: scaling-performance-engineering
 
 * Improve P95
 * Improve P99
-
----
 
 ## Resource Utilization
 
@@ -135,8 +131,6 @@ articleSlug: scaling-performance-engineering
 * Processing delays
 * Throughput collapse
 
----
-
 ## Bottleneck Detection
 
 ### Common Mistake
@@ -160,8 +154,6 @@ articleSlug: scaling-performance-engineering
 
 * Never guess bottlenecks
 
----
-
 ## Profiling
 
 ### Purpose
@@ -184,8 +176,6 @@ articleSlug: scaling-performance-engineering
 
 * Hot paths
 * Expensive functions
-
----
 
 ## Distributed Tracing
 
@@ -212,8 +202,6 @@ articleSlug: scaling-performance-engineering
 * Microservices
 * Distributed systems
 
----
-
 ## N+1 Query Problem
 
 ### Definition
@@ -239,8 +227,6 @@ articleSlug: scaling-performance-engineering
 * Batch fetching
 * Eager loading
 
----
-
 ## Database Indexes
 
 ### Purpose
@@ -263,8 +249,6 @@ articleSlug: scaling-performance-engineering
 * Single-column
 * Composite indexes
 
----
-
 ## Index Costs
 
 ### Storage Cost
@@ -285,8 +269,6 @@ articleSlug: scaling-performance-engineering
 
 * Index strategically
 
----
-
 ## Query Analysis
 
 ### EXPLAIN ANALYZE
@@ -303,8 +285,6 @@ articleSlug: scaling-performance-engineering
 
 * Indexed lookups
 * Reduced scans
-
----
 
 ## Composite Indexes
 
@@ -325,8 +305,6 @@ articleSlug: scaling-performance-engineering
 
 * Faster compound queries
 * Reduced scan cost
-
----
 
 ## Horizontal Scaling
 
@@ -350,8 +328,6 @@ articleSlug: scaling-performance-engineering
 * S3 storage
 * Central databases
 
----
-
 ## Stateful Systems
 
 ### Problems
@@ -365,8 +341,6 @@ articleSlug: scaling-performance-engineering
 * Sessions
 * Uploaded files
 * In-memory cache
-
----
 
 ## Load Balancing
 
@@ -385,8 +359,6 @@ articleSlug: scaling-performance-engineering
 
 * Stateless services
 * Shared persistence
-
----
 
 ## Database Replication
 
@@ -410,8 +382,6 @@ articleSlug: scaling-performance-engineering
 * Replication lag
 * Stale reads
 
----
-
 ## Consistency Tradeoffs
 
 ### Replication Lag
@@ -428,8 +398,6 @@ articleSlug: scaling-performance-engineering
 ### Engineering Tradeoff
 
 * Consistency vs scalability
-
----
 
 ## Asynchronous Processing
 
@@ -457,8 +425,6 @@ articleSlug: scaling-performance-engineering
 * Better scalability
 * Improved UX
 
----
-
 ## Queues and Workers
 
 ### Queue Purpose
@@ -476,8 +442,6 @@ articleSlug: scaling-performance-engineering
 * Retry handling
 * Traffic smoothing
 * Scalability support
-
----
 
 ## Microservices
 
@@ -502,8 +466,6 @@ articleSlug: scaling-performance-engineering
 
 * Not automatic scaling
 
----
-
 ## Monoliths
 
 ### Advantages
@@ -517,8 +479,6 @@ articleSlug: scaling-performance-engineering
 * Small teams
 * Early-stage systems
 * Simpler workloads
-
----
 
 ## Observability Stack
 
@@ -544,8 +504,6 @@ articleSlug: scaling-performance-engineering
 * Jaeger
 * Datadog
 
----
-
 ## Complexity Cost
 
 ### Scaling Complexity
@@ -564,8 +522,6 @@ articleSlug: scaling-performance-engineering
 * Fragile systems
 * Hard maintenance
 * Operational overhead
-
----
 
 ## Performance Best Practices
 
@@ -595,8 +551,6 @@ articleSlug: scaling-performance-engineering
 * Horizontal scalability
 * Flexible routing
 
----
-
 ## Key Takeaways
 
 ### Latency Focus
@@ -625,8 +579,6 @@ articleSlug: scaling-performance-engineering
 
 * Simplicity first
 * Complexity justified
-
----
 
 ## Final Goals
 

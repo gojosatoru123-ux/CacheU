@@ -1,237 +1,391 @@
----
-title: OOP Concepts — Practice Quiz
-articleSlug: lld-oop-concepts
-difficulty: Beginner
-estimatedTime: 20 mins
----
-
+````md id="8m2qva"
 <!-- QUESTION -->
 difficulty: Easy
-tags: encapsulation, access-modifiers
+tags: oops, object-oriented-programming, software-design
 
-What is encapsulation, and why is making all class fields `public` an anti-pattern?
+What is Object-Oriented Programming (OOP)?
 
 <!-- ANSWER -->
-**Encapsulation** is the bundling of data and the methods that operate on that data into a single unit (class), while restricting direct access to the internal state from outside.
+Object-Oriented Programming (OOP) is a programming paradigm that organizes software around objects instead of functions and logic alone.
 
-**Why `public` fields are an anti-pattern:**
-1. Any code can mutate the field directly, bypassing validation
-2. You can't enforce invariants (e.g., `balance >= 0`)
-3. If you later change the storage format, all callers break
-4. Can't add side effects (logging, events) to a field assignment
+Objects contain:
+- data
+- behavior
 
-```typescript
-// Bad — public field
-class BankAccount { public balance = 0; }
-const acc = new BankAccount();
-acc.balance = -1000000; // No validation — anything goes!
+Example:
 
-// Good — encapsulated
+```text
+Car Object
+ ├── color
+ ├── speed
+ └── drive()
+````
+
+Core idea:
+
+```text id="4m8qza"
+Model real-world entities using objects
+```
+
+Benefits:
+
+| Benefit           | Explanation              |
+| ----------------- | ------------------------ |
+| Better modularity | Organized code structure |
+| Reusability       | Reuse existing classes   |
+| Maintainability   | Easier code management   |
+
+OOP is widely used in backend, frontend, and enterprise systems.
+
+<!-- END -->
+
+````id="5v1xke"
+
+```md id="2n7qpd"
+<!-- QUESTION -->
+difficulty: Easy
+tags: classes-and-objects, oops, lld
+
+What is the difference between a class and an object?
+
+<!-- ANSWER -->
+A class is a blueprint.
+
+An object is an instance of a class.
+
+Example:
+
+```text id="6m2xqc"
+Class → Car
+Object → BMW Car
+````
+
+Comparison:
+
+| Class                         | Object           |
+| ----------------------------- | ---------------- |
+| Blueprint/template            | Actual instance  |
+| Logical definition            | Physical entity  |
+| No memory allocated initially | Memory allocated |
+
+Example:
+
+```text id="uoeaqr"
+Car car = new Car()
+```
+
+Classes define structure and behavior for objects.
+
+<!-- END -->
+
+````id="9x2vke"
+
+```md id="4q7xwc"
+<!-- QUESTION -->
+difficulty: Easy
+tags: encapsulation, oops, software-design
+
+What is Encapsulation in OOP?
+
+<!-- ANSWER -->
+Encapsulation means bundling data and methods together while restricting direct access to internal details.
+
+Example:
+
+```text id="6p1qxt"
+Private variables + Public getter/setter methods
+````
+
+Benefits:
+
+| Benefit                | Explanation                 |
+| ---------------------- | --------------------------- |
+| Data protection        | Prevent unauthorized access |
+| Better maintainability | Controlled modifications    |
+| Improved modularity    | Hide implementation details |
+
+Example:
+
+```text
 class BankAccount {
-  private _balance: number = 0;
-  
-  get balance() { return this._balance; }
-  
-  deposit(amount: number) {
-    if (amount <= 0) throw new Error('Amount must be positive');
-    this._balance += amount;
-    this.log(`Deposited ${amount}`);
-  }
-  
-  private log(msg: string) { console.log(msg); }
+  private balance;
 }
 ```
+
+Encapsulation improves security and abstraction in software systems.
+
 <!-- END -->
 
+````id="3x5vke"
+
+```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
-tags: inheritance, polymorphism
+tags: abstraction, oops, software-engineering
 
-Write a `Shape` hierarchy with `Circle`, `Rectangle`, and `Triangle`, all implementing a `perimeter()` method. Then write a function that uses polymorphism to print the perimeter of any shape.
-
-<!-- ANSWER -->
-```typescript
-abstract class Shape {
-  abstract perimeter(): number;
-  abstract name(): string;
-  
-  describe(): string {
-    return `${this.name()} has perimeter ${this.perimeter().toFixed(2)}`;
-  }
-}
-
-class Circle extends Shape {
-  constructor(private radius: number) { super(); }
-  name() { return 'Circle'; }
-  perimeter() { return 2 * Math.PI * this.radius; }
-}
-
-class Rectangle extends Shape {
-  constructor(private width: number, private height: number) { super(); }
-  name() { return 'Rectangle'; }
-  perimeter() { return 2 * (this.width + this.height); }
-}
-
-class Triangle extends Shape {
-  constructor(private a: number, private b: number, private c: number) { super(); }
-  name() { return 'Triangle'; }
-  perimeter() { return this.a + this.b + this.c; }
-}
-
-// Polymorphic function — works for ANY Shape
-function printPerimeters(shapes: Shape[]): void {
-  shapes.forEach(s => console.log(s.describe()));
-}
-
-printPerimeters([
-  new Circle(5),
-  new Rectangle(4, 6),
-  new Triangle(3, 4, 5)
-]);
-// Circle has perimeter 31.42
-// Rectangle has perimeter 20.00
-// Triangle has perimeter 12.00
-```
-<!-- END -->
-
-<!-- QUESTION -->
-difficulty: Easy
-tags: composition, inheritance
-
-What does "favor composition over inheritance" mean, and why?
+What is Abstraction in OOP?
 
 <!-- ANSWER -->
-It means: instead of building complex behavior through class hierarchies (`class A extends B extends C`), build it by composing objects that each handle one responsibility.
+Abstraction hides internal implementation details and exposes only essential functionality.
 
-**Why:**
-1. **Flexibility** — You can swap a component at runtime; you can't swap a parent class
-2. **Avoids fragile base class** — Changes to a parent can silently break all children
-3. **Avoids the diamond problem** — Multiple inheritance ambiguity is sidestepped
-4. **Better testability** — Composed components can be individually unit-tested
+Example:
 
-```typescript
-// Inheritance — what if a FlyingFishCar needs to fly AND swim AND drive?
-class Vehicle { drive() {} }
-class Boat extends Vehicle { swim() {} }
-class FlyingBoat extends Boat { fly() {} }
-// ...class explosion!
+```text id="5m2xqc"
+Car.drive()
+````
 
-// Composition — mix and match behaviors freely
-interface Drivable { drive(): void; }
-interface Swimmable { swim(): void; }
-interface Flyable { fly(): void; }
+The user drives the car without understanding:
 
-class Car implements Drivable { drive() { console.log('vroom'); } }
+* engine internals
+* fuel injection
+* transmission logic
 
-class FlyingBoat implements Drivable, Swimmable, Flyable {
-  private driveEngine = new Car();
-  drive() { this.driveEngine.drive(); }
-  swim() { console.log('splash'); }
-  fly() { console.log('whoosh'); }
-}
-```
+Benefits:
+
+| Benefit                | Explanation               |
+| ---------------------- | ------------------------- |
+| Reduced complexity     | Simpler interfaces        |
+| Better maintainability | Hidden implementation     |
+| Improved flexibility   | Internal logic can change |
+
+Abstraction is commonly implemented using:
+
+* abstract classes
+* interfaces
+
 <!-- END -->
 
+````id="8w4qza"
+
+```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
-tags: abstraction, abstract-class, interface
+tags: inheritance, oops, software-design
 
-When would you use an `abstract class` vs an `interface` in TypeScript?
+What is Inheritance in OOP?
 
 <!-- ANSWER -->
-| | `interface` | `abstract class` |
-|---|---|---|
-| Contains implementation | ❌ No | ✅ Yes (partial) |
-| Multiple inheritance | ✅ Yes | ❌ No (single extend) |
-| Constructor | ❌ No | ✅ Yes |
-| Fields with defaults | ❌ No | ✅ Yes |
+Inheritance allows one class to acquire properties and behavior from another class.
 
-**Use `interface` when:**
-- You're defining a contract only (no shared code)
-- A class should be able to implement multiple interfaces
-- You're defining a shape for plain objects
+Example:
 
-**Use `abstract class` when:**
-- You have shared implementation that subclasses should inherit
-- You want to enforce a constructor signature
-- Some methods are fully implemented, some are abstract
+```text id="clt6p5"
+Vehicle
+ ├── Car
+ └── Bike
+````
 
-```typescript
-// Good interface use — pure contract
-interface Serializable {
-  toJSON(): string;
-  fromJSON(json: string): this;
-}
+Benefits:
 
-// Good abstract class use — shared behavior + abstract hook
-abstract class BaseRepository<T> {
-  async findAll(): Promise<T[]> {
-    const raw = await this.fetchAll(); // delegates to subclass
-    return raw.map(r => this.deserialize(r));
-  }
-  
-  protected abstract fetchAll(): Promise<unknown[]>;
-  protected abstract deserialize(raw: unknown): T;
-}
+| Benefit                    | Explanation              |
+| -------------------------- | ------------------------ |
+| Code reuse                 | Shared logic inherited   |
+| Hierarchical relationships | Natural object modeling  |
+| Easier extensibility       | Add specialized behavior |
+
+Example:
+
+```text id="2v7qwr"
+Car extends Vehicle
 ```
+
+Inheritance represents an:
+
+* IS-A relationship
+
 <!-- END -->
 
+````id="2v7qwr"
+
+```md id="9m3xpd"
+<!-- QUESTION -->
+difficulty: Medium
+tags: polymorphism, oops, design-patterns
+
+What is Polymorphism in OOP?
+
+<!-- ANSWER -->
+Polymorphism allows objects to take multiple forms.
+
+Example:
+
+```text id="4q2xmc"
+Vehicle vehicle = new Car()
+````
+
+Types:
+
+| Type                      | Description        |
+| ------------------------- | ------------------ |
+| Compile-time polymorphism | Method overloading |
+| Runtime polymorphism      | Method overriding  |
+
+Benefits:
+
+| Benefit       | Explanation             |
+| ------------- | ----------------------- |
+| Flexibility   | Dynamic behavior        |
+| Reusability   | Generic interfaces      |
+| Extensibility | Interchangeable objects |
+
+Polymorphism is fundamental to scalable object-oriented systems.
+
+<!-- END -->
+
+````id="7n1qxt"
+
+```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
-tags: mixins, typescript, composition
+tags: composition-vs-inheritance, oops, software-design
 
-Implement two TypeScript mixins: `Timestamped` (adds `createdAt`, `updatedAt`, `touch()`) and `SoftDeletable` (adds `deletedAt`, `softDelete()`, `isDeleted`). Apply both to a `Post` class.
+What is the difference between Composition and Inheritance?
 
 <!-- ANSWER -->
-```typescript
-type Constructor<T = {}> = new (...args: any[]) => T;
+Inheritance models IS-A relationships.
 
-function Timestamped<Base extends Constructor>(Base: Base) {
-  return class extends Base {
-    createdAt: Date = new Date();
-    updatedAt: Date = new Date();
-    
-    touch(): void {
-      this.updatedAt = new Date();
-    }
-  };
-}
+Composition models HAS-A relationships.
 
-function SoftDeletable<Base extends Constructor>(Base: Base) {
-  return class extends Base {
-    deletedAt: Date | null = null;
-    
-    get isDeleted(): boolean {
-      return this.deletedAt !== null;
-    }
-    
-    softDelete(): void {
-      this.deletedAt = new Date();
-      if ('touch' in this && typeof (this as any).touch === 'function') {
-        (this as any).touch();
-      }
-    }
-  };
-}
+Comparison:
 
-class Post {
-  constructor(
-    public title: string,
-    public content: string
-  ) {}
-}
+| Inheritance | Composition |
+|---|---|
+| Tight coupling | Loose coupling |
+| Hierarchical reuse | Object-based reuse |
+| Compile-time relationships | Runtime flexibility |
 
-// Apply both mixins
-const TimestampedSoftDeletablePost = SoftDeletable(Timestamped(Post));
-type PostWithMixins = InstanceType<typeof TimestampedSoftDeletablePost>;
+Example Inheritance:
 
-const post = new TimestampedSoftDeletablePost('Hello World', 'My first post');
-console.log(post.createdAt);  // Date
-console.log(post.isDeleted);  // false
+```text id="4v8qpd"
+Car extends Vehicle
+````
 
-post.softDelete();
-console.log(post.isDeleted);  // true
-console.log(post.deletedAt);  // Date
-console.log(post.updatedAt);  // updated by touch()
+Example Composition:
+
+```text id="5w2qwc"
+Car has Engine
 ```
+
+Modern software design often prefers composition over inheritance for flexibility.
+
 <!-- END -->
+
+````id="5w2qwc"
+
+```md id="1x7vza"
+<!-- QUESTION -->
+difficulty: Hard
+tags: interfaces, abstraction, oops
+
+What is the difference between an abstract class and an interface?
+
+<!-- ANSWER -->
+Abstract classes provide partial implementation.
+
+Interfaces define contracts without implementation details.
+
+Comparison:
+
+| Abstract Class | Interface |
+|---|---|
+| Can contain implemented methods | Mostly method declarations |
+| Supports state/fields | Focuses on behavior contracts |
+| Single inheritance | Multiple interface implementation |
+
+Example:
+
+```text id="6m3qpd"
+interface PaymentProcessor
+````
+
+Benefits of interfaces:
+
+* loose coupling
+* polymorphism
+* flexible architecture
+
+Interfaces are heavily used in scalable backend systems.
+
+<!-- END -->
+
+````id="8p5vke"
+
+```md id="6n2xpd"
+<!-- QUESTION -->
+difficulty: Hard
+tags: access-modifiers, encapsulation, oops
+
+What are access modifiers in OOP?
+
+<!-- ANSWER -->
+Access modifiers control visibility and accessibility of classes and members.
+
+Common modifiers:
+
+| Modifier | Accessibility |
+|---|---|
+| public | Accessible everywhere |
+| private | Accessible only inside class |
+| protected | Accessible within inheritance hierarchy |
+| default/package-private | Accessible within package |
+
+Example:
+
+```text id="1q8vza"
+private int balance;
+````
+
+Benefits:
+
+| Benefit              | Explanation            |
+| -------------------- | ---------------------- |
+| Better encapsulation | Restrict direct access |
+| Improved security    | Protect sensitive data |
+| Cleaner APIs         | Controlled visibility  |
+
+Access modifiers are critical for maintainable OOP design.
+
+<!-- END -->
+
+````id="1q8vza"
+
+```md id="9m4qwc"
+<!-- QUESTION -->
+difficulty: Hard
+tags: solid-principles, oops, clean-code
+
+Why are SOLID principles important in Object-Oriented Programming?
+
+<!-- ANSWER -->
+SOLID principles improve maintainability and scalability of object-oriented systems.
+
+Principles:
+
+| Principle | Meaning |
+|---|---|
+| S | Single Responsibility Principle |
+| O | Open/Closed Principle |
+| L | Liskov Substitution Principle |
+| I | Interface Segregation Principle |
+| D | Dependency Inversion Principle |
+
+Benefits:
+
+| Benefit | Explanation |
+|---|---|
+| Cleaner architecture | Better code organization |
+| Easier testing | Modular components |
+| Reduced coupling | Independent systems |
+
+Example:
+
+```text id="7v2xpd"
+One class should have one responsibility
+````
+
+SOLID principles form the foundation of professional object-oriented design.
+
+<!-- END -->
+
+```
+```

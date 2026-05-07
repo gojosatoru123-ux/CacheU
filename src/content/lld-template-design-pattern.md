@@ -353,9 +353,9 @@ This design gives us:
 
 ---
 
-# Example in C++
+# Example
 
-```cpp id="template_method_cpp_01"
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -427,22 +427,7 @@ int main() {
     return 0;
 }
 ```
-
----
-
-## C++ explanation
-
-* `trainPipeline()` is the template method
-* it defines the exact order
-* subclasses cannot change the order
-* subclasses only implement or override specific steps
-* the core structure remains stable
-
----
-
-# Example in Java
-
-```java id="template_method_java_01"
+```java
 abstract class ModelTrainer {
     public final void trainPipeline() {
         beforeTraining();
@@ -509,21 +494,7 @@ public class Main {
     }
 }
 ```
-
----
-
-## Java explanation
-
-* `trainPipeline()` is `final`
-* subclasses cannot override the overall process
-* subclasses customize only the internal steps
-* the workflow always stays consistent
-
----
-
-# Example in Python
-
-```python id="template_method_python_01"
+```python
 from abc import ABC, abstractmethod
 
 class ModelTrainer(ABC):
@@ -580,6 +551,25 @@ print("----")
 dt = DecisionTreeTrainer()
 dt.train_pipeline()
 ```
+
+---
+
+## C++ explanation
+
+* `trainPipeline()` is the template method
+* it defines the exact order
+* subclasses cannot change the order
+* subclasses only implement or override specific steps
+* the core structure remains stable
+
+---
+
+## Java explanation
+
+* `trainPipeline()` is `final`
+* subclasses cannot override the overall process
+* subclasses customize only the internal steps
+* the workflow always stays consistent
 
 ---
 
