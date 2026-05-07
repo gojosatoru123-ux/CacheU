@@ -15,14 +15,12 @@ interface PanZoomInstance {
 
 // Initialize Mermaid
 mermaid.initialize({
-  startOnLoad: false, // We control rendering manually
+  startOnLoad: false,
   theme: 'default',
   securityLevel: 'loose',
 });
 
 // ─── Types ────────────────────────────────────────────────────────────────────
-
-type TokenType = 'code' | 'other';
 
 interface CodeToken {
   type: 'code';
@@ -43,84 +41,50 @@ type AnnotatedToken = CodeToken | OtherToken;
 
 function getLangLabel(lang: string): string {
   const labels: Record<string, string> = {
-    js: 'JavaScript',
-    javascript: 'JavaScript',
-    ts: 'TypeScript',
-    typescript: 'TypeScript',
-    jsx: 'JSX',
-    tsx: 'TSX',
-    py: 'Python',
-    python: 'Python',
-    rb: 'Ruby',
-    ruby: 'Ruby',
-    go: 'Go',
-    rs: 'Rust',
-    rust: 'Rust',
-    java: 'Java',
-    cs: 'C#',
-    csharp: 'C#',
-    cpp: 'C++',
-    c: 'C',
-    php: 'PHP',
-    swift: 'Swift',
-    kotlin: 'Kotlin',
-    sh: 'Shell',
-    bash: 'Bash',
-    shell: 'Shell',
-    zsh: 'Zsh',
-    sql: 'SQL',
-    html: 'HTML',
-    css: 'CSS',
-    scss: 'SCSS',
-    sass: 'Sass',
-    json: 'JSON',
-    yaml: 'YAML',
-    yml: 'YAML',
-    xml: 'XML',
-    md: 'Markdown',
-    markdown: 'Markdown',
-    dockerfile: 'Dockerfile',
-    docker: 'Docker',
-    graphql: 'GraphQL',
-    gql: 'GraphQL',
-    r: 'R',
-    lua: 'Lua',
-    dart: 'Dart',
-    scala: 'Scala',
-    elixir: 'Elixir',
-    haskell: 'Haskell',
-    plaintext: 'Plain Text',
-    text: 'Plain Text',
-    mermaid: 'Mermaid',
+    js: 'JavaScript', javascript: 'JavaScript',
+    ts: 'TypeScript', typescript: 'TypeScript',
+    jsx: 'JSX', tsx: 'TSX',
+    py: 'Python', python: 'Python',
+    rb: 'Ruby', ruby: 'Ruby',
+    go: 'Go', rs: 'Rust', rust: 'Rust',
+    java: 'Java', cs: 'C#', csharp: 'C#',
+    cpp: 'C++', c: 'C', php: 'PHP',
+    swift: 'Swift', kotlin: 'Kotlin',
+    sh: 'Shell', bash: 'Bash', shell: 'Shell', zsh: 'Zsh',
+    sql: 'SQL', html: 'HTML', css: 'CSS', scss: 'SCSS', sass: 'Sass',
+    json: 'JSON', yaml: 'YAML', yml: 'YAML', xml: 'XML',
+    md: 'Markdown', markdown: 'Markdown',
+    dockerfile: 'Dockerfile', docker: 'Docker',
+    graphql: 'GraphQL', gql: 'GraphQL',
+    r: 'R', lua: 'Lua', dart: 'Dart', scala: 'Scala',
+    elixir: 'Elixir', haskell: 'Haskell',
+    plaintext: 'Plain Text', text: 'Plain Text', mermaid: 'Mermaid',
   };
   return labels[lang.toLowerCase()] ?? lang.toUpperCase();
 }
 
 function renderSingleCode(text: string, lang: string): string {
   if (lang === 'mermaid') {
-    const mermaidId = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
-    return `<div class="mermaid-wrapper">
-      <div class="mermaid-titlebar">
-        <div class="mermaid-dots">
-          <span class="dot dot-red"></span>
-          <span class="dot dot-yellow"></span>
-          <span class="dot dot-green"></span>
-        </div>
-        <span class="mermaid-label">Diagram</span>
-        <div class="mermaid-controls" data-target="${mermaidId}">
-          <button class="mermaid-zoom-out" title="Zoom Out (Ctrl/Cmd + Minus)">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </button>
-          <button class="mermaid-zoom-in" title="Zoom In (Ctrl/Cmd + Plus)">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </button>
-          <button class="mermaid-reset" title="Reset View">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6a4 4 0 1 0 1.2-2.8L2 2v3h3L3.8 3.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="mermaid-container" id="${mermaidId}"><div class="mermaid">${text}</div></div>
-    </div>`;
+    const id = 'mermaid-' + Math.random().toString(36).substr(2, 9);
+    // Enlarge icon SVG (expand arrows)
+    const enlargeIcon = `<svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+      <path d="M1.5 4.5V2A.5.5 0 0 1 2 1.5h2.5M8.5 1.5H11a.5.5 0 0 1 .5.5v2.5M11.5 8.5V11a.5.5 0 0 1-.5.5H8.5M4.5 11.5H2A.5.5 0 0 1 1.5 11V8.5"
+        stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+    return (
+      `<div class="mermaid-wrapper">` +
+        `<div class="mermaid-titlebar">` +
+          `<div class="mermaid-dots">` +
+            `<span class="dot dot-red"></span>` +
+            `<span class="dot dot-yellow"></span>` +
+            `<span class="dot dot-green"></span>` +
+          `</div>` +
+          `<span class="mermaid-label">Diagram</span>` +
+          `<button class="mermaid-enlarge-btn" data-enlarge="${id}" title="Enlarge diagram">${enlargeIcon}</button>` +
+        `</div>` +
+        `<div class="mermaid-container" id="${id}"><div class="mermaid">${text}</div></div>` +
+      `</div>`
+    );
   }
 
   const language = lang && hljs.getLanguage(lang) ? lang : 'plaintext';
@@ -129,38 +93,31 @@ function renderSingleCode(text: string, lang: string): string {
 }
 
 function renderTabGroup(codes: CodeToken[]): string {
-  const groupId = `tabgroup-${Math.random().toString(36).substr(2, 9)}`;
+  const groupId = 'tabgroup-' + Math.random().toString(36).substr(2, 9);
 
-  const tabs = codes
-    .map((c, i) => {
-      const label = getLangLabel(c.lang || 'plaintext');
-      const active = i === 0 ? 'tab-active' : '';
-      return `<button class="code-tab ${active}" data-group="${groupId}" data-index="${i}">${label}</button>`;
-    })
-    .join('');
+  const tabs = codes.map((c, i) => {
+    const label = getLangLabel(c.lang || 'plaintext');
+    const active = i === 0 ? 'tab-active' : '';
+    return `<button class="code-tab ${active}" data-group="${groupId}" data-index="${i}">${label}</button>`;
+  }).join('');
 
-  const panels = codes
-    .map((c, i) => {
-      const hidden = i === 0 ? '' : 'style="display:none"';
-      const inner = renderSingleCode(c.text, c.lang || 'plaintext');
-      return `<div class="code-panel" data-group="${groupId}" data-index="${i}" ${hidden}>${inner}</div>`;
-    })
-    .join('');
+  const panels = codes.map((c, i) => {
+    const hidden = i === 0 ? '' : 'style="display:none"';
+    const inner = renderSingleCode(c.text, c.lang || 'plaintext');
+    return `<div class="code-panel" data-group="${groupId}" data-index="${i}" ${hidden}>${inner}</div>`;
+  }).join('');
 
-  return `<div class="code-tab-group" id="${groupId}">
-    <div class="code-tab-bar">${tabs}</div>
-    <div class="code-tab-panels">${panels}</div>
-  </div>`;
+  return (
+    `<div class="code-tab-group" id="${groupId}">` +
+      `<div class="code-tab-bar">${tabs}</div>` +
+      `<div class="code-tab-panels">${panels}</div>` +
+    `</div>`
+  );
 }
 
-// ─── Custom renderer ──────────────────────────────────────────────────────────
-//
-// Strategy: we walk the token list ourselves so we can group consecutive code
-// tokens into a single tab group. We override `renderer.code` only as a
-// fallback (marked may call it for tokens we didn't touch).
+// ─── Build HTML ───────────────────────────────────────────────────────────────
 
 function buildHtml(content: string): string {
-  // Get the token list from marked's lexer
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const tokens: any[] = (marked as any).lexer(content);
 
@@ -171,10 +128,8 @@ function buildHtml(content: string): string {
     return { type: 'other', token: t } as OtherToken;
   });
 
-  // Build a default renderer for non-code tokens
   const defaultRenderer = new marked.Renderer();
   defaultRenderer.code = ({ text, lang }) => renderSingleCode(text, lang ?? 'plaintext');
-
   const markedWithRenderer = marked.use({ renderer: defaultRenderer });
 
   let html = '';
@@ -182,27 +137,18 @@ function buildHtml(content: string): string {
 
   while (i < annotated.length) {
     const cur = annotated[i];
-
     if (cur.type === 'code') {
-      // Collect the run of consecutive code tokens
       const group: CodeToken[] = [cur];
       let j = i + 1;
       while (j < annotated.length && annotated[j].type === 'code') {
         group.push(annotated[j] as CodeToken);
         j++;
       }
-
-      if (group.length === 1) {
-        // Single code block — render normally (keeps mermaid flow intact)
-        html += renderSingleCode(group[0].text, group[0].lang);
-      } else {
-        // Multiple consecutive code blocks — render as tabs
-        html += renderTabGroup(group);
-      }
-
+      html += group.length === 1
+        ? renderSingleCode(group[0].text, group[0].lang)
+        : renderTabGroup(group);
       i = j;
     } else {
-      // Non-code token — let marked parse it individually
       html += markedWithRenderer(cur.token.raw) as string;
       i++;
     }
@@ -211,23 +157,144 @@ function buildHtml(content: string): string {
   return html;
 }
 
+// ─── Modal pan-zoom manager ───────────────────────────────────────────────────
+// We keep one modal in the DOM and reuse it for every enlarge click.
+
+let modalEl: HTMLDivElement | null = null;
+let modalPanZoom: ReturnType<typeof svgPanZoom> | null = null;
+
+function getOrCreateModal(): HTMLDivElement {
+  if (modalEl) return modalEl;
+
+  modalEl = document.createElement('div');
+  modalEl.id = 'mermaid-modal-overlay';
+  modalEl.innerHTML = `
+    <div class="mmo-backdrop"></div>
+    <div class="mmo-window">
+      <div class="mmo-toolbar">
+        <span class="mmo-title">Diagram</span>
+        <div class="mmo-controls">
+          <button class="mmo-btn" id="mmo-zoom-out" title="Zoom Out">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M4 6h4M10.5 10.5l2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button class="mmo-btn" id="mmo-zoom-in" title="Zoom In">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M6 4v4M4 6h4M10.5 10.5l2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button class="mmo-btn" id="mmo-reset" title="Reset View">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2.5 7a4.5 4.5 0 1 0 1.35-3.18L2.5 2.5v3h3L4.15 4.18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="mmo-sep"></div>
+          <button class="mmo-btn mmo-close" id="mmo-close" title="Close (Esc)">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="mmo-canvas" id="mmo-canvas"></div>
+      <div class="mmo-hint">Scroll to zoom · Drag to pan · Double-click to reset</div>
+    </div>
+  `;
+  document.body.appendChild(modalEl);
+
+  // Close handlers
+  const close = () => {
+    modalEl!.classList.remove('mmo-visible');
+    document.body.style.overflow = '';
+    if (modalPanZoom) { modalPanZoom.destroy(); modalPanZoom = null; }
+    const canvas = document.getElementById('mmo-canvas')!;
+    canvas.innerHTML = '';
+  };
+
+  modalEl.querySelector('.mmo-backdrop')!.addEventListener('click', close);
+  modalEl.querySelector('#mmo-close')!.addEventListener('click', close);
+
+  document.addEventListener('keydown', (e) => {
+    if (!modalEl?.classList.contains('mmo-visible')) return;
+    if (e.key === 'Escape') { close(); return; }
+    if (!modalPanZoom) return;
+    if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '=')) { e.preventDefault(); modalPanZoom.zoomIn(); }
+    else if ((e.ctrlKey || e.metaKey) && e.key === '-') { e.preventDefault(); modalPanZoom.zoomOut(); }
+    else if ((e.ctrlKey || e.metaKey) && e.key === '0') { e.preventDefault(); modalPanZoom.fit(); modalPanZoom.center(); }
+  });
+
+  modalEl.querySelector('#mmo-zoom-in')!.addEventListener('click', () => modalPanZoom?.zoomIn());
+  modalEl.querySelector('#mmo-zoom-out')!.addEventListener('click', () => modalPanZoom?.zoomOut());
+  modalEl.querySelector('#mmo-reset')!.addEventListener('click', () => { modalPanZoom?.fit(); modalPanZoom?.center(); });
+
+  return modalEl;
+}
+
+function openModal(sourceSvg: SVGSVGElement) {
+  const modal = getOrCreateModal();
+  const canvas = document.getElementById('mmo-canvas')!;
+  canvas.innerHTML = '';
+
+  // Deep-clone the SVG into the modal canvas
+  const cloned = sourceSvg.cloneNode(true) as SVGSVGElement;
+  cloned.removeAttribute('width');
+  cloned.removeAttribute('height');
+  cloned.style.cssText = 'width:100%;height:100%;display:block;';
+  canvas.appendChild(cloned);
+
+  modal.classList.add('mmo-visible');
+  document.body.style.overflow = 'hidden';
+
+  // Init pan-zoom after paint
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      try {
+        modalPanZoom = svgPanZoom(cloned, {
+          panEnabled: true,
+          controlIconsEnabled: false,
+          zoomEnabled: true,
+          dblClickZoomEnabled: true,
+          mouseWheelZoomEnabled: true,
+          preventMouseEventsDefault: true,
+          zoomScaleSensitivity: 0.25,
+          minZoom: 0.05,
+          maxZoom: 20,
+          fit: true,
+          contain: false,
+          center: true,
+          refreshRate: 'auto',
+        });
+        modalPanZoom.fit();
+        modalPanZoom.center();
+
+        // Double-click resets
+        cloned.addEventListener('dblclick', () => { modalPanZoom?.fit(); modalPanZoom?.center(); });
+      } catch (e) {
+        console.warn('Modal pan-zoom init failed:', e);
+      }
+    });
+  });
+}
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function MarkdownRenderer({ content }: MarkdownRendererProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const panZoomInstancesRef = useRef<PanZoomInstance>({});
 
   const html = buildHtml(content);
 
   useEffect(() => {
     if (!ref.current) return;
 
-    // ── 1. Highlight any un-highlighted code blocks ──────────────────────────
+    // ── 1. Highlight code blocks ─────────────────────────────────────────────
     ref.current.querySelectorAll<HTMLElement>('pre code:not(.hljs)').forEach((block) => {
       hljs.highlightElement(block);
     });
 
-    // ── 2. Tab switching logic ───────────────────────────────────────────────
+    // ── 2. Tab switching ─────────────────────────────────────────────────────
     const tabBars = ref.current.querySelectorAll<HTMLElement>('.code-tab-bar');
     const tabClickHandlers: Array<{ el: HTMLElement; fn: EventListener }> = [];
 
@@ -237,189 +304,142 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
         if (!btn) return;
         const groupId = btn.dataset.group!;
         const idx = btn.dataset.index!;
-
-        // Update tab active state
         ref.current!.querySelectorAll<HTMLButtonElement>(`.code-tab[data-group="${groupId}"]`).forEach((t) => {
           t.classList.toggle('tab-active', t.dataset.index === idx);
         });
-
-        // Show/hide panels
         ref.current!.querySelectorAll<HTMLElement>(`.code-panel[data-group="${groupId}"]`).forEach((p) => {
           p.style.display = p.dataset.index === idx ? '' : 'none';
         });
       };
-
       bar.addEventListener('click', handler);
       tabClickHandlers.push({ el: bar, fn: handler });
     });
 
-    // ── 3. Render Mermaid diagrams ───────────────────────────────────────────
+    // ── 3. Render Mermaid ────────────────────────────────────────────────────
     const mermaidEls = ref.current.querySelectorAll<HTMLElement>('.mermaid');
 
     const renderMermaid = async () => {
-      if (mermaidEls.length === 0) return;
-
-      // Give each .mermaid div a unique id if it doesn't have one
+      if (!mermaidEls.length) return;
       mermaidEls.forEach((el, idx) => {
-        if (!el.id) el.id = `mermaid-render-${idx}-${Math.random().toString(36).substr(2, 6)}`;
+        if (!el.id) el.id = 'mermaid-render-' + idx + '-' + Math.random().toString(36).substr(2, 6);
       });
-
       try {
         await mermaid.run({ nodes: Array.from(mermaidEls) });
       } catch (err) {
         console.warn('Mermaid render error:', err);
       }
-
-      // ── 4. Initialize pan-zoom on rendered SVGs ──────────────────────────
-      initializePanZoom();
+      fitMermaidContainers();
+      wireEnlargeButtons();
     };
 
-    const initializePanZoom = (retries = 0, maxRetries = 6) => {
+    // ── 4. Fit containers to natural SVG size (no pan-zoom inline) ───────────
+    const fitMermaidContainers = (retries = 0) => {
       if (!ref.current) return;
       const containers = ref.current.querySelectorAll<HTMLElement>('.mermaid-container');
-      if (containers.length === 0) return;
-
-      let allInitialized = true;
+      let allDone = true;
 
       containers.forEach((container) => {
         const svg = container.querySelector('svg');
-        const containerId = container.id;
-        if (!svg || !containerId) { allInitialized = false; return; }
+        if (!svg) { allDone = false; return; }
 
-        // Already initialized
-        if (panZoomInstancesRef.current[containerId]) return;
-
-        // ── Fix SVG sizing ───────────────────────────────────────────────────
-        // Mermaid often sets height="100%" or a giant px value on the SVG.
-        // We read the viewBox (the true diagram dimensions), derive the natural
-        // aspect ratio, and size the container to fit tightly with no extra space.
-
-        // 1. Remove any explicit width/height attrs mermaid put on the SVG so
-        //    we can measure its natural intrinsic size via viewBox.
+        // Read true diagram dimensions from viewBox (most reliable after mermaid renders)
+        let natW = 0, natH = 0;
         const vb = svg.getAttribute('viewBox');
-        let naturalH = 0;
-        let naturalW = 0;
-
         if (vb) {
-          const parts = vb.split(/[\s,]+/).map(Number);
-          // viewBox = "minX minY width height"
-          if (parts.length === 4) {
-            naturalW = parts[2];
-            naturalH = parts[3];
-          }
+          const p = vb.trim().split(/[\s,]+/).map(Number);
+          if (p.length === 4) { natW = p[2]; natH = p[3]; }
+        }
+        // Fallback: getBBox gives tight bounding box of drawn content
+        if (!natW || !natH) {
+          try { const b = svg.getBBox(); natW = b.width; natH = b.height; } catch (_) {}
+        }
+        if (!natW || !natH) { allDone = false; return; }
+
+        const pad = 24; // px breathing room on each side
+        const availableW = (container.clientWidth || 700) - pad * 2;
+
+        // Scale factor: shrink to fit if wider than available, never upscale
+        const scale = Math.min(1, availableW / natW);
+
+        const renderedW = Math.round(natW * scale);
+        const renderedH = Math.round(natH * scale);
+
+        // Strip mermaid's inline size attrs — we control sizing via explicit w/h
+        svg.removeAttribute('style');
+        svg.setAttribute('width',  String(renderedW));
+        svg.setAttribute('height', String(renderedH));
+        // Keep viewBox so SVG scales correctly at any pixel density
+        if (!svg.getAttribute('viewBox')) {
+          svg.setAttribute('viewBox', `0 0 ${natW} ${natH}`);
         }
 
-        // Fallback: use getBBox which gives us the tight bounding box of content
-        if (naturalH === 0 || naturalW === 0) {
-          try {
-            const bb = svg.getBBox();
-            naturalW = bb.width;
-            naturalH = bb.height;
-          } catch (_) { /* noop */ }
-        }
+        // Container: exactly tall enough to hold the diagram + padding
+        container.style.cssText = [
+          'position:relative',
+          'width:100%',
+          'overflow:hidden',
+          `height:${renderedH + pad * 2}px`,
+          'display:flex',
+          'align-items:center',
+          'justify-content:center',
+          'background:#fafafa',
+          'background-image:radial-gradient(circle,rgba(0,0,0,0.065) 1px,transparent 1px)',
+          'background-size:20px 20px',
+          'box-sizing:border-box',
+        ].join(';');
 
-        if (naturalH === 0 || naturalW === 0) { allInitialized = false; return; }
-
-        // 2. Force the SVG to fill its container (pan-zoom will manage viewport)
-        svg.setAttribute('width', '100%');
-        svg.setAttribute('height', '100%');
-        svg.style.width = '100%';
-        svg.style.height = '100%';
-        svg.style.display = 'block';
-
-        // 3. Set the container height based on natural aspect ratio, capped
-        //    so very tall diagrams don't blow out the page.
-        const containerWidth = container.clientWidth || 700;
-        const aspectRatio = naturalH / naturalW;
-        const targetH = Math.min(Math.round(containerWidth * aspectRatio), 600);
-        const finalH = Math.max(targetH, 120); // never shorter than 120px
-        container.style.height = `${finalH}px`;
-
-        try {
-          const instance = svgPanZoom(svg, {
-            viewportSelector: '.svg-pan-zoom_viewport',
-            panEnabled: true,
-            controlIconsEnabled: false,
-            zoomEnabled: true,
-            dblClickZoomEnabled: true,
-            mouseWheelZoomEnabled: true,
-            preventMouseEventsDefault: false,
-            zoomScaleSensitivity: 0.3,
-            minZoom: 0.1,
-            maxZoom: 10,
-            fit: true,
-            contain: false,
-            center: true,
-            refreshRate: 'auto',
-          });
-
-          // After fit+center, the diagram fills the box with no dead space
-          instance.fit();
-          instance.center();
-
-          panZoomInstancesRef.current[containerId] = instance;
-
-          // Wire up control buttons — controls are inside .mermaid-titlebar which is the previous sibling of container
-          const titlebar = container.previousElementSibling as HTMLElement | null;
-          if (titlebar?.classList.contains('mermaid-titlebar')) {
-            (titlebar.querySelector('.mermaid-zoom-in') as HTMLButtonElement | null)?.addEventListener('click', () => instance.zoomIn());
-            (titlebar.querySelector('.mermaid-zoom-out') as HTMLButtonElement | null)?.addEventListener('click', () => instance.zoomOut());
-            (titlebar.querySelector('.mermaid-reset') as HTMLButtonElement | null)?.addEventListener('click', () => { instance.fit(); instance.center(); });
-          }
-        } catch (err) {
-          console.warn(`pan-zoom init failed for ${containerId}:`, err);
-          allInitialized = false;
-        }
+        // SVG sits naturally centered — no absolute positioning needed
+        svg.style.cssText = 'display:block;flex-shrink:0;';
       });
 
-      if (!allInitialized && retries < maxRetries) {
-        setTimeout(() => initializePanZoom(retries + 1, maxRetries), 250);
+      if (!allDone && retries < 6) {
+        setTimeout(() => fitMermaidContainers(retries + 1), 200);
       }
     };
 
-    // Keyboard shortcuts
-    const handleKeyDown = (e: KeyboardEvent) => {
-      const instances = Object.values(panZoomInstancesRef.current).filter(Boolean);
-      if (!instances.length) return;
-      const active = instances[0]!;
-      if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '=')) { e.preventDefault(); active.zoomIn(); }
-      else if ((e.ctrlKey || e.metaKey) && e.key === '-') { e.preventDefault(); active.zoomOut(); }
-      else if ((e.ctrlKey || e.metaKey) && e.key === '0') { e.preventDefault(); active.reset(); }
-    };
-    window.addEventListener('keydown', handleKeyDown);
+    // ── 5. Wire enlarge buttons ──────────────────────────────────────────────
+    const enlargeHandlers: Array<{ el: HTMLElement; fn: EventListener }> = [];
 
-    // Kick off mermaid rendering after a small delay so the DOM is painted
-    const tid = setTimeout(() => { renderMermaid(); }, 100);
+    const wireEnlargeButtons = () => {
+      if (!ref.current) return;
+      ref.current.querySelectorAll<HTMLButtonElement>('.mermaid-enlarge-btn').forEach((btn) => {
+        const targetId = btn.dataset.enlarge!;
+        const fn: EventListener = () => {
+          const container = document.getElementById(targetId);
+          if (!container) return;
+          const svg = container.querySelector('svg');
+          if (!svg) return;
+          openModal(svg as SVGSVGElement);
+        };
+        btn.addEventListener('click', fn);
+        enlargeHandlers.push({ el: btn, fn });
+      });
+    };
+
+    const tid = setTimeout(renderMermaid, 100);
 
     return () => {
       clearTimeout(tid);
-      window.removeEventListener('keydown', handleKeyDown);
       tabClickHandlers.forEach(({ el, fn }) => el.removeEventListener('click', fn));
-      Object.values(panZoomInstancesRef.current).forEach((i) => i?.destroy());
-      panZoomInstancesRef.current = {};
+      enlargeHandlers.forEach(({ el, fn }) => el.removeEventListener('click', fn));
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [content]);
 
   return (
     <>
-      {/* ── Styles ── */}
       <style>{`
-        /* ════════════════════════════════════════════════════════════
-           CODE TAB GROUP  — Apple HIG inspired
-        ════════════════════════════════════════════════════════════ */
+        /* ═══════════════════════════════════════════════════════════
+           CODE TAB GROUP
+        ═══════════════════════════════════════════════════════════ */
         .code-tab-group {
           margin: 1.5rem 0;
           border-radius: 12px;
           overflow: hidden;
           border: 1px solid rgba(0,0,0,0.08);
-          box-shadow:
-            0 1px 2px rgba(0,0,0,0.04),
-            0 4px 16px rgba(0,0,0,0.06);
+          box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
           background: #1c1c1e;
         }
-
-        /* Tab bar — macOS window-chrome feel */
         .code-tab-bar {
           display: flex;
           align-items: center;
@@ -432,14 +452,12 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
           min-height: 40px;
         }
         .code-tab-bar::-webkit-scrollbar { display: none; }
-
         .code-tab {
           position: relative;
           padding: 0 14px;
           height: 28px;
           display: inline-flex;
           align-items: center;
-          gap: 5px;
           font-size: 11.5px;
           font-family: -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
           font-weight: 500;
@@ -450,72 +468,50 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
           border-radius: 6px;
           cursor: pointer;
           white-space: nowrap;
-          transition: color 0.15s ease, background 0.15s ease;
+          transition: color 0.15s, background 0.15s;
           outline: none;
           -webkit-font-smoothing: antialiased;
         }
-        .code-tab:hover {
-          color: rgba(255,255,255,0.75);
-          background: rgba(255,255,255,0.07);
-        }
-        .code-tab.tab-active {
-          color: rgba(255,255,255,0.92);
-          background: rgba(255,255,255,0.11);
-        }
-        /* Active indicator pill */
+        .code-tab:hover { color: rgba(255,255,255,0.75); background: rgba(255,255,255,0.07); }
+        .code-tab.tab-active { color: rgba(255,255,255,0.92); background: rgba(255,255,255,0.11); }
         .code-tab.tab-active::after {
           content: '';
           position: absolute;
-          bottom: -1px;
-          left: 50%;
+          bottom: -1px; left: 50%;
           transform: translateX(-50%);
-          width: 60%;
-          height: 2px;
+          width: 60%; height: 2px;
           border-radius: 2px 2px 0 0;
           background: rgba(255,255,255,0.5);
         }
-
-        /* Panel area */
-        .code-tab-panels {
-          background: #1c1c1e;
-        }
+        .code-tab-panels { background: #1c1c1e; }
         .code-tab-panels .hljs-pre {
           margin: 0 !important;
           border-radius: 0 !important;
           border: none !important;
           background: transparent !important;
         }
-        .code-tab-panels pre.hljs-pre code {
-          border-radius: 0 !important;
-        }
+        .code-tab-panels pre.hljs-pre code { border-radius: 0 !important; }
 
-        /* ════════════════════════════════════════════════════════════
-           MERMAID WRAPPER — Apple Finder / Preview window aesthetic
-        ════════════════════════════════════════════════════════════ */
+        /* ═══════════════════════════════════════════════════════════
+           MERMAID INLINE WRAPPER
+        ═══════════════════════════════════════════════════════════ */
         .mermaid-wrapper {
           margin: 1.5rem 0;
           border-radius: 12px;
           overflow: hidden;
           border: 1px solid rgba(0,0,0,0.09);
-          box-shadow:
-            0 1px 3px rgba(0,0,0,0.05),
-            0 6px 24px rgba(0,0,0,0.08);
+          box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 6px 24px rgba(0,0,0,0.08);
           background: #ffffff;
         }
-
-        /* Title bar — macOS-style chrome */
         .mermaid-titlebar {
           display: flex;
           align-items: center;
-          gap: 0;
           height: 38px;
           padding: 0 12px;
           background: linear-gradient(180deg, #f5f5f7 0%, #ebebed 100%);
           border-bottom: 1px solid rgba(0,0,0,0.1);
           user-select: none;
         }
-
-        /* Traffic-light dots */
         .mermaid-dots {
           display: flex;
           align-items: center;
@@ -524,21 +520,15 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
           flex-shrink: 0;
         }
         .dot {
-          width: 12px;
-          height: 12px;
+          width: 12px; height: 12px;
           border-radius: 50%;
           display: block;
-          position: relative;
           transition: filter 0.15s;
         }
         .dot-red    { background: #ff5f57; border: 0.5px solid rgba(0,0,0,0.12); }
         .dot-yellow { background: #ffbd2e; border: 0.5px solid rgba(0,0,0,0.12); }
         .dot-green  { background: #28c840; border: 0.5px solid rgba(0,0,0,0.12); }
-        .mermaid-titlebar:hover .dot-red    { filter: brightness(0.88); }
-        .mermaid-titlebar:hover .dot-yellow { filter: brightness(0.88); }
-        .mermaid-titlebar:hover .dot-green  { filter: brightness(0.88); }
-
-        /* Center label */
+        .mermaid-titlebar:hover .dot { filter: brightness(0.88); }
         .mermaid-label {
           flex: 1;
           text-align: center;
@@ -546,68 +536,183 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
           font-family: -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
           font-weight: 500;
           color: rgba(0,0,0,0.45);
-          letter-spacing: 0.01em;
-          -webkit-font-smoothing: antialiased;
           pointer-events: none;
+          -webkit-font-smoothing: antialiased;
         }
-
-        /* Control buttons — right side */
-        .mermaid-controls {
-          display: flex;
-          align-items: center;
-          gap: 2px;
-          flex-shrink: 0;
-        }
-        .mermaid-controls button {
+        .mermaid-enlarge-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: 26px;
-          height: 22px;
+          width: 28px; height: 24px;
           border: 1px solid rgba(0,0,0,0.13);
-          border-radius: 5px;
+          border-radius: 6px;
           background: rgba(255,255,255,0.7);
           color: rgba(0,0,0,0.5);
           cursor: pointer;
-          transition: background 0.12s, color 0.12s, border-color 0.12s;
+          transition: background 0.12s, color 0.12s, transform 0.1s;
           backdrop-filter: blur(4px);
-          -webkit-backdrop-filter: blur(4px);
           outline: none;
+          flex-shrink: 0;
         }
-        .mermaid-controls button:hover {
+        .mermaid-enlarge-btn:hover {
           background: rgba(255,255,255,0.95);
           color: rgba(0,0,0,0.8);
           border-color: rgba(0,0,0,0.2);
         }
-        .mermaid-controls button:active {
-          background: rgba(0,0,0,0.06);
-          transform: scale(0.94);
-        }
+        .mermaid-enlarge-btn:active { transform: scale(0.92); }
 
-        /* Diagram canvas */
+        /* Diagram canvas — sized entirely by JS */
         .mermaid-container {
           position: relative;
           width: 100%;
           overflow: hidden;
-          background: #fafafa;
-          /* Subtle dot-grid pattern like Keynote canvas */
-          background-image: radial-gradient(circle, rgba(0,0,0,0.07) 1px, transparent 1px);
-          background-size: 20px 20px;
+          box-sizing: border-box;
+          border-radius: 0 0 12px 12px;
         }
         .mermaid-container .mermaid {
-          display: block;
+          display: contents;
           margin: 0 !important;
           padding: 0 !important;
           line-height: 0;
-          width: 100%;
-          height: 100%;
         }
-        .mermaid-container svg {
-          display: block !important;
+
+        /* ═══════════════════════════════════════════════════════════
+           MODAL OVERLAY
+        ═══════════════════════════════════════════════════════════ */
+        #mermaid-modal-overlay {
+          position: fixed;
+          inset: 0;
+          z-index: 9999;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.22s ease;
+        }
+        #mermaid-modal-overlay.mmo-visible {
+          opacity: 1;
+          pointer-events: all;
+        }
+        .mmo-backdrop {
+          position: absolute;
+          inset: 0;
+          background: rgba(0,0,0,0.62);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+        }
+        .mmo-window {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          flex-direction: column;
+          width: min(92vw, 1100px);
+          height: min(88vh, 780px);
+          background: #ffffff;
+          border-radius: 16px;
+          overflow: hidden;
+          box-shadow:
+            0 0 0 1px rgba(0,0,0,0.08),
+            0 8px 32px rgba(0,0,0,0.18),
+            0 32px 80px rgba(0,0,0,0.22);
+          transform: scale(0.96);
+          transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        #mermaid-modal-overlay.mmo-visible .mmo-window {
+          transform: scale(1);
+        }
+
+        /* Modal toolbar */
+        .mmo-toolbar {
+          display: flex;
+          align-items: center;
+          height: 48px;
+          padding: 0 16px;
+          background: linear-gradient(180deg, #f5f5f7 0%, #ebebed 100%);
+          border-bottom: 1px solid rgba(0,0,0,0.1);
+          flex-shrink: 0;
+          user-select: none;
+          gap: 8px;
+        }
+        .mmo-title {
+          flex: 1;
+          text-align: center;
+          font-size: 13px;
+          font-family: -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
+          font-weight: 500;
+          color: rgba(0,0,0,0.5);
+          letter-spacing: 0.01em;
+          -webkit-font-smoothing: antialiased;
+        }
+        .mmo-controls {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+        .mmo-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 30px; height: 26px;
+          border: 1px solid rgba(0,0,0,0.13);
+          border-radius: 6px;
+          background: rgba(255,255,255,0.7);
+          color: rgba(0,0,0,0.55);
+          cursor: pointer;
+          transition: background 0.12s, color 0.12s, transform 0.1s;
+          backdrop-filter: blur(4px);
+          outline: none;
+        }
+        .mmo-btn:hover { background: rgba(255,255,255,0.95); color: rgba(0,0,0,0.8); border-color: rgba(0,0,0,0.2); }
+        .mmo-btn:active { transform: scale(0.91); }
+        .mmo-close { color: rgba(180,0,0,0.6); }
+        .mmo-close:hover { background: #fff0f0; color: #c00; }
+        .mmo-sep {
+          width: 1px; height: 18px;
+          background: rgba(0,0,0,0.12);
+          margin: 0 2px;
+        }
+
+        /* Modal canvas */
+        .mmo-canvas {
+          flex: 1;
+          overflow: hidden;
+          background: #fafafa;
+          background-image: radial-gradient(circle, rgba(0,0,0,0.065) 1px, transparent 1px);
+          background-size: 24px 24px;
+          cursor: grab;
+          position: relative;
+        }
+        .mmo-canvas:active { cursor: grabbing; }
+        .mmo-canvas svg {
+          position: absolute;
+          inset: 0;
           width: 100% !important;
           height: 100% !important;
-          max-width: unset !important;
-          max-height: unset !important;
+          display: block !important;
+        }
+
+        /* Hint bar */
+        .mmo-hint {
+          flex-shrink: 0;
+          text-align: center;
+          font-size: 11px;
+          font-family: -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
+          color: rgba(0,0,0,0.3);
+          padding: 7px 0 8px;
+          background: linear-gradient(180deg, #f0f0f2 0%, #ebebed 100%);
+          border-top: 1px solid rgba(0,0,0,0.07);
+          letter-spacing: 0.01em;
+          -webkit-font-smoothing: antialiased;
+        }
+
+        /* Responsive — on very small screens modal goes full-screen */
+        @media (max-width: 600px) {
+          .mmo-window {
+            width: 100vw;
+            height: 100dvh;
+            border-radius: 0;
+          }
         }
       `}</style>
 

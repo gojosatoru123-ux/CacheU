@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { ArticleMeta, CATEGORIES, CATEGORY_ORDER } from '../lib/content';
-import { ChevronDown, ChevronRight, BookOpen, X, Menu, Zap, Users, Code, LayoutGrid, Target, Network } from 'lucide-react';
+import { ChevronDown, ChevronRight, BookOpen, X, Menu, Zap, Code, LayoutGrid, Target, Network } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface SidebarProps {
@@ -10,24 +10,20 @@ interface SidebarProps {
 }
 
 const CATEGORY_COLORS: Record<string, { icon: string }> = {
-  'Low Level Design':  { icon: 'bg-violet-100 text-violet-600' },
+  'Low Level Design': { icon: 'bg-violet-100 text-violet-600' },
   'High Level Design': { icon: 'bg-teal-100 text-teal-600' },
-  Networking:          { icon: 'bg-sky-100 text-sky-600' },
-  Introduction:        { icon: 'bg-violet-100 text-violet-500' },
-  Guides:              { icon: 'bg-amber-100 text-amber-600' },
-  Reference:           { icon: 'bg-teal-100 text-teal-500' },
-  Community:           { icon: 'bg-rose-100 text-rose-600' },
-  General:             { icon: 'bg-slate-100 text-slate-500' },
+  'Backend Design': { icon: 'bg-amber-100 text-amber-600' },
+  'Web Security': { icon: 'bg-rose-100 text-rose-600' },
+  'SEO': { icon: 'bg-green-100 text-green-600' },
+  General: { icon: 'bg-slate-100 text-slate-500' },
 };
 
 const CATEGORY_ICONS: Record<string, React.ReactNode> = {
-  'Low Level Design':  <Code className="w-3.5 h-3.5" />,
+  'Low Level Design': <Code className="w-3.5 h-3.5" />,
   'High Level Design': <LayoutGrid className="w-3.5 h-3.5" />,
-  Networking:          <Network className="w-3.5 h-3.5" />,
-  Introduction:        <BookOpen className="w-3.5 h-3.5" />,
-  Guides:              <Zap className="w-3.5 h-3.5" />,
-  Reference:           <Code className="w-3.5 h-3.5" />,
-  Community:           <Users className="w-3.5 h-3.5" />,
+  'Backend Design': <Zap className="w-3.5 h-3.5" />,
+  'Web Security': <Code className="w-3.5 h-3.5" />,
+  'SEO': <Network className="w-3.5 h-3.5" />,
 };
 
 export function Sidebar({ className }: SidebarProps) {

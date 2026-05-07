@@ -31,8 +31,10 @@ export function Header() {
       <nav className="hidden md:flex items-center gap-1 ml-auto">
         {[
           { href: '/home', label: 'Home' },
-          { href: '/docs/getting-started', label: 'Docs' },
-          { href: '/docs/api-reference', label: 'API' },
+          { href: '/docs/lld-introduction', label: 'LLD' },
+          { href: '/docs/api-reference', label: 'HLD' },
+          { href: '/docs/websec-01-cors', label: 'WEB Security' },
+          { href: '/docs/backend-01-what-is-backend', label: 'Backend Design' },
         ].map(({ href, label }) => (
           <Link
             key={href}
