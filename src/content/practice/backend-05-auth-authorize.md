@@ -1,505 +1,467 @@
 ````md id="8m2qva"
 <!-- QUESTION -->
-difficulty: Easy
-tags: authentication, authorization, security
+difficulty: Hard
+tags: authentication, authorization, backend-security
 
-What is authentication?
+Why are authentication and authorization treated as separate concerns in backend systems?
 
 <!-- ANSWER -->
-Authentication is the process of verifying the identity of a user or system.
-
-It answers the question:
-
-```text id="3v7xpd"
-Who are you?
-````
-
-Common authentication methods:
-
-| Method     | Example                |
-| ---------- | ---------------------- |
-| Passwords  | Username + password    |
-| OTP        | SMS/email verification |
-| Biometrics | Fingerprint/Face ID    |
-| Tokens     | JWT/OAuth              |
-
-Example login flow:
+Authentication answers:
 
 ```text
-User → Login Credentials → Server → Identity Verification
+Who is the user?
+````
+
+Authorization answers:
+
+```text id="u1vcqn"
+What is the user allowed to do?
 ```
 
-If credentials are valid:
+Problem:
 
-* access is granted
-* session/token is created
-
-Authentication is the first step in securing applications.
-
-<!-- END -->
-
-````id="5x1qzt"
-
-```md id="2n7vke"
-<!-- QUESTION -->
-difficulty: Easy
-tags: authorization, security, backend
-
-What is authorization?
-
-<!-- ANSWER -->
-Authorization determines what an authenticated user is allowed to access or perform.
-
-It answers the question:
-
-```text id="7m3xqc"
-What are you allowed to do?
-````
+```text
+Verifying identity does not automatically grant permissions
+```
 
 Example:
 
-| User Role | Permission     |
-| --------- | -------------- |
-| Admin     | Manage users   |
-| User      | View profile   |
-| Guest     | Limited access |
-
-Example flow:
-
-```text
-Authenticated User → Permission Check → Resource Access
+```text id="n7yqzd"
+Authenticated user may still lack admin privileges
 ```
 
-Authorization commonly controls:
+Separation improves:
 
-* API access
-* admin panels
-* file permissions
-* database operations
+* security boundaries
+* permission management
+* scalability
 
-Authorization happens after successful authentication.
+Architecture:
+
+```text id="x4m2ke"
+Authentication → Identity Established → Authorization Evaluation
+```
+
+Authentication and authorization solve fundamentally different backend security problems.
 
 <!-- END -->
 
-````id="9p4xma"
+````id="5v1xke"
 
-```md id="4v8qpd"
-<!-- QUESTION -->
-difficulty: Easy
-tags: authentication, authorization, security-basics
-
-What is the difference between authentication and authorization?
-
-<!-- ANSWER -->
-Authentication verifies identity.
-
-Authorization verifies permissions.
-
-Comparison:
-
-| Authentication | Authorization |
-|---|---|
-| Who are you? | What can you access? |
-| Login process | Permission enforcement |
-| Verifies identity | Verifies privileges |
-
-Example:
-
-```text
-Authentication:
-User logs into account
-
-Authorization:
-User allowed to access admin dashboard
-````
-
-Typical flow:
-
-```text
-Login → Authentication → Authorization → Access
-```
-
-Both are essential for secure backend systems.
-
-<!-- END -->
-
-````id="1w5qxy"
-
-```md id="7x2vke"
-<!-- QUESTION -->
-difficulty: Medium
-tags: sessions, authentication, backend
-
-How does session-based authentication work?
-
-<!-- ANSWER -->
-Session-based authentication stores user state on the server after login.
-
-Flow:
-
-1. user logs in
-2. server validates credentials
-3. server creates session
-4. session ID stored in cookie
-
-Example cookie:
-
-```http
-Set-Cookie: session=abc123
-````
-
-Future requests include:
-
-```http id="5m8qwc"
-Cookie: session=abc123
-```
-
-Server checks the session store:
-
-```text
-session ID → user data
-```
-
-Advantages:
-
-* simple implementation
-* centralized session control
-* easy logout/invalidation
-
-Disadvantages:
-
-* server-side session storage
-* scaling complexity
-* session synchronization in distributed systems
-
-Session authentication is common in traditional web applications.
-
-<!-- END -->
-
-````id="6k1xpd"
-
-```md id="3m7qza"
-<!-- QUESTION -->
-difficulty: Medium
-tags: jwt, token-authentication, security
-
-What is JWT authentication?
-
-<!-- ANSWER -->
-JWT (JSON Web Token) authentication uses signed tokens to verify users without server-side sessions.
-
-Example JWT structure:
-
-```text
-Header.Payload.Signature
-````
-
-Authentication flow:
-
-1. user logs in
-2. server generates JWT
-3. client stores token
-4. token sent with requests
-
-Example header:
-
-```http id="2v9qxt"
-Authorization: Bearer <jwt>
-```
-
-JWT payload may contain:
-
-```json id="7n4xqc"
-{
-  "userId": 1,
-  "role": "admin"
-}
-```
-
-Advantages:
-
-| Benefit   | Explanation               |
-| --------- | ------------------------- |
-| Stateless | No server session storage |
-| Scalable  | Easier horizontal scaling |
-| Portable  | Works across services     |
-
-Disadvantages:
-
-* harder token revocation
-* token leakage risks
-* larger request headers
-
-JWT is widely used in APIs and microservices.
-
-<!-- END -->
-
-````id="8p2vma"
-
-```md id="5q9xke"
-<!-- QUESTION -->
-difficulty: Medium
-tags: oauth, authentication, api-security
-
-What is OAuth?
-
-<!-- ANSWER -->
-OAuth is an authorization framework that allows applications to access user resources without sharing passwords.
-
-Example:
-
-```text
-Login with Google
-````
-
-OAuth roles:
-
-| Role                 | Purpose           |
-| -------------------- | ----------------- |
-| Resource Owner       | User              |
-| Client               | Application       |
-| Authorization Server | Identity provider |
-| Resource Server      | API server        |
-
-OAuth flow:
-
-```text
-User → Google Login → Access Token → Application
-```
-
-Applications receive:
-
-```text id="1x8vyt"
-Access Tokens
-```
-
-instead of user passwords.
-
-Benefits:
-
-* delegated access
-* safer third-party integrations
-* centralized identity management
-
-OAuth is commonly used with:
-
-* Google
-* GitHub
-* Microsoft
-* Facebook authentication
-
-<!-- END -->
-
-````id="9m3qpd"
-
-```md id="2v7xza"
+```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
-tags: rbac, authorization, access-control
+tags: stateless-authentication, jwt, distributed-systems
 
-What is Role-Based Access Control (RBAC)?
-
-<!-- ANSWER -->
-RBAC is an authorization model where permissions are assigned to roles instead of individual users.
-
-Example roles:
-
-| Role | Permissions |
-|---|---|
-| Admin | Full access |
-| Editor | Modify content |
-| Viewer | Read-only access |
-
-Example mapping:
-
-```text
-User → Role → Permissions
-````
-
-Advantages:
-
-* simpler permission management
-* scalable access control
-* centralized authorization logic
-
-Example:
-
-```text id="8w1qke"
-Admin:
-Create/Delete Users
-
-Viewer:
-Read Content Only
-```
-
-Backend systems commonly implement RBAC using:
-
-* middleware
-* permission tables
-* JWT role claims
-
-RBAC is widely used in enterprise systems.
-
-<!-- END -->
-
-````id="4n6xqc"
-
-```md id="7p1vke"
-<!-- QUESTION -->
-difficulty: Hard
-tags: mfa, authentication, security
-
-What is Multi-Factor Authentication (MFA)?
+Why do modern distributed systems prefer stateless authentication mechanisms like JWT?
 
 <!-- ANSWER -->
-Multi-Factor Authentication (MFA) requires multiple verification factors during login.
+Traditional session-based authentication requires:
+- centralized session storage
+- sticky sessions
+- shared session synchronization
 
-Authentication factors:
-
-| Factor Type | Example |
-|---|---|
-| Something you know | Password |
-| Something you have | Phone/OTP |
-| Something you are | Fingerprint |
-
-Example flow:
+Problem:
 
 ```text
-Password → OTP Verification → Access Granted
+Session management becomes difficult at large scale
 ````
 
-Benefits:
+JWT-based authentication embeds:
 
-* stronger security
-* reduced account compromise
-* protection against stolen passwords
+* identity claims
+* expiration metadata
+* signed verification data
 
-Common MFA methods:
+Workflow:
 
-* authenticator apps
-* SMS OTP
-* hardware security keys
-* biometrics
-
-Example TOTP code:
-
-```text id="6m2xqa"
-482193
-```
-
-MFA is critical for:
-
-* banking systems
-* enterprise accounts
-* admin dashboards
-* cloud infrastructure
-
-<!-- END -->
-
-````id="1k8qwr"
-
-```md id="6x4vpa"
-<!-- QUESTION -->
-difficulty: Hard
-tags: authentication-security, password-storage, hashing
-
-Why should passwords never be stored in plain text?
-
-<!-- ANSWER -->
-Plain text password storage is extremely dangerous because leaked databases expose user credentials directly.
-
-Bad example:
-
-```text
-password123
-````
-
-Instead, passwords should be:
-
-```text id="4m9xyt"
-Hashed + Salted
-```
-
-Common password hashing algorithms:
-
-| Algorithm    | Status               |
-| ------------ | -------------------- |
-| bcrypt       | Recommended          |
-| Argon2       | Recommended          |
-| scrypt       | Recommended          |
-| SHA256 alone | Unsafe for passwords |
-
-Example hashing flow:
-
-```text
-Password → Hash Function → Stored Hash
+```text id="6m2xqc"
+Client → JWT Token → Stateless Verification
 ```
 
 Benefits:
 
-* passwords are not directly recoverable
-* reduces impact of database breaches
-* protects user accounts
+| Benefit                           | Explanation                   |
+| --------------------------------- | ----------------------------- |
+| Horizontal scalability            | No centralized session lookup |
+| Reduced backend state             | Stateless verification        |
+| Better microservice compatibility | Token portability             |
 
-Important rule:
-
-```text id="9w3qza"
-Never implement custom password hashing.
-```
-
-Use proven cryptographic libraries instead.
+Stateless authentication aligns naturally with distributed architectures.
 
 <!-- END -->
 
-````id="5n2xmc"
+````id="9x2vke"
 
-```md id="3q7vpd"
+```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
-tags: access-control, authorization, security-vulnerabilities
+tags: authorization, rbac, backend-security
 
-What is Broken Access Control?
+Why is Role-Based Access Control (RBAC) widely used in backend authorization systems?
 
 <!-- ANSWER -->
-Broken Access Control occurs when users can access resources or actions beyond their intended permissions.
+Large systems contain:
+- many users
+- many permissions
+- complex access rules
 
-Example vulnerability:
+Problem:
 
-```http
-GET /admin/users
+```text
+Managing permissions individually does not scale
 ````
 
-Accessible by normal users.
+RBAC groups permissions into roles.
 
-Common causes:
+Architecture:
 
-| Cause                             | Example                               |
-| --------------------------------- | ------------------------------------- |
-| Missing authorization checks      | No role validation                    |
-| Insecure direct object references | Accessing other users' data           |
-| Client-side-only enforcement      | Hidden buttons without backend checks |
-
-Dangerous example:
-
-```http id="7v1xke"
-GET /orders/1001
+```text id="6p1qxt"
+User → Assigned Role → Permission Set
 ```
 
-Attacker changes:
+Benefits:
 
-```http id="4m2qza"
-GET /orders/1002
-```
+| Benefit               | Explanation                      |
+| --------------------- | -------------------------------- |
+| Simplified management | Permission grouping              |
+| Easier auditing       | Centralized role policies        |
+| Better scalability    | Reduced authorization complexity |
 
-and accesses another user's order.
+Examples:
 
-Prevention techniques:
+* Admin
+* Moderator
+* Viewer
 
-* enforce server-side authorization
-* validate ownership
-* implement RBAC/ABAC
-* deny by default
-
-Broken Access Control is one of the most critical web security vulnerabilities.
+RBAC simplifies authorization management in large backend systems.
 
 <!-- END -->
+
+````id="3x5vke"
+
+```md id="1n8qpd"
+<!-- QUESTION -->
+difficulty: Hard
+tags: oauth, delegated-authentication, distributed-systems
+
+Why is OAuth important in modern backend architectures?
+
+<!-- ANSWER -->
+Applications often need:
+- third-party integrations
+- delegated access
+- external identity providers
+
+Problem:
+
+```text
+Sharing user passwords across services is insecure
+````
+
+OAuth enables:
+
+```text id="5m2xqc"
+Controlled delegated access without exposing credentials
+```
+
+Workflow:
+
+```text id="q7z4nc"
+User → Identity Provider → Access Token → Third-Party Service
+```
+
+Benefits:
+
+| Benefit                 | Explanation                    |
+| ----------------------- | ------------------------------ |
+| Improved security       | Credentials remain centralized |
+| Delegated permissions   | Scoped access control          |
+| Better interoperability | External integrations          |
+
+OAuth is foundational for secure delegated authorization.
+
+<!-- END -->
+
+````id="8w4qza"
+
+```md id="5x1vyt"
+<!-- QUESTION -->
+difficulty: Hard
+tags: token-security, authentication, backend-security
+
+Why are token leaks dangerous in authentication systems?
+
+<!-- ANSWER -->
+Authentication tokens represent:
+- verified identity
+- access permissions
+- session authority
+
+Problem:
+
+```text
+Anyone possessing valid token may impersonate user
+````
+
+Consequences:
+
+* account takeover
+* unauthorized access
+* privilege escalation
+
+Example:
+
+```text id="clt6p5"
+Leaked JWT grants attacker access to protected APIs
+```
+
+Mitigation strategies:
+
+| Strategy               | Purpose                 |
+| ---------------------- | ----------------------- |
+| Short token expiration | Reduced exposure window |
+| HTTPS enforcement      | Prevent interception    |
+| Token rotation         | Limit replay attacks    |
+
+Token protection is critical for backend security integrity.
+
+<!-- END -->
+
+````id="2v7qwr"
+
+```md id="9m3xpd"
+<!-- QUESTION -->
+difficulty: Hard
+tags: distributed-authorization, microservices, backend-security
+
+Why is authorization more difficult in microservice architectures?
+
+<!-- ANSWER -->
+Microservices distribute:
+- APIs
+- business logic
+- data ownership
+
+Problem:
+
+```text
+Authorization decisions must remain consistent across many services
+````
+
+Challenges:
+
+* duplicated permission logic
+* cross-service identity propagation
+* decentralized policy enforcement
+
+Architecture:
+
+```text id="4q2xmc"
+Gateway Authentication → Identity Propagation → Service Authorization
+```
+
+Solutions:
+
+| Solution                       | Purpose                           |
+| ------------------------------ | --------------------------------- |
+| Centralized identity providers | Unified authentication            |
+| Shared authorization policies  | Consistent access control         |
+| Token propagation              | Distributed identity verification |
+
+Distributed authorization introduces major coordination complexity.
+
+<!-- END -->
+
+````id="7n1qxt"
+
+```md id="3m5vke"
+<!-- QUESTION -->
+difficulty: Hard
+tags: zero-trust, authentication, distributed-systems
+
+Why are modern backend systems adopting Zero Trust security models?
+
+<!-- ANSWER -->
+Traditional architectures assumed:
+- internal networks are trusted
+- perimeter security is sufficient
+
+Problem:
+
+```text
+Compromised internal services may move laterally across systems
+````
+
+Zero Trust principles:
+
+* verify every request
+* authenticate continuously
+* minimize implicit trust
+
+Architecture:
+
+```text id="4v8qpd"
+Every Service Request → Authentication + Authorization Validation
+```
+
+Benefits:
+
+| Benefit                     | Explanation                |
+| --------------------------- | -------------------------- |
+| Reduced lateral movement    | Stronger internal security |
+| Better identity enforcement | Continuous verification    |
+| Improved security posture   | Minimized implicit trust   |
+
+Zero Trust aligns with modern distributed cloud architectures.
+
+<!-- END -->
+
+````id="5w2qwc"
+
+```md id="1x7vza"
+<!-- QUESTION -->
+difficulty: Hard
+tags: session-management, authentication, backend-systems
+
+Why does session management become difficult in distributed backend systems?
+
+<!-- ANSWER -->
+Session-based systems maintain:
+- login state
+- user context
+- authentication metadata
+
+Problem:
+
+```text
+Distributed servers must synchronize session state consistently
+````
+
+Challenges:
+
+* sticky sessions
+* replication overhead
+* failover consistency
+
+Example:
+
+```text id="6m3qpd"
+User request routed to server without active session data
+```
+
+Solutions:
+
+| Solution                   | Purpose                          |
+| -------------------------- | -------------------------------- |
+| Centralized session stores | Shared session access            |
+| Stateless JWT tokens       | Remove shared session dependency |
+| Distributed caches         | Faster session retrieval         |
+
+Session management complexity grows significantly at scale.
+
+<!-- END -->
+
+````id="8p5vke"
+
+```md id="6n2xpd"
+<!-- QUESTION -->
+difficulty: Hard
+tags: observability, authentication, authorization
+
+Why is observability critical in authentication and authorization systems?
+
+<!-- ANSWER -->
+Security systems process:
+- login requests
+- token validation
+- permission checks
+- access decisions
+
+Problem:
+
+```text
+Authentication failures or unauthorized access attempts may go unnoticed
+````
+
+Key monitoring areas:
+
+* failed logins
+* token validation failures
+* suspicious access patterns
+* permission denials
+
+Benefits:
+
+| Benefit                 | Explanation               |
+| ----------------------- | ------------------------- |
+| Faster threat detection | Identify attacks quickly  |
+| Better auditing         | Track access decisions    |
+| Improved compliance     | Security event visibility |
+
+Example:
+
+```text id="1q8vza"
+Sudden spike in failed login attempts indicates credential attack
+```
+
+Security observability is essential for backend protection and incident response.
+
+<!-- END -->
+
+````id="1q8vza"
+
+```md id="9m4qwc"
+<!-- QUESTION -->
+difficulty: Hard
+tags: authentication, authorization, trade-offs, backend-security
+
+What are the major trade-offs in authentication and authorization system design?
+
+<!-- ANSWER -->
+Security systems balance:
+- usability
+- scalability
+- security
+- operational complexity
+
+Advantages of strong authentication:
+
+| Advantage | Explanation |
+|---|---|
+| Better security | Reduced unauthorized access |
+| Stronger identity assurance | Improved trust |
+
+Advantages of distributed authorization:
+
+| Advantage | Explanation |
+|---|---|
+| Scalability | Independent service enforcement |
+| Flexible permissions | Granular access control |
+
+Trade-offs:
+
+| Trade-off | Explanation |
+|---|---|
+| Stronger security | Increased user friction |
+| Stateless tokens | Difficult revocation |
+| Distributed authorization | Coordination complexity |
+| Fine-grained permissions | Higher operational overhead |
+
+Example:
+
+```text id="7v2xpd"
+JWT improves scalability but complicates immediate token revocation
+````
+
+Authentication and authorization architecture fundamentally balances:
+
+* security
+* usability
+* scalability
+* operational simplicity
+
+<!-- END -->
+
+```
+```

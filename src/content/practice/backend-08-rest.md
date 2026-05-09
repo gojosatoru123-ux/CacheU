@@ -1,47 +1,42 @@
 ````md id="8m2qva"
 <!-- QUESTION -->
-difficulty: Easy
-tags: rest, api, architecture
+difficulty: Hard
+tags: rest-api, backend-systems, distributed-systems
 
-What is a REST API?
+Why did REST become the dominant architectural style for backend APIs?
 
 <!-- ANSWER -->
-A REST API (Representational State Transfer API) is an architectural style for designing network-based applications using HTTP.
+Distributed systems require:
+- interoperable communication
+- scalable APIs
+- standardized request handling
 
-REST APIs expose resources through URLs.
+REST leverages:
+- HTTP semantics
+- stateless communication
+- resource-oriented design
 
-Example:
+Architecture:
 
-```http
-GET /users
+```text id="u1vcqn"
+Client → HTTP Request → REST Resource Endpoint
 ````
 
-Resources are manipulated using HTTP methods:
+Benefits:
 
-| Method | Action   |
-| ------ | -------- |
-| GET    | Retrieve |
-| POST   | Create   |
-| PUT    | Replace  |
-| PATCH  | Update   |
-| DELETE | Remove   |
+| Benefit             | Explanation                          |
+| ------------------- | ------------------------------------ |
+| Simplicity          | Standard HTTP conventions            |
+| Scalability         | Stateless architecture               |
+| Broad compatibility | Works across platforms and languages |
 
-REST APIs are:
+Examples:
 
-* stateless
-* resource-oriented
-* client-server based
+* web APIs
+* mobile backends
+* microservices
 
-Example response:
-
-```json id="7m3xqc"
-{
-  "id": 1,
-  "name": "Alex"
-}
-```
-
-REST is the most widely used architecture for modern web APIs.
+REST became dominant due to simplicity, scalability, and ecosystem adoption.
 
 <!-- END -->
 
@@ -49,47 +44,45 @@ REST is the most widely used architecture for modern web APIs.
 
 ```md id="2n7qpd"
 <!-- QUESTION -->
-difficulty: Easy
-tags: resources, rest, api-design
+difficulty: Hard
+tags: statelessness, rest-api, distributed-systems
 
-What are resources in REST architecture?
+Why is statelessness a core principle of REST APIs?
 
 <!-- ANSWER -->
-Resources are the core entities exposed by a REST API.
+REST requires:
 
-Examples:
-- users
-- products
-- orders
-- posts
-
-Each resource has a unique URL.
-
-Examples:
-
-```http
-/users
-/products
-/orders/42
+```text
+Each request contains all necessary context
 ````
 
-REST APIs use nouns instead of verbs.
+Problem solved:
 
-Good example:
-
-```http id="4m8qza"
-GET /users
+```text id="rwvd1p"
+Servers do not need to maintain client session state
 ```
 
-Bad example:
+Benefits:
 
-```http id="1v7xpd"
-GET /getUsers
+| Benefit                | Explanation                     |
+| ---------------------- | ------------------------------- |
+| Horizontal scalability | Any server can process requests |
+| Easier load balancing  | No session affinity required    |
+| Better fault tolerance | Stateless request recovery      |
+
+Architecture:
+
+```text id="6m2xqc"
+Independent Request → Independent Response
 ```
 
-Resources are manipulated using HTTP methods.
+Tradeoff:
 
-REST architecture revolves around clean resource-based design.
+| Tradeoff        | Explanation                |
+| --------------- | -------------------------- |
+| Larger requests | Context repeated each time |
+
+Statelessness enables scalable distributed API architectures.
 
 <!-- END -->
 
@@ -97,76 +90,39 @@ REST architecture revolves around clean resource-based design.
 
 ```md id="4q7xwc"
 <!-- QUESTION -->
-difficulty: Easy
-tags: stateless, rest, backend
+difficulty: Hard
+tags: http-methods, rest-api, api-design
 
-Why are REST APIs called stateless?
+Why are HTTP methods important in REST API design?
 
 <!-- ANSWER -->
-REST APIs are stateless because the server does not store client session state between requests.
+REST APIs use HTTP methods to define operation semantics.
 
-Each request must contain all necessary information.
+Common methods:
+
+| Method | Purpose |
+|---|---|
+| GET | Retrieve resource |
+| POST | Create resource |
+| PUT | Replace resource |
+| PATCH | Partial update |
+| DELETE | Remove resource |
+
+Benefits:
+
+| Benefit | Explanation |
+|---|---|
+| Standardized semantics | Predictable behavior |
+| Better interoperability | HTTP-native communication |
+| Improved tooling support | Caching and proxies |
 
 Example:
 
-```http
-Authorization: Bearer <token>
+```text id="6p1qxt"
+GET /users/42 retrieves user resource
 ````
 
-The server treats every request independently.
-
-Benefits of statelessness:
-
-| Benefit     | Explanation               |
-| ----------- | ------------------------- |
-| Scalability | Easier horizontal scaling |
-| Reliability | Independent requests      |
-| Simplicity  | No shared session state   |
-
-Without statelessness:
-
-* servers must track client sessions
-* scaling becomes harder
-
-REST statelessness improves distributed system architecture.
-
-<!-- END -->
-
-````id="6p1qxt"
-
-```md id="7m9vza"
-<!-- QUESTION -->
-difficulty: Medium
-tags: rest-principles, architecture, backend
-
-What are the core principles of REST architecture?
-
-<!-- ANSWER -->
-REST architecture follows several key constraints.
-
-Core REST principles:
-
-| Principle | Description |
-|---|---|
-| Client-Server | Separation of concerns |
-| Stateless | No server-side client state |
-| Cacheable | Responses may be cached |
-| Uniform Interface | Standardized communication |
-| Layered System | Multiple intermediary layers |
-
-Example layered architecture:
-
-```text id="2k8qwr"
-Client → Gateway → Service → Database
-````
-
-REST constraints improve:
-
-* scalability
-* maintainability
-* interoperability
-
-REST is an architectural style, not a protocol.
+HTTP method semantics are foundational for REST consistency.
 
 <!-- END -->
 
@@ -174,43 +130,47 @@ REST is an architectural style, not a protocol.
 
 ```md id="1n8qpd"
 <!-- QUESTION -->
-difficulty: Medium
-tags: restful-routing, api-design, rest
+difficulty: Hard
+tags: idempotency, rest-api, distributed-systems
 
-What is RESTful routing?
+Why is idempotency important in REST APIs?
 
 <!-- ANSWER -->
-RESTful routing maps HTTP methods to resource operations using predictable URL structures.
+Distributed systems experience:
+- retries
+- network failures
+- duplicate requests
 
-Example routes:
+Problem:
 
-| Method | Route | Action |
-|---|---|---|
-| GET | /users | Fetch users |
-| GET | /users/1 | Fetch user |
-| POST | /users | Create user |
-| PUT | /users/1 | Replace user |
-| DELETE | /users/1 | Delete user |
-
-Good RESTful route:
-
-```http
-DELETE /users/1
+```text
+Repeated requests may unintentionally duplicate operations
 ````
 
-Bad route:
+Idempotent operations guarantee:
 
-```http id="5m2xqc"
-GET /deleteUser
+```text id="5m2xqc"
+Multiple identical requests produce same final state
 ```
 
-RESTful routing improves:
+Examples:
 
-* consistency
-* readability
-* API predictability
+| Method | Typically Idempotent |
+| ------ | -------------------- |
+| GET    | Yes                  |
+| PUT    | Yes                  |
+| DELETE | Yes                  |
+| POST   | Usually No           |
 
-Most modern APIs follow RESTful routing conventions.
+Benefits:
+
+| Benefit                          | Explanation                    |
+| -------------------------------- | ------------------------------ |
+| Safer retries                    | Reduced duplicate side effects |
+| Better fault tolerance           | Reliable request recovery      |
+| Improved distributed reliability | Retry-safe operations          |
+
+Idempotency is critical for resilient API behavior.
 
 <!-- END -->
 
@@ -218,43 +178,40 @@ Most modern APIs follow RESTful routing conventions.
 
 ```md id="5x1vyt"
 <!-- QUESTION -->
-difficulty: Medium
-tags: caching, rest, performance
+difficulty: Hard
+tags: rest-vs-graphql, api-design, backend-systems
 
-Why is caching important in REST architecture?
+Why do REST APIs struggle with over-fetching and under-fetching problems?
 
 <!-- ANSWER -->
-Caching allows clients or intermediaries to reuse responses without repeatedly contacting the server.
+REST endpoints return predefined resource structures.
 
-Example flow:
+Problem:
 
 ```text
-Client → Cache → Server
+Clients may receive too much or too little data
 ````
 
-Benefits of caching:
+Examples:
 
-| Benefit            | Purpose                  |
-| ------------------ | ------------------------ |
-| Faster responses   | Reduced latency          |
-| Lower server load  | Fewer requests           |
-| Better scalability | Reduced backend pressure |
+| Problem        | Example                       |
+| -------------- | ----------------------------- |
+| Over-fetching  | Large unused response payload |
+| Under-fetching | Multiple requests required    |
 
-REST APIs use caching headers:
+Example:
 
-```http
-Cache-Control: max-age=3600
+```text id="clt6p5"
+Mobile app requests full user object but needs only username
 ```
 
-Other caching headers:
+Consequences:
 
-| Header        | Purpose             |
-| ------------- | ------------------- |
-| ETag          | Resource versioning |
-| Expires       | Expiration time     |
-| Last-Modified | Change tracking     |
+* increased latency
+* wasted bandwidth
+* excessive API calls
 
-Caching is a major REST performance optimization.
+This limitation motivated alternatives like GraphQL.
 
 <!-- END -->
 
@@ -263,92 +220,39 @@ Caching is a major REST performance optimization.
 ```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
-tags: hateoas, rest, api-design
+tags: caching, rest-api, performance-engineering
 
-What is HATEOAS in REST architecture?
+Why does REST integrate naturally with HTTP caching mechanisms?
 
 <!-- ANSWER -->
-HATEOAS (Hypermedia As The Engine Of Application State) means REST APIs provide links for navigating resources dynamically.
+REST uses standard HTTP semantics.
 
-Example response:
+HTTP provides built-in caching features:
+- Cache-Control
+- ETag
+- Last-Modified
 
-```json
-{
-  "id": 1,
-  "name": "Alex",
-  "links": {
-    "orders": "/users/1/orders"
-  }
-}
+Workflow:
+
+```text id="4q2xmc"
+Client → Cache Validation → Conditional Response
 ````
-
-The client discovers actions through API responses instead of hardcoding URLs.
 
 Benefits:
 
-| Benefit                 | Explanation            |
-| ----------------------- | ---------------------- |
-| Self-discoverable APIs  | Dynamic navigation     |
-| Reduced client coupling | Flexible API evolution |
+| Benefit              | Explanation                |
+| -------------------- | -------------------------- |
+| Reduced backend load | Fewer repeated requests    |
+| Lower latency        | Faster cached responses    |
+| Better scalability   | Efficient traffic handling |
 
 Example:
 
-```text id="1k9vke"
-API responses guide the client.
+```text id="hf4pqo"
+CDN caches REST API responses globally
 ```
 
-Many modern REST APIs partially implement HATEOAS, though full adoption is uncommon.
-
-<!-- END -->
-
-````id="4q2xmc"
-
-```md id="6p8qza"
-<!-- QUESTION -->
-difficulty: Hard
-tags: layered-architecture, rest, backend
-
-What is the layered system constraint in REST architecture?
-
-<!-- ANSWER -->
-REST allows systems to be composed of multiple intermediary layers between client and server.
-
-Example architecture:
-
-```text
-Client
-  ↓
-CDN
-  ↓
-Load Balancer
-  ↓
-API Gateway
-  ↓
-Backend Services
-````
-
-Clients do not need to know:
-
-* how many layers exist
-* where data originates
-* internal infrastructure details
-
-Benefits:
-
-| Benefit     | Explanation                |
-| ----------- | -------------------------- |
-| Scalability | Independent layers         |
-| Security    | Gateway enforcement        |
-| Flexibility | Infrastructure abstraction |
-
-Common REST layers:
-
-* caching layers
-* reverse proxies
-* gateways
-* authentication services
-
-Layered architecture improves modularity and scalability.
+REST aligns naturally with web caching infrastructure.
 
 <!-- END -->
 
@@ -357,53 +261,43 @@ Layered architecture improves modularity and scalability.
 ```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
-tags: rest-vs-graphql, api-architecture, backend
+tags: versioning, api-design, rest-api
 
-What is the difference between REST and GraphQL?
+Why is API versioning difficult in REST architectures?
 
 <!-- ANSWER -->
-REST exposes multiple resource-based endpoints.
+APIs evolve over time:
+- fields change
+- contracts evolve
+- features expand
 
-GraphQL exposes a single flexible query endpoint.
+Problem:
 
-Comparison:
-
-| REST | GraphQL |
-|---|---|
-| Multiple endpoints | Single endpoint |
-| Fixed response structure | Client-defined responses |
-| Over-fetching possible | Precise data fetching |
-| HTTP-driven | Query-driven |
-
-REST example:
-
-```http
-GET /users/1
+```text
+Breaking changes may disrupt existing clients
 ````
 
-GraphQL example:
+Versioning approaches:
 
-```graphql id="4v8qpd"
-{
-  user(id: 1) {
-    name
-  }
-}
+| Approach          | Example        |
+| ----------------- | -------------- |
+| URI versioning    | /v1/users      |
+| Header versioning | Accept-Version |
+| Query versioning  | ?version=2     |
+
+Challenges:
+
+* maintaining backward compatibility
+* multiple active versions
+* migration coordination
+
+Example:
+
+```text id="4v8qpd"
+Older mobile apps still depend on deprecated API fields
 ```
 
-REST advantages:
-
-* simpler caching
-* easier HTTP semantics
-* mature ecosystem
-
-GraphQL advantages:
-
-* flexible queries
-* reduced over-fetching
-* efficient frontend data fetching
-
-Both are widely used API architectures.
+REST API evolution introduces long-term compatibility complexity.
 
 <!-- END -->
 
@@ -412,41 +306,142 @@ Both are widely used API architectures.
 ```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
-tags: microservices, rest, distributed-systems
+tags: microservices, rest-api, distributed-systems
 
-Why are REST APIs commonly used in microservices architectures?
+Why can REST APIs create performance issues in microservice architectures?
 
 <!-- ANSWER -->
-REST APIs provide a standardized and lightweight communication mechanism between services.
+Microservices often communicate synchronously via REST.
 
-Example architecture:
+Problem:
 
-```text id="6m3qpd"
-Frontend → API Gateway → Microservices
+```text
+Multiple chained HTTP calls increase latency
 ````
 
-Benefits for microservices:
+Example:
 
-| Benefit              | Explanation               |
-| -------------------- | ------------------------- |
-| Language-independent | Works across technologies |
-| HTTP-based           | Universally supported     |
-| Stateless            | Easier scaling            |
-| Simple integration   | Standard web tooling      |
+```text id="6m3qpd"
+Frontend request triggers 10 downstream REST service calls
+```
 
-REST APIs are commonly used for:
+Consequences:
 
-* service communication
-* public APIs
-* mobile backends
-* frontend integration
+* cascading latency
+* increased network overhead
+* reduced resilience
 
 Challenges:
 
-* network latency
-* versioning complexity
-* distributed failures
+* chatty communication
+* retry amplification
+* timeout propagation
 
-Despite alternatives like gRPC, REST remains dominant in microservice ecosystems.
+Solutions:
+
+| Solution           | Purpose                       |
+| ------------------ | ----------------------------- |
+| Aggregation layers | Reduce round trips            |
+| Caching            | Minimize repeated requests    |
+| Async messaging    | Reduce synchronous dependency |
+
+REST simplicity may become costly in highly distributed systems.
 
 <!-- END -->
+
+````id="8p5vke"
+
+```md id="6n2xpd"
+<!-- QUESTION -->
+difficulty: Hard
+tags: observability, rest-api, distributed-systems
+
+Why is observability important in REST API systems?
+
+<!-- ANSWER -->
+REST APIs form the communication backbone for:
+- frontend applications
+- microservices
+- third-party integrations
+
+Problem:
+
+```text
+API failures may propagate across distributed systems
+````
+
+Key monitoring areas:
+
+* latency
+* error rates
+* request throughput
+* retry behavior
+
+Benefits:
+
+| Benefit                  | Explanation                |
+| ------------------------ | -------------------------- |
+| Faster debugging         | Identify failing endpoints |
+| Better scaling decisions | Traffic visibility         |
+| Improved reliability     | Detect cascading failures  |
+
+Example:
+
+```text id="1q8vza"
+Sudden p99 latency spike impacts downstream microservices
+```
+
+REST APIs require strong observability and traffic monitoring.
+
+<!-- END -->
+
+````id="1q8vza"
+
+```md id="9m4qwc"
+<!-- QUESTION -->
+difficulty: Hard
+tags: rest-api, trade-offs, system-design
+
+What are the major trade-offs in REST API architecture?
+
+<!-- ANSWER -->
+REST APIs optimize:
+- simplicity
+- interoperability
+- scalability
+- standardization
+
+Advantages:
+
+| Advantage | Explanation |
+|---|---|
+| HTTP-native design | Broad ecosystem compatibility |
+| Statelessness | Easy horizontal scaling |
+| Cache support | Efficient traffic handling |
+
+Trade-offs:
+
+| Trade-off | Explanation |
+|---|---|
+| Over-fetching/under-fetching | Inefficient data retrieval |
+| Synchronous communication | Increased distributed latency |
+| API versioning complexity | Long-term maintenance overhead |
+| Chatty microservice calls | Network amplification |
+
+Example:
+
+```text id="7v2xpd"
+REST simplifies API design but may increase latency in service-heavy architectures
+````
+
+REST architecture fundamentally balances:
+
+* simplicity
+* scalability
+* flexibility
+* performance
+
+<!-- END -->
+
+```
+```

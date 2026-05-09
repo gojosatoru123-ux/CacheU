@@ -1,33 +1,42 @@
 ````md id="8m2qva"
 <!-- QUESTION -->
-difficulty: Easy
-tags: concurrency, parallelism, backend
+difficulty: Hard
+tags: concurrency, parallelism, backend-systems
 
-What is concurrency in backend systems?
+Why are concurrency and parallelism treated as different concepts in backend systems?
 
 <!-- ANSWER -->
-Concurrency means multiple tasks make progress during overlapping time periods.
+Concurrency means:
 
-Tasks may:
-- pause
-- resume
-- interleave execution
+```text
+Multiple tasks make progress during overlapping time periods
+````
+
+Parallelism means:
+
+```text id="u1vcqn"
+Multiple tasks execute simultaneously on different compute resources
+```
+
+Key distinction:
+
+| Concept     | Focus                  |
+| ----------- | ---------------------- |
+| Concurrency | Coordination           |
+| Parallelism | Simultaneous execution |
 
 Example:
 
-```text id="4m8qza"
-Task A → Pause
-Task B → Pause
-Task A → Resume
-````
+```text id="n7yqzd"
+Single CPU interleaves tasks concurrently but not in parallel
+```
 
-Concurrency improves:
+Modern backend systems require both:
 
-* responsiveness
-* resource utilization
-* scalability
+* concurrency for scalability
+* parallelism for throughput
 
-Concurrency does not necessarily mean tasks run simultaneously.
+They solve different performance and resource utilization problems.
 
 <!-- END -->
 
@@ -35,30 +44,44 @@ Concurrency does not necessarily mean tasks run simultaneously.
 
 ```md id="2n7qpd"
 <!-- QUESTION -->
-difficulty: Easy
-tags: parallelism, multicore-processing, backend
+difficulty: Hard
+tags: multithreading, concurrency, operating-systems
 
-What is parallelism?
+Why does concurrency improve backend scalability even on single-core systems?
 
 <!-- ANSWER -->
-Parallelism means multiple tasks execute simultaneously using multiple CPU cores or processors.
+Backend applications spend significant time:
+- waiting for I/O
+- blocking on databases
+- awaiting network responses
 
-Example:
+Problem:
+
+```text
+CPU remains idle during blocking operations
+````
+
+Concurrency enables:
 
 ```text id="6m2xqc"
-CPU Core 1 → Task A
-CPU Core 2 → Task B
-````
+Task Switching During Waiting Periods
+```
 
 Benefits:
 
-| Benefit                | Explanation                 |
-| ---------------------- | --------------------------- |
-| Faster execution       | Multiple operations at once |
-| Better CPU utilization | Use multicore processors    |
-| Higher throughput      | More work completed         |
+| Benefit                     | Explanation                             |
+| --------------------------- | --------------------------------------- |
+| Better resource utilization | CPU works during I/O waits              |
+| Improved responsiveness     | Multiple requests progress concurrently |
+| Higher throughput           | Reduced idle time                       |
 
-Parallelism requires hardware capable of simultaneous execution.
+Example:
+
+```text id="jc5rgu"
+Web server handles thousands of waiting connections concurrently
+```
+
+Concurrency primarily optimizes waiting and coordination efficiency.
 
 <!-- END -->
 
@@ -66,40 +89,41 @@ Parallelism requires hardware capable of simultaneous execution.
 
 ```md id="4q7xwc"
 <!-- QUESTION -->
-difficulty: Easy
-tags: concurrency-vs-parallelism, backend, operating-systems
+difficulty: Hard
+tags: parallelism, cpu-bound, backend-performance
 
-What is the difference between concurrency and parallelism?
+Why is parallelism important for CPU-intensive backend workloads?
 
 <!-- ANSWER -->
-Concurrency focuses on managing multiple tasks efficiently.
+Certain workloads are computation heavy:
+- video encoding
+- ML inference
+- analytics
+- image processing
 
-Parallelism focuses on executing tasks simultaneously.
+Problem:
 
-Comparison:
-
-| Concurrency | Parallelism |
-|---|---|
-| Tasks overlap | Tasks run simultaneously |
-| Improves responsiveness | Improves execution speed |
-| Can use single CPU core | Usually requires multiple cores |
-
-Example:
-
-```text id="6p1qxt"
-Concurrency:
-Task switching
-
-Parallelism:
-Tasks running together
+```text
+Single-threaded execution underutilizes multi-core hardware
 ````
 
-A system can be:
+Parallelism distributes computation across cores.
 
-* concurrent without parallelism
-* parallel with concurrency
+Architecture:
 
-Both are important in modern backend systems.
+```text id="6p1qxt"
+Task Split → Multiple CPU Cores → Combined Result
+```
+
+Benefits:
+
+| Benefit                | Explanation              |
+| ---------------------- | ------------------------ |
+| Faster execution       | Simultaneous computation |
+| Better CPU utilization | Multi-core usage         |
+| Higher throughput      | Parallel task processing |
+
+Parallelism is essential for compute-intensive backend systems.
 
 <!-- END -->
 
@@ -107,38 +131,44 @@ Both are important in modern backend systems.
 
 ```md id="1n8qpd"
 <!-- QUESTION -->
-difficulty: Medium
-tags: multithreading, backend, operating-systems
+difficulty: Hard
+tags: race-conditions, concurrency, backend-systems
 
-What is multithreading?
+Why do race conditions occur in concurrent systems?
 
 <!-- ANSWER -->
-Multithreading allows multiple threads to execute within a single process.
+Concurrent tasks may access:
+- shared memory
+- shared variables
+- shared resources
+
+Problem:
+
+```text
+Execution order becomes unpredictable
+````
 
 Example:
 
 ```text id="5m2xqc"
-Process
- ├── Thread 1
- ├── Thread 2
- └── Thread 3
-````
+Two threads increment shared counter simultaneously
+```
 
-Benefits:
+Consequences:
 
-| Benefit               | Explanation             |
-| --------------------- | ----------------------- |
-| Concurrent execution  | Multiple tasks handled  |
-| Shared memory         | Faster communication    |
-| Better responsiveness | Non-blocking operations |
+* inconsistent state
+* lost updates
+* nondeterministic bugs
 
-Common backend uses:
+Solutions:
 
-* web servers
-* database systems
-* background workers
+| Solution          | Purpose                 |
+| ----------------- | ----------------------- |
+| Mutexes           | Exclusive access        |
+| Atomic operations | Safe concurrent updates |
+| Immutability      | Remove shared mutation  |
 
-Threads share process resources, which introduces synchronization challenges.
+Concurrency introduces coordination complexity due to shared state.
 
 <!-- END -->
 
@@ -146,38 +176,41 @@ Threads share process resources, which introduces synchronization challenges.
 
 ```md id="5x1vyt"
 <!-- QUESTION -->
-difficulty: Medium
-tags: race-condition, concurrency, backend-bugs
+difficulty: Hard
+tags: deadlocks, concurrency-control, backend-systems
 
-What is a race condition?
+Why are deadlocks dangerous in concurrent backend systems?
 
 <!-- ANSWER -->
-A race condition occurs when multiple threads or processes access shared data simultaneously in an unsafe way.
+Deadlocks occur when tasks wait indefinitely for resources held by each other.
+
+Problem:
+
+```text
+Circular waiting prevents forward progress
+````
 
 Example:
 
 ```text id="clt6p5"
-Thread A reads value = 5
-Thread B reads value = 5
-Both increment
-Final value becomes incorrect
-````
+Thread A waits for Lock B while Thread B waits for Lock A
+```
 
-Problems caused:
+Consequences:
 
-* inconsistent data
-* corrupted state
-* unpredictable behavior
+* request hangs
+* resource exhaustion
+* system instability
 
-Common solutions:
+Deadlock prevention strategies:
 
-| Solution          | Purpose          |
-| ----------------- | ---------------- |
-| Mutexes           | Exclusive access |
-| Atomic operations | Safe updates     |
-| Locks             | Synchronization  |
+| Strategy             | Purpose                     |
+| -------------------- | --------------------------- |
+| Lock ordering        | Prevent circular dependency |
+| Timeout mechanisms   | Detect stalled execution    |
+| Reduced shared state | Minimize locking needs      |
 
-Race conditions are common concurrency bugs in backend systems.
+Deadlocks are one of the hardest concurrency failure modes.
 
 <!-- END -->
 
@@ -185,39 +218,50 @@ Race conditions are common concurrency bugs in backend systems.
 
 ```md id="9m3xpd"
 <!-- QUESTION -->
-difficulty: Medium
-tags: deadlock, synchronization, distributed-systems
+difficulty: Hard
+tags: async-programming, concurrency, backend-architecture
 
-What is a deadlock?
+Why do modern backend systems increasingly favor asynchronous concurrency models?
 
 <!-- ANSWER -->
-A deadlock occurs when multiple threads wait indefinitely for resources held by each other.
+Traditional thread-per-request models create:
+- high memory overhead
+- excessive context switching
+- limited scalability
 
-Example:
+Problem:
 
-```text id="4q2xmc"
-Thread A holds Lock 1
-Waiting for Lock 2
-
-Thread B holds Lock 2
-Waiting for Lock 1
+```text
+Massive concurrency with threads becomes resource expensive
 ````
 
-Result:
+Async models use:
 
-```text id="nh6dzq"
-System stops progressing
+* event loops
+* non-blocking I/O
+* cooperative scheduling
+
+Architecture:
+
+```text id="4q2xmc"
+Event Loop → Non-Blocking Tasks → Callback/Coroutine Execution
 ```
 
-Deadlock prevention techniques:
+Benefits:
 
-| Technique       | Explanation               |
-| --------------- | ------------------------- |
-| Lock ordering   | Consistent lock sequence  |
-| Timeouts        | Abort long waits          |
-| Reduced locking | Minimize shared resources |
+| Benefit                        | Explanation             |
+| ------------------------------ | ----------------------- |
+| Massive connection scalability | Lightweight concurrency |
+| Lower memory usage             | Fewer threads           |
+| Better I/O efficiency          | Non-blocking execution  |
 
-Deadlocks are serious concurrency problems in backend systems.
+Examples:
+
+* Node.js
+* asyncio
+* reactive systems
+
+Async concurrency is optimized for I/O-heavy backend workloads.
 
 <!-- END -->
 
@@ -226,40 +270,44 @@ Deadlocks are serious concurrency problems in backend systems.
 ```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
-tags: asynchronous-programming, event-loop, backend
+tags: distributed-systems, concurrency, parallelism
 
-What is asynchronous programming?
+Why do distributed systems amplify concurrency challenges?
 
 <!-- ANSWER -->
-Asynchronous programming allows tasks to run without blocking the main execution flow.
+Distributed systems introduce:
+- network latency
+- partial failures
+- asynchronous communication
+- independent nodes
 
-Instead of waiting:
+Problem:
 
-```text id="4v8qpd"
-Request → Wait → Response
+```text
+Coordinating concurrent operations becomes significantly harder across machines
 ````
 
-systems continue processing other work:
+Examples:
 
-```text id="5w2qwc"
-Request → Background Wait → Continue Execution
-```
+* distributed locking
+* concurrent writes
+* replicated state updates
 
-Benefits:
+Consequences:
 
-| Benefit                | Explanation             |
-| ---------------------- | ----------------------- |
-| Better responsiveness  | Non-blocking operations |
-| Higher scalability     | Handle many requests    |
-| Efficient I/O handling | Reduce idle waiting     |
+* race conditions
+* inconsistent replicas
+* split-brain scenarios
 
-Common async operations:
+Solutions:
 
-* database queries
-* API calls
-* file I/O
+| Solution            | Purpose                  |
+| ------------------- | ------------------------ |
+| Consensus protocols | Distributed coordination |
+| Idempotency         | Safe retries             |
+| Conflict resolution | State reconciliation     |
 
-Asynchronous programming is heavily used in high-performance backend systems.
+Distributed environments magnify concurrency complexity dramatically.
 
 <!-- END -->
 
@@ -268,40 +316,42 @@ Asynchronous programming is heavily used in high-performance backend systems.
 ```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
-tags: event-loop, nodejs, concurrency
+tags: context-switching, operating-systems, concurrency
 
-What is the event loop?
+Why can excessive concurrency reduce system performance?
 
 <!-- ANSWER -->
-The event loop is a mechanism that manages asynchronous operations in event-driven systems.
+Concurrency introduces:
+- thread scheduling
+- synchronization
+- context switching
 
-Architecture:
+Problem:
 
-```text id="6m3qpd"
-Event Queue → Event Loop → Callback Execution
+```text
+Too many concurrent tasks create coordination overhead
 ````
 
-Behavior:
+Consequences:
 
-* executes tasks sequentially
-* handles async callbacks
-* avoids blocking operations
+* CPU thrashing
+* cache invalidation
+* scheduler overhead
 
-Example systems:
+Example:
 
-* Node.js
-* browsers
-* async runtimes
+```text id="6m3qpd"
+Thousands of threads spend more time switching than executing
+```
 
-Benefits:
+Tradeoff:
 
-| Benefit               | Explanation                    |
-| --------------------- | ------------------------------ |
-| Efficient concurrency | Handle many I/O tasks          |
-| Low memory overhead   | Fewer threads needed           |
-| High scalability      | Massive concurrent connections |
+| More Concurrency      | Potential Cost               |
+| --------------------- | ---------------------------- |
+| Better responsiveness | Higher coordination overhead |
+| Increased throughput  | Resource contention          |
 
-The event loop is central to asynchronous backend architectures.
+Concurrency improves scalability only when properly controlled.
 
 <!-- END -->
 
@@ -310,38 +360,44 @@ The event loop is central to asynchronous backend architectures.
 ```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
-tags: thread-safety, concurrency, backend-systems
+tags: observability, concurrency, backend-performance
 
-What does thread-safe mean?
+Why is observability critical in concurrent backend systems?
 
 <!-- ANSWER -->
-Thread-safe code behaves correctly when accessed by multiple threads concurrently.
+Concurrency issues are often:
+- nondeterministic
+- timing dependent
+- difficult to reproduce
 
-Example unsafe scenario:
+Problem:
 
-```text id="1q8vza"
-Multiple threads modify shared variable simultaneously
+```text
+Race conditions and deadlocks may appear intermittently
 ````
 
-Thread-safe techniques:
+Key observability areas:
 
-| Technique         | Purpose                     |
-| ----------------- | --------------------------- |
-| Mutexes           | Prevent simultaneous access |
-| Immutable data    | Avoid modification          |
-| Atomic operations | Safe concurrent updates     |
+* thread contention
+* lock wait time
+* queue latency
+* CPU utilization
 
 Benefits:
 
-* predictable behavior
-* consistent data
-* reduced concurrency bugs
+| Benefit                   | Explanation                        |
+| ------------------------- | ---------------------------------- |
+| Faster debugging          | Detect synchronization bottlenecks |
+| Better performance tuning | Identify contention hotspots       |
+| Improved reliability      | Detect concurrency anomalies       |
 
-Thread safety is critical in:
+Example:
 
-* multithreaded servers
-* shared caches
-* concurrent applications
+```text id="1q8vza"
+Thread pool exhaustion increases API latency dramatically
+```
+
+Concurrent systems require deep runtime observability.
 
 <!-- END -->
 
@@ -350,38 +406,51 @@ Thread safety is critical in:
 ```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
-tags: actor-model, distributed-systems, concurrency
+tags: concurrency, parallelism, trade-offs, backend-systems
 
-What is the Actor Model in concurrent systems?
+What are the major trade-offs between concurrency and parallelism in backend systems?
 
 <!-- ANSWER -->
-The Actor Model is a concurrency model where independent actors communicate using messages instead of shared memory.
+Concurrency optimizes:
+- coordination
+- responsiveness
+- I/O utilization
 
-Actor behavior:
-- receive messages
-- process state internally
-- send messages to other actors
+Parallelism optimizes:
+- computational throughput
+- multi-core execution
+- CPU utilization
 
-Architecture:
+Advantages:
+
+| Technique | Main Benefit |
+|---|---|
+| Concurrency | Efficient waiting management |
+| Parallelism | Faster computation |
+
+Trade-offs:
+
+| Trade-off | Explanation |
+|---|---|
+| Concurrency complexity | Race conditions and deadlocks |
+| Parallel execution overhead | Synchronization costs |
+| Async models | Harder debugging |
+| Thread-based models | Higher memory usage |
+
+Example:
 
 ```text id="7v2xpd"
-Actor A ↔ Actor B ↔ Actor C
+Async concurrency scales web servers efficiently but complicates debugging and control flow
 ````
 
-Benefits:
+Backend systems fundamentally balance:
 
-| Benefit                   | Explanation             |
-| ------------------------- | ----------------------- |
-| Reduced shared-state bugs | No direct shared memory |
-| Better scalability        | Independent actors      |
-| Fault isolation           | Actor-level failures    |
-
-Common actor-based systems:
-
-* Akka
-* Erlang
-* Orleans
-
-The Actor Model is widely used in distributed and concurrent backend systems.
+* throughput
+* latency
+* coordination complexity
+* hardware utilization
 
 <!-- END -->
+
+```
+```

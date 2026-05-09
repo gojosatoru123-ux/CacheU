@@ -1,34 +1,45 @@
 ````md id="8m2qva"
 <!-- QUESTION -->
-difficulty: Easy
-tags: graceful-shutdown, backend, servers
+difficulty: Hard
+tags: graceful-shutdown, backend-systems, distributed-systems
 
-What is graceful shutdown in backend systems?
+Why is graceful shutdown important in backend systems?
 
 <!-- ANSWER -->
-Graceful shutdown is the process of safely stopping a backend application without abruptly terminating active operations.
+Backend services continuously process:
+- API requests
+- database transactions
+- background jobs
+- streaming connections
 
-Instead of:
+Problem:
 
 ```text
-Server Crash → Lost Requests
+Abrupt termination may interrupt in-flight operations
 ````
 
-the server:
+Consequences:
 
-```text id="4m8qza"
-Stops New Requests → Finishes Existing Work → Shuts Down
+* request failures
+* partial writes
+* data corruption
+* inconsistent state
+
+Graceful shutdown ensures:
+
+```text id="u1vcqn"
+Stop Accepting New Requests → Finish Active Work → Safe Termination
 ```
 
 Benefits:
 
-| Benefit              | Purpose                    |
-| -------------------- | -------------------------- |
-| Prevent request loss | Complete active operations |
-| Avoid corruption     | Safe resource cleanup      |
-| Better reliability   | Controlled shutdown        |
+| Benefit                    | Explanation                    |
+| -------------------------- | ------------------------------ |
+| Better reliability         | Prevent interrupted operations |
+| Reduced data inconsistency | Safe transaction completion    |
+| Improved availability      | Controlled service termination |
 
-Graceful shutdown is essential for production backend systems.
+Graceful shutdown is essential for reliable distributed systems.
 
 <!-- END -->
 
@@ -36,40 +47,41 @@ Graceful shutdown is essential for production backend systems.
 
 ```md id="2n7qpd"
 <!-- QUESTION -->
-difficulty: Easy
-tags: signals, operating-systems, backend
+difficulty: Hard
+tags: load-balancers, graceful-shutdown, distributed-systems
 
-What signals are commonly used for graceful shutdown?
+Why must backend servers stop receiving new traffic before shutdown?
 
 <!-- ANSWER -->
-Operating systems send signals to processes to control application lifecycle events.
+Load balancers continuously route traffic to healthy instances.
 
-Common shutdown signals:
+Problem:
 
-| Signal | Purpose |
-|---|---|
-| SIGINT | Interrupt process |
-| SIGTERM | Request graceful termination |
-| SIGKILL | Force immediate termination |
-
-Example:
-
-```text id="6m2xqc"
-kill -TERM <pid>
+```text
+Shutting down server may still receive incoming requests
 ````
 
-Behavior:
+Workflow:
 
-```text id="uoeaqr"
-SIGTERM → Cleanup → Exit
+```text id="6m2xqc"
+Instance Marked Unhealthy → Traffic Drained → Shutdown Begins
 ```
 
-Unlike SIGKILL:
+Benefits:
 
-* graceful cleanup is possible
-* applications can finish ongoing tasks
+| Benefit                 | Explanation                    |
+| ----------------------- | ------------------------------ |
+| Reduced failed requests | No new traffic assignment      |
+| Smoother deployments    | Safer instance replacement     |
+| Better user experience  | Fewer connection interruptions |
 
-SIGTERM is the standard graceful shutdown signal in production systems.
+Examples:
+
+* Kubernetes readiness probes
+* ELB deregistration
+* service discovery removal
+
+Traffic draining is foundational for graceful service termination.
 
 <!-- END -->
 
@@ -77,42 +89,42 @@ SIGTERM is the standard graceful shutdown signal in production systems.
 
 ```md id="4q7xwc"
 <!-- QUESTION -->
-difficulty: Easy
-tags: backend-connections, graceful-shutdown, networking
+difficulty: Hard
+tags: distributed-transactions, graceful-shutdown, backend-systems
 
-Why should servers stop accepting new requests during shutdown?
+Why are database transactions risky during abrupt service shutdowns?
 
 <!-- ANSWER -->
-During graceful shutdown, servers stop accepting new requests to prevent interruption of active operations.
+Backend services often perform:
+- multi-step writes
+- transactional updates
+- distributed operations
 
-Correct flow:
+Problem:
 
-```text id="6p1qxt"
-Stop New Connections
-↓
-Finish Existing Requests
-↓
-Shutdown
+```text
+Termination during transaction execution may leave inconsistent state
 ````
 
-Without this behavior:
+Example:
 
-* users may receive failed responses
-* requests may terminate midway
+```text id="6p1qxt"
+Order created but payment record not committed
+```
 
-Benefits:
+Consequences:
 
-| Benefit                     | Explanation              |
-| --------------------------- | ------------------------ |
-| Prevent incomplete requests | Safer shutdown           |
-| Better user experience      | Reduced failures         |
-| Data consistency            | Avoid partial operations |
+* partial writes
+* orphaned records
+* business inconsistencies
 
-This is especially important in:
+Graceful shutdown allows:
 
-* APIs
-* payment systems
-* distributed services
+* transaction completion
+* rollback handling
+* safe cleanup
+
+Proper shutdown handling protects transactional integrity.
 
 <!-- END -->
 
@@ -120,35 +132,44 @@ This is especially important in:
 
 ```md id="1n8qpd"
 <!-- QUESTION -->
-difficulty: Medium
-tags: cleanup, backend-resources, graceful-shutdown
+difficulty: Hard
+tags: background-workers, graceful-shutdown, asynchronous-processing
 
-Why is resource cleanup important during graceful shutdown?
+Why is graceful shutdown difficult for background worker systems?
 
 <!-- ANSWER -->
-Backend systems often hold resources that must be released safely during shutdown.
+Background workers process:
+- queued jobs
+- long-running tasks
+- asynchronous workflows
 
-Examples:
-- database connections
-- file handles
-- network sockets
-- message queue consumers
+Problem:
 
-Example:
-
-```text id="5m2xqc"
-Close Database Connection
+```text
+Worker termination may interrupt partially completed jobs
 ````
 
-Problems without cleanup:
+Challenges:
 
-| Problem           | Explanation                |
-| ----------------- | -------------------------- |
-| Memory leaks      | Resources remain allocated |
-| Corrupted state   | Incomplete writes          |
-| Hanging processes | Connections remain open    |
+* duplicate processing
+* incomplete task execution
+* lost acknowledgments
 
-Graceful cleanup improves system stability and reliability.
+Workflow:
+
+```text id="5m2xqc"
+Stop Pulling New Jobs → Finish Active Tasks → Shutdown
+```
+
+Solutions:
+
+| Solution            | Purpose                     |
+| ------------------- | --------------------------- |
+| Visibility timeouts | Task recovery after failure |
+| Idempotent jobs     | Safe retries                |
+| Graceful draining   | Finish active processing    |
+
+Async systems require careful worker lifecycle management.
 
 <!-- END -->
 
@@ -156,38 +177,44 @@ Graceful cleanup improves system stability and reliability.
 
 ```md id="5x1vyt"
 <!-- QUESTION -->
-difficulty: Medium
-tags: kubernetes, containers, backend-deployment
+difficulty: Hard
+tags: websocket, long-connections, graceful-shutdown
 
-Why is graceful shutdown important in Kubernetes?
+Why are long-lived connections challenging during graceful shutdown?
 
 <!-- ANSWER -->
-Kubernetes frequently starts and stops containers during:
-- deployments
-- scaling
-- node failures
+Modern backend systems maintain:
+- WebSocket connections
+- streaming sessions
+- long polling requests
 
-Without graceful shutdown:
+Problem:
 
-```text id="clt6p5"
-Requests may fail during container termination
+```text
+Persistent connections may remain active indefinitely
 ````
 
-Kubernetes shutdown flow:
+Consequences:
 
-```text id="2v7qwr"
-SIGTERM → Grace Period → SIGKILL
+* delayed shutdown
+* forced disconnections
+* interrupted streams
+
+Example:
+
+```text id="clt6p5"
+WebSocket client loses real-time updates during abrupt restart
 ```
 
-Benefits:
+Solutions:
 
-| Benefit               | Explanation                |
-| --------------------- | -------------------------- |
-| Safer deployments     | Reduced downtime           |
-| Zero-downtime updates | Traffic drained safely     |
-| Better reliability    | Fewer interrupted requests |
+| Solution             | Purpose                     |
+| -------------------- | --------------------------- |
+| Connection draining  | Gradual client migration    |
+| Timeout enforcement  | Prevent indefinite blocking |
+| Reconnection support | Client recovery handling    |
 
-Graceful shutdown is critical for containerized backend systems.
+Long-lived connections complicate graceful termination workflows.
 
 <!-- END -->
 
@@ -195,39 +222,38 @@ Graceful shutdown is critical for containerized backend systems.
 
 ```md id="9m3xpd"
 <!-- QUESTION -->
-difficulty: Medium
-tags: load-balancers, distributed-systems, graceful-shutdown
+difficulty: Hard
+tags: kubernetes, graceful-shutdown, cloud-systems
 
-How do load balancers interact with graceful shutdown?
+Why is graceful shutdown especially important in container orchestration platforms like Kubernetes?
 
 <!-- ANSWER -->
-Load balancers stop routing traffic to servers that are shutting down.
+Container orchestrators frequently:
+- restart pods
+- reschedule workloads
+- scale services dynamically
 
-Example flow:
+Problem:
+
+```text
+Containers may terminate frequently during normal operations
+````
+
+Kubernetes workflow:
 
 ```text id="4q2xmc"
-Server Marked Unhealthy
-↓
-Load Balancer Stops Traffic
-↓
-Server Finishes Active Requests
-````
+SIGTERM → Readiness Probe Failure → Graceful Drain → SIGKILL
+```
 
 Benefits:
 
-| Benefit                 | Explanation                  |
-| ----------------------- | ---------------------------- |
-| Prevent failed requests | Traffic redirected elsewhere |
-| Safer deployments       | Smooth server removal        |
-| Better availability     | Reduced disruption           |
+| Benefit                | Explanation                   |
+| ---------------------- | ----------------------------- |
+| Safer deployments      | Reduced request interruption  |
+| Better rolling updates | Minimal downtime              |
+| Improved resilience    | Controlled workload migration |
 
-Common techniques:
-
-* connection draining
-* deregistration delays
-* readiness probes
-
-Load balancers play a major role in graceful shutdown orchestration.
+Cloud-native systems depend heavily on graceful termination behavior.
 
 <!-- END -->
 
@@ -236,39 +262,43 @@ Load balancers play a major role in graceful shutdown orchestration.
 ```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
-tags: message-queues, background-workers, graceful-shutdown
+tags: distributed-systems, fault-tolerance, graceful-shutdown
 
-Why must background workers support graceful shutdown?
+Why is graceful shutdown important for distributed system stability?
 
 <!-- ANSWER -->
-Background workers process long-running jobs that should not terminate abruptly.
+Distributed systems involve:
+- service dependencies
+- cascading workflows
+- inter-service communication
 
-Example jobs:
-- payment processing
-- video encoding
-- email sending
+Problem:
 
-Without graceful shutdown:
-
-```text id="4v8qpd"
-Job interrupted midway
+```text
+Abrupt node failure may propagate errors across services
 ````
 
-Correct behavior:
+Consequences:
 
-```text id="5w2qwc"
-Finish Current Job → Stop Worker
+* retry storms
+* cascading failures
+* partial outages
+
+Architecture:
+
+```text id="4v8qpd"
+Service Drain → Dependency Notification → Safe Exit
 ```
 
 Benefits:
 
-| Benefit                | Explanation           |
-| ---------------------- | --------------------- |
-| Prevent duplicate work | Avoid retry confusion |
-| Maintain consistency   | Complete processing   |
-| Reduce corruption      | Safe task completion  |
+| Benefit                    | Explanation                    |
+| -------------------------- | ------------------------------ |
+| Reduced cascading failures | Controlled dependency handling |
+| Better resilience          | Predictable service behavior   |
+| Improved recovery          | Cleaner failover transitions   |
 
-Worker shutdown handling is critical in queue-based architectures.
+Graceful shutdown improves distributed system fault tolerance.
 
 <!-- END -->
 
@@ -277,37 +307,43 @@ Worker shutdown handling is critical in queue-based architectures.
 ```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
-tags: database-transactions, backend-consistency, graceful-shutdown
+tags: signal-handling, operating-systems, backend-systems
 
-Why should active database transactions be handled carefully during shutdown?
+Why is signal handling critical for graceful shutdown implementations?
 
 <!-- ANSWER -->
-Abrupt shutdown during database transactions may leave systems in inconsistent states.
+Operating systems notify processes using signals.
 
-Example:
+Examples:
+- SIGTERM
+- SIGINT
+- SIGKILL
+
+Problem:
 
 ```text
-Transfer Money:
-Debit Account A
-Shutdown Occurs
-Credit Account B Never Happens
+Applications must intercept termination signals to perform cleanup
 ````
 
-Correct behavior:
+Workflow:
 
 ```text id="6m3qpd"
-Commit or Rollback Transaction Safely
+Termination Signal → Cleanup Logic → Controlled Shutdown
 ```
 
-Benefits:
+Cleanup tasks:
 
-| Benefit          | Explanation             |
-| ---------------- | ----------------------- |
-| Data consistency | Prevent partial updates |
-| Reliability      | Preserve integrity      |
-| Safer recovery   | Predictable state       |
+* close database connections
+* flush logs
+* finish requests
+* persist state
 
-Graceful shutdown helps ensure transactional safety in backend systems.
+Without signal handling:
+
+* shutdown becomes abrupt
+* cleanup logic is skipped
+
+Signal management is foundational for graceful backend lifecycle control.
 
 <!-- END -->
 
@@ -316,40 +352,45 @@ Graceful shutdown helps ensure transactional safety in backend systems.
 ```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
-tags: health-checks, readiness-probes, backend
+tags: observability, graceful-shutdown, backend-operations
 
-What is the role of readiness probes during graceful shutdown?
+Why is observability important during graceful shutdown workflows?
 
 <!-- ANSWER -->
-Readiness probes indicate whether a service is ready to receive traffic.
+Shutdown workflows involve:
+- traffic draining
+- request completion
+- worker coordination
+- dependency cleanup
 
-During graceful shutdown:
+Problem:
 
-```text id="1q8vza"
-Service Marks Itself Unready
+```text
+Improper shutdown behavior may silently cause request loss
 ````
 
-Result:
+Key monitoring areas:
 
-```text id="rzdmjt"
-Load Balancer Stops Sending Requests
-```
+* active requests
+* connection counts
+* shutdown duration
+* unfinished jobs
 
 Benefits:
 
-| Benefit           | Explanation             |
-| ----------------- | ----------------------- |
-| Traffic draining  | Prevent new requests    |
-| Safer deployments | Controlled shutdown     |
-| Reduced failures  | Better request handling |
+| Benefit            | Explanation               |
+| ------------------ | ------------------------- |
+| Faster debugging   | Identify stuck shutdowns  |
+| Safer deployments  | Monitor traffic draining  |
+| Better reliability | Detect incomplete cleanup |
 
-Readiness probes are widely used in:
+Example:
 
-* Kubernetes
-* service meshes
-* cloud platforms
+```text id="1q8vza"
+Worker stuck during shutdown due to unclosed database connection
+```
 
-They are essential for zero-downtime backend deployments.
+Graceful shutdown requires strong operational visibility.
 
 <!-- END -->
 
@@ -358,38 +399,48 @@ They are essential for zero-downtime backend deployments.
 ```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
-tags: zero-downtime-deployments, distributed-systems, backend
+tags: graceful-shutdown, trade-offs, backend-systems
 
-How does graceful shutdown help achieve zero-downtime deployments?
+What are the major trade-offs in graceful shutdown design?
 
 <!-- ANSWER -->
-Zero-downtime deployments replace old application instances without interrupting users.
+Graceful shutdown systems optimize:
+- reliability
+- consistency
+- availability
+- operational safety
 
-Graceful shutdown process:
+Advantages:
+
+| Advantage | Explanation |
+|---|---|
+| Safer deployments | Reduced request failures |
+| Better consistency | In-flight work completion |
+| Improved resilience | Controlled service lifecycle |
+
+Trade-offs:
+
+| Trade-off | Explanation |
+|---|---|
+| Longer shutdown times | Waiting for active tasks |
+| Operational complexity | Coordination logic |
+| Resource retention | Delayed process termination |
+| Edge-case handling | Stuck requests and connections |
+
+Example:
 
 ```text id="7v2xpd"
-Old Server Stops Accepting Traffic
-↓
-Existing Requests Finish
-↓
-New Server Takes Over
+Graceful draining improves reliability but increases deployment coordination complexity
 ````
 
-Benefits:
+Graceful shutdown fundamentally balances:
 
-| Benefit                 | Explanation             |
-| ----------------------- | ----------------------- |
-| Continuous availability | No service interruption |
-| Better user experience  | Seamless updates        |
-| Safer deployments       | Reduced deployment risk |
-
-Techniques commonly combined:
-
-* rolling deployments
-* load balancing
-* readiness probes
-* graceful shutdown handling
-
-Graceful shutdown is a foundational mechanism for highly available backend systems.
+* reliability
+* availability
+* operational complexity
+* deployment speed
 
 <!-- END -->
+
+```
+```
