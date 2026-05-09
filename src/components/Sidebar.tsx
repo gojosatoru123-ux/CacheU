@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'wouter';
 import { ArticleMeta, CATEGORIES, CATEGORY_ORDER } from '../lib/content';
 import { ChevronDown, ChevronRight, BookOpen, X, Menu, Zap, Code, LayoutGrid, Target, Network } from 'lucide-react';
@@ -29,6 +29,17 @@ const CATEGORY_ICONS: Record<string, React.ReactNode> = {
 export function Sidebar({ className }: SidebarProps) {
   const [location] = useLocation();
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
+  const navRef = useRef<HTMLElement>(null);
+
+  // Scroll the active link into view whenever location changes
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+    const active = nav.querySelector<HTMLElement>('[data-active="true"]');
+    if (active) {
+      active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+  }, [location]);
 
   const activeSorted = [
     ...CATEGORY_ORDER,
@@ -53,7 +64,7 @@ export function Sidebar({ className }: SidebarProps) {
       </div>
 
       {/* Nav */}
-      <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-0.5">
+      <nav ref={navRef} className="flex-1 overflow-y-auto py-4 px-3 space-y-0.5">
         {activeSorted.map((category) => {
           const items = CATEGORIES[category];
           if (!items || items.length === 0) return null;
@@ -92,6 +103,7 @@ export function Sidebar({ className }: SidebarProps) {
                         {/* Article link */}
                         <Link
                           href={`/docs/${item.slug}`}
+                          data-active={isDocActive ? 'true' : undefined}
                           className={cn(
                             'flex items-center justify-between px-2 py-1.5 rounded-md text-sm transition-all',
                             isDocActive

@@ -57,9 +57,9 @@ export function TableOfContents({ content }: TableOfContentsProps) {
   if (headings.length === 0) return null;
 
   return (
-    <nav className="sticky top-24">
-      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">On this page</p>
-      <ul className="space-y-1 border-l border-slate-100">
+    <nav className="sticky top-24 flex flex-col max-h-[calc(100vh-7rem)]">
+      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3 shrink-0">On this page</p>
+      <ul className="space-y-1 border-l border-slate-100 overflow-y-auto min-h-0">
         {headings.map((h) => (
           <li key={h.id}>
             <a
