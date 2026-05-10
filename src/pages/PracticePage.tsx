@@ -103,43 +103,54 @@ export default function PracticePage() {
   const params = useParams<{ slug: string }>();
   const slug   = params.slug ?? '';
 
-  // async data — undefined = loading, null = not found
   const [practice, setPractice] = useState<PracticeArticle | null | undefined>(undefined);
   const [article,  setArticle]  = useState<ArticleMeta | null>(null);
+  const [revealed, setRevealedState] = useState<Set<number>>(new Set());
+  
+  // Track which slug the current 'revealed' state belongs to
+  const [activeStateSlug, setActiveStateSlug] = useState<string | null>(null);
 
+  // 1. Fetch data with race-condition protection
   useEffect(() => {
+    let isMounted = true;
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setPractice(undefined);
 
-    // load both in parallel
     Promise.all([
       getPracticeArticle(slug),
-      Promise.resolve(getArticle(slug)), // sync, returns ArticleMeta | null
+      Promise.resolve(getArticle(slug)),
     ]).then(([p, a]) => {
+      if (!isMounted) return;
       setPractice(p);
       setArticle(a);
     });
+
+    return () => { isMounted = false; };
   }, [slug]);
 
-  // ── Revealed state — init from localStorage once practice loads ──────────────
-  const [revealed, setRevealedState] = useState<Set<number>>(new Set());
-
+  // 2. Sync state from localStorage ONLY when practice data is ready for the current slug
   useEffect(() => {
     if (!practice) return;
+    
     const stored = loadProgress().quizzesRevealed[slug];
     setRevealedState(stored ? new Set(stored) : new Set());
+    setActiveStateSlug(slug); // Mark state as "valid" for this slug
   }, [practice, slug]);
 
-  // ── Persist to localStorage whenever revealed changes ────────────────────────
+  // 3. Persist ONLY if the state belongs to the current slug
   useEffect(() => {
-    if (!practice) return;
+    // Prevent saving if practice isn't loaded OR if we're looking at stale state from a previous quiz
+    if (!practice || activeStateSlug !== slug) return;
+
     const qs  = practice.questions ?? [];
     const arr = Array.from(revealed);
+    
     setRevealedQuestions(slug, arr);
+    
     if (qs.length > 0 && arr.length === qs.length) {
       markQuizCompleted(slug);
     }
-  }, [revealed, slug, practice]);
+  }, [revealed, slug, practice, activeStateSlug]);
 
   // ── Loading ──────────────────────────────────────────────────────────────────
   if (practice === undefined) return <Skeleton />;
