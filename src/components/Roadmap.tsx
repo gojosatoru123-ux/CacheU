@@ -204,7 +204,7 @@ export function Roadmap() {
             >
               <div>
                 <div className="text-xs text-violet-200 font-medium">Continue</div>
-                <div className="text-sm font-bold truncate max-w-[7.5rem]">{nextArticle.title}</div>
+                <div className="text-sm font-bold truncate max-w-30">{nextArticle.title}</div>
               </div>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform shrink-0" />
             </Link>
@@ -268,7 +268,7 @@ export function Roadmap() {
                     <div key={article.slug} className="relative">
                       {/* Connector line between nodes */}
                       {!isLast && (
-                        <div className="absolute left-[1.6875rem] top-[3.25rem] w-0.5 h-5 z-0">
+                        <div className="absolute left-6.75 top-13 w-0.5 h-5 z-0">
                           <div className="w-full bg-slate-100 absolute inset-0 rounded-full" />
                           {prog.read && (
                             <div

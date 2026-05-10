@@ -9,10 +9,6 @@ interface MarkdownRendererProps {
   content: string;
 }
 
-interface PanZoomInstance {
-  [key: string]: ReturnType<typeof svgPanZoom> | null;
-}
-
 // Initialize Mermaid
 mermaid.initialize({
   startOnLoad: false,

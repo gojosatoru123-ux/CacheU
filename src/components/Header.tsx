@@ -1,16 +1,9 @@
 import { Link, useLocation } from 'wouter';
 import { Search } from './Search';
 import { MANIFEST } from '../lib/content';
-import { Github, Moon, Sun } from 'lucide-react';
-import { useState, useEffect } from 'react';
 
 export function Header() {
   const [location] = useLocation();
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', dark);
-  }, [dark]);
 
   return (
     <header className="sticky top-0 z-40 h-16 bg-white/80 backdrop-blur-md border-b border-slate-100 flex items-center px-4 md:px-6 gap-4">
@@ -32,8 +25,8 @@ export function Header() {
         {[
           { href: '/home', label: 'Home' },
           { href: '/docs/lld-introduction', label: 'LLD' },
-          { href: '/docs/api-reference', label: 'HLD' },
-          { href: '/docs/websec-01-cors', label: 'WEB Security' },
+          { href: '/docs/introduction', label: 'HLD' },
+          { href: '/docs/websec-cors', label: 'WEB Security' },
           { href: '/docs/backend-01-what-is-backend', label: 'Backend Design' },
         ].map(({ href, label }) => (
           <Link
@@ -51,22 +44,6 @@ export function Header() {
       </nav>
 
       {/* Actions */}
-      <div className="flex items-center gap-2 ml-2">
-        <a
-          href="https://github.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
-        >
-          <Github className="w-4 h-4" />
-        </a>
-        <button
-          onClick={() => setDark((d) => !d)}
-          className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
-        >
-          {dark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-        </button>
-      </div>
     </header>
   );
 }

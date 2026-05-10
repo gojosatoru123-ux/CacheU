@@ -190,7 +190,7 @@ export async function getPracticeArticle(slug: string): Promise<PracticeArticle 
   if (!raw) return null;
 
   const { meta, body } = parseFrontmatter(raw);
-  const questions      = parsePracticeQuestions(body);
+  const questions      = parsePracticeQuestions(body) ?? [];
 
   return {
     title:          meta.title          || `${slug} — Practice`,

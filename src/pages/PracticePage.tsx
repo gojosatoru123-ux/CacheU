@@ -1,6 +1,6 @@
 import { useParams, Link } from 'wouter';
 import { useEffect, useState } from 'react';
-import { getPracticeArticle, getArticle, PracticeQuestion } from '../lib/content';
+import { getPracticeArticle, getArticle, PracticeArticle, PracticeQuestion, ArticleMeta } from '../lib/content';
 import {
   loadProgress, setRevealedQuestions, markQuizCompleted, resetQuiz,
 } from '../lib/progress';
@@ -17,6 +17,7 @@ const DIFFICULTY_STYLES = {
   Hard:   { badge: 'bg-rose-100 text-rose-700 border-rose-200',          dot: 'bg-rose-500',    label: 'Hard' },
 };
 
+// ─── Question card (unchanged from original) ──────────────────────────────────
 function QuestionCard({
   question, index, revealed, onReveal,
 }: { question: PracticeQuestion; index: number; revealed: boolean; onReveal: () => void }) {
@@ -83,35 +84,67 @@ function QuestionCard({
   );
 }
 
+// ─── Loading skeleton ─────────────────────────────────────────────────────────
+function Skeleton() {
+  return (
+    <div className="max-w-3xl mx-auto animate-pulse space-y-6">
+      <div className="h-4 bg-slate-100 rounded w-32" />
+      <div className="bg-slate-100 rounded-3xl h-48" />
+      <div className="bg-slate-100 rounded-2xl h-24" />
+      {[...Array(3)].map((_, i) => (
+        <div key={i} className="bg-slate-100 rounded-2xl h-32" />
+      ))}
+    </div>
+  );
+}
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
 export default function PracticePage() {
   const params = useParams<{ slug: string }>();
-  const slug = params.slug;
-  const practice = getPracticeArticle(slug);
-  const article = getArticle(slug);
+  const slug   = params.slug ?? '';
 
-  // Load initial revealed from localStorage
-  const [revealed, setRevealedState] = useState<Set<number>>(() => {
-    const stored = loadProgress().quizzesRevealed[slug];
-    return stored ? new Set(stored) : new Set();
-  });
+  // async data — undefined = loading, null = not found
+  const [practice, setPractice] = useState<PracticeArticle | null | undefined>(undefined);
+  const [article,  setArticle]  = useState<ArticleMeta | null>(null);
 
-  // Sync slug change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    const stored = loadProgress().quizzesRevealed[slug];
-    setRevealedState(stored ? new Set(stored) : new Set());
+    setPractice(undefined);
+
+    // load both in parallel
+    Promise.all([
+      getPracticeArticle(slug),
+      Promise.resolve(getArticle(slug)), // sync, returns ArticleMeta | null
+    ]).then(([p, a]) => {
+      setPractice(p);
+      setArticle(a);
+    });
   }, [slug]);
 
-  // Persist revealed to localStorage whenever it changes
+  // ── Revealed state — init from localStorage once practice loads ──────────────
+  const [revealed, setRevealedState] = useState<Set<number>>(new Set());
+
   useEffect(() => {
     if (!practice) return;
-    const revealedArr = Array.from(revealed);
-    setRevealedQuestions(slug, revealedArr);
-    if (revealedArr.length === practice.questions.length && practice.questions.length > 0) {
+    const stored = loadProgress().quizzesRevealed[slug];
+    setRevealedState(stored ? new Set(stored) : new Set());
+  }, [practice, slug]);
+
+  // ── Persist to localStorage whenever revealed changes ────────────────────────
+  useEffect(() => {
+    if (!practice) return;
+    const qs  = practice.questions ?? [];
+    const arr = Array.from(revealed);
+    setRevealedQuestions(slug, arr);
+    if (qs.length > 0 && arr.length === qs.length) {
       markQuizCompleted(slug);
     }
   }, [revealed, slug, practice]);
 
+  // ── Loading ──────────────────────────────────────────────────────────────────
+  if (practice === undefined) return <Skeleton />;
+
+  // ── Not found ────────────────────────────────────────────────────────────────
   if (!practice) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
@@ -127,35 +160,31 @@ export default function PracticePage() {
     );
   }
 
+  // ── Derived values ───────────────────────────────────────────────────────────
+  const questions     = practice.questions ?? [];
   const answeredCount = revealed.size;
-  const totalCount = practice.questions.length;
-  const progressPct = Math.round((answeredCount / totalCount) * 100);
-  const allAnswered = answeredCount === totalCount;
+  const totalCount    = questions.length;
+  const progressPct   = totalCount > 0 ? Math.round((answeredCount / totalCount) * 100) : 0;
+  const allAnswered   = totalCount > 0 && answeredCount === totalCount;
 
   const toggleReveal = (id: number) => {
     setRevealedState((prev) => {
       const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
+      if (next.has(id)) next.delete(id); else next.add(id);
       return next;
     });
   };
 
-  const revealAll = () => {
-    setRevealedState(new Set(practice.questions.map((q) => q.id)));
-  };
-
-  const handleReset = () => {
-    setRevealedState(new Set());
-    resetQuiz(slug);
-  };
+  const revealAll   = () => setRevealedState(new Set(questions.map(q => q.id)));
+  const handleReset = () => { setRevealedState(new Set()); resetQuiz(slug); };
 
   const difficultyBreakdown = {
-    Easy: practice.questions.filter((q) => q.difficulty === 'Easy').length,
-    Medium: practice.questions.filter((q) => q.difficulty === 'Medium').length,
-    Hard: practice.questions.filter((q) => q.difficulty === 'Hard').length,
+    Easy:   questions.filter(q => q.difficulty === 'Easy').length,
+    Medium: questions.filter(q => q.difficulty === 'Medium').length,
+    Hard:   questions.filter(q => q.difficulty === 'Hard').length,
   };
 
+  // ── Render ───────────────────────────────────────────────────────────────────
   return (
     <div className="max-w-3xl mx-auto">
       <div className="mb-8">
@@ -266,7 +295,7 @@ export default function PracticePage() {
 
       {/* Questions */}
       <div className="space-y-4">
-        {practice.questions.map((question, idx) => (
+        {questions.map((question, idx) => (
           <QuestionCard
             key={question.id}
             question={question}
