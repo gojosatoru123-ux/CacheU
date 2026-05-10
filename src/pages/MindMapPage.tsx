@@ -1,21 +1,67 @@
 import { useParams, Link } from 'wouter';
 import { useEffect, useState } from 'react';
-import { getMindmapData } from '../lib/mindmap';
-import { getArticle } from '../lib/content';
+import { getMindmapData, MindmapData } from '../lib/mindmap';
+import { getArticle, ArticleMeta } from '../lib/content';
 import { MindMap } from '../components/MindMap';
 import { ArrowLeft, BookOpen, Target, Network } from 'lucide-react';
 
+// ─── Loading skeleton ─────────────────────────────────────────────────────────
+function Skeleton() {
+  return (
+    <div className="flex flex-col h-full animate-pulse">
+      {/* Header bar */}
+      <div className="shrink-0 px-6 py-4 border-b border-slate-100 bg-white flex items-center gap-4">
+        <div className="h-4 bg-slate-100 rounded w-24" />
+        <div className="w-px h-5 bg-slate-200" />
+        <div className="h-5 bg-slate-100 rounded w-48" />
+      </div>
+      {/* Canvas placeholder */}
+      <div className="flex-1 bg-slate-50 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-3 text-slate-300">
+          <Network className="w-10 h-10" />
+          <div className="h-3 bg-slate-100 rounded w-32" />
+        </div>
+      </div>
+      {/* Legend bar */}
+      <div className="shrink-0 px-6 py-3 border-t border-slate-100 bg-white flex gap-6">
+        {[...Array(4)].map((_, i) => (
+          <div key={i} className="h-3 bg-slate-100 rounded w-20" />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─── Node counter ─────────────────────────────────────────────────────────────
+function countNodes(node: { children: typeof node[] }): number {
+  return 1 + node.children.reduce((s, c) => s + countNodes(c), 0);
+}
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
 export default function MindMapPage() {
   const params = useParams<{ slug: string }>();
-  const slug = params.slug;
-  const mindmapData = getMindmapData(slug);
-  const article = getArticle(slug);
-  const [fullscreen, setFullscreen] = useState(false);
+  const slug   = params.slug ?? '';
+
+  // undefined = loading, null = not found
+  const [mindmapData, setMindmapData] = useState<MindmapData | null | undefined>(undefined);
+  const [article,     setArticle]     = useState<ArticleMeta | null>(null);
+  const [fullscreen,  setFullscreen]  = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
+    setMindmapData(undefined); // reset to loading on slug change
+
+    // getArticle is sync (reads from manifest JSON — already loaded)
+    setArticle(getArticle(slug));
+
+    // getMindmapData is now async — fetches only this one .md file
+    getMindmapData(slug).then(setMindmapData);
   }, [slug]);
 
+  // ── Loading ──────────────────────────────────────────────────────────────────
+  if (mindmapData === undefined) return <Skeleton />;
+
+  // ── Not found ────────────────────────────────────────────────────────────────
   if (!mindmapData) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
@@ -39,12 +85,12 @@ export default function MindMapPage() {
     );
   }
 
-  const nodeCount = countNodes(mindmapData.root);
+  const nodeCount   = countNodes(mindmapData.root);
   const branchCount = mindmapData.root.children.length;
 
   return (
     <div className={fullscreen ? 'fixed inset-0 z-50 bg-white flex flex-col' : 'flex flex-col h-full'}>
-      {/* Header */}
+      {/* ── Header ── */}
       <div className="shrink-0 px-6 py-4 border-b border-slate-100 bg-white flex items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <Link
@@ -96,12 +142,12 @@ export default function MindMapPage() {
         </div>
       </div>
 
-      {/* Mind map canvas */}
+      {/* ── Mind map canvas ── */}
       <div className="flex-1 min-h-0" style={{ minHeight: fullscreen ? undefined : '600px' }}>
         <MindMap data={mindmapData} key={slug} />
       </div>
 
-      {/* Legend */}
+      {/* ── Legend ── */}
       <div className="shrink-0 px-6 py-3 border-t border-slate-100 bg-white flex items-center gap-6 overflow-x-auto">
         <div className="flex items-center gap-2 text-xs text-slate-500 shrink-0">
           <div className="w-4 h-4 rounded-sm bg-slate-900" />
@@ -128,8 +174,4 @@ export default function MindMapPage() {
       </div>
     </div>
   );
-}
-
-function countNodes(node: { children: typeof node[] }): number {
-  return 1 + node.children.reduce((s, c) => s + countNodes(c), 0);
 }

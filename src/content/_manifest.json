@@ -190,8 +190,8 @@
   },
   {
     "slug": "design-a-live-streaming-service",
-    "title": "Design a Live Streaming Service",
-    "description": "A complete production-grade high-level design for a global live streaming platform for sports broadcasts, covering stadium ingest, encoding, transcoding, low-latency delivery, CDN edge caching, event-driven fanout, DVR, chat, score overlays, geo-restrictions, failover, analytics, and multi-region resilience.",
+    "title": "Design a Live Streaming Service for Global Sports Broadcasting",
+    "description": "A production-grade, internet-scale architecture for live sports streaming across phones, TVs, web, and set-top boxes, covering ingest, transcoding, packaging, DRM, CDN delivery, low-latency playback, personalization, resilience, failover, observability, and multi-region operations.",
     "category": "Design",
     "order": 3,
     "hasPractice": false,
@@ -261,8 +261,71 @@
     "hasMindmap": false
   },
   {
-    "slug": "design-a-realtime-gaming-leaderboard",
-    "title": "design-a-realtime-gaming-leaderboard",
+    "slug": "design-a-payment-system",
+    "title": "Design a Complete Online Payment System",
+    "description": "A production-grade, internet-scale architecture for an online payment platform supporting card and wallet payments, authorization, capture, refunds, payouts, ledgers, fraud detection, reconciliation, chargebacks, webhooks, multi-region reliability, and PCI-grade security.",
+    "category": "Design",
+    "order": 11,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
+    "slug": "design-a-realtime-ai-chat-system",
+    "title": "Design a ChatGPT-Style Real-Time AI Chat System",
+    "description": "A production-grade, internet-scale architecture for a ChatGPT or Gemini-like conversational AI platform supporting millions of chats, real-time token streaming, tool execution, retrieval-augmented generation, memory, multimodal inputs, safety, observability, and multi-region resilience.",
+    "category": "Design",
+    "order": 12,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
+    "slug": "design-a-realtime-game-leaderboard",
+    "title": "Design a Real-Time Game Leaderboard",
+    "description": "A production-grade, internet-scale design for a real-time game leaderboard with low-latency score updates, ranking queries, push-based live updates, Redis sorted sets, Kafka-based ingestion, anti-cheat validation, and multi-region resilience.",
+    "category": "Design",
+    "order": 13,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
+    "slug": "design-a-search-engine-like-google",
+    "title": "Design a Complete Search Engine Like Google",
+    "description": "A production-grade, internet-scale architecture for a complete search engine covering web crawling, document parsing, indexing, ranking, query serving, autocomplete, freshness, spam detection, caching, multi-region scale, and fault tolerance.",
+    "category": "Design",
+    "order": 14,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
+    "slug": "design-a-url-shortner",
+    "title": "Design a URL Shortener",
+    "description": "A production-grade, internet-scale architecture for a URL shortener supporting high-volume redirects, durable storage, custom aliases, analytics, abuse prevention, caching, multi-region availability, and failure recovery.",
+    "category": "Design",
+    "order": 15,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
+    "slug": "design-an-ecommerce-portal",
+    "title": "Design a Complete Amazon-Scale E-Commerce System",
+    "description": "A production-grade, internet-scale design for a full e-commerce platform covering catalog, search, cart, checkout, payments, inventory, reservations, order management, shipping, returns, recommendations, notifications, fraud, and multi-region reliability.",
+    "category": "Design",
+    "order": 16,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
+    "slug": "design-google-docs-realtime-collaboration",
+    "title": "Design Google Docs Real-Time Collaboration System",
+    "description": "A production-grade, internet-scale architecture for a real-time collaborative document editing platform similar to Google Docs, covering live editing, operational transformation / CRDT-style conflict handling, presence, versioning, comments, offline sync, permissions, multi-region scale, and fault tolerance.",
+    "category": "Design",
+    "order": 17,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
+    "slug": "design-a-email-service",
+    "title": "design-a-email-service",
     "description": "",
     "category": "General",
     "order": 99,

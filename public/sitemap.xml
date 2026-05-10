@@ -607,7 +607,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://cacheu.dev/docs/design-a-email-service</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://cacheu.dev/docs/design-a-live-streaming-service</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cacheu.dev/docs/design-a-payment-system</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -619,13 +631,43 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cacheu.dev/docs/design-a-realtime-gaming-leaderboard</loc>
+    <loc>https://cacheu.dev/docs/design-a-realtime-ai-chat-system</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cacheu.dev/docs/design-a-realtime-game-leaderboard</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cacheu.dev/docs/design-a-reddit-style-nested-infinite-comment-system</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cacheu.dev/docs/design-a-search-engine-like-google</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cacheu.dev/docs/design-a-url-shortner</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cacheu.dev/docs/design-an-ecommerce-portal</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cacheu.dev/docs/design-google-docs-realtime-collaboration</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

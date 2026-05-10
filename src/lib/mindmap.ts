@@ -97,22 +97,38 @@ export function parseMindmap(raw: string): MindmapData | null {
   };
 }
 
-// Auto-discover mindmap files
-const rawMindmapFiles = import.meta.glob('../content/mindmap/*.md', {
+// ─── Lazy loaders — each mindmap .md is its own chunk, fetched on demand ──────
+// eager: false means NO mindmap file is included in the main bundle.
+const mindmapLoaders = import.meta.glob('../content/mindmap/*.md', {
   query: '?raw',
   import: 'default',
-  eager: true,
-}) as Record<string, string>;
+  eager: false,
+}) as Record<string, () => Promise<string>>;
 
+// mindmapSlugSet is derived from loader keys (just the paths, no file content loaded).
+// This is used by content.ts to mark hasMindmap on ArticleMeta at build time.
 export const mindmapSlugSet = new Set(
-  Object.keys(rawMindmapFiles).map((p) =>
+  Object.keys(mindmapLoaders).map((p) =>
     p.replace('../content/mindmap/', '').replace('.md', '')
   )
 );
 
-export function getMindmapData(slug: string): MindmapData | null {
+// Per-session cache — each file fetched at most once
+const cache: Record<string, string> = {};
+
+async function loadRaw(slug: string): Promise<string | null> {
   const path = `../content/mindmap/${slug}.md`;
-  const raw = rawMindmapFiles[path];
+  if (cache[path] !== undefined) return cache[path];
+  const loader = mindmapLoaders[path];
+  if (!loader) return null;
+  const raw = await loader();
+  cache[path] = raw;
+  return raw;
+}
+
+// Async — fetches only the requested mindmap file
+export async function getMindmapData(slug: string): Promise<MindmapData | null> {
+  const raw = await loadRaw(slug);
   if (!raw) return null;
   return parseMindmap(raw);
 }
