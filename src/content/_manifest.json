@@ -324,15 +324,6 @@
     "hasMindmap": false
   },
   {
-    "slug": "design-a-email-service",
-    "title": "design-a-email-service",
-    "description": "",
-    "category": "General",
-    "order": 99,
-    "hasPractice": false,
-    "hasMindmap": false
-  },
-  {
     "slug": "introduction",
     "title": "Introduction to High Level Design (HLD)",
     "description": "A comprehensive introduction to High Level Design in software engineering, explaining its purpose, core components, architectural thinking, scalability concerns, and how large-scale distributed systems are designed.",

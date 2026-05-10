@@ -232,7 +232,18 @@ function getOrCreateModal(): HTMLDivElement {
 function openModal(sourceSvg: SVGSVGElement) {
   const modal = getOrCreateModal();
   const canvas = document.getElementById('mmo-canvas')!;
+
+  // ---- Prevent flicker when navigating pages ----
+  modal.classList.remove('mmo-visible');
   canvas.innerHTML = '';
+
+  // Destroy previous panzoom instance if exists
+  if (modalPanZoom) {
+    try {
+      modalPanZoom.destroy();
+    } catch {}
+    modalPanZoom = null;
+  }
 
   // Deep-clone the SVG into the modal canvas
   const cloned = sourceSvg.cloneNode(true) as SVGSVGElement;
@@ -244,7 +255,6 @@ function openModal(sourceSvg: SVGSVGElement) {
   modal.classList.add('mmo-visible');
   document.body.style.overflow = 'hidden';
 
-  // Init pan-zoom after paint
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       try {
@@ -263,11 +273,79 @@ function openModal(sourceSvg: SVGSVGElement) {
           center: true,
           refreshRate: 'auto',
         });
+
         modalPanZoom.fit();
         modalPanZoom.center();
 
-        // Double-click resets
-        cloned.addEventListener('dblclick', () => { modalPanZoom?.fit(); modalPanZoom?.center(); });
+        // Double-click reset
+        cloned.addEventListener('dblclick', () => {
+          modalPanZoom?.fit();
+          modalPanZoom?.center();
+        });
+
+        // ── Touch support ─────────────────────────
+        let lastTouchDistance: number | null = null;
+        let lastPanPoint: { x: number; y: number } | null = null;
+
+        cloned.addEventListener(
+          'touchstart',
+          (e: TouchEvent) => {
+            if (e.touches.length === 1) {
+              lastPanPoint = {
+                x: e.touches[0].clientX,
+                y: e.touches[0].clientY,
+              };
+            }
+
+            if (e.touches.length === 2) {
+              const dx = e.touches[0].clientX - e.touches[1].clientX;
+              const dy = e.touches[0].clientY - e.touches[1].clientY;
+              lastTouchDistance = Math.sqrt(dx * dx + dy * dy);
+            }
+          },
+          { passive: false }
+        );
+
+        cloned.addEventListener(
+          'touchmove',
+          (e: TouchEvent) => {
+            if (!modalPanZoom) return;
+
+            if (e.touches.length === 1 && lastPanPoint) {
+              const dx = e.touches[0].clientX - lastPanPoint.x;
+              const dy = e.touches[0].clientY - lastPanPoint.y;
+
+              modalPanZoom.panBy({ x: dx, y: dy });
+
+              lastPanPoint = {
+                x: e.touches[0].clientX,
+                y: e.touches[0].clientY,
+              };
+            }
+
+            if (e.touches.length === 2) {
+              const dx = e.touches[0].clientX - e.touches[1].clientX;
+              const dy = e.touches[0].clientY - e.touches[1].clientY;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+
+              if (lastTouchDistance) {
+                const scale = dist / lastTouchDistance;
+                modalPanZoom.zoomBy(scale);
+              }
+
+              lastTouchDistance = dist;
+            }
+
+            e.preventDefault();
+          },
+          { passive: false }
+        );
+
+        cloned.addEventListener('touchend', () => {
+          lastTouchDistance = null;
+          lastPanPoint = null;
+        });
+
       } catch (e) {
         console.warn('Modal pan-zoom init failed:', e);
       }
@@ -416,8 +494,30 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
 
     return () => {
       clearTimeout(tid);
-      tabClickHandlers.forEach(({ el, fn }) => el.removeEventListener('click', fn));
-      enlargeHandlers.forEach(({ el, fn }) => el.removeEventListener('click', fn));
+    
+      tabClickHandlers.forEach(({ el, fn }) =>
+        el.removeEventListener('click', fn)
+      );
+    
+      enlargeHandlers.forEach(({ el, fn }) =>
+        el.removeEventListener('click', fn)
+      );
+    
+      // ---- Destroy panzoom ----
+      if (modalPanZoom) {
+        try {
+          modalPanZoom.destroy();
+        } catch {}
+        modalPanZoom = null;
+      }
+    
+      // ---- Remove modal completely (prevents flicker) ----
+      if (modalEl && modalEl.parentNode) {
+        modalEl.parentNode.removeChild(modalEl);
+        modalEl = null;
+      }
+    
+      document.body.style.overflow = '';
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [content]);
