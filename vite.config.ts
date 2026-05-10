@@ -2,6 +2,8 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
+import { contentManifestPlugin } from './vite-plugin-content-manifest';
+import { sitemapPlugin } from './vite-plugin-sitemap';
 
 export default defineConfig({
   // 'base' is typically '/' for standard frontend deployments
@@ -9,6 +11,9 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
+    contentManifestPlugin(),
+    sitemapPlugin(),
+    
   ],
   resolve: {
     alias: {

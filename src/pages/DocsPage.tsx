@@ -1,6 +1,6 @@
 import { useParams } from 'wouter';
 import { useEffect, useState } from 'react';
-import { getArticle, MANIFEST } from '../lib/content';
+import { getArticleAsync, MANIFEST, Article } from '../lib/content';
 import { markArticleRead } from '../lib/progress';
 import { useDocSEO } from '../lib/seo';
 import { MarkdownRenderer } from '../components/MarkdownRenderer';
@@ -91,7 +91,7 @@ function CopyPromptButton({
         'inline-flex items-center gap-3 px-5 py-3 rounded-2xl border transition-all duration-200 group',
         copied
           ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
-          : 'bg-linear-to-r from-slate-50 to-slate-100 border-slate-200 hover:border-violet-300 hover:shadow-md hover:shadow-violet-50 text-slate-700 hover:text-violet-800'
+          : 'bg-gradient-to-r from-slate-50 to-slate-100 border-slate-200 hover:border-violet-300 hover:shadow-md hover:shadow-violet-50 text-slate-700 hover:text-violet-800'
       )}
     >
       <div
@@ -129,9 +129,16 @@ function CopyPromptButton({
 export default function DocsPage() {
   const params = useParams<{ slug: string }>();
   const slug = params.slug;
-  const article = getArticle(slug);
 
-  useDocSEO(article);
+  const [article, setArticle] = useState<Article | null | undefined>(undefined);
+
+  useEffect(() => {
+    setArticle(undefined); // reset to loading state on slug change
+    if (!slug) { setArticle(null); return; }
+    getArticleAsync(slug).then(setArticle);
+  }, [slug]);
+
+  useDocSEO(article ?? null);
 
   const idx = MANIFEST.findIndex((a) => a.slug === slug);
   const prev = idx > 0 ? MANIFEST[idx - 1] : null;
@@ -139,10 +146,11 @@ export default function DocsPage() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (slug) markArticleRead(slug);
-  }, [slug]);
+    if (slug && article) markArticleRead(slug);
+  }, [slug, article]);
 
   useEffect(() => {
+    if (!article) return;
     const headings = document.querySelectorAll('.prose h2, .prose h3');
     headings.forEach((el) => {
       if (!el.id) {
@@ -153,7 +161,34 @@ export default function DocsPage() {
           .replace(/-+/g, '-');
       }
     });
-  }, [slug]);
+  }, [article]);
+
+  // Loading state
+  if (article === undefined) {
+    return (
+      <div className="flex gap-8 xl:gap-12 animate-pulse">
+        <div className="flex-1 min-w-0 space-y-4">
+          <div className="h-4 bg-slate-100 rounded w-24" />
+          <div className="h-9 bg-slate-100 rounded w-3/4" />
+          <div className="h-4 bg-slate-100 rounded w-1/2" />
+          <div className="flex gap-3 mt-2">
+            <div className="h-14 bg-slate-100 rounded-2xl w-44" />
+            <div className="h-14 bg-slate-100 rounded-2xl w-44" />
+          </div>
+          <div className="mt-8 space-y-3">
+            {[...Array(8)].map((_, i) => (
+              <div key={i} className="h-3 bg-slate-100 rounded" style={{ width: `${90 - i * 4}%` }} />
+            ))}
+          </div>
+        </div>
+        <div className="hidden xl:block w-52 shrink-0 space-y-2 pt-1">
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className="h-3 bg-slate-100 rounded" style={{ width: `${65 - i * 7}%` }} />
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   if (!article) {
     return (
@@ -210,7 +245,7 @@ export default function DocsPage() {
             {article.hasMindmap && (
               <Link
                 href={`/mindmap/${article.slug}`}
-                className="inline-flex items-center gap-3 bg-linear-to-r from-sky-50 to-indigo-50 border border-sky-200 hover:border-sky-300 hover:shadow-md hover:shadow-sky-100 text-sky-800 px-5 py-3 rounded-2xl transition-all duration-200 group"
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-sky-50 to-indigo-50 border border-sky-200 hover:border-sky-300 hover:shadow-md hover:shadow-sky-100 text-sky-800 px-5 py-3 rounded-2xl transition-all duration-200 group"
               >
                 <div className="w-8 h-8 bg-sky-100 group-hover:bg-sky-200 rounded-xl flex items-center justify-center transition-colors shrink-0">
                   <Network className="w-4 h-4 text-sky-600" />
@@ -225,7 +260,7 @@ export default function DocsPage() {
             {article.hasPractice && (
               <Link
                 href={`/practice/${article.slug}`}
-                className="inline-flex items-center gap-3 bg-linear-to-r from-amber-50 to-orange-50 border border-amber-200 hover:border-amber-300 hover:shadow-md hover:shadow-amber-100 text-amber-800 px-5 py-3 rounded-2xl transition-all duration-200 group"
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 hover:border-amber-300 hover:shadow-md hover:shadow-amber-100 text-amber-800 px-5 py-3 rounded-2xl transition-all duration-200 group"
               >
                 <div className="w-8 h-8 bg-amber-100 group-hover:bg-amber-200 rounded-xl flex items-center justify-center transition-colors shrink-0">
                   <Target className="w-4 h-4 text-amber-600" />
@@ -255,7 +290,7 @@ export default function DocsPage() {
             {article.hasMindmap && (
               <Link
                 href={`/mindmap/${article.slug}`}
-                className="flex-1 rounded-2xl bg-linear-to-br from-sky-600 to-indigo-700 p-5 text-white flex items-center justify-between gap-4 hover:shadow-lg transition-shadow"
+                className="flex-1 rounded-2xl bg-gradient-to-br from-sky-600 to-indigo-700 p-5 text-white flex items-center justify-between gap-4 hover:shadow-lg transition-shadow"
               >
                 <div>
                   <div className="flex items-center gap-2 mb-1">
@@ -270,7 +305,7 @@ export default function DocsPage() {
             {article.hasPractice && (
               <Link
                 href={`/practice/${article.slug}`}
-                className="flex-1 rounded-2xl bg-linear-to-br from-violet-600 to-indigo-700 p-5 text-white flex items-center justify-between gap-4 hover:shadow-lg transition-shadow"
+                className="flex-1 rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-700 p-5 text-white flex items-center justify-between gap-4 hover:shadow-lg transition-shadow"
               >
                 <div>
                   <div className="flex items-center gap-2 mb-1">
