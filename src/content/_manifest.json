@@ -171,6 +171,105 @@
     "hasMindmap": true
   },
   {
+    "slug": "design-a-chat-system",
+    "title": "Design a Chat System",
+    "description": "A production-grade high level design of a scalable chat system supporting one-to-one chat, group chat, real-time messaging, offline delivery, read receipts, typing indicators, media sharing, search, notifications, presence, and multi-region scale.",
+    "category": "Design",
+    "order": 1,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
+    "slug": "design-a-complete-like-and-view-system",
+    "title": "Design a Complete Like and View System",
+    "description": "A complete production-grade high-level design for a universal engagement system that powers likes, views, reactions, and counters across platforms like YouTube, Instagram, and similar media products, covering idempotent writes, real-time counters, anti-abuse, event streaming, caching, sharding, analytics, ranking signals, and multi-region scale.",
+    "category": "Design",
+    "order": 2,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
+    "slug": "design-a-live-streaming-service",
+    "title": "Design a Live Streaming Service",
+    "description": "A complete production-grade high-level design for a global live streaming platform for sports broadcasts, covering stadium ingest, encoding, transcoding, low-latency delivery, CDN edge caching, event-driven fanout, DVR, chat, score overlays, geo-restrictions, failover, analytics, and multi-region resilience.",
+    "category": "Design",
+    "order": 3,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
+    "slug": "design-a-real-time-location-tracking-system-for-ride-hailing-and-delivery-platforms",
+    "title": "Design a Real-Time Location Tracking System for Ride-Hailing and Delivery Platforms",
+    "description": "A complete production-grade high-level design for a real-time location tracking system like Uber, Zomato, or Grab, covering GPS ingestion, live location streaming, driver and rider tracking, ETA computation, map matching, geofencing, dispatch, caching, event streaming, multi-region scale, and fault tolerance.",
+    "category": "Design",
+    "order": 4,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
+    "slug": "design-a-complete-stock-brokerage-platform",
+    "title": "Design a Complete Stock Brokerage Platform Like Zerodha",
+    "description": "A complete production-grade high-level design of a stock brokerage platform covering account opening, KYC, order management, risk checks, market data, trading terminal, portfolio, holdings, funds, ledger, corporate actions, alerts, analytics, and multi-market scale.",
+    "category": "Design",
+    "order": 5,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
+    "slug": "design-a-reddit-style-nested-infinite-comment-system",
+    "title": "Design a Reddit-Style Nested Infinite Comment System",
+    "description": "A complete production-grade system design for a Reddit-like nested infinite comment system, covering comment trees, infinite depth, sorting, pagination, voting, moderation, caching, search, real-time updates, sharding, and large-scale distributed design.",
+    "category": "Design",
+    "order": 6,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
+    "slug": "design-google-drive",
+    "title": "Design Google Drive",
+    "description": "A complete production-grade high-level design of a cloud file storage and collaboration platform like Google Drive, covering file ingestion, object storage, metadata, permissions, sharing, shared drives, version history, sync engines, offline access, search, previews, multi-region replication, and real-time collaboration at scale.",
+    "category": "Design",
+    "order": 7,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
+    "slug": "design-instagram",
+    "title": "Design a Complete Instagram-Like Social Media System",
+    "description": "A complete production-grade high-level design for an Instagram-like social media platform covering user profiles, follow graph, posts, stories, reels, feeds, explore, likes, comments, direct messages, notifications, search, media processing, ranking, caching, moderation, and multi-region scale.",
+    "category": "Design",
+    "order": 8,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
+    "slug": "design-netflix",
+    "title": "Design Netflix",
+    "description": "A complete production-grade high-level design of a global video streaming platform like Netflix, covering ingestion, transcoding, adaptive playback, Open Connect CDN delivery, recommendations, search, analytics, caching, microservices, multi-region resilience, security, and billion-scale traffic handling.",
+    "category": "Design",
+    "order": 9,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
+    "slug": "design-youtube",
+    "title": "Design YouTube",
+    "description": "A complete high-level design of a scalable YouTube-like video platform covering video upload, transcoding, streaming, CDN delivery, search, recommendations, comments, subscriptions, notifications, analytics, and multi-region scale.",
+    "category": "Design",
+    "order": 10,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
+    "slug": "design-a-realtime-gaming-leaderboard",
+    "title": "design-a-realtime-gaming-leaderboard",
+    "description": "",
+    "category": "General",
+    "order": 99,
+    "hasPractice": false,
+    "hasMindmap": false
+  },
+  {
     "slug": "introduction",
     "title": "Introduction to High Level Design (HLD)",
     "description": "A comprehensive introduction to High Level Design in software engineering, explaining its purpose, core components, architectural thinking, scalability concerns, and how large-scale distributed systems are designed.",

@@ -16,6 +16,7 @@ const CATEGORY_BADGE: Record<string, string> = {
   'Backend Design': 'bg-sky-100 text-sky-700',
   'SEO': 'bg-violet-100 text-violet-700',
   'Web Security': 'bg-amber-100 text-amber-700',
+  'Design': 'bg-rose-100 text-rose-700',
   General: 'bg-slate-100 text-slate-700',
 };
 

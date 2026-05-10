@@ -37,7 +37,7 @@
       content="CacheU is the fastest way to learn Low-Level Design, High-Level Design, Backend Architecture, and Web Security — with interactive mind-maps and practice quizzes."
     />
     <meta property="og:url" content="https://cacheu.dev" />
-    <meta property="og:image" content="https://cacheu.dev/og-default.png" />
+    <meta property="og:image" content="https://cacheu.dev/og-image.webp" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="CacheU — System Design Learning Platform" />
@@ -50,7 +50,7 @@
       name="twitter:description"
       content="Learn LLD, HLD, Backend Architecture, and Web Security with interactive mind-maps and quizzes."
     />
-    <meta name="twitter:image" content="https://cacheu.dev/og-default.png" />
+    <meta name="twitter:image" content="https://cacheu.dev/og-image.webp" />
 
     <!-- ── Preconnect for performance ───────────────────────────────── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -77,15 +77,6 @@
           "query-input": "required name=search_term_string"
         }
       }
-    </script>
-    <!-- ── Dark mode: apply before React hydrates to prevent flash ── -->
-    <script>
-      try {
-        var t = localStorage.getItem('theme');
-        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark');
-        }
-      } catch(e) {}
     </script>
   </head>
   <body>

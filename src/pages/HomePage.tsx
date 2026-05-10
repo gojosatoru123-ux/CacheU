@@ -51,6 +51,12 @@ const CATEGORY_CONFIG: Record<string, {
     icon: <Network className="w-6 h-6 text-white" />,
     border: 'border-sky-200', badgeBg: 'bg-sky-100', badgeText: 'text-sky-700',
   },
+  'Design': {
+    short: 'DES', color: '#0891b2', lightColor: '#e0f7fa',
+    gradient: 'from-cyan-600 to-teal-700', textAccent: 'text-cyan-200',
+    icon: <LayoutGrid className="w-6 h-6 text-white" />,
+    border: 'border-cyan-200', badgeBg: 'bg-cyan-100', badgeText: 'text-cyan-700',
+  }
 };
 
 const FALLBACK_CONFIG = {

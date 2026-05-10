@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'wouter';
 import { ArticleMeta, CATEGORIES, CATEGORY_ORDER } from '../lib/content';
-import { ChevronDown, ChevronRight, BookOpen, X, Menu, Zap, Code, LayoutGrid, Target, Network } from 'lucide-react';
+import { ChevronDown, ChevronRight, BookOpen, X, Menu, Zap, Code, LayoutGrid, Target, Network, LayersIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface SidebarProps {
@@ -15,6 +15,7 @@ const CATEGORY_COLORS: Record<string, { icon: string }> = {
   'Backend Design': { icon: 'bg-amber-100 text-amber-600' },
   'Web Security': { icon: 'bg-rose-100 text-rose-600' },
   'SEO': { icon: 'bg-green-100 text-green-600' },
+  'Design': { icon: 'bg-sky-100 text-sky-600' },
   General: { icon: 'bg-slate-100 text-slate-500' },
 };
 
@@ -24,6 +25,7 @@ const CATEGORY_ICONS: Record<string, React.ReactNode> = {
   'Backend Design': <Zap className="w-3.5 h-3.5" />,
   'Web Security': <Code className="w-3.5 h-3.5" />,
   'SEO': <Network className="w-3.5 h-3.5" />,
+  'Design': <LayersIcon className="w-3.5 h-3.5" />,
 };
 
 export function Sidebar({ className }: SidebarProps) {

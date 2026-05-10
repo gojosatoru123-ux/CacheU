@@ -28,6 +28,7 @@ export function Header() {
           { href: '/docs/introduction', label: 'HLD' },
           { href: '/docs/websec-cors', label: 'WEB Security' },
           { href: '/docs/backend-01-what-is-backend', label: 'Backend Design' },
+          { href: '/docs/design-a-chat-system', label: 'Design Series' },
         ].map(({ href, label }) => (
           <Link
             key={href}

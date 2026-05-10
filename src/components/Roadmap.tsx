@@ -12,6 +12,7 @@ const CATEGORY_CONFIG: Record<string, { short: string; color: string; gradient: 
   'Web Security':      { short: 'SEC', color: '#dc2626', gradient: 'from-rose-600 to-red-700' },
   'SEO':               { short: 'SEO', color: '#059669', gradient: 'from-emerald-600 to-green-700' },
   'Networking':        { short: 'NET', color: '#0284c7', gradient: 'from-sky-600 to-cyan-700' },
+  'Design':            { short: 'DSN', color: '#9333ea', gradient: 'from-purple-600 to-pink-700' },
   'General':           { short: 'GEN', color: '#6366f1', gradient: 'from-indigo-500 to-purple-600' },
 };
 

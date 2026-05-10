@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import {
   ArrowRight, Code, Network, Shield, Globe,
   Zap, Target, BookOpen, ChevronDown, LayoutGrid,
+  LayersIcon,
 } from 'lucide-react';
 import { MANIFEST, CATEGORIES, CATEGORY_ORDER } from '../lib/content';
 
@@ -18,6 +19,7 @@ const CATEGORY_CONFIG: Record<string, { color: string; gradient: string; icon: R
   'Backend Design':    { color: '#fbbf24', gradient: 'from-amber-400 to-orange-500',   icon: <Zap className="w-5 h-5" />,        accent: '#d97706' },
   'Web Security':      { color: '#f87171', gradient: 'from-rose-500 to-red-600',        icon: <Shield className="w-5 h-5" />,     accent: '#dc2626' },
   'SEO':               { color: '#4ade80', gradient: 'from-green-400 to-emerald-600',   icon: <Globe className="w-5 h-5" />,      accent: '#059669' },
+  'Design':            { color: '#f472b6', gradient: 'from-pink-400 to-rose-500',        icon: <LayersIcon className="w-5 h-5" />,   accent: '#ec4899' },
   'Networking':        { color: '#38bdf8', gradient: 'from-sky-400 to-cyan-500',        icon: <Network className="w-5 h-5" />,    accent: '#0284c7' },
 };
 const FALLBACK_CFG = { color: '#818cf8', gradient: 'from-indigo-400 to-purple-600', icon: <BookOpen className="w-5 h-5" />, accent: '#6366f1' };
