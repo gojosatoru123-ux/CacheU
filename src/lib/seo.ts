@@ -24,7 +24,7 @@ export const SITE = {
   twitterHandle: '@cacheu_dev',
   defaultDescription:
     'CacheU is the fastest way to learn Low-Level Design, High-Level Design, Backend Architecture, and Web Security — with interactive mind-maps and practice quizzes.',
-  defaultOgImage: 'https://cacheu.dev/og-default.png', // create a 1200×630 image
+  defaultOgImage: 'https://cacheu.dev/og-image.webp', // create a 1200×630 image
   themeColor: '#7c3aed', // violet-600
 } as const;
 
@@ -133,6 +133,7 @@ const CATEGORY_BREADCRUMB: Record<string, string> = {
   'High Level Design': 'HLD',
   'Backend Design': 'Backend',
   'Web Security': 'Security',
+  'Design': 'Design',
   SEO: 'SEO',
 };
 
