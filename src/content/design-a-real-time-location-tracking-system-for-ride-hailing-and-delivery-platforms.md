@@ -1031,7 +1031,7 @@ POST /tracking/location
 
 Request:
 
-```json id="loc_payload_01"
+```json
 {
   "entityId": "driver_123",
   "tripId": "trip_555",

@@ -350,7 +350,7 @@ Returns product details, images, price, stock status, seller info, delivery esti
 
 ### Response
 
-```json id="ecom-api-1"
+```json
 {
   "product_id": "p123",
   "title": "Wireless Noise-Cancelling Headphones",
@@ -380,7 +380,7 @@ Search results should be fast and ranked by relevance, price, availability, spon
 
 ### Request
 
-```json id="ecom-api-2"
+```json
 {
   "user_id": "u1",
   "sku_id": "sku_99",
@@ -396,7 +396,7 @@ Search results should be fast and ranked by relevance, price, availability, spon
 
 ### Request
 
-```json id="ecom-api-3"
+```json
 {
   "cart_id": "cart_123",
   "shipping_address_id": "addr_001",
@@ -409,7 +409,7 @@ Search results should be fast and ranked by relevance, price, availability, spon
 
 ### Response
 
-```json id="ecom-api-4"
+```json
 {
   "checkout_id": "co_123",
   "status": "pending_payment",

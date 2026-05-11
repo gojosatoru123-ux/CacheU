@@ -1,6 +1,6 @@
 [
   {
-    "slug": "backend-01-what-is-backend",
+    "slug": "what-is-backend",
     "title": "What is a Backend Server?",
     "description": "An intuitive and complete guide to understanding backend servers, their responsibilities, and why modern applications depend on them.",
     "category": "Backend Design",
@@ -9,7 +9,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-02-what-is-http",
+    "slug": "what-is-http",
     "title": "What is HTTP?",
     "description": "A complete beginner-to-advanced guide to HTTP, the core protocol powering communication between browsers and backend servers.",
     "category": "Backend Design",
@@ -18,7 +18,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-03-routing",
+    "slug": "backend-routing",
     "title": "Backend Routing",
     "description": "Complete beginner-to-advanced guide explaining how backend routing works and how requests reach the correct server logic.",
     "category": "Backend Design",
@@ -27,7 +27,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-04-serialization-deserialization",
+    "slug": "serialization-and-deserialization",
     "title": "Serialization & JSON Fundamentals",
     "description": "Understanding how applications communicate across different languages using serialization, deserialization, and JSON.",
     "category": "Backend Design",
@@ -36,7 +36,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-05-auth-authorize",
+    "slug": "authentication-and-authorization",
     "title": "Authentication & Authorization",
     "description": "A complete beginner-to-advanced guide to proving identity, controlling access, and building secure backend systems.",
     "category": "Backend Design",
@@ -45,7 +45,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-06-data-validation",
+    "slug": "data-validation",
     "title": "Data Validation in Backend Systems",
     "description": "A complete beginner-to-advanced guide to data validation, transformation, and protecting backend systems from bad input.",
     "category": "Backend Design",
@@ -54,7 +54,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-07-api-request",
+    "slug": "api-request",
     "title": "Request Lifecycle, Handler-Service-Repository, Middleware, and Context",
     "description": "A deep beginner-to-advanced guide explaining how API requests flow through a backend using handlers, services, repositories, middlewares, and request context.",
     "category": "Backend Design",
@@ -63,7 +63,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-08-rest",
+    "slug": "rest-api-and-architecture",
     "title": "REST Architecture and Roy Fielding’s 6 Constraints",
     "description": "A beginner-to-advanced guide to REST, its six architectural constraints, custom actions with POST, and design-first API thinking.",
     "category": "Backend Design",
@@ -72,7 +72,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-09-database-in-backend",
+    "slug": "database-in-backend",
     "title": "Persistence, Databases, and Postgres Data Types",
     "description": "A deep beginner-to-advanced guide to persistence, databases, DBMSs, Postgres data types, JSON storage, and choosing the right types for real backend systems.",
     "category": "Backend Design",
@@ -81,7 +81,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-10-caching",
+    "slug": "caching",
     "title": "Caching Explained",
     "description": "A deep beginner-to-advanced guide to caching, latency, cache strategies, eviction policies, and practical backend use cases.",
     "category": "Backend Design",
@@ -90,7 +90,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-11-background-task-queues",
+    "slug": "background-task-queues",
     "title": "Background Tasks and Task Queues",
     "description": "A deep beginner-to-advanced guide to background tasks, task queues, workers, retries, and building responsive backend applications.",
     "category": "Backend Design",
@@ -99,7 +99,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-12-elastic-search",
+    "slug": "elastic-search",
     "title": "Inverted Index and Super-Fast Search",
     "description": "A deep beginner-to-advanced guide to search performance, inverted indexes, relevance scoring, and why search engines outperform traditional database scans.",
     "category": "Backend Design",
@@ -108,7 +108,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-13-errors",
+    "slug": "errors",
     "title": "Backend Errors",
     "description": "Understanding backend error types, HTTP error codes, database failures, validation errors, external service failures, and configuration problems.",
     "category": "Backend Design",
@@ -117,7 +117,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-14-configuration",
+    "slug": "configuration-management",
     "title": "Configuration Management - The DNA of Your Application",
     "description": "A deep guide to configuration management in backend systems including environment variables, secrets management, feature flags, environment configuration, validation, and best practices for building secure and scalable applications.",
     "category": "Backend Design",
@@ -126,7 +126,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-15-log-monitor-observe",
+    "slug": "logging-monitoring-and-observability",
     "title": "A Beginner's Guide to Logging, Monitoring, and Observability",
     "description": "Logging, monitoring, and observability are three interconnected practices that allow engineers to understand what is happening inside software systems. Logging records detailed events and errors, monitoring tracks system health through metrics and alerts, and observability combines logs, metrics, and traces to diagnose complex issues and understand why failures occur.",
     "category": "Backend Design",
@@ -135,7 +135,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-16-graceful-shutdown",
+    "slug": "graceful-shutdown",
     "title": "Graceful Shutdown",
     "description": "Learn how backend servers shut down safely without losing data or interrupting active users by finishing ongoing work before terminating.",
     "category": "Backend Design",
@@ -144,7 +144,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-17-security",
+    "slug": "backend-security",
     "title": "Backend Security Fundamentals",
     "description": "A complete guide to backend security including injection attacks, password protection, authentication systems, and authorization vulnerabilities.",
     "category": "Backend Design",
@@ -153,7 +153,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-18-scaling-performance",
+    "slug": "backend-scaling-and-performance-engineering",
     "title": "Scaling and Performance Engineering",
     "description": "Deep dive into backend performance engineering, bottleneck detection, database optimization, and architectural scaling strategies.",
     "category": "Backend Design",
@@ -162,7 +162,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "backend-19-concurrency-parallelism",
+    "slug": "concurrency-and-parallelism",
     "title": "Concurrency and Parallelism",
     "description": "A deep conceptual guide explaining how backend systems handle multiple tasks using concurrency and parallelism, why most applications are I/O-bound, and the models used by modern runtimes.",
     "category": "Backend Design",
