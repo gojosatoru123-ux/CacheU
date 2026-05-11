@@ -1,3 +1,9 @@
+---
+title:  Distributed Messaging Queue
+articleSlug: distributed-messaging-queue
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-message-queue, asynchronous-systems, scalability
@@ -16,7 +22,7 @@ Architecture:
 
 ```text
 Producer → Queue → Consumer
-````
+```
 
 Benefits:
 
@@ -38,9 +44,6 @@ Message queues are foundational for resilient event-driven architectures.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: kafka, partitioning, distributed-systems
@@ -56,7 +59,7 @@ Architecture:
 
 ```text id="6m2xqc"
 Topic → Multiple Partitions
-````
+```
 
 Benefits:
 
@@ -83,9 +86,6 @@ Partitioning is the core scalability mechanism in distributed queues.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: ordering-guarantees, kafka, distributed-messaging
@@ -102,7 +102,7 @@ Problem:
 
 ```text
 Parallelism conflicts with strict global ordering
-````
+```
 
 Example:
 
@@ -128,9 +128,6 @@ Strict global ordering severely limits scalability.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: at-least-once-delivery, distributed-systems, reliability
@@ -149,7 +146,7 @@ At-least-once delivery guarantees:
 
 ```text
 Messages are never silently lost
-````
+```
 
 Tradeoff:
 
@@ -174,9 +171,6 @@ This is the most practical reliability model at scale.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: consumer-groups, kafka, scalability
@@ -190,7 +184,7 @@ Mechanism:
 
 ```text
 Partitions distributed among multiple consumers
-````
+```
 
 Benefits:
 
@@ -216,9 +210,6 @@ Consumer groups are central to scalable stream processing systems.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: dead-letter-queue, fault-tolerance, message-processing
@@ -237,7 +228,7 @@ Without DLQs:
 
 ```text
 Poison messages can block processing pipelines
-````
+```
 
 DLQ workflow:
 
@@ -257,9 +248,6 @@ DLQs are essential for reliable production-grade event pipelines.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: replication, durability, distributed-messaging
@@ -278,7 +266,7 @@ Architecture:
 
 ```text id="4v8qpd"
 Leader Broker → Follower Replicas
-````
+```
 
 Benefits:
 
@@ -299,9 +287,6 @@ Replication is foundational for durable distributed messaging infrastructure.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: backpressure, distributed-systems, asynchronous-processing
@@ -315,7 +300,7 @@ Problem:
 
 ```text
 Queue backlog grows indefinitely
-````
+```
 
 Consequences:
 
@@ -343,9 +328,6 @@ Backpressure management is essential for stable asynchronous systems.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: kafka-vs-rabbitmq, distributed-messaging, system-design
@@ -377,15 +359,12 @@ Example workloads:
 ```text id="1q8vza"
 Kafka → analytics pipelines
 RabbitMQ → background jobs
-````
+```
 
 Choice depends heavily on workload characteristics.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-message-queue, trade-offs, system-design
@@ -413,7 +392,7 @@ Example:
 
 ```text id="7v2xpd"
 Global ordering severely limits parallelism
-````
+```
 
 Architects must carefully choose:
 

@@ -1,3 +1,9 @@
+---
+title:  High Availability System
+articleSlug: high-availability-system
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: high-availability, distributed-systems, system-design
@@ -21,7 +27,7 @@ Goal:
 
 ```text
 System remains operational despite failures
-````
+```
 
 Techniques:
 
@@ -42,9 +48,6 @@ HA is foundational for mission-critical distributed architectures.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: redundancy, fault-tolerance, high-availability
@@ -58,7 +61,7 @@ Without redundancy:
 
 ```text
 Single component failure causes total outage
-````
+```
 
 Redundancy introduces duplicate resources.
 
@@ -86,9 +89,6 @@ Redundancy is the core principle behind High Availability systems.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: failover, distributed-systems, high-availability
@@ -107,7 +107,7 @@ Workflow:
 
 ```text id="6p1qxt"
 Primary Failure → Traffic Redirected → Backup System
-````
+```
 
 Benefits:
 
@@ -127,9 +127,6 @@ Automatic failover is essential for resilient distributed systems.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: single-point-of-failure, distributed-systems, reliability
@@ -141,7 +138,7 @@ A Single Point of Failure is:
 
 ```text
 One component whose failure breaks entire system
-````
+```
 
 Examples:
 
@@ -167,9 +164,6 @@ HA systems must aggressively remove SPOFs from critical paths.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: replication, databases, high-availability
@@ -183,7 +177,7 @@ Without replication:
 
 ```text
 Database failure causes application outage
-````
+```
 
 Replication maintains multiple copies of data.
 
@@ -211,9 +205,6 @@ Replication is foundational for highly available storage systems.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: load-balancing, scalability, high-availability
@@ -232,7 +223,7 @@ Workflow:
 
 ```text id="4q2xmc"
 Client Requests → Load Balancer → Healthy Instances
-````
+```
 
 Benefits:
 
@@ -252,9 +243,6 @@ Load balancing is essential for resilient distributed platforms.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: multi-region, disaster-recovery, high-availability
@@ -272,7 +260,7 @@ Single-region deployment risk:
 
 ```text
 Regional outage causes total platform downtime
-````
+```
 
 Multi-region architecture:
 
@@ -292,9 +280,6 @@ Multi-region deployment improves large-scale system survivability.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: consensus, distributed-systems, high-availability
@@ -316,7 +301,7 @@ Problem:
 
 ```text
 Strong consistency may reduce availability during partitions
-````
+```
 
 CAP Tradeoff:
 
@@ -335,9 +320,6 @@ HA design often balances consistency against availability guarantees.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, reliability-engineering, high-availability
@@ -355,7 +337,7 @@ Problem:
 
 ```text
 Hidden failures may silently degrade availability
-````
+```
 
 Key monitoring areas:
 
@@ -382,9 +364,6 @@ HA systems require strong operational visibility and monitoring.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: high-availability, trade-offs, system-design
@@ -415,7 +394,7 @@ Example:
 
 ```text id="7v2xpd"
 Multi-region replication improves uptime but increases consistency complexity
-````
+```
 
 HA architecture fundamentally balances:
 

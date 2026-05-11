@@ -45,7 +45,7 @@ The observer repeatedly checks whether something changed.
 ### Push
 The subject sends a notification only when something changes.
 
-```mermaid id="observer_polling_push_01"
+```mermaid
 flowchart LR
     A[Polling] --> B[Observer keeps asking]
     B --> C[Is there an update?]
@@ -100,7 +100,7 @@ There are two key roles:
 | Subject  | The object being watched        | YouTube channel |
 | Observer | The object watching the subject | Subscribers     |
 
-```mermaid id="observer_roles_01"
+```mermaid
 classDiagram
     class Subject {
         <<interface>>
@@ -213,7 +213,7 @@ It may:
 
 # Observer workflow
 
-```mermaid id="observer_flow_01"
+```mermaid
 flowchart TD
     A[Observer subscribes] --> B[Subject stores observer]
     B --> C[Subject state changes]
@@ -245,7 +245,7 @@ When a new video is published, each user is notified.
 
 # Sequence diagram
 
-```mermaid id="observer_sequence_01"
+```mermaid
 sequenceDiagram
     actor Creator
     participant Channel
@@ -278,7 +278,7 @@ This keeps the notification lightweight.
 
 # Observer structure
 
-```mermaid id="observer_structure_01"
+```mermaid
 classDiagram
     class Subject {
         <<interface>>
@@ -342,7 +342,7 @@ The system may have:
 
 When the price changes, all observers are notified.
 
-```mermaid id="observer_stock_01"
+```mermaid
 flowchart TD
     A[Stock Price Update] --> B[Stock Subject]
     B --> C[Dashboard 1]
@@ -649,7 +649,7 @@ Each observer reacts to the update.
 
 # A more detailed Observer diagram
 
-```mermaid id="observer_detailed_01"
+```mermaid
 classDiagram
     class YouTubeChannel {
         -List observers

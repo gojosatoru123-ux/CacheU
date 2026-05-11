@@ -38,7 +38,7 @@ Example flow:
 
 ```text
 Frontend → Backend → Database
-````
+```
 
 Popular backend technologies:
 
@@ -54,9 +54,6 @@ Backend systems power the core functionality of modern applications.
 
 <!-- END -->
 
-````
-
-```md id="3m7xpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: client-server, backend, networking
@@ -73,7 +70,7 @@ Example:
 
 ```text
 Browser → Server → Database
-````
+```
 
 Components:
 
@@ -115,9 +112,6 @@ Most web applications use client-server architecture.
 
 <!-- END -->
 
-````
-
-```md id="5q1vke"
 <!-- QUESTION -->
 difficulty: Easy
 tags: backend, frontend, fullstack
@@ -158,15 +152,12 @@ Displays product page
 
 Backend:
 Fetches product data from database
-````
+```
 
 Together they form a complete web application.
 
 <!-- END -->
 
-````
-
-```md id="1n8qwr"
 <!-- QUESTION -->
 difficulty: Easy
 tags: api, backend, http
@@ -182,7 +173,7 @@ Example endpoint:
 
 ```http
 GET /api/users
-````
+```
 
 Example response:
 
@@ -214,9 +205,6 @@ APIs are the communication layer between frontend and backend systems.
 
 <!-- END -->
 
-````
-
-```md id="9k4xmc"
 <!-- QUESTION -->
 difficulty: Medium
 tags: database, backend, persistence
@@ -241,7 +229,7 @@ Example:
 
 ```text
 User Signup → Backend → Database
-````
+```
 
 Database categories:
 
@@ -268,9 +256,6 @@ Databases are a core part of backend infrastructure.
 
 <!-- END -->
 
-````
-
-```md id="6w2tza"
 <!-- QUESTION -->
 difficulty: Medium
 tags: stateless, backend, scalability
@@ -286,7 +271,7 @@ Example:
 
 ```http
 Authorization: Bearer <token>
-````
+```
 
 Characteristics:
 
@@ -319,9 +304,6 @@ Stateless systems scale more efficiently in cloud environments.
 
 <!-- END -->
 
-````
-
-```md id="4p7vxy"
 <!-- QUESTION -->
 difficulty: Medium
 tags: backend, authentication, authorization
@@ -355,7 +337,7 @@ User proves identity using password
 
 Authorization:
 User allowed to access admin panel
-````
+```
 
 Common authentication methods:
 
@@ -374,9 +356,6 @@ Both are essential backend security concepts.
 
 <!-- END -->
 
-````
-
-```md id="7m3qde"
 <!-- QUESTION -->
 difficulty: Medium
 tags: load-balancer, backend, scalability
@@ -394,7 +373,7 @@ Clients
 Load Balancer
  ↓   ↓   ↓
 S1  S2  S3
-````
+```
 
 Responsibilities:
 
@@ -429,9 +408,6 @@ Load balancers are essential in scalable backend systems.
 
 <!-- END -->
 
-````
-
-```md id="2x9kpa"
 <!-- QUESTION -->
 difficulty: Hard
 tags: monolith, microservices, backend-architecture
@@ -459,7 +435,7 @@ Single Application
  ├── Auth
  ├── Payments
  └── Orders
-````
+```
 
 Microservices example:
 
@@ -486,9 +462,6 @@ Large-scale systems commonly adopt microservices architectures.
 
 <!-- END -->
 
-````
-
-```md id="5v8qzt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: caching, backend, performance
@@ -507,7 +480,7 @@ Example flow:
 
 ```text
 Request → Cache → Database
-````
+```
 
 If data exists in cache:
 

@@ -1,6 +1,6 @@
 ---
 title: Iterator Design Pattern
-articleSlug: iterator-design-pattern
+articleSlug: lld-iterator-design-pattern
 ---
 
 # Iterator Design Pattern

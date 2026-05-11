@@ -15,7 +15,7 @@ Concurrency means:
 
 ```text
 Multiple tasks make progress during overlapping time periods
-````
+```
 
 Parallelism means:
 
@@ -45,9 +45,6 @@ They solve different performance and resource utilization problems.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: multithreading, concurrency, operating-systems
@@ -64,7 +61,7 @@ Problem:
 
 ```text
 CPU remains idle during blocking operations
-````
+```
 
 Concurrency enables:
 
@@ -90,9 +87,6 @@ Concurrency primarily optimizes waiting and coordination efficiency.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: parallelism, cpu-bound, backend-performance
@@ -110,7 +104,7 @@ Problem:
 
 ```text
 Single-threaded execution underutilizes multi-core hardware
-````
+```
 
 Parallelism distributes computation across cores.
 
@@ -132,9 +126,6 @@ Parallelism is essential for compute-intensive backend systems.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: race-conditions, concurrency, backend-systems
@@ -151,7 +142,7 @@ Problem:
 
 ```text
 Execution order becomes unpredictable
-````
+```
 
 Example:
 
@@ -177,9 +168,6 @@ Concurrency introduces coordination complexity due to shared state.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: deadlocks, concurrency-control, backend-systems
@@ -193,7 +181,7 @@ Problem:
 
 ```text
 Circular waiting prevents forward progress
-````
+```
 
 Example:
 
@@ -219,9 +207,6 @@ Deadlocks are one of the hardest concurrency failure modes.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: async-programming, concurrency, backend-architecture
@@ -238,7 +223,7 @@ Problem:
 
 ```text
 Massive concurrency with threads becomes resource expensive
-````
+```
 
 Async models use:
 
@@ -270,9 +255,6 @@ Async concurrency is optimized for I/O-heavy backend workloads.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-systems, concurrency, parallelism
@@ -290,7 +272,7 @@ Problem:
 
 ```text
 Coordinating concurrent operations becomes significantly harder across machines
-````
+```
 
 Examples:
 
@@ -316,9 +298,6 @@ Distributed environments magnify concurrency complexity dramatically.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: context-switching, operating-systems, concurrency
@@ -335,7 +314,7 @@ Problem:
 
 ```text
 Too many concurrent tasks create coordination overhead
-````
+```
 
 Consequences:
 
@@ -360,9 +339,6 @@ Concurrency improves scalability only when properly controlled.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, concurrency, backend-performance
@@ -379,7 +355,7 @@ Problem:
 
 ```text
 Race conditions and deadlocks may appear intermittently
-````
+```
 
 Key observability areas:
 
@@ -406,9 +382,6 @@ Concurrent systems require deep runtime observability.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: concurrency, parallelism, trade-offs, backend-systems
@@ -446,7 +419,7 @@ Example:
 
 ```text id="7v2xpd"
 Async concurrency scales web servers efficiently but complicates debugging and control flow
-````
+```
 
 Backend systems fundamentally balance:
 
@@ -456,6 +429,3 @@ Backend systems fundamentally balance:
 * hardware utilization
 
 <!-- END -->
-
-```
-```

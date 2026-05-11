@@ -50,7 +50,7 @@ Example:
 
 When both are mixed together, the code becomes messy.
 
-```mermaid id="factory_problem_01"
+```mermaid
 flowchart TD
     A[Business Logic] --> B[Object Creation Logic]
     B --> C[if/else or switch]
@@ -102,7 +102,7 @@ The Factory family of patterns is about this simple idea:
 
 The term “Factory Pattern” is often used broadly. In practice, it refers to a family of related patterns.
 
-```mermaid id="factory_family_01"
+```mermaid
 flowchart TD
     A[Factory Family] --> B[Simple Factory]
     A --> C[Factory Method]
@@ -183,7 +183,7 @@ If a new channel is added, this class must be modified.
 
 ## Simple Factory diagram
 
-```mermaid id="simple_factory_diagram_01"
+```mermaid
 classDiagram
     class NotificationFactory {
         +createNotification(type)
@@ -363,7 +363,7 @@ This means:
 
 ## Factory Method structure
 
-```mermaid id="factory_method_diagram_01"
+```mermaid
 classDiagram
     class Creator {
         +createProduct()
@@ -615,7 +615,7 @@ The products within a family should be compatible.
 
 ## Abstract Factory structure
 
-```mermaid id="abstract_factory_diagram_01"
+```mermaid
 classDiagram
     class MealFactory {
         <<interface>>
@@ -916,7 +916,7 @@ This ensures consistency.
 
 ## Visual comparison
 
-```mermaid id="factory_comparison_01"
+```mermaid
 flowchart TD
     A[Factory Family] --> B[Simple Factory]
     A --> C[Factory Method]
@@ -984,7 +984,7 @@ A payment strategy decides:
 
 ## Intent diagram
 
-```mermaid id="factory_vs_strategy_01"
+```mermaid
 flowchart LR
     A[Factory] --> B[Creates Objects]
     C[Strategy] --> D[Chooses Behavior]
@@ -1069,7 +1069,7 @@ Factory Pattern is used in many places:
 
 ## Example: Notification factory flow
 
-```mermaid id="notification_flow_01"
+```mermaid
 flowchart TD
     A[Client requests notification] --> B[Notification Factory]
     B --> C{Type?}

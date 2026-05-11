@@ -1,6 +1,6 @@
 ---
 title: Introduction to Low Level Design
-articleSlug: introduction-to-low-level-design
+articleSlug: lld-introduction
 ---
 
 # Introduction to Low Level Design

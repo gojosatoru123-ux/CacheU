@@ -1,6 +1,6 @@
 ---
 title: Singleton Design Pattern
-articleSlug: singleton-design-pattern
+articleSlug: lld-singleton-design-pattern
 ---
 
 # Singleton Design Pattern

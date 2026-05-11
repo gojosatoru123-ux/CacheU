@@ -78,7 +78,7 @@ This guide focuses on developmental and architectural issues.
 
 # Mind Map
 
-```mermaid id="anti_pattern_mindmap_01"
+```mermaid
 mindmap
   root((Anti-Patterns))
     Spaghetti Code
@@ -142,7 +142,7 @@ That makes the code extremely hard to manage.
 
 ## Spaghetti Code diagram
 
-```mermaid id="spaghetti_code_01"
+```mermaid
 flowchart TD
     A[Main Function] --> B[Validation]
     B --> C[Login]
@@ -216,7 +216,7 @@ This is a classic God Object smell.
 
 ## God Object diagram
 
-```mermaid id="god_object_01"
+```mermaid
 flowchart TD
     A[God Object] --> B[User Profiles]
     A --> C[Payments]
@@ -282,7 +282,7 @@ If even one place is missed, the system becomes inconsistent.
 
 ## Hard Coding diagram
 
-```mermaid id="hard_coding_01"
+```mermaid
 flowchart LR
     A[Source Code] --> B[Fixed Value 1]
     A --> C[Fixed Value 2]
@@ -341,7 +341,7 @@ Now every password policy change requires editing three locations.
 
 ## DRY violation diagram
 
-```mermaid id="dry_violation_01"
+```mermaid
 flowchart TD
     A[Password Validation Logic] --> B[Sign Up]
     A --> C[Login]
@@ -407,7 +407,7 @@ That is too much.
 
 ## Gold plating diagram
 
-```mermaid id="gold_plating_01"
+```mermaid
 flowchart TD
     A[Simple Problem] --> B[Overly Complex Solution]
     B --> C[Extra Features]
@@ -540,7 +540,7 @@ This lets the client treat real and null objects the same way.
 
 ## Null Object Pattern concept
 
-```mermaid id="null_object_01"
+```mermaid
 flowchart TD
     A[Client Request] --> B{Real Object Available?}
     B -->|Yes| C[Return Real Object]
@@ -801,7 +801,7 @@ service2.make_payment(1000)
 
 # Null Object in UML
 
-```mermaid id="null_object_uml_01"
+```mermaid
 classDiagram
     class Logger {
         <<interface>>

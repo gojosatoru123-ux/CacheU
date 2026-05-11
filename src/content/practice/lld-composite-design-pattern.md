@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Composite Design Pattern
+articleSlug: lld-composite-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: composite-pattern, lld, design-patterns
@@ -16,7 +21,7 @@ Architecture:
 Component
  ├── Leaf
  └── Composite
-````
+```
 
 Purpose:
 
@@ -36,9 +41,6 @@ The Composite Pattern is a structural design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: tree-structures, composite-pattern, lld
@@ -60,7 +62,7 @@ Example:
 Folder
  ├── File
  └── Subfolder
-````
+```
 
 Benefits:
 
@@ -74,9 +76,6 @@ Composite is ideal for parent-child object relationships.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: composite-pattern, components, lld
@@ -105,15 +104,12 @@ Component
  └── Composite
       ├── Leaf
       └── Leaf
-````
+```
 
 The Composite recursively contains child components.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: file-system, composite-pattern, lld
@@ -131,7 +127,7 @@ Root Folder
  │    ├── file1.txt
  │    └── file2.txt
  └── Images
-````
+```
 
 Mapping:
 
@@ -152,9 +148,6 @@ File explorers commonly use the Composite Pattern internally.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: ui-components, composite-pattern, frontend-architecture
@@ -171,7 +164,7 @@ Window
  ├── Panel
  │    ├── Button
  │    └── TextField
-````
+```
 
 Benefits:
 
@@ -191,9 +184,6 @@ Modern frontend and desktop UI frameworks heavily use Composite structures.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: composite-vs-decorator, design-patterns, lld
@@ -217,7 +207,7 @@ Example Composite:
 
 ```text id="4q2xmc"
 Folder contains files
-````
+```
 
 Example Decorator:
 
@@ -229,9 +219,6 @@ Both patterns use recursive composition but solve different design problems.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: recursive-processing, composite-pattern, algorithms
@@ -245,7 +232,7 @@ Example operation:
 
 ```text id="4v8qpd"
 calculateSize()
-````
+```
 
 Recursive traversal:
 
@@ -271,9 +258,6 @@ Composite naturally supports recursive algorithms.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: composite-pattern, organizational-structures, lld
@@ -290,7 +274,7 @@ CEO
  ├── Engineering Manager
  │    ├── Developer A
  │    └── Developer B
-````
+```
 
 Mapping:
 
@@ -311,9 +295,6 @@ HR and enterprise management systems commonly use Composite structures.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: transparency-vs-safety, composite-pattern, software-design
@@ -337,7 +318,7 @@ Example:
 
 ```text id="1q8vza"
 Leaf.addChild()
-````
+```
 
 may throw errors in transparent implementations.
 
@@ -352,9 +333,6 @@ Design choice depends on system requirements.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: composite-pattern, trade-offs, software-design
@@ -384,7 +362,7 @@ Example:
 
 ```text id="7v2xpd"
 Component interface shared by both leaves and composites
-````
+```
 
 Composite works best in systems with:
 

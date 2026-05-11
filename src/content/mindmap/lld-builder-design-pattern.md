@@ -1,6 +1,6 @@
 ---
 title: Builder Design Pattern
-articleSlug: builder-design-pattern
+articleSlug: lld-builder-design-pattern
 ---
 
 # Builder Design Pattern

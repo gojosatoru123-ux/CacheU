@@ -23,7 +23,7 @@ Example CSP header:
 
 ```http
 Content-Security-Policy: default-src 'self';
-````
+```
 
 This means:
 
@@ -50,9 +50,6 @@ CSP adds an additional browser-enforced security layer against client-side attac
 
 <!-- END -->
 
-````id="w7e5rm"
-
-```md id="6f2xpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: csp, xss, browser-security
@@ -66,7 +63,7 @@ Example policy:
 
 ```http
 Content-Security-Policy: script-src 'self';
-````
+```
 
 This allows JavaScript only from:
 
@@ -102,9 +99,6 @@ Even if user input is injected into the page, CSP may stop the browser from exec
 
 <!-- END -->
 
-````id="k1z7ty"
-
-```md id="9q4lvc"
 <!-- QUESTION -->
 difficulty: Medium
 tags: csp, directives, http-headers
@@ -133,7 +127,7 @@ Content-Security-Policy:
 default-src 'self';
 script-src 'self' https://cdn.example.com;
 img-src 'self' data:;
-````
+```
 
 Explanation:
 
@@ -147,9 +141,6 @@ CSP directives allow fine-grained browser security control over resource loading
 
 <!-- END -->
 
-````id="p8b4dn"
-
-```md id="2m7xqa"
 <!-- QUESTION -->
 difficulty: Medium
 tags: csp, nonce, inline-scripts
@@ -163,7 +154,7 @@ Example policy:
 
 ```http
 Content-Security-Policy: script-src 'self' 'nonce-a1b2c3';
-````
+```
 
 HTML:
 
@@ -196,9 +187,6 @@ Reusing predictable nonces weakens security.
 
 <!-- END -->
 
-````id="d0w2pl"
-
-```md id="7v1mce"
 <!-- QUESTION -->
 difficulty: Medium
 tags: csp, unsafe-inline, security-misconfiguration
@@ -210,7 +198,7 @@ The following CSP directive is dangerous:
 
 ```http
 script-src 'unsafe-inline';
-````
+```
 
 It allows inline JavaScript execution:
 
@@ -249,9 +237,6 @@ Best practice:
 
 <!-- END -->
 
-````id="x3n9rw"
-
-```md id="5c8qzt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: csp, report-uri, monitoring
@@ -267,7 +252,7 @@ Example policy:
 Content-Security-Policy:
 default-src 'self';
 report-uri /csp-report;
-````
+```
 
 If the browser blocks a resource, it sends a violation report:
 
@@ -305,9 +290,6 @@ CSP reporting helps security teams detect and analyze client-side attack attempt
 
 <!-- END -->
 
-````id="n5v8kd"
-
-```md id="8p2lxy"
 <!-- QUESTION -->
 difficulty: Hard
 tags: csp, strict-dynamic, advanced-security
@@ -322,7 +304,7 @@ Example policy:
 ```http
 Content-Security-Policy:
 script-src 'nonce-a1b2c3' 'strict-dynamic';
-````
+```
 
 Behavior:
 

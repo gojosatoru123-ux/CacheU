@@ -122,7 +122,7 @@ The same operation may behave differently depending on the current state.
 
 # State Machine Diagram
 
-```mermaid id="state_vending_01"
+```mermaid
 stateDiagram-v2
     [*] --> NoCoinState
     NoCoinState --> HasCoinState: insertCoin()
@@ -151,7 +151,7 @@ stateDiagram-v2
 
 # UML Diagram
 
-```mermaid id="state_uml_01"
+```mermaid
 classDiagram
     class State {
         <<interface>>
@@ -303,7 +303,7 @@ The vending machine may support:
 
 # Visual Flow
 
-```mermaid id="state_flow_01"
+```mermaid
 flowchart TD
     A[NoCoinState] -->|insertCoin()| B[HasCoinState]
     B -->|selectItem()| C[DispenseState]
@@ -356,7 +356,7 @@ CurrentState -> decides behavior
 
 # State Diagram: Vending Machine
 
-```mermaid id="state_vending_flow_01"
+```mermaid
 stateDiagram-v2
     [*] --> NoCoinState
     NoCoinState --> HasCoinState: insertCoin()
@@ -461,7 +461,7 @@ The pattern usually contains:
 
 # Sequence Diagram
 
-```mermaid id="state_sequence_01"
+```mermaid
 sequenceDiagram
     actor User
     participant VM as VendingMachine
@@ -1175,7 +1175,7 @@ This gives us a proper state machine.
 
 # Example: Order state machine
 
-```mermaid id="state_order_01"
+```mermaid
 stateDiagram-v2
     [*] --> Placed
     Placed --> Packed
@@ -1188,7 +1188,7 @@ stateDiagram-v2
 
 # Example: Media player states
 
-```mermaid id="state_media_01"
+```mermaid
 stateDiagram-v2
     [*] --> Stopped
     Stopped --> Playing: play()

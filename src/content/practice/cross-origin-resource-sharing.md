@@ -25,7 +25,7 @@ Example:
 
 ```text
 https://app.example.com
-````
+```
 
 is different from:
 
@@ -62,9 +62,6 @@ CORS exists to:
 
 <!-- END -->
 
-````
-
-```md id="4m7kzp"
 <!-- QUESTION -->
 difficulty: Easy
 tags: cors, same-origin-policy, browser-security
@@ -99,7 +96,7 @@ Example blocked request:
 
 ```js
 fetch('https://bank.com/account')
-````
+```
 
 from:
 
@@ -113,9 +110,6 @@ CORS selectively relaxes SOP restrictions.
 
 <!-- END -->
 
-````
-
-```md id="7v1pde"
 <!-- QUESTION -->
 difficulty: Medium
 tags: cors, preflight-request, options-method
@@ -134,7 +128,7 @@ OPTIONS /api/data
 Origin: https://frontend.com
 Access-Control-Request-Method: POST
 Access-Control-Request-Headers: Authorization
-````
+```
 
 Server response:
 
@@ -156,9 +150,6 @@ Preflight requests improve security by verifying permissions before sensitive re
 
 <!-- END -->
 
-````
-
-```md id="2x9qfr"
 <!-- QUESTION -->
 difficulty: Medium
 tags: cors, credentials, cookies
@@ -170,7 +161,7 @@ Browsers block credentialed cross-origin requests when:
 
 ```http
 Access-Control-Allow-Origin: *
-````
+```
 
 is used together with:
 
@@ -212,9 +203,6 @@ Browsers enforce this rule for security reasons.
 
 <!-- END -->
 
-````
-
-```md id="6j5ltc"
 <!-- QUESTION -->
 difficulty: Medium
 tags: cors, response-headers, api-security
@@ -242,7 +230,7 @@ Access-Control-Allow-Origin: https://frontend.com
 Access-Control-Allow-Methods: GET, POST
 Access-Control-Allow-Headers: Authorization
 Access-Control-Allow-Credentials: true
-````
+```
 
 Explanation:
 
@@ -261,9 +249,6 @@ Without correct headers:
 
 <!-- END -->
 
-````
-
-```md id="1h8mvy"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cors, security-misconfiguration, api-security
@@ -275,7 +260,7 @@ Some servers dynamically reflect the incoming Origin header:
 
 ```http
 Origin: https://evil.com
-````
+```
 
 Server response:
 
@@ -326,9 +311,6 @@ Only trusted origins should receive CORS permissions.
 
 <!-- END -->
 
-````
-
-```md id="9n4wzb"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cors, csrf, browser-security
@@ -351,7 +333,7 @@ Important distinction:
 
 ```text
 CORS does NOT prevent requests.
-````
+```
 
 It only prevents JavaScript from reading responses.
 

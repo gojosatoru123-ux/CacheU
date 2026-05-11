@@ -1,3 +1,9 @@
+---
+title:  Change Data Capture
+articleSlug: change-data-capture
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: change-data-capture, cdc, distributed-systems
@@ -22,7 +28,7 @@ Architecture:
 
 ```text
 Database Transaction Log → CDC Pipeline → Downstream Systems
-````
+```
 
 Benefits:
 
@@ -36,9 +42,6 @@ CDC enables reliable data propagation across distributed architectures.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: transaction-logs, wal, database-internals
@@ -62,7 +65,7 @@ Workflow:
 
 ```text id="6m2xqc"
 Database Write → WAL/Binlog Entry → CDC Stream
-````
+```
 
 Benefits:
 
@@ -82,9 +85,6 @@ CDC leverages native database replication infrastructure efficiently.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: eventual-consistency, cdc, distributed-systems
@@ -98,7 +98,7 @@ Workflow:
 
 ```text id="6p1qxt"
 Database Commit → CDC Processing → Downstream Synchronization
-````
+```
 
 Problem:
 
@@ -129,9 +129,6 @@ CDC prioritizes scalability and decoupling over immediate consistency.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: dual-write-problem, cdc, reliability
@@ -151,7 +148,7 @@ Problem:
 
 ```text
 One write may succeed while another fails
-````
+```
 
 CDC approach:
 
@@ -177,9 +174,6 @@ CDC is widely used for reliable event-driven synchronization.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: event-ordering, cdc, distributed-systems
@@ -193,7 +187,7 @@ Problem:
 
 ```text
 Out-of-order CDC events may corrupt downstream state
-````
+```
 
 Example:
 
@@ -221,9 +215,6 @@ Ordering guarantees are critical for CDC correctness.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: schema-evolution, cdc, distributed-systems
@@ -237,7 +228,7 @@ Problem:
 
 ```text
 Schema changes may break dependent systems
-````
+```
 
 Examples:
 
@@ -269,9 +260,6 @@ CDC architectures require careful schema governance.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: replayability, event-streaming, cdc
@@ -291,7 +279,7 @@ Workflow:
 
 ```text id="4v8qpd"
 Historical CDC Stream → Reprocessed Consumers
-````
+```
 
 Benefits:
 
@@ -311,9 +299,6 @@ Replayability significantly improves operational resilience.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cdc-failures, observability, distributed-systems
@@ -331,7 +316,7 @@ Problem:
 
 ```text
 Silent CDC failures may create stale downstream systems
-````
+```
 
 Key monitoring areas:
 
@@ -358,9 +343,6 @@ CDC systems require strong monitoring and operational visibility.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: scalability, event-streaming, cdc
@@ -379,7 +361,7 @@ Architecture:
 
 ```text id="1q8vza"
 Transaction Log → Partitioned CDC Stream → Distributed Consumers
-````
+```
 
 Advantages:
 
@@ -399,9 +381,6 @@ CDC aligns naturally with scalable event-driven architectures.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: change-data-capture, trade-offs, system-design
@@ -432,7 +411,7 @@ Example:
 
 ```text id="7v2xpd"
 CDC improves scalability but requires careful replay and schema management
-````
+```
 
 CDC architecture fundamentally balances:
 

@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Momento Design Pattern
+articleSlug: lld-momento-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: memento-pattern, lld, design-patterns
@@ -12,7 +17,7 @@ Purpose:
 
 ```text id="4m8qza"
 Save and restore object state
-````
+```
 
 Architecture:
 
@@ -32,9 +37,6 @@ The Memento Pattern is a behavioral design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: undo-redo, memento-pattern, lld
@@ -48,7 +50,7 @@ Without Memento:
 
 ```text id="6m2xqc"
 Manual state tracking becomes complex
-````
+```
 
 Problems:
 
@@ -74,9 +76,6 @@ Memento simplifies historical state management.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: memento-pattern, components, lld
@@ -102,7 +101,7 @@ Architecture:
 ```text
 Caretaker → Memento
 Originator ↔ Memento
-````
+```
 
 Example:
 
@@ -114,9 +113,6 @@ The caretaker never modifies internal snapshot data directly.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: text-editor, memento-pattern, lld
@@ -133,7 +129,7 @@ Example workflow:
 
 ```text id="5m2xqc"
 Type text → Save snapshot → Undo changes
-````
+```
 
 Architecture:
 
@@ -153,9 +149,6 @@ Applications like IDEs and document editors heavily use Memento.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: snapshot-management, memento-pattern, software-design
@@ -172,7 +165,7 @@ Document state:
 - content
 - cursor position
 - formatting
-````
+```
 
 Best practice:
 
@@ -192,9 +185,6 @@ Mementos should avoid exposing implementation details externally.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: memento-vs-command, design-patterns, lld
@@ -218,7 +208,7 @@ Example Memento:
 
 ```text id="4q2xmc"
 Save document snapshot
-````
+```
 
 Example Command:
 
@@ -230,9 +220,6 @@ Undo systems may combine both patterns together.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: memory-management, memento-pattern, performance
@@ -246,7 +233,7 @@ Example problem:
 
 ```text id="4v8qpd"
 Saving entire document state after every keystroke
-````
+```
 
 Potential issues:
 
@@ -272,9 +259,6 @@ Efficient snapshot management is critical in large systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: transactional-systems, memento-pattern, backend-systems
@@ -288,7 +272,7 @@ Example:
 
 ```text id="6m3qpd"
 Database transaction rollback
-````
+```
 
 Workflow:
 
@@ -312,9 +296,6 @@ Memento concepts are widely used in:
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: encapsulation, memento-pattern, software-design
@@ -328,7 +309,7 @@ Without Memento:
 
 ```text id="1q8vza"
 External systems directly modify object internals
-````
+```
 
 With Memento:
 
@@ -348,9 +329,6 @@ The caretaker only stores snapshots and cannot modify internal data directly.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: memento-pattern, trade-offs, software-design
@@ -380,7 +358,7 @@ Example:
 
 ```text id="7v2xpd"
 Large object snapshots stored repeatedly
-````
+```
 
 Memento works best when:
 

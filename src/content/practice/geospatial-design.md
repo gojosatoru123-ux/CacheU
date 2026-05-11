@@ -1,3 +1,9 @@
+---
+title: Geospatial Design
+articleSlug: geospatial-design
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: geospatial-systems, distributed-systems, scalability
@@ -20,7 +26,7 @@ Problem:
 
 ```text
 Spatial queries require multidimensional indexing and distance computation
-````
+```
 
 Examples:
 
@@ -39,9 +45,6 @@ Geospatial systems require specialized indexing and partitioning strategies.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: geohashing, spatial-indexing, geospatial-systems
@@ -55,7 +58,7 @@ Problem:
 
 ```text
 Raw coordinate comparisons are computationally expensive at scale
-````
+```
 
 Geohashing enables:
 
@@ -81,9 +84,6 @@ Geohashing is widely used for scalable location-based querying.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: spatial-indexes, database-indexing, geospatial-systems
@@ -100,7 +100,7 @@ Problem:
 
 ```text
 Spatial queries involve multidimensional relationships
-````
+```
 
 Examples:
 
@@ -132,9 +132,6 @@ Geospatial systems require multidimensional indexing strategies.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: proximity-search, geospatial-systems, scalability
@@ -151,7 +148,7 @@ Problem:
 
 ```text
 Computing distance against millions of points is expensive
-````
+```
 
 Example:
 
@@ -177,9 +174,6 @@ Efficient proximity search is central to scalable geospatial architectures.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: real-time-location-tracking, distributed-systems, geospatial
@@ -201,7 +195,7 @@ Problem:
 
 ```text
 Millions of devices continuously update locations
-````
+```
 
 Challenges:
 
@@ -227,9 +221,6 @@ Real-time spatial updates create extreme scalability challenges.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: geofencing, event-driven-systems, geospatial
@@ -243,7 +234,7 @@ Problem:
 
 ```text
 Continuous location evaluation required against many polygons
-````
+```
 
 Examples:
 
@@ -275,9 +266,6 @@ Geofencing becomes computationally intensive at large scale.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: map-tiling, cdn, geospatial-systems
@@ -294,7 +282,7 @@ Problem:
 
 ```text
 Rendering entire maps dynamically is computationally expensive
-````
+```
 
 Tile-based architecture divides maps into smaller reusable regions.
 
@@ -322,9 +310,6 @@ Map tiling is foundational for scalable map rendering systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: partitioning, sharding, geospatial-systems
@@ -342,7 +327,7 @@ Problem:
 
 ```text
 Hotspot regions may overload specific partitions
-````
+```
 
 Example:
 
@@ -368,9 +353,6 @@ Geospatial workloads create highly uneven scaling patterns.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, geospatial-systems, distributed-systems
@@ -388,7 +370,7 @@ Problem:
 
 ```text
 Spatial bottlenecks may emerge regionally or dynamically
-````
+```
 
 Key monitoring areas:
 
@@ -415,9 +397,6 @@ Geospatial systems require strong spatial observability and monitoring.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: geospatial-systems, trade-offs, system-design
@@ -452,7 +431,7 @@ Example:
 
 ```text id="7v2xpd"
 Real-time driver tracking improves responsiveness but increases indexing overhead
-````
+```
 
 Geospatial architecture fundamentally balances:
 

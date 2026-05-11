@@ -1,6 +1,6 @@
 ---
 title: Domain Name System
-articleSlug: domain-name-system
+articleSlug: dns
 ---
 
 # Domain Name System

@@ -1,3 +1,9 @@
+---
+title:  Proxy and Reverse Proxy
+articleSlug: proxy-and-reverse-proxy
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: proxy, reverse-proxy, networking
@@ -32,15 +38,12 @@ Client → Proxy → External Server
 
 Reverse Proxy:
 Client → Reverse Proxy → Backend
-````
+```
 
 They solve entirely different infrastructure problems.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: reverse-proxy, load-balancing, scalability
@@ -68,7 +71,7 @@ Architecture:
 
 ```text id="6m2xqc"
 Client → Reverse Proxy → Backend Cluster
-````
+```
 
 Benefits:
 
@@ -80,9 +83,6 @@ Reverse proxies are foundational in scalable web architectures.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: forward-proxy, security, enterprise-networks
@@ -105,7 +105,7 @@ Architecture:
 
 ```text id="6p1qxt"
 Employee → Corporate Proxy → Internet
-````
+```
 
 Benefits:
 
@@ -121,9 +121,6 @@ Forward proxies are commonly used in:
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: ssl-termination, reverse-proxy, performance-engineering
@@ -137,7 +134,7 @@ Without SSL termination:
 
 ```text
 Every backend service must handle encryption individually
-````
+```
 
 Reverse proxy workflow:
 
@@ -163,9 +160,6 @@ SSL termination improves operational efficiency in distributed systems.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: caching, reverse-proxy, cdn
@@ -187,7 +181,7 @@ Architecture:
 
 ```text id="clt6p5"
 Client → Reverse Proxy Cache → Backend
-````
+```
 
 Benefits:
 
@@ -207,9 +201,6 @@ Caching reverse proxies are critical for high-traffic internet systems.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: load-balancer, reverse-proxy, distributed-systems
@@ -234,7 +225,7 @@ Architecture:
 
 ```text id="4q2xmc"
 Client → Load Balancer → Service Instances
-````
+```
 
 Examples:
 
@@ -254,9 +245,6 @@ into a unified infrastructure layer.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: anonymity, forward-proxy, privacy
@@ -270,7 +258,7 @@ Traffic flow:
 
 ```text
 Server sees proxy IP instead of client IP
-````
+```
 
 Benefits:
 
@@ -300,9 +288,6 @@ Forward proxies are heavily used in:
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: reverse-proxy, microservices, api-gateway
@@ -329,7 +314,7 @@ Architecture:
 
 ```text id="6m3qpd"
 Client → API Gateway → Microservices
-````
+```
 
 Examples:
 
@@ -341,9 +326,6 @@ API Gateways extend reverse proxy functionality with application-layer intellige
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: reverse-proxy, security, backend-protection
@@ -366,7 +348,7 @@ Architecture:
 
 ```text id="1q8vza"
 Internet → Reverse Proxy → Private Backend Network
-````
+```
 
 Without reverse proxies:
 
@@ -378,9 +360,6 @@ Reverse proxies are a core security layer in modern internet infrastructure.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: proxy, reverse-proxy, trade-offs
@@ -412,7 +391,7 @@ Example:
 
 ```text id="7v2xpd"
 Misconfigured reverse proxy can block entire production traffic
-````
+```
 
 Proxies are powerful infrastructure components but require careful operational management.
 

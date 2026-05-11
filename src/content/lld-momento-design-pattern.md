@@ -179,7 +179,7 @@ The central idea is simple:
 
 > Save the state at one moment, and restore it later if needed.
 
-```mermaid id="memento_flow_01"
+```mermaid
 flowchart TD
     A[Originator Current State] --> B[Create Memento]
     B --> C[Caretaker Stores Memento]
@@ -211,7 +211,7 @@ This ensures atomicity:
 
 # Transaction Flow Diagram
 
-```mermaid id="memento_transaction_01"
+```mermaid
 flowchart TD
     A[Start Transaction] --> B[Take Snapshot]
     B --> C[Apply Changes]
@@ -240,7 +240,7 @@ This is a major design advantage.
 
 # Structure Diagram
 
-```mermaid id="memento_structure_01"
+```mermaid
 classDiagram
     class Originator {
         -state
@@ -311,7 +311,7 @@ The caretaker may keep:
 
 # Undo/Redo Flow
 
-```mermaid id="memento_undo_redo_01"
+```mermaid
 flowchart TD
     A[Current State] --> B[Push Memento to Undo Stack]
     B --> C[User makes changes]
@@ -727,7 +727,7 @@ editor.print()
 
 # Memento Flow Diagram
 
-```mermaid id="memento_flow_02"
+```mermaid
 flowchart TD
     A[Originator] --> B[Create Memento]
     B --> C[Caretaker Stores Memento]
@@ -741,7 +741,7 @@ flowchart TD
 
 # Transaction Rollback Diagram
 
-```mermaid id="memento_rollback_01"
+```mermaid
 sequenceDiagram
     participant Client
     participant Originator

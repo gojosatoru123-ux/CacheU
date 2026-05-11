@@ -81,7 +81,7 @@ Then requirements change:
 
 Now the inheritance tree starts to explode.
 
-```mermaid id="strategy_inheritance_problem_01"
+```mermaid
 classDiagram
     Robot <|-- SparrowRobot
     Robot <|-- CrowRobot
@@ -184,7 +184,7 @@ In simpler words:
 
 ## Strategy Pattern diagram
 
-```mermaid id="strategy_pattern_diagram_01"
+```mermaid
 classDiagram
     class Robot {
         +setWalkBehavior()
@@ -377,7 +377,7 @@ A checkout system may support:
 
 The checkout flow stays the same, but the payment algorithm changes.
 
-```mermaid id="strategy_payment_01"
+```mermaid
 flowchart TD
     A[Checkout] --> B{Selected Payment Method}
     B --> C[UPI Strategy]
@@ -448,7 +448,7 @@ Implement the different versions of behavior.
 
 ## Simple flow
 
-```mermaid id="strategy_flow_01"
+```mermaid
 flowchart TD
     A[Client] --> B[Context]
     B --> C[Strategy Interface]

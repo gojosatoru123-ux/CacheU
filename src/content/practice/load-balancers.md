@@ -1,3 +1,9 @@
+---
+title: Load Balancers
+articleSlug: load-balancer
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: load-balancer, scalability, distributed-systems
@@ -16,7 +22,7 @@ Architecture:
 
 ```text
 Client → Load Balancer → Server Pool
-````
+```
 
 Benefits:
 
@@ -37,9 +43,6 @@ Load balancers are foundational infrastructure components in modern scalable sys
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: layer4-vs-layer7, networking, load-balancer
@@ -65,7 +68,7 @@ Example:
 
 ```text id="6m2xqc"
 L7 routes /payments and /search differently
-````
+```
 
 Tradeoff:
 
@@ -77,9 +80,6 @@ Large systems often combine both L4 and L7 balancing strategies.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: round-robin, load-balancing-algorithms, distributed-systems
@@ -93,7 +93,7 @@ Problem:
 
 ```text
 Servers may not have equal processing capacity
-````
+```
 
 Example:
 
@@ -125,9 +125,6 @@ provide more adaptive balancing.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: least-connections, adaptive-routing, load-balancer
@@ -141,7 +138,7 @@ Least Connections routes traffic to:
 
 ```text
 Server with fewest active connections
-````
+```
 
 Benefits:
 
@@ -165,9 +162,6 @@ This algorithm is especially useful for:
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: health-checks, high-availability, load-balancer
@@ -181,7 +175,7 @@ Without health checks:
 
 ```text
 Traffic continues routing to unhealthy nodes
-````
+```
 
 Health check mechanisms:
 
@@ -208,9 +202,6 @@ Health checks are essential for resilient distributed systems.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: sticky-sessions, session-management, load-balancer
@@ -224,7 +215,7 @@ Mechanism:
 
 ```text
 Same client always routed to same server
-````
+```
 
 Problems:
 
@@ -250,9 +241,6 @@ to avoid sticky session limitations.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: ssl-termination, reverse-proxy, performance-engineering
@@ -266,7 +254,7 @@ Without SSL termination:
 
 ```text
 Every backend service performs encryption independently
-````
+```
 
 Load balancer workflow:
 
@@ -292,9 +280,6 @@ SSL termination significantly improves infrastructure efficiency.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: geo-load-balancing, cdn, global-distributed-systems
@@ -315,7 +300,7 @@ Architecture:
 
 ```text id="6m3qpd"
 User → Closest Regional Datacenter
-````
+```
 
 Benefits:
 
@@ -335,9 +320,6 @@ Geo balancing is critical for internet-scale platforms.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: load-balancer, distributed-systems, fault-tolerance
@@ -351,7 +333,7 @@ If the load balancer fails:
 
 ```text
 Entire service may become unreachable
-````
+```
 
 Problems:
 
@@ -379,9 +361,6 @@ Load balancer redundancy is critical for resilient infrastructure.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: load-balancer, trade-offs, system-design
@@ -412,7 +391,7 @@ Example:
 
 ```text id="7v2xpd"
 L7 inspection increases request processing overhead
-````
+```
 
 Load balancer design fundamentally balances:
 

@@ -29,7 +29,7 @@ Example attack:
 <script>
 document.forms[0].submit();
 </script>
-````
+```
 
 When the victim visits the malicious page:
 
@@ -45,9 +45,6 @@ CSRF mainly affects:
 
 <!-- END -->
 
-````id="7d2kpl"
-
-```md id="5x1qzr"
 <!-- QUESTION -->
 difficulty: Easy
 tags: csrf, csrf-token, session-security
@@ -63,7 +60,7 @@ Example form:
 <form action="/change-password" method="POST">
   <input type="hidden" name="csrf_token" value="f91ab2">
 </form>
-````
+```
 
 Server validation:
 
@@ -92,9 +89,6 @@ Without the correct token, forged requests are rejected.
 
 <!-- END -->
 
-````id="1t7mce"
-
-```md id="8n4wxy"
 <!-- QUESTION -->
 difficulty: Medium
 tags: csrf, samesite-cookies, browser-security
@@ -108,7 +102,7 @@ Example:
 
 ```http
 Set-Cookie: session=abc123; SameSite=Strict
-````
+```
 
 Modes:
 
@@ -134,9 +128,6 @@ Modern browsers apply SameSite protections by default for many cookies.
 
 <!-- END -->
 
-````id="4j9kpd"
-
-```md id="6v2qxt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: csrf, http-methods, secure-design
@@ -156,7 +147,7 @@ Dangerous example:
 
 ```http
 GET /delete-account
-````
+```
 
 Attackers can trigger GET requests automatically:
 
@@ -190,9 +181,6 @@ Sensitive operations should always use CSRF protection.
 
 <!-- END -->
 
-````id="3w6lfa"
-
-```md id="9p5vbn"
 <!-- QUESTION -->
 difficulty: Medium
 tags: csrf, origin-header, referer-header
@@ -206,7 +194,7 @@ Example request:
 
 ```http
 Origin: https://example.com
-````
+```
 
 Server validation:
 
@@ -251,9 +239,6 @@ Best practice combines:
 
 <!-- END -->
 
-````id="5m3xyt"
-
-```md id="7q1zcd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: jwt, csrf, authentication
@@ -267,7 +252,7 @@ It depends on where the JWT is stored.
 
 ```text
 Generally NOT vulnerable to CSRF
-````
+```
 
 Reason:
 
@@ -310,9 +295,6 @@ Cookie-based JWT systems should still implement:
 
 <!-- END -->
 
-````id="6n8qpr"
-
-```md id="4x7twy"
 <!-- QUESTION -->
 difficulty: Hard
 tags: csrf, xss, web-security
@@ -337,7 +319,7 @@ fetch('/transfer', {
     'X-CSRF-Token': csrfToken
   }
 })
-````
+```
 
 Why this bypasses CSRF protection:
 

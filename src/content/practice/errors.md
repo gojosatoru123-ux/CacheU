@@ -17,7 +17,7 @@ Example flow:
 
 ```text
 Client → Backend → Error
-````
+```
 
 Common backend error causes:
 
@@ -42,9 +42,6 @@ Error handling is essential for reliable backend applications.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: http-status-codes, api-errors, backend
@@ -70,7 +67,7 @@ Example response:
 
 ```http
 HTTP/1.1 404 Not Found
-````
+```
 
 Server-side failures often return:
 
@@ -86,9 +83,6 @@ Proper status codes improve:
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: validation-errors, backend, api-security
@@ -104,7 +98,7 @@ Example invalid request:
 {
   "email": "invalid-email"
 }
-````
+```
 
 Validation checks may include:
 
@@ -131,9 +125,6 @@ Validation errors are among the most common backend errors.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: exception-handling, backend, error-management
@@ -147,7 +138,7 @@ Example:
 
 ```text id="5m2xqc"
 Database unavailable
-````
+```
 
 Without exception handling:
 
@@ -180,9 +171,6 @@ Exception handling is critical in production backend systems.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: logging, monitoring, backend-errors
@@ -196,7 +184,7 @@ Example log:
 
 ```text id="2v7qwr"
 ERROR: Database connection timeout
-````
+```
 
 Logs help developers:
 
@@ -223,9 +211,6 @@ Logging is essential for backend observability and troubleshooting.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: retries, fault-tolerance, distributed-systems
@@ -244,7 +229,7 @@ Example flow:
 
 ```text id="4q2xmc"
 Request Failure → Retry → Success
-````
+```
 
 Benefits:
 
@@ -265,9 +250,6 @@ Retries are widely used in distributed backend systems.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: circuit-breaker, distributed-systems, backend-resilience
@@ -281,7 +263,7 @@ Without circuit breaker:
 
 ```text id="4v8qpd"
 Service Failure → Continuous Retry Storm
-````
+```
 
 With circuit breaker:
 
@@ -307,9 +289,6 @@ Circuit breakers are commonly used in microservice architectures.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: graceful-degradation, system-design, backend
@@ -324,7 +303,7 @@ Example:
 ```text
 Recommendation Service Down
 Main Website Still Works
-````
+```
 
 Benefits:
 
@@ -349,9 +328,6 @@ Graceful degradation improves resilience in large distributed systems.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-failures, system-design, backend-errors
@@ -371,7 +347,7 @@ Example:
 
 ```text id="1q8vza"
 Service A → Service B → Service C
-````
+```
 
 A failure may happen anywhere in the chain.
 
@@ -393,9 +369,6 @@ Distributed systems introduce significant debugging complexity.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, monitoring, backend-systems
@@ -417,7 +390,7 @@ Example architecture:
 
 ```text id="7v2xpd"
 Application → Monitoring Stack
-````
+```
 
 Metrics examples:
 

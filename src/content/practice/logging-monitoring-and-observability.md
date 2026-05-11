@@ -17,7 +17,7 @@ Example log:
 
 ```text id="4m8qza"
 INFO: User login successful
-````
+```
 
 Common logged events:
 
@@ -38,9 +38,6 @@ Logs are one of the most fundamental tools in backend operations.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: monitoring, backend-systems, performance
@@ -60,7 +57,7 @@ Architecture:
 
 ```text id="6m2xqc"
 Application → Monitoring System → Alerts
-````
+```
 
 Benefits:
 
@@ -74,9 +71,6 @@ Monitoring helps teams maintain reliable production systems.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: observability, distributed-systems, backend
@@ -98,7 +92,7 @@ Example:
 
 ```text id="6p1qxt"
 Track a request across multiple services
-````
+```
 
 Benefits:
 
@@ -110,9 +104,6 @@ Observability is critical for modern distributed systems.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: log-levels, debugging, backend
@@ -136,7 +127,7 @@ Example:
 
 ```text id="5m2xqc"
 ERROR: Database connection failed
-````
+```
 
 Benefits:
 
@@ -148,9 +139,6 @@ Production systems typically reduce excessive DEBUG logging to avoid noise and p
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: metrics, monitoring, backend-performance
@@ -173,7 +161,7 @@ Example:
 
 ```text id="clt6p5"
 API Latency = 120ms
-````
+```
 
 Metrics help teams:
 
@@ -185,9 +173,6 @@ Metrics are essential for proactive monitoring.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: distributed-tracing, microservices, observability
@@ -201,7 +186,7 @@ Example flow:
 
 ```text id="4q2xmc"
 Client → API Gateway → Service A → Service B
-````
+```
 
 Each request receives a trace ID.
 
@@ -225,9 +210,6 @@ Distributed tracing is essential in microservice architectures.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: centralized-logging, distributed-systems, backend
@@ -241,7 +223,7 @@ Without centralized logging:
 
 ```text id="4v8qpd"
 Logs scattered across machines
-````
+```
 
 Centralized logging collects logs into one searchable system.
 
@@ -269,9 +251,6 @@ Centralized logging is critical for large-scale backend operations.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: alerting, monitoring, backend-reliability
@@ -290,7 +269,7 @@ Example:
 
 ```text id="6m3qpd"
 Error Rate > 5%
-````
+```
 
 Alert delivery methods:
 
@@ -316,9 +295,6 @@ Alerting is a core part of production reliability engineering.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: slis-slos-slis, site-reliability-engineering, backend
@@ -340,7 +316,7 @@ Example:
 
 ```text id="1q8vza"
 API Availability = 99.9%
-````
+```
 
 Explanation:
 
@@ -360,9 +336,6 @@ These concepts are central to Site Reliability Engineering (SRE).
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: openTelemetry, observability, distributed-systems
@@ -381,7 +354,7 @@ Architecture:
 
 ```text id="7v2xpd"
 Application → OpenTelemetry → Monitoring Backend
-````
+```
 
 Benefits:
 

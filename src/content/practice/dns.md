@@ -1,3 +1,9 @@
+---
+title:  DNS
+articleSlug: dns
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: dns, distributed-systems, internet-infrastructure
@@ -15,7 +21,7 @@ DNS translates:
 
 ```text
 Domain Name → IP Address
-````
+```
 
 Example:
 
@@ -33,9 +39,6 @@ DNS enables scalable and human-friendly internet communication.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: recursive-resolver, dns-resolution, distributed-systems
@@ -49,7 +52,7 @@ Workflow:
 
 ```text id="6m2xqc"
 Client → Recursive Resolver → Root → TLD → Authoritative Server
-````
+```
 
 Benefits:
 
@@ -69,9 +72,6 @@ Recursive resolvers dramatically reduce internet-wide lookup latency.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: dns-caching, scalability, distributed-systems
@@ -83,7 +83,7 @@ Without caching:
 
 ```text
 Every DNS query would traverse the full lookup hierarchy
-````
+```
 
 Problems:
 
@@ -111,9 +111,6 @@ DNS caching is essential for scalable internet performance.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: ttl, dns-caching, consistency
@@ -125,7 +122,7 @@ TTL stands for:
 
 ```text
 Time To Live
-````
+```
 
 It determines how long DNS responses remain cached.
 
@@ -157,9 +154,6 @@ TTL tuning balances:
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: authoritative-dns, distributed-systems, internet-architecture
@@ -171,7 +165,7 @@ Authoritative servers contain:
 
 ```text
 Official DNS records for a domain
-````
+```
 
 Examples:
 
@@ -203,9 +197,6 @@ Authoritative DNS servers are the backbone of domain ownership and resolution.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: dns-load-balancing, traffic-routing, scalability
@@ -223,7 +214,7 @@ Architecture:
 
 ```text id="4q2xmc"
 User DNS Query → Closest Regional Endpoint
-````
+```
 
 Benefits:
 
@@ -243,9 +234,6 @@ DNS-based routing enables globally distributed architectures.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: dns-propagation, distributed-systems, eventual-consistency
@@ -263,7 +251,7 @@ Problem:
 
 ```text
 Old DNS records may remain cached temporarily
-````
+```
 
 Example:
 
@@ -288,9 +276,6 @@ DNS prioritizes scalability over immediate global consistency.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: dns-security, dns-spoofing, cybersecurity
@@ -310,7 +295,7 @@ Problem:
 
 ```text
 Manipulated DNS responses redirect users maliciously
-````
+```
 
 Example:
 
@@ -330,9 +315,6 @@ DNS security is critical for trustworthy internet communication.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: anycast, dns, distributed-networking
@@ -344,7 +326,7 @@ Anycast allows:
 
 ```text
 Multiple servers share same IP address
-````
+```
 
 Traffic automatically routes to nearest available server.
 
@@ -372,9 +354,6 @@ Anycast is foundational for globally scalable DNS infrastructure.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: dns, trade-offs, system-design
@@ -409,7 +388,7 @@ Example:
 
 ```text id="7v2xpd"
 Low TTL improves agility but increases DNS query load
-````
+```
 
 DNS system design fundamentally balances:
 

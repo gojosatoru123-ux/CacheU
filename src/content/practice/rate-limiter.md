@@ -1,3 +1,9 @@
+---
+title:  Rate Limiter
+articleSlug: rate-limiter
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: rate-limiter, distributed-systems, scalability
@@ -15,7 +21,7 @@ Rate limiters protect systems by controlling:
 ```text
 How many requests a client can make
 within a given time window
-````
+```
 
 Benefits:
 
@@ -36,9 +42,6 @@ Rate limiting is a foundational reliability mechanism in internet-scale systems.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: token-bucket, traffic-shaping, rate-limiter
@@ -53,7 +56,7 @@ Mechanism:
 ```text
 Tokens refill at fixed rate
 Requests consume tokens
-````
+```
 
 Benefits:
 
@@ -74,9 +77,6 @@ Unlike strict fixed-window approaches, Token Bucket handles bursty internet traf
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: fixed-window, sliding-window, rate-limiter
@@ -90,7 +90,7 @@ Example:
 
 ```text
 100 requests/minute
-````
+```
 
 Problem:
 
@@ -118,9 +118,6 @@ Sliding Window algorithms reduce these burst boundary effects.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-rate-limiter, redis, consistency
@@ -137,7 +134,7 @@ Problem:
 
 ```text
 Independent local counters become inconsistent
-````
+```
 
 Example:
 
@@ -164,9 +161,6 @@ Distributed rate limiting requires strong coordination strategies.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: sliding-window, rate-limiter, backend-performance
@@ -180,7 +174,7 @@ Instead of:
 
 ```text
 Resetting counters periodically
-````
+```
 
 it calculates:
 
@@ -213,9 +207,6 @@ Sliding Window improves precision in high-scale APIs.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: leaky-bucket, traffic-control, networking
@@ -230,7 +221,7 @@ Mechanism:
 ```text
 Incoming requests enter queue
 Requests leak out steadily
-````
+```
 
 Benefits:
 
@@ -261,9 +252,6 @@ Leaky Bucket is commonly used in:
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: api-gateway, rate-limiter, microservices
@@ -286,7 +274,7 @@ Architecture:
 
 ```text id="4v8qpd"
 Client → API Gateway → Microservices
-````
+```
 
 Common API Gateway responsibilities:
 
@@ -299,9 +287,6 @@ Centralized throttling improves operational consistency across services.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-systems, clock-synchronization, rate-limiter
@@ -315,7 +300,7 @@ Problems arise when:
 
 ```text
 Servers disagree on current time
-````
+```
 
 Consequences:
 
@@ -341,9 +326,6 @@ Clock drift becomes increasingly problematic at global scale.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: multi-tenant-systems, fairness, rate-limiter
@@ -360,7 +342,7 @@ Without tenant-aware limits:
 
 ```text
 One tenant may monopolize shared infrastructure
-````
+```
 
 Example policies:
 
@@ -382,9 +364,6 @@ Tenant-aware throttling is essential in multi-tenant architectures.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: rate-limiter, trade-offs, system-design
@@ -411,7 +390,7 @@ Example:
 
 ```text id="7v2xpd"
 Globally synchronized counters increase coordination overhead
-````
+```
 
 Architects must decide:
 

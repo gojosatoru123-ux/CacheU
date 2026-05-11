@@ -47,7 +47,7 @@ This works for one device, but it becomes rigid when requirements grow.
 
 The pattern encourages a much better design:
 
-```mermaid id="command_problem_01"
+```mermaid
 flowchart LR
     A[Remote Button] --> B[Direct method call]
     B --> C[Light / Fan / Heater]
@@ -67,7 +67,7 @@ That means:
 * the requester does not know the details of the action
 * the request can be stored, queued, logged, replayed, or undone
 
-```mermaid id="command_core_01"
+```mermaid
 flowchart LR
     A[Invoker] --> B[Command Object]
     B --> C[Receiver]
@@ -109,7 +109,7 @@ The pattern has four major participants:
 
 ## UML view of the roles
 
-```mermaid id="command_roles_01"
+```mermaid
 classDiagram
     class Client {
         +createObjects()
@@ -211,7 +211,7 @@ The receiver contains the real business action methods.
 
 Here is how a command flow works in a smart remote:
 
-```mermaid id="command_flow_01"
+```mermaid
 flowchart TD
     A[Client creates Receiver] --> B[Client creates Command]
     B --> C[Command gets Receiver reference]
@@ -246,7 +246,7 @@ we create commands for each action.
 
 # Command Pattern structure
 
-```mermaid id="command_structure_01"
+```mermaid
 classDiagram
     class RemoteControl {
         -commands
@@ -383,7 +383,7 @@ Example:
 
 # Sequence diagram
 
-```mermaid id="command_sequence_01"
+```mermaid
 sequenceDiagram
     actor User
     participant Remote as RemoteControl
@@ -419,7 +419,7 @@ This is very useful in:
 * games
 * automation systems
 
-```mermaid id="command_undo_01"
+```mermaid
 flowchart TD
     A[execute()] --> B[Perform action]
     B --> C[Store command in history]
@@ -747,7 +747,7 @@ remote.press_button(1)
 
 A big advantage of Command Pattern is that buttons can be remapped at runtime.
 
-```mermaid id="command_reconfig_01"
+```mermaid
 flowchart TD
     A[Button Slot 1] --> B[LightOnCommand]
     A --> C[FanOnCommand]
@@ -816,7 +816,7 @@ This makes them useful for:
 * macro execution
 * background task scheduling
 
-```mermaid id="command_queue_01"
+```mermaid
 flowchart LR
     A[Command created] --> B[Command stored in queue]
     B --> C[Later execution]
@@ -859,7 +859,7 @@ Instead of hard-coding the sequence, you can store multiple command objects and 
 
 # Macro diagram
 
-```mermaid id="command_macro_01"
+```mermaid
 flowchart TD
     A[Macro Command] --> B[Command 1]
     A --> C[Command 2]

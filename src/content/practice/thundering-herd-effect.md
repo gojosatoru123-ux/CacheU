@@ -1,3 +1,9 @@
+---
+title: Thundering Herd Effect
+articleSlug: thundering-herd-effect
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: thundering-herd, distributed-systems, scalability
@@ -9,7 +15,7 @@ The Thundering Herd problem occurs when:
 
 ```text
 Large numbers of clients simultaneously compete for the same resource
-````
+```
 
 Common triggers:
 
@@ -34,9 +40,6 @@ Thundering Herd scenarios can rapidly destabilize distributed infrastructure.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cache-stampede, distributed-cache, backend-reliability
@@ -48,7 +51,7 @@ When a popular cache entry expires:
 
 ```text
 Many requests simultaneously regenerate the same data
-````
+```
 
 Problem:
 
@@ -74,9 +77,6 @@ Cache expiration synchronization is a major scalability risk.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: retry-storms, distributed-systems, fault-tolerance
@@ -93,7 +93,7 @@ Problem:
 
 ```text
 Retries amplify already overloaded systems
-````
+```
 
 Example:
 
@@ -119,9 +119,6 @@ Retries must be carefully controlled in distributed architectures.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: jitter, exponential-backoff, distributed-systems
@@ -133,7 +130,7 @@ Without jitter:
 
 ```text
 Clients retry at synchronized intervals
-````
+```
 
 This creates synchronized traffic spikes.
 
@@ -163,9 +160,6 @@ Jitter is critical for resilient distributed retry behavior.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-locking, concurrency-control, thundering-herd
@@ -179,7 +173,7 @@ Problem:
 
 ```text
 All waiting clients wake simultaneously after lock release
-````
+```
 
 Consequences:
 
@@ -205,9 +199,6 @@ Lock coordination must prevent synchronized resource competition.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: request-coalescing, distributed-cache, backend-optimization
@@ -219,7 +210,7 @@ Request coalescing ensures:
 
 ```text
 Only one request regenerates missing data
-````
+```
 
 Other requests wait for shared result.
 
@@ -247,9 +238,6 @@ Coalescing is a key mitigation strategy for large-scale caching systems.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: circuit-breaker, resilience, distributed-systems
@@ -261,7 +249,7 @@ Without circuit breakers:
 
 ```text
 Clients continue hammering failing services
-````
+```
 
 Problem:
 
@@ -289,9 +277,6 @@ Circuit breakers are essential resilience mechanisms in distributed systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: autoscaling, cloud-systems, distributed-systems
@@ -308,7 +293,7 @@ Problem:
 
 ```text
 Many instances initialize simultaneously
-````
+```
 
 Consequences:
 
@@ -334,9 +319,6 @@ Autoscaling systems require coordinated recovery strategies.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: leader-election, distributed-coordination, thundering-herd
@@ -348,7 +330,7 @@ When a leader fails:
 
 ```text
 Multiple nodes simultaneously attempt leadership acquisition
-````
+```
 
 Consequences:
 
@@ -374,9 +356,6 @@ Distributed coordination systems must carefully avoid synchronized election beha
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: thundering-herd, distributed-systems, trade-offs
@@ -407,7 +386,7 @@ Example:
 
 ```text id="7v2xpd"
 Aggressive retry throttling may slow legitimate recovery
-````
+```
 
 Thundering Herd mitigation fundamentally balances:
 

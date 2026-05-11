@@ -1,3 +1,9 @@
+---
+title:  Concurrency Control
+articleSlug: concurrency-control
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: concurrency-control, distributed-systems, consistency
@@ -11,7 +17,7 @@ Without concurrency control:
 
 ```text
 Concurrent operations may corrupt shared state
-````
+```
 
 Problems:
 
@@ -38,9 +44,6 @@ Concurrency control is foundational for reliable large-scale systems.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: pessimistic-locking, distributed-transactions, databases
@@ -54,7 +57,7 @@ Mechanism:
 
 ```text
 Lock resource before modification
-````
+```
 
 Workflow:
 
@@ -82,9 +85,6 @@ Pessimistic locking prioritizes correctness over scalability.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: optimistic-locking, distributed-systems, scalability
@@ -99,7 +99,7 @@ Mechanism:
 ```text
 Allow concurrent updates
 Detect conflicts during commit
-````
+```
 
 Common implementation:
 
@@ -126,9 +126,6 @@ Optimistic locking works well in read-heavy distributed systems.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: race-condition, distributed-systems, concurrency-control
@@ -144,7 +141,7 @@ Example:
 
 ```text id="5m2xqc"
 Two users purchasing last inventory item simultaneously
-````
+```
 
 Problems:
 
@@ -170,9 +167,6 @@ Concurrency correctness becomes harder as systems scale horizontally.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: isolation-levels, databases, concurrency-control
@@ -195,7 +189,7 @@ Problem:
 
 ```text
 Stronger isolation reduces parallelism
-````
+```
 
 Example:
 
@@ -218,9 +212,6 @@ Isolation levels fundamentally balance:
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-locking, distributed-systems, coordination
@@ -240,7 +231,7 @@ Problem:
 
 ```text
 Multiple nodes may incorrectly believe they own the lock
-````
+```
 
 Example:
 
@@ -266,9 +257,6 @@ Distributed locking fundamentally requires distributed consensus mechanisms.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: mvcc, databases, concurrency-control
@@ -280,7 +268,7 @@ MVCC stands for:
 
 ```text
 Multi-Version Concurrency Control
-````
+```
 
 Instead of locking reads:
 
@@ -313,9 +301,6 @@ MVCC is widely used in modern relational databases like PostgreSQL.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: deadlocks, locking, distributed-transactions
@@ -330,7 +315,7 @@ Example:
 ```text id="6m3qpd"
 Transaction A waits for Lock B
 Transaction B waits for Lock A
-````
+```
 
 Result:
 
@@ -357,9 +342,6 @@ Deadlock handling is essential in lock-based concurrency systems.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: atomic-operations, concurrency-control, distributed-systems
@@ -373,7 +355,7 @@ Guarantee:
 
 ```text
 Operation either fully succeeds or fully fails
-````
+```
 
 Examples:
 
@@ -399,9 +381,6 @@ Atomic primitives are foundational for high-performance concurrent systems.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: concurrency-control, trade-offs, system-design
@@ -428,7 +407,7 @@ Example:
 
 ```text id="7v2xpd"
 Strict locking improves correctness but reduces throughput
-````
+```
 
 Concurrency control design fundamentally involves balancing:
 

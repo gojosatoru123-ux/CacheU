@@ -37,7 +37,7 @@ If we use many `if/else` conditions, the code becomes messy and difficult to mai
 
 The Chain of Responsibility solves this by building a chain of handlers.
 
-```mermaid id="cor_intro_01"
+```mermaid
 flowchart LR
     A[Client] --> B[Handler 1]
     B --> C[Handler 2]
@@ -94,7 +94,7 @@ The pattern helps us build systems that are:
 
 ## Chain structure
 
-```mermaid id="cor_structure_01"
+```mermaid
 classDiagram
     class Handler {
         <<interface>>
@@ -166,7 +166,7 @@ The request is passed from largest denomination to smallest denomination.
 
 ## ATM handler chain
 
-```mermaid id="cor_atm_01"
+```mermaid
 flowchart LR
     A[ThousandHandler] --> B[FiveHundredHandler]
     B --> C[TwoHundredHandler]
@@ -201,7 +201,7 @@ For a request like ₹4000:
 
 # Step-by-step flow
 
-```mermaid id="cor_flow_01"
+```mermaid
 flowchart TD
     A[Client requests amount] --> B[First handler receives request]
     B --> C{Can handler process?}
@@ -325,7 +325,7 @@ The exact behavior depends on business rules.
 
 # ATM sequence diagram
 
-```mermaid id="cor_sequence_01"
+```mermaid
 sequenceDiagram
     actor User
     participant ATM
@@ -413,7 +413,7 @@ Suppose we have log levels:
 
 A logging request can move through a chain of handlers.
 
-```mermaid id="cor_logging_01"
+```mermaid
 flowchart LR
     A[InfoHandler] --> B[DebugHandler] --> C[ErrorHandler]
 ```
@@ -430,7 +430,7 @@ A leave request can move through a chain of authority.
 * 3 to 5 days → Manager
 * more than 5 days → Director
 
-```mermaid id="cor_leave_01"
+```mermaid
 flowchart LR
     A[Team Lead] --> B[Manager] --> C[Director]
 ```
@@ -927,7 +927,7 @@ A request may pass through:
 
 # Logging example diagram
 
-```mermaid id="cor_logging_02"
+```mermaid 
 flowchart LR
     A[DebugHandler] --> B[InfoHandler] --> C[WarningHandler] --> D[ErrorHandler]
 ```
@@ -936,7 +936,7 @@ flowchart LR
 
 # Approval chain diagram
 
-```mermaid id="cor_approval_01"
+```mermaid
 flowchart LR
     A[Team Lead] --> B[Manager] --> C[Director]
 ```

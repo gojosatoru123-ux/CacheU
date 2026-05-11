@@ -1,6 +1,6 @@
 ---
 title: High Availability Systems - Active-Active and Active-Passive Architectures
-articleSlug: high-availability-active-active-active-passive
+articleSlug: high-availability-system
 ---
 
 # High Availability Systems - Active-Active and Active-Passive

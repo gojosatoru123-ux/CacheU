@@ -1,3 +1,9 @@
+---
+title:  Saga Pattern
+articleSlug: saga-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: saga-pattern, distributed-transactions, microservices
@@ -19,7 +25,7 @@ Saga Pattern uses:
 
 ```text
 Sequence of local independent transactions
-````
+```
 
 Each service:
 
@@ -45,9 +51,6 @@ Saga sacrifices immediate consistency for scalability and fault tolerance.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: choreography-vs-orchestration, saga-pattern, distributed-systems
@@ -77,15 +80,12 @@ Architecture:
 
 ```text id="6m2xqc"
 Service A → Event → Service B → Event → Service C
-````
+```
 
 Large systems often migrate toward orchestration to centralize workflow control.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: saga-orchestration, workflow-management, microservices
@@ -105,7 +105,7 @@ Architecture:
 
 ```text id="6p1qxt"
 Orchestrator → Service A → Service B → Service C
-````
+```
 
 Benefits:
 
@@ -130,9 +130,6 @@ Examples:
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: compensating-transactions, saga-pattern, distributed-consistency
@@ -146,7 +143,7 @@ Instead, Saga uses:
 
 ```text
 Business-level undo operations
-````
+```
 
 Example:
 
@@ -174,9 +171,6 @@ Compensation is the core recovery mechanism in Saga-based systems.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: eventual-consistency, saga-pattern, distributed-databases
@@ -190,7 +184,7 @@ Intermediate states may temporarily exist:
 
 ```text
 Some services committed while others have not
-````
+```
 
 Example:
 
@@ -217,9 +211,6 @@ Saga systems intentionally trade strong consistency for distributed scalability.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: idempotency, retries, saga-pattern
@@ -236,7 +227,7 @@ Without idempotency:
 
 ```text
 Repeated processing may corrupt state
-````
+```
 
 Example problem:
 
@@ -262,9 +253,6 @@ Idempotency is foundational for reliable Saga execution.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-failures, saga-pattern, resiliency
@@ -281,7 +269,7 @@ Example:
 
 ```text id="4v8qpd"
 Payment succeeded but acknowledgment lost
-````
+```
 
 Problems:
 
@@ -302,9 +290,6 @@ Saga workflows must explicitly handle unreliable distributed environments.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: message-brokers, event-driven-architecture, saga-pattern
@@ -324,7 +309,7 @@ Architecture:
 
 ```text id="6m3qpd"
 Service → Broker → Subscriber Services
-````
+```
 
 Benefits:
 
@@ -345,9 +330,6 @@ Message brokers are central infrastructure components in event-driven Saga syste
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: saga-pattern, observability, distributed-tracing
@@ -365,7 +347,7 @@ Without observability:
 
 ```text
 Tracing failures becomes extremely difficult
-````
+```
 
 Required capabilities:
 
@@ -392,9 +374,6 @@ Observability is critical for debugging distributed transaction workflows.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: saga-pattern, trade-offs, system-design
@@ -425,7 +404,7 @@ Example:
 
 ```text id="7v2xpd"
 Payment refunded after shipment cancellation
-````
+```
 
 Saga is best suited for:
 

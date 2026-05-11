@@ -1,3 +1,9 @@
+---
+title:  Consistent Hashing
+articleSlug: consistent-hashing
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: consistent-hashing, distributed-systems, scalability
@@ -9,7 +15,7 @@ Traditional sharding commonly uses:
 
 ```text
 server = hash(key) % N
-````
+```
 
 Problem:
 
@@ -41,9 +47,6 @@ This makes it highly suitable for elastic distributed systems.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: consistent-hashing, distributed-caches, system-design
@@ -60,7 +63,7 @@ Without consistent hashing:
 
 ```text
 Most cached keys remap after scaling events
-````
+```
 
 Consequences:
 
@@ -92,9 +95,6 @@ use consistent hashing extensively.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: hash-ring, distributed-systems, consistent-hashing
@@ -114,7 +114,7 @@ Workflow:
 1. Hash server positions
 2. Hash data keys
 3. Route key clockwise to nearest node
-````
+```
 
 Architecture:
 
@@ -134,9 +134,6 @@ The circular ring structure is the core mechanism behind consistent hashing.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: virtual-nodes, load-balancing, distributed-systems
@@ -150,7 +147,7 @@ Problem:
 
 ```text
 Some servers receive disproportionately more keys
-````
+```
 
 Virtual nodes solve this by:
 
@@ -177,9 +174,6 @@ Virtual nodes are critical for production-grade consistent hashing systems.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: fault-tolerance, consistent-hashing, distributed-storage
@@ -191,7 +185,7 @@ When a node fails in traditional hashing:
 
 ```text
 Large portions of data become remapped
-````
+```
 
 Consistent hashing limits impact:
 
@@ -217,9 +211,6 @@ This property makes consistent hashing highly resilient for distributed infrastr
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: hot-partitions, distributed-systems, scalability
@@ -231,7 +222,7 @@ Even with balanced key distribution:
 
 ```text
 Traffic distribution may remain uneven
-````
+```
 
 Examples:
 
@@ -264,9 +255,6 @@ Consistent hashing solves distribution stability, not workload skew automaticall
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: replication, distributed-databases, consistent-hashing
@@ -280,7 +268,7 @@ Workflow:
 
 ```text
 Primary node + clockwise successor replicas
-````
+```
 
 Example:
 
@@ -307,9 +295,6 @@ Replication and consistent hashing are commonly combined in distributed database
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-caches, scalability, consistent-hashing
@@ -323,7 +308,7 @@ Without consistent hashing:
 
 ```text
 Scaling invalidates most cached data
-````
+```
 
 Consequences:
 
@@ -353,9 +338,6 @@ This is critical for:
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-systems, data-partitioning, architecture
@@ -372,7 +354,7 @@ Consistent hashing enables:
 
 ```text
 Decentralized partition ownership
-````
+```
 
 Benefits:
 
@@ -392,9 +374,6 @@ Large-scale systems require decentralized routing for massive horizontal scaling
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: consistent-hashing, trade-offs, system-design
@@ -425,7 +404,7 @@ Example:
 
 ```text id="7v2xpd"
 Adding node triggers partial key migration
-````
+```
 
 Consistent hashing is foundational for:
 

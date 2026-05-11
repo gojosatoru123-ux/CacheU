@@ -1,3 +1,9 @@
+---
+title:  Cryptography
+articleSlug: cryptography
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: cryptography, distributed-systems, security
@@ -14,7 +20,7 @@ Without cryptography:
 
 ```text
 Attackers may intercept or modify data
-````
+```
 
 Core goals of cryptography:
 
@@ -35,9 +41,6 @@ Cryptography is essential for securing modern distributed architectures.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: symmetric-encryption, scalability, cryptography
@@ -49,7 +52,7 @@ Symmetric encryption uses:
 
 ```text
 Single shared secret key
-````
+```
 
 Algorithms:
 
@@ -79,9 +82,6 @@ Symmetric cryptography is optimized for performance-sensitive systems.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: asymmetric-encryption, public-key-cryptography, authentication
@@ -95,7 +95,7 @@ Problem:
 
 ```text
 How do two strangers safely exchange secret keys?
-````
+```
 
 Asymmetric cryptography solves this using:
 
@@ -127,9 +127,6 @@ Asymmetric cryptography enables secure communication across untrusted networks.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: hashing, password-security, cryptography
@@ -146,7 +143,7 @@ Problem:
 
 ```text
 Attackers can rapidly test billions of password guesses
-````
+```
 
 Unsafe algorithms:
 
@@ -176,9 +173,6 @@ Password hashing must intentionally slow attackers.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: tls, https, cryptography
@@ -203,7 +197,7 @@ Architecture:
 
 ```text id="clt6p5"
 TLS Handshake → Shared Session Key → Fast Encrypted Communication
-````
+```
 
 Benefits:
 
@@ -216,9 +210,6 @@ Hybrid cryptographic design enables scalable secure internet communication.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: digital-signatures, integrity, authentication
@@ -236,7 +227,7 @@ Workflow:
 ```text
 Private Key signs
 Public Key verifies
-````
+```
 
 Benefits:
 
@@ -262,9 +253,6 @@ Digital signatures are foundational for secure distributed communication.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: key-management, cryptography, security-engineering
@@ -281,7 +269,7 @@ Problem:
 
 ```text
 Compromised keys invalidate encryption security
-````
+```
 
 Challenges:
 
@@ -308,9 +296,6 @@ Cryptographic systems are only as secure as their key management practices.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: forward-secrecy, tls, cryptography
@@ -322,7 +307,7 @@ Without Forward Secrecy:
 
 ```text
 Compromised long-term private key decrypts past traffic
-````
+```
 
 Perfect Forward Secrecy uses:
 
@@ -347,9 +332,6 @@ Modern TLS systems strongly prefer forward secrecy-enabled cipher suites.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: encryption-at-rest, data-security, compliance
@@ -361,7 +343,7 @@ HTTPS protects:
 
 ```text
 Data in transit
-````
+```
 
 But stored data remains vulnerable to:
 
@@ -398,9 +380,6 @@ Secure systems require both:
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cryptography, security, trade-offs
@@ -431,7 +410,7 @@ Example:
 
 ```text id="7v2xpd"
 Strong encryption may increase API response latency
-````
+```
 
 Cryptographic system design fundamentally balances:
 

@@ -1,3 +1,9 @@
+---
+title:  Distributed Transaction
+articleSlug: distributed-transaction
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-transactions, distributed-systems, consistency
@@ -22,7 +28,7 @@ Example:
 ```text id="4m8qza"
 Payment service succeeds
 Inventory service fails
-````
+```
 
 Challenges:
 
@@ -36,9 +42,6 @@ Distributed transactions fundamentally involve coordinating state across unrelia
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: two-phase-commit, distributed-transactions, consistency
@@ -61,7 +64,7 @@ Architecture:
 
 ```text id="6m2xqc"
 Coordinator ↔ Multiple Participants
-````
+```
 
 Problem:
 
@@ -80,9 +83,6 @@ Tradeoffs:
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: saga-pattern, microservices, distributed-transactions
@@ -105,7 +105,7 @@ Saga pattern uses:
 ```text
 Sequence of local transactions
 with compensating actions
-````
+```
 
 Example:
 
@@ -131,9 +131,6 @@ Saga trades strong consistency for distributed resilience.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: eventual-consistency, distributed-systems, transactions
@@ -160,7 +157,7 @@ Example:
 
 ```text id="5m2xqc"
 Social media likes may appear asynchronously
-````
+```
 
 Tradeoff:
 
@@ -172,9 +169,6 @@ Many internet-scale systems prefer availability over strict consistency guarante
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-locking, concurrency-control, distributed-transactions
@@ -192,7 +186,7 @@ Problem:
 
 ```text
 Lock ownership uncertainty during failures
-````
+```
 
 Example:
 
@@ -218,9 +212,6 @@ Distributed locking is fundamentally a distributed consensus problem.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: idempotency, retries, distributed-transactions
@@ -239,7 +230,7 @@ Without idempotency:
 
 ```text
 Retries may duplicate side effects
-````
+```
 
 Examples:
 
@@ -265,9 +256,6 @@ Reliable distributed transactions require idempotent operations.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: outbox-pattern, event-driven-architecture, distributed-transactions
@@ -280,7 +268,7 @@ Dual-write problem:
 ```text
 Database update succeeds
 but event publishing fails
-````
+```
 
 This creates inconsistent distributed state.
 
@@ -310,9 +298,6 @@ Outbox Pattern is widely used in event-driven microservices.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: consensus, paxos, raft
@@ -326,7 +311,7 @@ Consensus algorithms ensure:
 
 ```text
 Multiple nodes agree on shared state
-````
+```
 
 Problems solved:
 
@@ -358,9 +343,6 @@ Consensus is foundational for strongly consistent distributed coordination.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-transactions, latency, scalability
@@ -387,7 +369,7 @@ Example:
 
 ```text id="1q8vza"
 Transaction spanning 10 services increases coordination overhead
-````
+```
 
 Consequences:
 
@@ -399,9 +381,6 @@ Large-scale systems often minimize distributed transaction boundaries intentiona
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-transactions, trade-offs, system-design
@@ -427,7 +406,7 @@ Example:
 
 ```text id="7v2xpd"
 Strong consistency may reduce system availability during partitions
-````
+```
 
 Architects must carefully choose:
 

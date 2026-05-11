@@ -20,7 +20,7 @@ Problem:
 
 ```text
 Full-text search and relevance ranking perform poorly in relational systems
-````
+```
 
 Elasticsearch optimizes for:
 
@@ -47,9 +47,6 @@ Elasticsearch is specialized for scalable search workloads rather than transacti
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: inverted-index, search-engine, elasticsearch
@@ -66,7 +63,7 @@ Problem:
 
 ```text
 Text search requires efficient word-to-document mapping
-````
+```
 
 Inverted index structure:
 
@@ -92,9 +89,6 @@ Inverted indexes are foundational for scalable search engines.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: sharding, distributed-search, elasticsearch
@@ -111,7 +105,7 @@ Problem:
 
 ```text
 Single-node indexes cannot scale indefinitely
-````
+```
 
 Elasticsearch partitions indexes into shards.
 
@@ -133,9 +127,6 @@ Sharding enables Elasticsearch to scale to internet-sized datasets.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: eventual-consistency, elasticsearch, distributed-systems
@@ -152,7 +143,7 @@ Problem:
 
 ```text
 Strong consistency increases coordination overhead
-````
+```
 
 Workflow:
 
@@ -177,9 +168,6 @@ Elasticsearch trades immediate consistency for scalable distributed search perfo
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: relevance-ranking, search-engine, elasticsearch
@@ -196,7 +184,7 @@ Problem:
 
 ```text
 Keyword matching alone does not guarantee useful results
-````
+```
 
 Elasticsearch uses scoring algorithms such as:
 
@@ -225,9 +213,6 @@ Relevance ranking is one of the hardest problems in search engineering.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: near-real-time-search, indexing, elasticsearch
@@ -241,7 +226,7 @@ Workflow:
 
 ```text id="4q2xmc"
 Document Write → Refresh Cycle → Search Visibility
-````
+```
 
 Problem:
 
@@ -270,9 +255,6 @@ Elasticsearch optimizes indexing performance over immediate search consistency.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-querying, search-systems, elasticsearch
@@ -289,7 +271,7 @@ Workflow:
 
 ```text id="4v8qpd"
 Query → Scatter Across Shards → Gather Results → Merge Rankings
-````
+```
 
 Problem:
 
@@ -313,9 +295,6 @@ Distributed search introduces major coordination complexity.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: indexing-performance, elasticsearch, distributed-systems
@@ -333,7 +312,7 @@ Problem:
 
 ```text
 High write throughput creates significant CPU and I/O pressure
-````
+```
 
 Consequences:
 
@@ -359,9 +338,6 @@ Heavy ingestion workloads require careful cluster tuning.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, elasticsearch, distributed-systems
@@ -379,7 +355,7 @@ Problem:
 
 ```text
 Cluster degradation may silently impact search quality and latency
-````
+```
 
 Key monitoring areas:
 
@@ -406,9 +382,6 @@ Search infrastructure requires strong operational monitoring.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: elasticsearch, trade-offs, system-design
@@ -443,7 +416,7 @@ Example:
 
 ```text id="7v2xpd"
 Elasticsearch improves search scalability but increases operational tuning complexity
-````
+```
 
 Elasticsearch architecture fundamentally balances:
 
@@ -453,6 +426,3 @@ Elasticsearch architecture fundamentally balances:
 * operational overhead
 
 <!-- END -->
-
-```
-```

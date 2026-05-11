@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Template Design Pattern
+articleSlug: lld-template-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: template-method-pattern, lld, design-patterns
@@ -15,7 +20,7 @@ Base Class
  ├── templateMethod()
  ├── step1()
  └── step2()
-````
+```
 
 Purpose:
 
@@ -35,9 +40,6 @@ The Template Method Pattern is a behavioral design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: template-method-pattern, software-design, lld
@@ -51,7 +53,7 @@ Without Template Method:
 
 ```text id="6m2xqc"
 Duplicate workflow logic across classes
-````
+```
 
 Problems:
 
@@ -77,9 +79,6 @@ Template Method reduces workflow duplication.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: template-method-pattern, components, lld
@@ -104,7 +103,7 @@ Architecture:
 
 ```text
 Base Workflow → Customizable Steps
-````
+```
 
 Example:
 
@@ -116,9 +115,6 @@ Subclasses override selected methods while preserving overall workflow.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: data-processing, template-method-pattern, backend-engineering
@@ -132,7 +128,7 @@ Example workflow:
 
 ```text id="5m2xqc"
 Read → Validate → Process → Save
-````
+```
 
 Different file formats:
 
@@ -158,9 +154,6 @@ Data parsers commonly use Template Method internally.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: template-vs-strategy, design-patterns, lld
@@ -184,7 +177,7 @@ Example Template:
 
 ```text id="clt6p5"
 BaseParser → CsvParser
-````
+```
 
 Example Strategy:
 
@@ -196,9 +189,6 @@ Template Method focuses on workflow reuse with controlled customization.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: framework-design, template-method-pattern, software-architecture
@@ -212,7 +202,7 @@ Example:
 
 ```text id="4q2xmc"
 Framework controls request lifecycle
-````
+```
 
 Customizable steps:
 
@@ -238,9 +228,6 @@ Framework hooks commonly use Template Method concepts.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: hooks-and-callbacks, template-method-pattern, software-design
@@ -255,7 +242,7 @@ Example:
 ```text id="4v8qpd"
 beforeSave()
 afterSave()
-````
+```
 
 Characteristics:
 
@@ -277,9 +264,6 @@ Hooks are widely used in framework lifecycle systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: inversion-of-control, template-method-pattern, software-architecture
@@ -293,7 +277,7 @@ Traditional control:
 
 ```text id="6m3qpd"
 Application controls algorithm flow
-````
+```
 
 Template Method control:
 
@@ -320,9 +304,6 @@ Template Method is a classic IoC implementation technique.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: inheritance, template-method-pattern, software-design
@@ -344,7 +325,7 @@ Example:
 
 ```text id="1q8vza"
 BaseClass → Child → GrandChild
-````
+```
 
 Possible alternatives:
 
@@ -356,9 +337,6 @@ Modern architectures often prefer composition when flexibility is important.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: template-method-pattern, trade-offs, software-design
@@ -388,7 +366,7 @@ Example:
 
 ```text id="7v2xpd"
 Base workflow with overridable steps
-````
+```
 
 Template Method works best when:
 

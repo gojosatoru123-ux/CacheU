@@ -1,6 +1,6 @@
 ---
 title: UML Diagrams
-articleSlug: uml-diagrams
+articleSlug: lld-uml-diagrams
 ---
 
 # UML Diagrams

@@ -1,3 +1,9 @@
+---
+title:  Command Query Responsibility Segregation
+articleSlug: command-query-responsibility-segregation
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: cqrs, distributed-systems, scalability
@@ -9,7 +15,7 @@ Traditional architectures use:
 
 ```text
 Single model for both reads and writes
-````
+```
 
 Problem:
 
@@ -40,9 +46,6 @@ CQRS improves scalability and flexibility in complex distributed systems.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: read-write-separation, cqrs, system-design
@@ -66,7 +69,7 @@ Architecture:
 
 ```text id="6m2xqc"
 Command Side ↔ Query Side
-````
+```
 
 Benefits:
 
@@ -80,9 +83,6 @@ CQRS aligns infrastructure with workload specialization.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: eventual-consistency, cqrs, distributed-systems
@@ -96,7 +96,7 @@ Workflow:
 
 ```text id="6p1qxt"
 Write Model Update → Event Propagation → Read Model Update
-````
+```
 
 Problem:
 
@@ -127,9 +127,6 @@ CQRS prioritizes scalability and performance over immediate consistency.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: event-driven-architecture, cqrs, event-sourcing
@@ -143,7 +140,7 @@ Event-driven workflows allow:
 
 ```text
 Commands → Events → Read Model Updates
-````
+```
 
 Benefits:
 
@@ -169,9 +166,6 @@ CQRS integrates naturally with event-driven distributed architectures.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: read-models, denormalization, cqrs
@@ -195,7 +189,7 @@ Example:
 
 ```text id="clt6p5"
 Precomputed dashboard projection stored in single document
-````
+```
 
 Benefits:
 
@@ -209,9 +203,6 @@ CQRS read models intentionally sacrifice normalization for performance.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: complexity, cqrs, distributed-systems
@@ -229,7 +220,7 @@ Problem:
 
 ```text
 More components require coordination and monitoring
-````
+```
 
 Examples:
 
@@ -249,9 +240,6 @@ CQRS should be adopted only when scaling or domain complexity justifies it.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: projection-failures, cqrs, distributed-systems
@@ -265,7 +253,7 @@ Problem:
 
 ```text
 Projection consumers may fail or lag behind
-````
+```
 
 Consequences:
 
@@ -291,9 +279,6 @@ Projection reliability is critical for CQRS correctness.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: event-ordering, cqrs, distributed-systems
@@ -307,7 +292,7 @@ Problem:
 
 ```text
 Out-of-order events may corrupt projections
-````
+```
 
 Example:
 
@@ -333,9 +318,6 @@ Correct event ordering is essential for projection consistency.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, cqrs, distributed-systems
@@ -353,7 +335,7 @@ Problem:
 
 ```text
 State inconsistencies may be difficult to diagnose
-````
+```
 
 Key monitoring areas:
 
@@ -380,9 +362,6 @@ CQRS architectures require strong distributed observability.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cqrs, trade-offs, system-design
@@ -413,7 +392,7 @@ Example:
 
 ```text id="7v2xpd"
 CQRS improves dashboard scalability but complicates synchronization logic
-````
+```
 
 CQRS architecture fundamentally balances:
 

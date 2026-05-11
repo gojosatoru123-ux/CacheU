@@ -24,7 +24,7 @@ Example architecture:
 
 ```text
 Frontend → Backend API → Database
-````
+```
 
 Typical operations:
 
@@ -46,9 +46,6 @@ A database is one of the core components of every SaaS backend.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: relational-database, saas, sql
@@ -64,7 +61,7 @@ Example tables:
 Users
 Subscriptions
 Invoices
-````
+```
 
 Benefits for SaaS systems:
 
@@ -93,9 +90,6 @@ Relational databases are ideal for business-critical SaaS data.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: multi-tenancy, saas, backend
@@ -111,7 +105,7 @@ Example:
 Tenant A
 Tenant B
 Tenant C
-````
+```
 
 all use the same SaaS platform.
 
@@ -141,9 +135,6 @@ Multi-tenancy is a core SaaS architecture concept.
 
 <!-- END -->
 
-````id="6p1qxt"
-
-```md id="7m9vza"
 <!-- QUESTION -->
 difficulty: Medium
 tags: tenant-isolation, saas-security, database
@@ -157,7 +148,7 @@ Example risk:
 
 ```text id="2k8qwr"
 Tenant A accessing Tenant B invoices
-````
+```
 
 Isolation techniques:
 
@@ -185,9 +176,6 @@ Improper tenant isolation can cause severe data breaches in SaaS systems.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: indexing, performance, saas-database
@@ -201,7 +189,7 @@ Without indexes:
 
 ```text id="5m2xqc"
 Full table scan
-````
+```
 
 With indexes:
 
@@ -239,9 +227,6 @@ Indexes are critical for large SaaS platforms.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: database-scaling, saas, backend
@@ -264,7 +249,7 @@ Example architecture:
 
 ```text id="clt6p5"
 Application → Cache → Database Cluster
-````
+```
 
 Read-heavy SaaS systems often use:
 
@@ -282,9 +267,6 @@ Database scalability is a major concern for growing SaaS products.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: transactions, saas, database-consistency
@@ -300,7 +282,7 @@ Example:
 Transfer Money:
 1. Debit Account A
 2. Credit Account B
-````
+```
 
 Without transactions:
 
@@ -333,9 +315,6 @@ Transactions are essential for:
 
 <!-- END -->
 
-````id="4q2xmc"
-
-```md id="6p8qza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: nosql, saas, backend-architecture
@@ -367,7 +346,7 @@ Example document:
     "theme": "dark"
   }
 }
-````
+```
 
 NoSQL is useful for:
 
@@ -387,9 +366,6 @@ Many SaaS systems use both SQL and NoSQL databases together.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: backup, disaster-recovery, saas-database
@@ -407,7 +383,7 @@ Without backups:
 
 ```text id="4v8qpd"
 Permanent customer data loss
-````
+```
 
 Backup strategies:
 
@@ -434,9 +410,6 @@ Backups are essential for business continuity in SaaS platforms.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: database-security, saas, backend-security
@@ -459,7 +432,7 @@ Example encrypted connection:
 
 ```text id="6m3qpd"
 Application ↔ TLS ↔ Database
-````
+```
 
 Common security practices:
 

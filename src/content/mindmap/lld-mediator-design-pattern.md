@@ -1,6 +1,6 @@
 ---
 title: Mediator Design Pattern
-articleSlug: mediator-design-pattern
+articleSlug: lld-mediator-design-pattern
 ---
 
 # Mediator Design Pattern

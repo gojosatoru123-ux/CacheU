@@ -77,7 +77,7 @@ This problem is called **class explosion**.
 
 ## Example of class explosion
 
-```mermaid id="bridge_explosion_01"
+```mermaid
 flowchart TD
     A[Car Types] --> B[Sedan]
     A --> C[Hatchback]
@@ -169,7 +169,7 @@ This means:
 
 This is what makes the design flexible.
 
-```mermaid id="bridge_composition_01"
+```mermaid
 classDiagram
     class Car {
         -Engine engine
@@ -218,7 +218,7 @@ The abstraction contains a reference to the implementor.
 
 When the abstraction receives a request, it delegates the low-level work to the implementor.
 
-```mermaid id="bridge_flow_01"
+```mermaid
 flowchart LR
     A[Client] --> B[Abstraction]
     B --> C[Implementor]
@@ -259,7 +259,7 @@ These hierarchies are connected by composition.
 
 ## Visual representation
 
-```mermaid id="bridge_hierarchies_01"
+```mermaid
 flowchart TD
     subgraph Abstraction_Hierarchy[High-Level Hierarchy]
         A[Car]
@@ -342,7 +342,7 @@ A remote should not need separate code for every TV model.
 
 ## Remote and TV hierarchy
 
-```mermaid id="bridge_remote_tv_01"
+```mermaid
 classDiagram
     class RemoteControl {
         -TV tv
@@ -401,7 +401,7 @@ Bridge lets the widget remain generic while the renderer handles platform-specif
 
 ## GUI bridge diagram
 
-```mermaid id="bridge_gui_01"
+```mermaid
 classDiagram
     class Widget {
         -Renderer renderer
@@ -458,7 +458,7 @@ The abstraction and implementation are separated from the beginning to avoid cla
 
 ## Bridge vs Strategy diagram
 
-```mermaid id="bridge_vs_strategy_01"
+```mermaid
 flowchart LR
     A[Strategy] --> B[Different algorithms]
     C[Bridge] --> D[Separate abstraction and implementation]
@@ -480,7 +480,7 @@ This allows the two sides to vary independently.
 
 ## Chain of command
 
-```mermaid id="bridge_chain_01"
+```mermaid
 flowchart TD
     A[Client] --> B[SUV]
     B --> C[Engine]
@@ -782,7 +782,7 @@ car2.drive()
 
 # Bridge structure in one view
 
-```mermaid id="bridge_full_01"
+```mermaid
 classDiagram
     class Car {
         -Engine engine
@@ -979,7 +979,7 @@ Used to choose one behavior from many behaviors.
 
 # Example: Shape and renderer
 
-```mermaid id="bridge_shape_renderer_01"
+```mermaid
 classDiagram
     class Shape {
         -Renderer renderer

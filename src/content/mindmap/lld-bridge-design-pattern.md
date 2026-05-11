@@ -1,6 +1,6 @@
 ---
 title: Bridge Design Pattern
-articleSlug: bridge-design-pattern
+articleSlug: lld-bridge-design-pattern
 ---
 
 # Bridge Design Pattern

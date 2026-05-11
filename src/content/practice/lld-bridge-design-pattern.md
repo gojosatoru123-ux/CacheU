@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Bridge Design Pattern
+articleSlug: lld-bridge-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: bridge-pattern, lld, design-patterns
@@ -12,7 +17,7 @@ Instead of tightly coupling:
 
 ```text
 Abstraction → Specific Implementation
-````
+```
 
 the Bridge pattern creates:
 
@@ -32,9 +37,6 @@ The Bridge pattern is a structural design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: bridge-pattern, inheritance, software-design
@@ -48,7 +50,7 @@ Example problem:
 
 ```text id="6m2xqc"
 Shape + Color combinations
-````
+```
 
 Without Bridge:
 
@@ -80,9 +82,6 @@ This significantly improves scalability and maintainability.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: abstraction, implementation, bridge-pattern
@@ -102,7 +101,7 @@ Abstraction
 
 Implementor
  └── ConcreteImplementor
-````
+```
 
 Responsibilities:
 
@@ -122,9 +121,6 @@ Composition is central to the Bridge Pattern.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: bridge-vs-adapter, lld, design-patterns
@@ -148,7 +144,7 @@ Example Bridge:
 
 ```text id="5m2xqc"
 RemoteControl → TVDevice
-````
+```
 
 Example Adapter:
 
@@ -160,9 +156,6 @@ Both are structural patterns but solve different architectural problems.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: composition-over-inheritance, bridge-pattern, lld
@@ -179,7 +172,7 @@ CarWithPetrolEngine
 CarWithElectricEngine
 TruckWithPetrolEngine
 TruckWithElectricEngine
-````
+```
 
 Bridge creates:
 
@@ -205,9 +198,6 @@ which is a major object-oriented design principle.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: bridge-pattern, scalability, lld
@@ -227,7 +217,7 @@ Notification Types:
 Platforms:
 - AWS
 - Twilio
-````
+```
 
 Without Bridge:
 
@@ -256,9 +246,6 @@ Bridge is useful in highly extensible systems.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: bridge-pattern, clean-architecture, lld
@@ -274,7 +261,7 @@ Architecture:
 
 ```text id="4v8qpd"
 Business Logic → Interface → Concrete Infrastructure
-````
+```
 
 Example:
 
@@ -300,9 +287,6 @@ Bridge aligns strongly with dependency inversion principles.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: bridge-pattern, device-control, lld
@@ -318,7 +302,7 @@ Example:
 
 ```text id="6m3qpd"
 RemoteControl → Device
-````
+```
 
 Devices:
 
@@ -343,9 +327,6 @@ This is one of the most common textbook examples of the Bridge Pattern.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: bridge-vs-strategy, design-patterns, lld
@@ -369,7 +350,7 @@ Example Bridge:
 
 ```text id="1q8vza"
 Shape → Renderer
-````
+```
 
 Example Strategy:
 
@@ -383,9 +364,6 @@ Strategy focuses on runtime behavior selection.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: bridge-pattern, trade-offs, software-design
@@ -415,7 +393,7 @@ Example:
 
 ```text id="7v2xpd"
 Abstraction → Interface → Implementation
-````
+```
 
 Bridge is most valuable in systems expected to evolve across multiple dimensions.
 

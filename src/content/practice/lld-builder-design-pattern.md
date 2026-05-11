@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Builder Design Pattern
+articleSlug: lld-builder-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: builder-pattern, lld, design-patterns
@@ -12,7 +17,7 @@ Instead of using large constructors:
 
 ```text
 User(name, age, phone, address, ...)
-````
+```
 
 Builder provides:
 
@@ -35,9 +40,6 @@ The Builder Pattern is a creational design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: telescoping-constructor, builder-pattern, software-design
@@ -54,7 +56,7 @@ User(name)
 User(name, age)
 User(name, age, phone)
 User(name, age, phone, address)
-````
+```
 
 Issues:
 
@@ -83,9 +85,6 @@ Builder is ideal for complex object initialization.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: builder-pattern, immutability, lld
@@ -103,7 +102,7 @@ Flow:
 Builder collects values
 ↓
 Immutable object created once
-````
+```
 
 Benefits:
 
@@ -125,9 +124,6 @@ Builder is commonly used with immutable domain models.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: fluent-interface, builder-pattern, clean-code
@@ -143,7 +139,7 @@ Example:
 builder.setName()
        .setAge()
        .setAddress()
-````
+```
 
 Characteristics:
 
@@ -166,9 +162,6 @@ Fluent APIs are commonly associated with the Builder Pattern.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: builder-vs-factory, design-patterns, lld
@@ -192,7 +185,7 @@ Example Builder:
 
 ```text id="clt6p5"
 PizzaBuilder → addCheese() → addSauce()
-````
+```
 
 Example Factory:
 
@@ -204,9 +197,6 @@ Both are creational patterns but solve different problems.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: validation, builder-pattern, object-creation
@@ -220,7 +210,7 @@ Example:
 
 ```text id="4q2xmc"
 Missing required fields → build() fails
-````
+```
 
 Validation location:
 
@@ -246,9 +236,6 @@ Validation is commonly implemented inside the `build()` method.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: director, builder-pattern, lld
@@ -262,7 +249,7 @@ Architecture:
 
 ```text id="4v8qpd"
 Director → Builder → Product
-````
+```
 
 Responsibilities:
 
@@ -289,9 +276,6 @@ Modern implementations sometimes omit the Director for simplicity.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: builder-pattern, dependency-injection, lld
@@ -311,7 +295,7 @@ ServerBuilder
   .setLogger()
   .setCache()
   .build()
-````
+```
 
 Benefits:
 
@@ -329,9 +313,6 @@ Builders are frequently used in:
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: builder-pattern, thread-safety, software-design
@@ -347,7 +328,7 @@ Process:
 Mutable Builder
 ↓
 Immutable Final Object
-````
+```
 
 Benefits:
 
@@ -367,9 +348,6 @@ The Builder Pattern is commonly paired with immutable architectures.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: builder-pattern, trade-offs, software-design
@@ -399,7 +377,7 @@ Example:
 
 ```text id="7v2xpd"
 Builder → Validation → Final Object
-````
+```
 
 Builder is most valuable when constructing:
 

@@ -1,6 +1,6 @@
 ---
 title: Proxy Design Pattern
-articleSlug: proxy-design-pattern
+articleSlug: lld-proxy-design-pattern
 ---
 
 # Proxy Design Pattern

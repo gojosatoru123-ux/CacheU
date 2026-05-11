@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Prototype Design Pattern
+articleSlug: lld-prototype-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: prototype-pattern, lld, design-patterns
@@ -12,7 +17,7 @@ Instead of:
 
 ```text
 new Object()
-````
+```
 
 Prototype provides:
 
@@ -32,9 +37,6 @@ The Prototype Pattern is a creational design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: object-cloning, prototype-pattern, lld
@@ -53,7 +55,7 @@ Without Prototype:
 
 ```text id="6m2xqc"
 Repeatedly constructing identical objects
-````
+```
 
 Prototype solution:
 
@@ -73,9 +75,6 @@ Prototype is useful when object construction is expensive.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: shallow-copy, deep-copy, prototype-pattern
@@ -99,7 +98,7 @@ Example:
 
 ```text id="6p1qxt"
 Object A → Shared Child Object
-````
+```
 
 Benefits of deep copy:
 
@@ -111,9 +110,6 @@ Prototype implementations must carefully handle cloning depth.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: prototype-pattern, game-development, lld
@@ -127,7 +123,7 @@ Example:
 
 ```text id="5m2xqc"
 Enemy templates cloned repeatedly
-````
+```
 
 Shared properties:
 
@@ -153,9 +149,6 @@ Game engines commonly use Prototype for entity generation.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: prototype-vs-factory, design-patterns, lld
@@ -179,7 +172,7 @@ Example Prototype:
 
 ```text id="clt6p5"
 document.clone()
-````
+```
 
 Example Factory:
 
@@ -191,9 +184,6 @@ Both are creational patterns but solve different performance and creation proble
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: configuration-management, prototype-pattern, backend-systems
@@ -207,7 +197,7 @@ Example:
 
 ```text id="4q2xmc"
 Server configurations cloned from templates
-````
+```
 
 Workflow:
 
@@ -227,9 +217,6 @@ Prototype simplifies template-based object management.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: serialization, prototype-pattern, software-design
@@ -243,7 +230,7 @@ Deep cloning workflow:
 
 ```text id="4v8qpd"
 Serialize → Deserialize → New Independent Object
-````
+```
 
 Benefits:
 
@@ -264,9 +251,6 @@ Serialization-based cloning is common in enterprise systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: object-pooling, prototype-pattern, performance-engineering
@@ -288,7 +272,7 @@ Example Prototype:
 
 ```text id="6m3qpd"
 Clone enemy template
-````
+```
 
 Example Pooling:
 
@@ -306,9 +290,6 @@ Both are important optimization techniques in high-performance applications.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: mutable-state, prototype-pattern, software-design
@@ -322,7 +303,7 @@ Example problem:
 
 ```text id="1q8vza"
 Two cloned objects share same child reference
-````
+```
 
 Potential issues:
 
@@ -342,9 +323,6 @@ Careful cloning design is critical for correctness.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: prototype-pattern, trade-offs, software-design
@@ -374,7 +352,7 @@ Example:
 
 ```text id="7v2xpd"
 Clone object with nested mutable fields
-````
+```
 
 Prototype works best when:
 

@@ -1,3 +1,9 @@
+---
+title: Service Mesh
+articleSlug: service-mesh
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: service-mesh, microservices, distributed-systems
@@ -14,7 +20,7 @@ Without Service Mesh:
 
 ```text
 Every service must implement networking logic independently
-````
+```
 
 Problems:
 
@@ -40,9 +46,6 @@ Service Mesh abstracts infrastructure networking concerns away from application 
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: sidecar-proxy, envoy, service-mesh
@@ -59,7 +62,7 @@ Architecture:
 
 ```text id="6m2xqc"
 Application Container ↔ Sidecar Proxy
-````
+```
 
 Benefits:
 
@@ -78,9 +81,6 @@ Sidecars decouple infrastructure networking concerns from business logic.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: mtls, zero-trust, service-mesh-security
@@ -102,7 +102,7 @@ Workflow:
 
 ```text id="6p1qxt"
 Service A ↔ Verified Encrypted Connection ↔ Service B
-````
+```
 
 Benefits:
 
@@ -116,9 +116,6 @@ Service Mesh platforms automate large-scale mTLS management.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, distributed-tracing, service-mesh
@@ -143,7 +140,7 @@ Architecture:
 
 ```text id="5m2xqc"
 Proxy captures request metadata across services
-````
+```
 
 Benefits:
 
@@ -157,9 +154,6 @@ Service Mesh provides infrastructure-level observability without modifying appli
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: traffic-management, canary-release, service-mesh
@@ -182,7 +176,7 @@ Example:
 ```text id="clt6p5"
 90% traffic → v1
 10% traffic → v2
-````
+```
 
 Benefits:
 
@@ -196,9 +190,6 @@ Traffic policies become infrastructure-managed instead of application-managed.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: retries, circuit-breaker, resilience-engineering
@@ -215,7 +206,7 @@ Without resilience controls:
 
 ```text
 Failures may cascade across services
-````
+```
 
 Service Mesh resilience features:
 
@@ -241,9 +232,6 @@ Service Mesh platforms centralize resilience engineering capabilities.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: control-plane, data-plane, service-mesh
@@ -264,7 +252,7 @@ Architecture:
 
 ```text id="4v8qpd"
 Control Plane → Configures Sidecar Proxies
-````
+```
 
 Benefits:
 
@@ -283,9 +271,6 @@ Control/Data Plane separation improves operational flexibility.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: performance-overhead, sidecar-proxy, service-mesh
@@ -302,7 +287,7 @@ Problem:
 
 ```text
 Extra processing occurs for every request
-````
+```
 
 Overheads:
 
@@ -328,9 +313,6 @@ Service Mesh introduces infrastructure abstraction at performance cost.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: kubernetes, service-mesh, cloud-native
@@ -354,7 +336,7 @@ Architecture:
 
 ```text id="1q8vza"
 Pod → Sidecar Injection → Mesh Networking
-````
+```
 
 Benefits:
 
@@ -374,9 +356,6 @@ Kubernetes accelerated widespread Service Mesh adoption.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: service-mesh, trade-offs, system-design
@@ -407,7 +386,7 @@ Example:
 
 ```text id="7v2xpd"
 Misconfigured mesh policy may block inter-service communication
-````
+```
 
 Service Mesh design fundamentally balances:
 

@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: UML Diagram
+articleSlug: lld-uml-diagrams
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: uml, lld, software-design
@@ -12,7 +17,7 @@ Purpose:
 
 ```text id="4m8qza"
 Visualize software structure and behavior
-````
+```
 
 Common UML diagrams:
 
@@ -33,9 +38,6 @@ UML is widely used in Low-Level Design interviews and system architecture discus
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: class-diagram, uml, lld
@@ -58,7 +60,7 @@ User
  ├── name
  ├── email
  └── login()
-````
+```
 
 Benefits:
 
@@ -72,9 +74,6 @@ Class diagrams are the most commonly used UML diagrams in LLD.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: uml-relationships, association, aggregation, composition
@@ -98,7 +97,7 @@ Examples:
 
 ```text id="6p1qxt"
 Car ── Engine
-````
+```
 
 ```text id="m3p9qx"
 Dog ──► Animal
@@ -108,9 +107,6 @@ Relationships help model interactions between system components.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: sequence-diagram, uml, backend-systems
@@ -129,7 +125,7 @@ Example flow:
 
 ```text id="5m2xqc"
 Client → API → Service → Database
-````
+```
 
 Benefits:
 
@@ -143,9 +139,6 @@ Sequence diagrams are heavily used in backend workflow design.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: activity-diagram, uml, workflows
@@ -165,7 +158,7 @@ Example:
 
 ```text id="clt6p5"
 Login → Validate → Success/Failure
-````
+```
 
 Benefits:
 
@@ -179,9 +172,6 @@ Activity diagrams are useful for business logic and workflow systems.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: use-case-diagram, uml, requirements-engineering
@@ -200,7 +190,7 @@ Example:
 
 ```text id="4q2xmc"
 Customer → Place Order
-````
+```
 
 Benefits:
 
@@ -214,9 +204,6 @@ Use case diagrams are commonly used during requirement analysis.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: composition-vs-aggregation, uml, software-design
@@ -238,7 +225,7 @@ Example Aggregation:
 
 ```text id="4v8qpd"
 Team ── Player
-````
+```
 
 Example Composition:
 
@@ -255,9 +242,6 @@ Composition implies dependent existence.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: uml-best-practices, software-architecture, lld
@@ -280,7 +264,7 @@ Avoid:
 
 ```text id="6m3qpd"
 Overloading one diagram with every class
-````
+```
 
 Benefits:
 
@@ -292,9 +276,6 @@ Effective UML diagrams communicate architecture clearly and quickly.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: uml-in-microservices, distributed-systems, software-architecture
@@ -314,7 +295,7 @@ Examples:
 
 ```text id="1q8vza"
 API Gateway → Order Service → Payment Service
-````
+```
 
 Useful diagrams:
 
@@ -336,9 +317,6 @@ UML is valuable for distributed system documentation.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: uml-diagrams, trade-offs, software-design
@@ -368,7 +346,7 @@ Example issue:
 
 ```text id="7v2xpd"
 Complex diagrams difficult to interpret
-````
+```
 
 UML works best when:
 

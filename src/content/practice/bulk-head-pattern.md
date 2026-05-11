@@ -1,3 +1,9 @@
+---
+title:  Bulk Head Pattern
+articleSlug: bulk-head-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: bulkhead-pattern, resilience, distributed-systems
@@ -14,7 +20,7 @@ Problem:
 
 ```text
 Failure in one component may exhaust shared resources
-````
+```
 
 Consequences:
 
@@ -42,9 +48,6 @@ The Bulkhead Pattern improves fault containment in distributed architectures.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: thread-pool-isolation, concurrency, resilience-engineering
@@ -58,7 +61,7 @@ Problem:
 
 ```text
 Slow or failing service consumes all worker threads
-````
+```
 
 Consequences:
 
@@ -90,9 +93,6 @@ Thread isolation is a practical resilience strategy in high-concurrency systems.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cascading-failures, fault-isolation, distributed-systems
@@ -104,7 +104,7 @@ Cascading failures occur when:
 
 ```text
 Resource exhaustion spreads across dependent components
-````
+```
 
 Examples:
 
@@ -132,9 +132,6 @@ Bulkheads reduce failure propagation in distributed systems.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: connection-pool-isolation, databases, backend-resilience
@@ -148,7 +145,7 @@ Problem:
 
 ```text
 One overloaded service consumes all database connections
-````
+```
 
 Consequences:
 
@@ -174,9 +171,6 @@ Connection pool bulkheads protect critical backend resources.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: microservices, resilience-patterns, bulkhead-pattern
@@ -193,7 +187,7 @@ Problem:
 
 ```text
 Single failing microservice may destabilize entire platform
-````
+```
 
 Bulkheads isolate:
 
@@ -220,9 +214,6 @@ Microservices architectures strongly benefit from resource isolation strategies.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: circuit-breaker, bulkhead-pattern, resilience-engineering
@@ -238,7 +229,7 @@ Combined workflow:
 
 ```text id="4q2xmc"
 Failing Service → Circuit Opens → Bulkhead Limits Resource Damage
-````
+```
 
 Benefits:
 
@@ -258,9 +249,6 @@ Circuit breakers and bulkheads complement each other in resilient distributed sy
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: resource-utilization, performance, resilience
@@ -274,7 +262,7 @@ Problem:
 
 ```text
 Unused isolated resources cannot always be shared dynamically
-````
+```
 
 Consequences:
 
@@ -303,9 +291,6 @@ Bulkhead design balances:
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: queue-isolation, event-driven-systems, resilience
@@ -319,7 +304,7 @@ Problem:
 
 ```text
 Slow consumers delay unrelated workloads
-````
+```
 
 Consequences:
 
@@ -351,9 +336,6 @@ Queue isolation improves resilience in asynchronous architectures.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cloud-systems, autoscaling, bulkhead-pattern
@@ -367,7 +349,7 @@ Problem:
 
 ```text
 Noisy workloads may consume disproportionate shared resources
-````
+```
 
 Examples:
 
@@ -393,9 +375,6 @@ Bulkheads are foundational for reliable multi-service cloud infrastructure.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: bulkhead-pattern, trade-offs, system-design
@@ -426,7 +405,7 @@ Example:
 
 ```text id="7v2xpd"
 Overly strict thread isolation may underutilize available infrastructure
-````
+```
 
 Bulkhead architecture fundamentally balances:
 

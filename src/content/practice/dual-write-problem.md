@@ -1,3 +1,9 @@
+---
+title:  Dual Write Problem
+articleSlug: dual-write-problem
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: dual-write-problem, distributed-systems, consistency
@@ -9,7 +15,7 @@ The Dual Write problem occurs when:
 
 ```text
 A system updates two separate resources independently
-````
+```
 
 Examples:
 
@@ -39,9 +45,6 @@ Dual writes create reliability and consistency risks in distributed architecture
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: database-and-message-queue, event-driven-systems, reliability
@@ -58,7 +61,7 @@ Problem:
 
 ```text
 Cross-system atomicity is extremely hard
-````
+```
 
 Failure scenarios:
 
@@ -77,9 +80,6 @@ Atomic coordination across heterogeneous systems is fundamentally challenging.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-transactions, two-phase-commit, consistency
@@ -93,7 +93,7 @@ Workflow:
 
 ```text id="6p1qxt"
 Prepare Phase → Commit Phase
-````
+```
 
 Problems:
 
@@ -119,9 +119,6 @@ Large-scale distributed systems often avoid 2PC due to performance and availabil
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: transactional-outbox, reliability, event-driven-architecture
@@ -139,7 +136,7 @@ Workflow:
 
 ```text id="5m2xqc"
 Business Transaction + Outbox Insert → Single Atomic Commit
-````
+```
 
 Later:
 
@@ -159,9 +156,6 @@ Transactional Outbox is a widely adopted distributed consistency pattern.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: change-data-capture, cdc, event-streaming
@@ -178,7 +172,7 @@ Workflow:
 
 ```text id="clt6p5"
 Database Change → CDC Stream → Event Broker
-````
+```
 
 Benefits:
 
@@ -198,9 +192,6 @@ CDC reduces synchronization failures between systems.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: idempotency, retries, distributed-systems
@@ -217,7 +208,7 @@ Problem:
 
 ```text
 Repeated retries may duplicate side effects
-````
+```
 
 Example:
 
@@ -237,9 +228,6 @@ Reliable distributed systems assume retries and duplicates are unavoidable.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: eventual-consistency, distributed-systems, event-driven-architecture
@@ -256,7 +244,7 @@ Problem:
 
 ```text
 Strict atomicity reduces scalability and availability
-````
+```
 
 Eventual consistency allows temporary divergence.
 
@@ -284,9 +272,6 @@ Large-scale systems often prioritize availability over strict consistency.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-failures, observability, debugging
@@ -303,7 +288,7 @@ Problem:
 
 ```text
 Partial failures may appear successful initially
-````
+```
 
 Example:
 
@@ -329,9 +314,6 @@ Dual Write bugs are operationally complex and often subtle.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: reconciliation, data-consistency, distributed-systems
@@ -350,7 +332,7 @@ Workflow:
 
 ```text id="1q8vza"
 Database State ↔ Downstream System State
-````
+```
 
 Benefits:
 
@@ -370,9 +352,6 @@ Reconciliation is often essential in eventually consistent architectures.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: dual-write-problem, trade-offs, system-design
@@ -403,7 +382,7 @@ Example:
 
 ```text id="7v2xpd"
 Transactional Outbox improves reliability but adds asynchronous pipelines
-````
+```
 
 Distributed consistency fundamentally balances:
 

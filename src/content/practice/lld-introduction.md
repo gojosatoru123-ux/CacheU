@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Introduction to Low Level Design
+articleSlug: lld-introduction
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: lld, software-design, system-design
@@ -21,7 +26,7 @@ Example:
 UserService
  ├── UserRepository
  └── NotificationService
-````
+```
 
 LLD focuses on:
 
@@ -41,9 +46,6 @@ LLD is commonly discussed in backend and object-oriented design interviews.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: hld-vs-lld, architecture, system-design
@@ -67,7 +69,7 @@ Example HLD:
 
 ```text id="6m2xqc"
 Load Balancer → API Gateway → Microservices
-````
+```
 
 Example LLD:
 
@@ -79,9 +81,6 @@ Both are important for building scalable software systems.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: oop, lld, software-engineering
@@ -103,7 +102,7 @@ Example:
 Vehicle
  ├── Car
  └── Bike
-````
+```
 
 Benefits:
 
@@ -117,9 +116,6 @@ OOP provides the foundation for most LLD patterns and architectures.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: solid-principles, lld, clean-code
@@ -143,7 +139,7 @@ Example:
 
 ```text id="5m2xqc"
 One class should have one responsibility
-````
+```
 
 Benefits:
 
@@ -155,9 +151,6 @@ SOLID principles are fundamental in professional LLD interviews.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: uml, class-diagrams, lld
@@ -177,7 +170,7 @@ Example:
 
 ```text id="clt6p5"
 UserService → UserRepository
-````
+```
 
 Common relationships:
 
@@ -199,9 +192,6 @@ UML diagrams are commonly used during LLD discussions.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: design-patterns, lld, software-architecture
@@ -229,15 +219,12 @@ Example:
 
 ```text id="4q2xmc"
 Factory Pattern centralizes object creation
-````
+```
 
 Design Patterns improve code quality and architectural consistency.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: lld, scalability, maintainability
@@ -256,7 +243,7 @@ Good LLD provides:
 
 ```text id="4v8qpd"
 Modular and extensible architecture
-````
+```
 
 Benefits:
 
@@ -270,9 +257,6 @@ Maintainability is one of the most important evaluation criteria in LLD intervie
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: coupling-and-cohesion, lld, software-design
@@ -288,7 +272,7 @@ Best practice:
 
 ```text id="6m3qpd"
 Low coupling + High cohesion
-````
+```
 
 Comparison:
 
@@ -313,9 +297,6 @@ Strong LLD aims to minimize coupling while maximizing cohesion.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: lld-interviews, object-oriented-design, software-engineering
@@ -342,7 +323,7 @@ Example expectations:
 
 ```text id="1q8vza"
 Proper separation of responsibilities
-````
+```
 
 Interviewers value:
 
@@ -352,9 +333,6 @@ Interviewers value:
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: lld, real-world-systems, backend-engineering
@@ -374,7 +352,7 @@ OrderService
  ├── InventoryManager
  ├── PaymentProcessor
  └── NotificationHandler
-````
+```
 
 Benefits of strong LLD:
 

@@ -1,3 +1,9 @@
+---
+title:  Distributed ID Generation
+articleSlug: distributed-id-generation
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-id-generation, distributed-systems, scalability
@@ -14,7 +20,7 @@ Problem:
 
 ```text
 Independent nodes may generate duplicate identifiers
-````
+```
 
 Requirements:
 
@@ -39,9 +45,6 @@ Distributed ID generation must balance scalability with global uniqueness guaran
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: centralized-id-generation, scalability, bottlenecks
@@ -57,7 +60,7 @@ Architecture:
 
 ```text id="6m2xqc"
 All Services → Central ID Generator
-````
+```
 
 Problem:
 
@@ -82,9 +85,6 @@ Centralized ID generation struggles in internet-scale architectures.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: snowflake-ids, distributed-id-generation, scalability
@@ -101,7 +101,7 @@ Structure:
 
 ```text id="6p1qxt"
 Timestamp + Node ID + Sequence Number
-````
+```
 
 Benefits:
 
@@ -121,9 +121,6 @@ Snowflake designs enable scalable globally unique ID generation.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: clock-synchronization, snowflake, distributed-systems
@@ -140,7 +137,7 @@ Problem:
 
 ```text
 Clock drift may generate duplicate or unordered IDs
-````
+```
 
 Example:
 
@@ -166,9 +163,6 @@ Clock management is a major challenge in distributed ID systems.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: uuid, distributed-id-generation, distributed-systems
@@ -193,7 +187,7 @@ Problem:
 
 ```text
 UUIDs are large and poorly ordered
-````
+```
 
 Consequences:
 
@@ -211,9 +205,6 @@ UUIDs prioritize simplicity and uniqueness over storage efficiency.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: database-indexing, distributed-id-generation, performance
@@ -227,7 +218,7 @@ Problem:
 
 ```text
 Random IDs scatter writes across index pages
-````
+```
 
 Consequences:
 
@@ -258,9 +249,6 @@ Distributed ID strategy strongly impacts database scalability.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: ordering, distributed-id-generation, event-systems
@@ -277,7 +265,7 @@ Problem:
 
 ```text
 Independent nodes generate IDs concurrently
-````
+```
 
 Consequences:
 
@@ -303,9 +291,6 @@ Strong global ordering increases coordination complexity significantly.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: security, distributed-id-generation, backend-systems
@@ -322,7 +307,7 @@ Problem:
 
 ```text
 Attackers may infer or access unauthorized resources
-````
+```
 
 Example:
 
@@ -348,9 +333,6 @@ ID generation strategy impacts both scalability and security.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, distributed-id-generation, tracing
@@ -372,7 +354,7 @@ Architecture:
 
 ```text id="1q8vza"
 Request ID → Propagated Across Services
-````
+```
 
 Benefits:
 
@@ -392,9 +374,6 @@ Distributed identifiers are foundational for observability systems.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-id-generation, trade-offs, system-design
@@ -429,7 +408,7 @@ Example:
 
 ```text id="7v2xpd"
 Snowflake IDs improve scalability but require clock management safeguards
-````
+```
 
 Distributed ID generation fundamentally balances:
 

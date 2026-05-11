@@ -63,7 +63,7 @@ This creates a complicated, brittle design.
 
 ## Direct communication diagram
 
-```mermaid id="mediator_direct_01"
+```mermaid
 flowchart TD
     A[Object 1] --> B[Object 2]
     A --> C[Object 3]
@@ -115,7 +115,7 @@ It promotes loose coupling by preventing objects from referring to each other di
 
 ## UML structure
 
-```mermaid id="mediator_uml_01"
+```mermaid
 classDiagram
     class Mediator {
         <<interface>>
@@ -187,7 +187,7 @@ With a mediator:
 
 ## Chat room flow
 
-```mermaid id="mediator_chat_flow_01"
+```mermaid
 flowchart TD
     A[User 1] --> B[ChatMediator]
     C[User 2] --> B
@@ -279,7 +279,7 @@ This is far cleaner.
 
 # Example communication flow
 
-```mermaid id="mediator_chat_sequence_01"
+```mermaid
 sequenceDiagram
     actor Alice
     participant Mediator
@@ -434,7 +434,7 @@ For example:
 
 ## GUI mediator diagram
 
-```mermaid id="mediator_gui_01"
+```mermaid
 flowchart TD
     A[Username Field] --> C[Form Mediator]
     B[Password Field] --> C
@@ -475,7 +475,7 @@ Many objects interact through a central coordinator.
 
 ## Mediator vs Observer diagram
 
-```mermaid id="mediator_vs_observer_01"
+```mermaid
 flowchart LR
     A[Mediator] --> B[Coordinates communication]
     C[Observer] --> D[Broadcasts state changes]
@@ -813,7 +813,7 @@ bob.send("Hi Alice")
 
 # Sequence Diagram: Chat Room Message Flow
 
-```mermaid id="mediator_sequence_01"
+```mermaid
 sequenceDiagram
     actor Alice
     participant Mediator
@@ -845,7 +845,7 @@ That is the Mediator pattern.
 
 ## Air traffic control diagram
 
-```mermaid id="mediator_air_traffic_01"
+```mermaid
 flowchart TD
     A[Plane 1] --> C[Air Traffic Controller]
     B[Plane 2] --> C

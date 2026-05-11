@@ -1,153 +1,244 @@
 ---
-title: API Gateway
-articleSlug: api-gateway
+title: Back-of-the-Envelope Estimation
+articleSlug: back-of-the-envelope-estimation
 ---
 
-# API Gateway
+# Back-of-the-Envelope Estimation
 
-## Overview
+## Concept
 
-* Single entry point
-* Microservices front door
-* Client request router
-* Cross-cutting concerns
-* Backend simplification
+* Quick scale estimation
+* Rough system calculations
+* Approximate infrastructure sizing
+* Early design analysis
 
-## Why Needed
+### Purpose
 
-* Many backend services
-* Client complexity grows
-* Direct service access
-* Security exposure
-* Hard service discovery
+* Understand system scale
+* Estimate infrastructure needs
+* Guide architecture decisions
+* Identify system constraints
 
-## Without Gateway
+## Why Estimation Matters
 
-* Tight coupling
-* Complex client logic
-* Multiple auth handling
-* Public service exposure
-* More round trips
+* Avoid overprovisioning
+* Prevent system undercapacity
+* Guide architecture choices
+* Enable quick feasibility checks
 
-## With Gateway
+### Key Questions
 
-* One endpoint
-* Centralized control
-* Private services
-* Simplified clients
-* Easier observability
+* Required servers count
+* Storage requirements
+* Network bandwidth needs
+* Requests per second
 
-## Core Responsibilities
+## Estimation Principles
 
-### Request Routing
+### Reasonable Assumptions
 
-* Path based routing
-* Service mapping
-* Endpoint forwarding
+* Unknown values assumed
+* Realistic user estimates
+* Typical workload patterns
 
-### Authentication
+#### Example Assumptions
 
-* Token validation
-* JWT checking
-* OAuth support
-* API key checks
+* Total users estimate
+* Daily active percentage
+* Actions per user
+* Data size per object
 
-### Authorization
+### Use Round Numbers
 
-* Permission enforcement
-* Role checks
-* Access control
+* Simplify calculations
+* Powers of ten usage
+* Avoid exact precision
 
-### Rate Limiting
+### Order of Magnitude
 
-* Request throttling
-* Abuse protection
-* Traffic control
-* Spike handling
+* Focus scale difference
+* Rough system sizing
+* Ignore minor variations
 
-### Request Aggregation
+## Useful Reference Numbers
 
-* Multiple service calls
-* Combined response
-* Fewer client calls
+### Storage Units
 
-### Response Transformation
+* Kilobyte thousand bytes
+* Megabyte million bytes
+* Gigabyte billion bytes
+* Terabyte trillion bytes
 
-* Format conversion
-* Client specific payloads
-* Data shaping
+### Time Conversions
 
-### Caching
+* Minute sixty seconds
+* Hour thirty six hundred
+* Day eighty six thousand
+* Year thirty one million
 
-* Frequent response reuse
-* Lower latency
-* Reduced backend load
+### Latency Numbers
 
-## Internal Components
+* CPU cache nanoseconds
+* RAM hundred nanoseconds
+* SSD hundred microseconds
+* Datacenter network milliseconds
+* Cross region network latency
 
-* Request handler
-* Auth module
-* Rate limiter
-* Router
-* Service discovery
-* Response transformer
+## Estimation Workflow
 
-## Request Flow
+### Step One Users
 
-* Client request
-* Gateway validation
-* Route decision
-* Backend call
-* Response return
+* Total users estimate
+* Daily active users
+* Active percentage assumption
 
-## Scaling
+### Step Two Traffic
 
+* User actions daily
+* Writes per second
+* Reads per second
+
+### Step Three Storage
+
+* Data size per record
+* Records per day
+* Storage growth yearly
+
+### Step Four Bandwidth
+
+* Response size estimate
+* Requests per second
+* Network throughput
+
+### Step Five Infrastructure
+
+* Server capacity estimation
+* Database scaling needs
+* Cache capacity planning
+* CDN requirements
+
+## URL Shortener Example
+
+### User Estimation
+
+* Hundred million users
+* Ten percent active
+* Ten million active users
+
+### Write Traffic
+
+* Two links per user
+* Twenty million writes daily
+* Few hundred writes second
+
+### Read Traffic
+
+* Hundred accesses per link
+* Billions redirects daily
+* Tens thousands reads second
+
+### Storage Estimation
+
+* Short url identifier
+* Original url storage
+* Metadata storage
+* Few hundred bytes record
+
+### Storage Growth
+
+* Several gigabytes daily
+* Terabytes yearly growth
+
+### Bandwidth Estimation
+
+* Small response payload
+* Redirect response size
+* Network throughput calculation
+
+## Common Estimation Types
+
+### Traffic Estimation
+
+* Requests per second
+* Daily active users
+* Peak traffic spikes
+
+### Storage Estimation
+
+* Data per object
+* Objects per day
+* Long term growth
+
+### Bandwidth Estimation
+
+* Response payload size
+* Total request volume
+* Network capacity needs
+
+### Compute Estimation
+
+* CPU utilization
+* Server request capacity
 * Horizontal scaling
-* Load balancing
-* High availability
-* Fault tolerance
 
-## Benefits
+## Distributed System Usage
 
-* Centralized security
-* Simpler clients
-* Better routing
-* Lower backend load
-* Easier monitoring
+### Large Platform Examples
 
-## Trade-offs
+* Video streaming platforms
+* Ride sharing systems
+* Photo sharing networks
+* Social media services
 
-* Extra network hop
-* Possible bottleneck
-* Single failure risk
-* More operational complexity
+### Infrastructure Planning
+
+* Storage clusters
+* Compute clusters
+* Network throughput
+* Global infrastructure
+
+## Common Mistakes
+
+### Overcomplicated Math
+
+* Excessive precision
+* Complex calculations
+* Slow estimation process
+
+### Ignoring Peak Load
+
+* Average traffic focus
+* Traffic spike failures
+* Capacity planning mistakes
+
+### Ignoring Data Growth
+
+* Long term storage
+* Increasing dataset size
+* Scaling limitations
 
 ## Best Practices
 
-* Keep lightweight
-* Avoid business logic
-* Use discovery
-* Add observability
-* Monitor latency
+### Conservative Estimates
 
-## Common Uses
+* Slight overestimation
+* Capacity safety margins
 
-* E-commerce platforms
-* Mobile backends
-* Serverless systems
-* Microservices architectures
-* Public APIs
+### Document Assumptions
 
-## Popular Tools
+* User growth assumptions
+* Data size assumptions
+* Traffic pattern assumptions
 
-* Kong
-* NGINX
-* Envoy
-* Amazon API Gateway
+### Validate With Metrics
 
-## Key Takeaway
+* Monitor real usage
+* Compare actual traffic
+* Adjust infrastructure
 
-* Front door pattern
-* Central control point
-* Simplifies distributed systems
-* Protects backend services
+## Key Takeaways
+
+* Quick system estimation
+* Order magnitude understanding
+* Traffic storage bandwidth planning
+* Early architecture guidance

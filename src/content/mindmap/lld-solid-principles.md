@@ -1,6 +1,6 @@
 ---
 title: SOLID Principles
-articleSlug: solid-principles
+articleSlug: lld-solid-principles
 ---
 
 # SOLID Principles

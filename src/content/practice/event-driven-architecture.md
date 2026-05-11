@@ -1,3 +1,9 @@
+---
+title:  Event Driven Architecture
+articleSlug: event-driven-architecture
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: event-driven-architecture, distributed-systems, scalability
@@ -16,7 +22,7 @@ Architecture:
 
 ```text
 Producer → Event Broker → Consumers
-````
+```
 
 Benefits:
 
@@ -36,9 +42,6 @@ EDA is widely used for scalable distributed systems.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: asynchronous-processing, event-driven-systems, microservices
@@ -50,7 +53,7 @@ Synchronous systems require:
 
 ```text
 Caller waits for downstream completion
-````
+```
 
 Problems:
 
@@ -78,9 +81,6 @@ Asynchronous event processing reduces service dependency chains.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: eventual-consistency, distributed-systems, event-driven-architecture
@@ -94,7 +94,7 @@ Problem:
 
 ```text
 Different services update state at different times
-````
+```
 
 Example:
 
@@ -125,9 +125,6 @@ EDA prioritizes scalability and resilience over immediate consistency.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: event-ordering, distributed-systems, messaging-systems
@@ -144,7 +141,7 @@ Problem:
 
 ```text
 Events may arrive out of order
-````
+```
 
 Example:
 
@@ -170,9 +167,6 @@ Global ordering is extremely expensive at scale.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: message-broker, kafka, distributed-systems
@@ -195,7 +189,7 @@ Architecture:
 
 ```text id="clt6p5"
 Producer → Broker → Multiple Consumers
-````
+```
 
 Benefits:
 
@@ -209,9 +203,6 @@ Message brokers are foundational infrastructure for scalable EDA systems.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: idempotency, retries, event-driven-architecture
@@ -228,7 +219,7 @@ Problem:
 
 ```text
 Consumers may process same event multiple times
-````
+```
 
 Example:
 
@@ -254,9 +245,6 @@ Idempotent consumers are essential for correctness.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: event-schema, schema-evolution, distributed-systems
@@ -270,7 +258,7 @@ Problem:
 
 ```text
 Consumers may depend on older event formats
-````
+```
 
 Example:
 
@@ -296,9 +284,6 @@ EDA systems require careful contract management across independent services.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: event-replay, event-sourcing, distributed-systems
@@ -318,7 +303,7 @@ Architecture:
 
 ```text id="6m3qpd"
 Historical Events → Reprocessed Consumers
-````
+```
 
 Benefits:
 
@@ -338,9 +323,6 @@ Persistent event streams provide strong operational flexibility.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-tracing, observability, event-driven-systems
@@ -358,7 +340,7 @@ Problem:
 
 ```text
 Request execution path becomes fragmented
-````
+```
 
 Example:
 
@@ -384,9 +366,6 @@ EDA significantly increases observability complexity.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: event-driven-architecture, trade-offs, system-design
@@ -417,7 +396,7 @@ Example:
 
 ```text id="7v2xpd"
 Asynchronous failures may become difficult to trace across services
-````
+```
 
 EDA fundamentally balances:
 

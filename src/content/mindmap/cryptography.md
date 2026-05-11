@@ -1,6 +1,6 @@
 ---
 title: Cryptography in High Level Design
-articleSlug: cryptography-in-high-level-design
+articleSlug: cryptography
 ---
 # Cryptography in High Level Design
 

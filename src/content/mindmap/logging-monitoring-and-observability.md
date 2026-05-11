@@ -1,6 +1,6 @@
 ---
 title: A Beginner's Guide to Logging, Monitoring, and Observability
-articleSlug: logging-monitoring-observability
+articleSlug: logging-monitoring-and-observability
 ---
 
 # Logging, Monitoring, and Observability

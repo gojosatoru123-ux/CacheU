@@ -1,6 +1,6 @@
 ---
 title: Observer Design Pattern
-articleSlug: observer-design-pattern
+articleSlug: lld-observer-design-pattern
 ---
 
 # Observer Design Pattern

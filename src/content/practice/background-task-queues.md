@@ -26,7 +26,7 @@ Problem:
 
 ```text
 Executing long-running tasks synchronously increases API latency
-````
+```
 
 Architecture:
 
@@ -46,9 +46,6 @@ Background tasks are foundational for scalable backend architectures.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: asynchronous-processing, scalability, backend-systems
@@ -62,7 +59,7 @@ Problem:
 
 ```text
 Long-running operations reduce request throughput
-````
+```
 
 Background processing decouples:
 
@@ -88,9 +85,6 @@ Asynchronous execution improves scalability and responsiveness.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: task-queues, distributed-systems, backend-architecture
@@ -108,7 +102,7 @@ Problem:
 
 ```text
 Direct execution tightly couples services and increases failure propagation
-````
+```
 
 Architecture:
 
@@ -135,9 +129,6 @@ Task queues are central to resilient async processing systems.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: retries, idempotency, background-tasks
@@ -154,7 +145,7 @@ Problem:
 
 ```text
 Duplicate execution may create inconsistent state
-````
+```
 
 Example:
 
@@ -179,9 +170,6 @@ Idempotency is essential for reliable async workflows.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-failures, background-workers, fault-tolerance
@@ -199,7 +187,7 @@ Problem:
 
 ```text
 Workers may fail after partially completing tasks
-````
+```
 
 Example:
 
@@ -225,9 +213,6 @@ Failure recovery is one of the hardest aspects of async systems.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: scheduling, cron-jobs, backend-systems
@@ -247,7 +232,7 @@ Problem:
 
 ```text
 Continuous manual triggering is impractical
-````
+```
 
 Architecture:
 
@@ -273,9 +258,6 @@ Scheduled jobs are essential for backend operational workflows.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: backpressure, distributed-systems, background-processing
@@ -289,7 +271,7 @@ Problem:
 
 ```text
 Unbounded queue growth may overwhelm the system
-````
+```
 
 Consequences:
 
@@ -315,9 +297,6 @@ Backpressure mechanisms protect distributed task systems from collapse.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-locking, schedulers, backend-systems
@@ -331,7 +310,7 @@ Problem:
 
 ```text
 Same scheduled task may execute simultaneously on multiple servers
-````
+```
 
 Example:
 
@@ -357,9 +336,6 @@ Distributed coordination is critical for reliable scheduled execution.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, background-tasks, distributed-systems
@@ -377,7 +353,7 @@ Problem:
 
 ```text
 Failures may remain invisible without strong monitoring
-````
+```
 
 Key monitoring areas:
 
@@ -404,9 +380,6 @@ Async systems require strong operational observability.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: background-tasks, trade-offs, system-design
@@ -437,7 +410,7 @@ Example:
 
 ```text id="7v2xpd"
 Background processing improves responsiveness but complicates failure handling
-````
+```
 
 Background task systems fundamentally balance:
 
@@ -447,6 +420,3 @@ Background task systems fundamentally balance:
 * operational complexity
 
 <!-- END -->
-
-```
-```

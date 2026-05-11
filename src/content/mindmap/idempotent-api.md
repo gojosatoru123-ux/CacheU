@@ -1,6 +1,6 @@
 ---
 title: Idempotent APIs
-articleSlug: idempotent-apis
+articleSlug: idempotent-api
 ---
 
 # Idempotent APIs

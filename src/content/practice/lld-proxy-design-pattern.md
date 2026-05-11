@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Proxy Design Pattern
+articleSlug: lld-proxy-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: proxy-pattern, lld, design-patterns
@@ -12,7 +17,7 @@ Architecture:
 
 ```text
 Client → Proxy → Real Object
-````
+```
 
 Purpose:
 
@@ -32,9 +37,6 @@ The Proxy Pattern is a structural design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: proxy-pattern, access-control, lld
@@ -51,7 +53,7 @@ Without Proxy:
 
 ```text id="6m2xqc"
 Client directly accesses heavy object
-````
+```
 
 Problems:
 
@@ -77,9 +79,6 @@ Proxy adds intelligent control around object access.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: proxy-pattern, components, lld
@@ -104,7 +103,7 @@ Architecture:
 
 ```text
 Client → Proxy → RealSubject
-````
+```
 
 Example:
 
@@ -116,9 +115,6 @@ The proxy implements the same interface as the real object.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: virtual-proxy, lazy-loading, performance-engineering
@@ -132,7 +128,7 @@ Example:
 
 ```text id="5m2xqc"
 Large image loaded only when displayed
-````
+```
 
 Workflow:
 
@@ -156,9 +152,6 @@ Virtual proxies are common in:
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: protection-proxy, security, backend-systems
@@ -172,7 +165,7 @@ Example:
 
 ```text id="clt6p5"
 Admin-only operations
-````
+```
 
 Architecture:
 
@@ -192,9 +185,6 @@ Protection proxies are widely used in backend APIs and enterprise systems.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: remote-proxy, distributed-systems, networking
@@ -208,7 +198,7 @@ Example:
 
 ```text id="4q2xmc"
 Client → RemoteProxy → Remote Service
-````
+```
 
 Responsibilities:
 
@@ -232,9 +222,6 @@ Remote proxies are common in:
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: caching-proxy, performance-optimization, backend-engineering
@@ -248,7 +235,7 @@ Example:
 
 ```text id="4v8qpd"
 API response cache
-````
+```
 
 Workflow:
 
@@ -272,9 +259,6 @@ Caching proxies are common in:
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: proxy-vs-decorator, design-patterns, lld
@@ -298,7 +282,7 @@ Example Proxy:
 
 ```text id="6m3qpd"
 AuthorizationProxy
-````
+```
 
 Example Decorator:
 
@@ -310,9 +294,6 @@ Both wrap objects but solve different architectural problems.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: smart-proxy, resource-management, software-design
@@ -332,7 +313,7 @@ Architecture:
 
 ```text id="1q8vza"
 Client → SmartProxy → Real Object
-````
+```
 
 Benefits:
 
@@ -346,9 +327,6 @@ Smart proxies are common in enterprise middleware systems.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: proxy-pattern, trade-offs, software-design
@@ -378,7 +356,7 @@ Example:
 
 ```text id="7v2xpd"
 Client → Proxy → Real Object
-````
+```
 
 Proxy works best when:
 

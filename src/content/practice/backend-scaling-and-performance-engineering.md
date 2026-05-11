@@ -17,7 +17,7 @@ Example:
 
 ```text
 More Users → More Server Load
-````
+```
 
 Goal:
 
@@ -42,9 +42,6 @@ Modern backend systems are designed with scalability in mind.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: vertical-scaling, infrastructure, backend
@@ -63,7 +60,7 @@ Architecture:
 
 ```text id="6m2xqc"
 Small Server → Bigger Server
-````
+```
 
 Benefits:
 
@@ -82,9 +79,6 @@ Vertical scaling is often the first scaling approach used in backend systems.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: horizontal-scaling, distributed-systems, backend
@@ -102,7 +96,7 @@ Load Balancer
 Server 1
 Server 2
 Server 3
-````
+```
 
 Benefits:
 
@@ -122,9 +116,6 @@ Horizontal scaling is fundamental in large-scale backend architectures.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: load-balancing, networking, backend-performance
@@ -138,7 +129,7 @@ Example flow:
 
 ```text id="5m2xqc"
 Client Requests → Load Balancer → Multiple Servers
-````
+```
 
 Benefits:
 
@@ -160,9 +151,6 @@ Load balancers are critical for scalable backend systems.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: caching, backend-performance, system-design
@@ -176,7 +164,7 @@ Instead of:
 
 ```text id="clt6p5"
 Repeated Database Queries
-````
+```
 
 systems use:
 
@@ -202,9 +190,6 @@ Caching is one of the most effective backend performance optimizations.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: latency, backend-performance, networking
@@ -218,7 +203,7 @@ Example:
 
 ```text id="4q2xmc"
 Client Request → Server Response = 120ms
-````
+```
 
 Sources of latency:
 
@@ -245,9 +230,6 @@ Latency optimization is a major performance engineering goal.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: database-scaling, sharding, distributed-systems
@@ -261,7 +243,7 @@ Instead of:
 
 ```text id="4v8qpd"
 One Large Database
-````
+```
 
 systems use:
 
@@ -295,9 +277,6 @@ It is commonly used in very large-scale systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cdn, performance-engineering, web-infrastructure
@@ -317,7 +296,7 @@ Architecture:
 
 ```text id="6m3qpd"
 User → Nearest CDN Edge Server
-````
+```
 
 Benefits:
 
@@ -337,9 +316,6 @@ CDNs are critical for globally distributed applications.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: throughput, backend-performance, system-design
@@ -353,7 +329,7 @@ Example:
 
 ```text id="1q8vza"
 10,000 requests per second
-````
+```
 
 High throughput systems:
 
@@ -374,9 +350,6 @@ Throughput is a key performance engineering metric.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: bottlenecks, performance-engineering, backend-optimization
@@ -394,7 +367,7 @@ Fast API
 Slow Database
 ↓
 Overall Slow System
-````
+```
 
 Common bottlenecks:
 

@@ -1,3 +1,9 @@
+---
+title:  API Gateway
+articleSlug: api-gateway
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: api-gateway, microservices, distributed-systems
@@ -14,7 +20,7 @@ Without an API Gateway:
 
 ```text
 Clients must directly communicate with many services
-````
+```
 
 Problems:
 
@@ -40,9 +46,6 @@ API Gateways simplify distributed service interaction.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: authentication, api-gateway, security
@@ -54,7 +57,7 @@ Without centralized authentication:
 
 ```text
 Every microservice must implement authentication separately
-````
+```
 
 Problems:
 
@@ -86,9 +89,6 @@ API Gateways act as centralized security boundaries.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: rate-limiting, api-gateway, backend-protection
@@ -107,7 +107,7 @@ Architecture:
 
 ```text id="6p1qxt"
 Client → Gateway Rate Limiter → Backend Services
-````
+```
 
 Benefits:
 
@@ -127,9 +127,6 @@ Gateway-based rate limiting improves scalability and resilience.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: api-aggregation, microservices, latency-optimization
@@ -143,7 +140,7 @@ Without aggregation:
 
 ```text
 Client performs many network calls separately
-````
+```
 
 Problems:
 
@@ -169,9 +166,6 @@ API aggregation improves frontend performance in distributed systems.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: service-discovery, api-gateway, distributed-systems
@@ -190,7 +184,7 @@ Problem:
 
 ```text
 Backend service locations constantly change
-````
+```
 
 Gateway needs dynamic routing information.
 
@@ -218,9 +212,6 @@ Service discovery is critical for reliable gateway routing.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: api-gateway, single-point-of-failure, distributed-systems
@@ -234,7 +225,7 @@ Problem:
 
 ```text
 Gateway failure impacts entire platform
-````
+```
 
 Risks:
 
@@ -261,9 +252,6 @@ API Gateways improve architecture simplicity but centralize operational risk.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, tracing, api-gateway
@@ -277,7 +265,7 @@ Problem:
 
 ```text
 Tracking end-to-end requests becomes difficult
-````
+```
 
 Gateway provides centralized request visibility.
 
@@ -306,9 +294,6 @@ API Gateways often become the observability entry point for distributed systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: ssl-termination, api-gateway, cryptography
@@ -327,7 +312,7 @@ Workflow:
 
 ```text id="6m3qpd"
 Client HTTPS → Gateway Decryption → Internal Traffic
-````
+```
 
 Benefits:
 
@@ -347,9 +332,6 @@ TLS termination simplifies operational security management.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: api-versioning, backward-compatibility, api-gateway
@@ -369,7 +351,7 @@ Example:
 ```text id="1q8vza"
 v1 requests → Old Service
 v2 requests → New Service
-````
+```
 
 Benefits:
 
@@ -383,9 +365,6 @@ API Gateways help manage evolving distributed APIs safely.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: api-gateway, trade-offs, system-design
@@ -416,7 +395,7 @@ Example:
 
 ```text id="7v2xpd"
 Misconfigured gateway routing can disrupt entire platform traffic
-````
+```
 
 API Gateway design fundamentally balances:
 

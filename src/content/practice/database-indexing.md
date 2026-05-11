@@ -1,3 +1,9 @@
+---
+title:  Database Indexing
+articleSlug: database-indexing
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: database-indexing, performance-engineering, databases
@@ -9,7 +15,7 @@ Without indexes, databases perform:
 
 ```text
 Full table scans
-````
+```
 
 Meaning:
 
@@ -43,9 +49,6 @@ Indexes are foundational for performant database systems.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: btree-index, relational-databases, query-optimization
@@ -62,7 +65,7 @@ Complexity:
 
 ```text
 O(log n)
-````
+```
 
 Benefits:
 
@@ -87,9 +90,6 @@ making them highly versatile for relational workloads.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: composite-index, query-planning, database-performance
@@ -103,7 +103,7 @@ Example:
 
 ```text
 INDEX(first_name, last_name)
-````
+```
 
 Efficient queries:
 
@@ -135,9 +135,6 @@ Column order should reflect common query access patterns.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: covering-index, query-optimization, databases
@@ -153,7 +150,7 @@ Result:
 
 ```text
 Database answers query entirely from index
-````
+```
 
 Without accessing table rows.
 
@@ -182,9 +179,6 @@ Covering indexes are highly effective for read-heavy workloads.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: write-amplification, indexing, database-performance
@@ -213,7 +207,7 @@ Example:
 
 ```text id="clt6p5"
 Single INSERT updates 10 separate indexes
-````
+```
 
 Tradeoff:
 
@@ -225,9 +219,6 @@ Over-indexing is a common database performance anti-pattern.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: hash-index, database-indexing, distributed-systems
@@ -239,7 +230,7 @@ Hash indexes map:
 
 ```text
 Key → Hash Bucket
-````
+```
 
 Benefits:
 
@@ -272,9 +263,6 @@ B-Trees are preferred for ordered access patterns.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: full-text-search, inverted-index, elasticsearch
@@ -293,7 +281,7 @@ Inverted index structure:
 
 ```text id="4v8qpd"
 Word → List of Document IDs
-````
+```
 
 Example:
 
@@ -320,9 +308,6 @@ and modern search infrastructure.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: indexing, partitioning, distributed-databases
@@ -341,7 +326,7 @@ Problem:
 
 ```text
 Global indexes require distributed coordination
-````
+```
 
 Architecture:
 
@@ -366,9 +351,6 @@ Index design becomes tightly coupled with partitioning strategy.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: query-optimizer, execution-plans, database-indexing
@@ -385,7 +367,7 @@ Problem:
 
 ```text
 Using index may be slower than full scan
-````
+```
 
 Example:
 
@@ -411,9 +393,6 @@ Indexes help only when they significantly reduce scanned data.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: database-indexing, trade-offs, system-design
@@ -444,7 +423,7 @@ Example:
 
 ```text id="7v2xpd"
 Highly indexed OLTP systems may suffer heavy write amplification
-````
+```
 
 Effective indexing requires balancing:
 

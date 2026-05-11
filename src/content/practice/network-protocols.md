@@ -1,3 +1,9 @@
+---
+title:  Network Protocols
+articleSlug: network-protocols
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Medium
 tags: tcp-vs-udp, network-protocols, hld
@@ -24,7 +30,7 @@ UDP problems in such systems:
 
 ```text
 Packet loss → inconsistent transactions
-````
+```
 
 Example:
 
@@ -36,9 +42,6 @@ TCP trades higher latency for reliability guarantees, which is critical for fina
 
 <!-- END -->
 
-````
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: http2, multiplexing, backend-performance
@@ -52,7 +55,7 @@ Problem:
 
 ```text
 One slow request blocks subsequent requests
-````
+```
 
 HTTP/2 introduces:
 
@@ -81,9 +84,6 @@ This significantly improves page loading performance for modern web applications
 
 <!-- END -->
 
-````
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: websocket, realtime-systems, distributed-systems
@@ -102,7 +102,7 @@ WebSockets provide:
 
 ```text
 Persistent bidirectional connection
-````
+```
 
 Benefits:
 
@@ -128,9 +128,6 @@ WebSockets significantly reduce infrastructure cost for high-frequency real-time
 
 <!-- END -->
 
-````
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: grpc, protobuf, microservices
@@ -156,7 +153,7 @@ Benefits:
 
 ```text
 Lower latency + smaller payloads
-````
+```
 
 Example:
 
@@ -178,9 +175,6 @@ REST still remains better for:
 
 <!-- END -->
 
-````
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: dns, scalability, distributed-systems
@@ -203,7 +197,7 @@ Example:
 
 ```text
 api.example.com → nearest regional server
-````
+```
 
 Architecture:
 
@@ -221,9 +215,6 @@ Without DNS scalability techniques, global latency would increase significantly.
 
 <!-- END -->
 
-````
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: tls, security, backend-security
@@ -246,7 +237,7 @@ Architecture:
 
 ```text
 Client → TLS Load Balancer → Backend Servers
-````
+```
 
 Potential tradeoff:
 
@@ -262,9 +253,6 @@ Large-scale systems often combine:
 
 <!-- END -->
 
-````
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: quic, http3, network-latency
@@ -278,7 +266,7 @@ Problem:
 
 ```text
 Lost packet blocks all streams
-````
+```
 
 QUIC solves this using:
 
@@ -309,9 +297,6 @@ QUIC significantly improves performance for:
 
 <!-- END -->
 
-````
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: kafka, messaging-protocols, event-driven-architecture
@@ -334,7 +319,7 @@ Example:
 
 ```text
 Kafka binary protocol
-````
+```
 
 Text-based protocols like JSON introduce:
 
@@ -350,9 +335,6 @@ Binary protocols are critical for:
 
 <!-- END -->
 
-````
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: network-failures, distributed-systems, hld
@@ -367,7 +349,7 @@ Example:
 ```text
 Server A cannot reach Server B
 But both servers are still operational
-````
+```
 
 Problems:
 
@@ -395,9 +377,6 @@ Partial failures are a core assumption in distributed system design.
 
 <!-- END -->
 
-````
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: service-mesh, mtls, microservices-security
@@ -416,7 +395,7 @@ Architecture:
 
 ```text
 Service A ⇄ mTLS ⇄ Service B
-````
+```
 
 Benefits:
 

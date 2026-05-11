@@ -1,6 +1,6 @@
 ---
 title: Circuit Breaker Pattern
-articleSlug: circuit-breaker-pattern
+articleSlug: circuit-breaker
 ---
 
 # Circuit Breaker Pattern

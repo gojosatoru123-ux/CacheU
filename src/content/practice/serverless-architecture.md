@@ -1,3 +1,9 @@
+---
+title: Serverless Architecture
+articleSlug: serverless-architecture
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: serverless-architecture, cloud-computing, distributed-systems
@@ -15,7 +21,7 @@ Problem:
 
 ```text
 Operational overhead slows application development
-````
+```
 
 Serverless platforms abstract infrastructure management.
 
@@ -43,9 +49,6 @@ Serverless architecture prioritizes developer productivity and elastic scalabili
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: auto-scaling, serverless, scalability
@@ -62,7 +65,7 @@ Problem:
 
 ```text
 Traffic spikes may overload fixed infrastructure
-````
+```
 
 Serverless platforms dynamically scale function instances.
 
@@ -84,9 +87,6 @@ Serverless platforms excel for bursty and unpredictable workloads.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cold-starts, latency, serverless-architecture
@@ -100,7 +100,7 @@ Problem:
 
 ```text
 First request requires runtime initialization
-````
+```
 
 Cold start workflow:
 
@@ -131,9 +131,6 @@ Cold starts significantly impact latency-sensitive workloads.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: statelessness, serverless, distributed-systems
@@ -150,7 +147,7 @@ Problem:
 
 ```text
 Local in-memory state is unreliable across executions
-````
+```
 
 Stateless functions allow:
 
@@ -182,9 +179,6 @@ Statelessness is foundational to scalable serverless execution.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: vendor-lock-in, serverless-architecture, cloud-platforms
@@ -202,7 +196,7 @@ Problem:
 
 ```text
 Applications become tightly coupled to cloud provider services
-````
+```
 
 Examples:
 
@@ -227,9 +221,6 @@ Serverless convenience often increases ecosystem coupling.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, distributed-systems, serverless
@@ -246,7 +237,7 @@ Problem:
 
 ```text
 Traditional debugging and monitoring assumptions break down
-````
+```
 
 Challenges:
 
@@ -272,9 +263,6 @@ Serverless architectures require advanced observability tooling.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cost-model, serverless, cloud-computing
@@ -291,7 +279,7 @@ Problem:
 
 ```text
 High-frequency workloads may generate massive invocation costs
-````
+```
 
 Example:
 
@@ -316,9 +304,6 @@ Serverless cost efficiency depends heavily on workload characteristics.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: event-driven-architecture, serverless, distributed-systems
@@ -336,7 +321,7 @@ Architecture:
 
 ```text id="6m3qpd"
 Event Source → Function Trigger → Event Processing
-````
+```
 
 Benefits:
 
@@ -356,9 +341,6 @@ Serverless platforms naturally support event-driven workflows.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: concurrency, serverless, distributed-systems
@@ -372,7 +354,7 @@ Problem:
 
 ```text
 Sudden traffic spikes may overwhelm downstream dependencies
-````
+```
 
 Examples:
 
@@ -398,9 +380,6 @@ Unbounded elasticity may create cascading failures without safeguards.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: serverless-architecture, trade-offs, system-design
@@ -431,7 +410,7 @@ Example:
 
 ```text id="7v2xpd"
 Serverless simplifies scaling but complicates debugging and latency optimization
-````
+```
 
 Serverless architecture fundamentally balances:
 

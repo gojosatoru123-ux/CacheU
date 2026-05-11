@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Iterator Design Pattern
+articleSlug: lld-iterator-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: iterator-pattern, lld, design-patterns
@@ -12,7 +17,7 @@ Instead of directly accessing collection internals:
 
 ```text
 Array[index]
-````
+```
 
 Iterator provides:
 
@@ -33,9 +38,6 @@ The Iterator Pattern is a behavioral design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: iterator-pattern, collections, lld
@@ -55,7 +57,7 @@ Without Iterator:
 
 ```text id="6m2xqc"
 Client must understand collection internals
-````
+```
 
 Iterator solution:
 
@@ -75,9 +77,6 @@ Iterator separates traversal logic from collection implementation.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: iterator-pattern, components, lld
@@ -95,7 +94,7 @@ Architecture:
 
 ```text
 Aggregate → Iterator
-````
+```
 
 Responsibilities:
 
@@ -117,9 +116,6 @@ The iterator controls traversal independently of the collection.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: iterator-pattern, encapsulation, clean-code
@@ -133,7 +129,7 @@ Without Iterator:
 
 ```text id="5m2xqc"
 Client accesses internal array or nodes directly
-````
+```
 
 With Iterator:
 
@@ -153,9 +149,6 @@ Encapsulation improves maintainability and modularity.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: iterator-pattern, tree-traversal, algorithms
@@ -175,7 +168,7 @@ Iterator provides:
 
 ```text id="clt6p5"
 TreeIterator
-````
+```
 
 Benefits:
 
@@ -195,9 +188,6 @@ Iterator simplifies traversal of complex hierarchical structures.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: iterator-vs-visitor, design-patterns, lld
@@ -222,7 +212,7 @@ Example Iterator:
 ```text id="4q2xmc"
 next()
 hasNext()
-````
+```
 
 Example Visitor:
 
@@ -234,9 +224,6 @@ Both patterns work with collections but solve different problems.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: lazy-evaluation, iterator-pattern, performance
@@ -252,7 +239,7 @@ Example:
 
 ```text id="4v8qpd"
 Generate next element only during next()
-````
+```
 
 Benefits:
 
@@ -272,9 +259,6 @@ Lazy iterators are widely used in high-performance systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: concurrent-iteration, iterator-pattern, concurrency
@@ -288,7 +272,7 @@ Example:
 
 ```text id="6m3qpd"
 Collection modified while iterator is active
-````
+```
 
 Possible problems:
 
@@ -314,9 +298,6 @@ Concurrency handling is important in iterator implementations.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: iterator-pattern, database-systems, backend-engineering
@@ -330,7 +311,7 @@ Instead of loading everything into memory:
 
 ```text id="1q8vza"
 Rows fetched one at a time
-````
+```
 
 Iterator abstraction:
 
@@ -356,9 +337,6 @@ Database drivers commonly implement iterator-like traversal internally.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: iterator-pattern, trade-offs, software-design
@@ -388,7 +366,7 @@ Example:
 
 ```text id="7v2xpd"
 Collection → Iterator → Elements
-````
+```
 
 Iterator is highly valuable in:
 

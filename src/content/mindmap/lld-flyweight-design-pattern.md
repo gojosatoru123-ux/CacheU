@@ -1,6 +1,6 @@
 ---
 title: Flyweight Design Pattern
-articleSlug: flyweight-design-pattern
+articleSlug: lld-flyweight-design-pattern
 ---
 
 # Flyweight Design Pattern

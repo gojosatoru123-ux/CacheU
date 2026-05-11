@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: State Design Pattern
+articleSlug: lld-state-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: state-pattern, lld, design-patterns
@@ -12,7 +17,7 @@ Instead of large conditional logic:
 
 ```text
 if(state == X)
-````
+```
 
 State Pattern provides:
 
@@ -38,9 +43,6 @@ The State Pattern is a behavioral design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: state-pattern, object-behavior, lld
@@ -54,7 +56,7 @@ Without State Pattern:
 
 ```text id="6m2xqc"
 Large if-else or switch statements
-````
+```
 
 Problems:
 
@@ -80,9 +82,6 @@ State Pattern simplifies dynamic behavior management.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: state-pattern, components, lld
@@ -107,7 +106,7 @@ Architecture:
 
 ```text
 Context → Current State
-````
+```
 
 Example:
 
@@ -119,9 +118,6 @@ The context delegates behavior to the active state object.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: traffic-light-system, state-pattern, lld
@@ -140,7 +136,7 @@ Without State Pattern:
 
 ```text id="5m2xqc"
 Large switch-case for transitions
-````
+```
 
 State solution:
 
@@ -160,9 +156,6 @@ Traffic light systems are classic examples of the State Pattern.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: state-vs-strategy, design-patterns, lld
@@ -187,7 +180,7 @@ ATM states:
 - Idle
 - CardInserted
 - Processing
-````
+```
 
 Example Strategy:
 
@@ -202,9 +195,6 @@ State focuses on lifecycle-driven behavior changes.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: workflow-systems, state-pattern, backend-engineering
@@ -218,7 +208,7 @@ Example order lifecycle:
 
 ```text id="4q2xmc"
 Created → Paid → Shipped → Delivered
-````
+```
 
 Each state supports different operations.
 
@@ -240,9 +230,6 @@ State Pattern is widely used in enterprise workflow engines.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: finite-state-machines, state-pattern, software-design
@@ -256,7 +243,7 @@ FSM structure:
 
 ```text id="4v8qpd"
 States + Transitions + Events
-````
+```
 
 State Pattern provides:
 
@@ -282,9 +269,6 @@ State Pattern maps naturally to FSM-based systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: state-explosion, state-pattern, software-architecture
@@ -298,7 +282,7 @@ Example:
 
 ```text id="6m3qpd"
 Hundreds of workflow states
-````
+```
 
 Problems:
 
@@ -324,9 +308,6 @@ Large-scale systems must carefully manage state complexity.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: state-pattern, concurrency, backend-systems
@@ -340,7 +321,7 @@ Example problem:
 
 ```text id="1q8vza"
 Two threads update object state simultaneously
-````
+```
 
 Possible issues:
 
@@ -366,9 +347,6 @@ Concurrency control is critical in state-driven backend systems.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: state-pattern, trade-offs, software-design
@@ -398,7 +376,7 @@ Example:
 
 ```text id="7v2xpd"
 One class per state
-````
+```
 
 State Pattern works best when:
 

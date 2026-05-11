@@ -1,6 +1,6 @@
 ---
 title: PACELC Theorem
-articleSlug: pacelc-theorem
+articleSlug: pacelc
 ---
 
 # PACELC Theorem

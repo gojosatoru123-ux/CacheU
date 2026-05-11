@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Flyweight Design Pattern
+articleSlug: lld-flyweight-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: flyweight-pattern, lld, design-patterns
@@ -14,7 +19,7 @@ Instead of creating duplicate objects:
 Character A
 Character A
 Character A
-````
+```
 
 Flyweight provides:
 
@@ -34,9 +39,6 @@ The Flyweight Pattern is a structural design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: flyweight-pattern, memory-optimization, lld
@@ -50,7 +52,7 @@ Example problem:
 
 ```text id="6m2xqc"
 Game creates millions of tree objects
-````
+```
 
 Many objects contain identical shared data:
 
@@ -76,9 +78,6 @@ Flyweight is useful when object duplication becomes expensive.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: intrinsic-state, extrinsic-state, flyweight-pattern
@@ -102,7 +101,7 @@ Example:
 ```text id="6p1qxt"
 Character Font → intrinsic
 Character Position → extrinsic
-````
+```
 
 Benefits:
 
@@ -116,9 +115,6 @@ Extrinsic state is supplied externally during usage.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: flyweight-factory, object-pooling, lld
@@ -137,7 +133,7 @@ Architecture:
 
 ```text id="5m2xqc"
 Client → FlyweightFactory → Shared Flyweights
-````
+```
 
 Example:
 
@@ -157,9 +153,6 @@ Factories are essential in most Flyweight implementations.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: flyweight-pattern, game-development, lld
@@ -173,7 +166,7 @@ Example:
 
 ```text id="clt6p5"
 Thousands of trees share same texture/model
-````
+```
 
 Shared intrinsic data:
 
@@ -199,9 +192,6 @@ Flyweight is widely used in rendering engines and game object systems.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: flyweight-vs-singleton, design-patterns, lld
@@ -225,7 +215,7 @@ Example Flyweight:
 
 ```text id="4q2xmc"
 Shared character objects
-````
+```
 
 Example Singleton:
 
@@ -237,9 +227,6 @@ Both reduce object creation but solve different problems.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: flyweight-pattern, text-editors, software-design
@@ -253,7 +240,7 @@ Without Flyweight:
 
 ```text id="4v8qpd"
 Each character stores duplicate font/style data
-````
+```
 
 Flyweight solution:
 
@@ -284,9 +271,6 @@ Flyweight is heavily used in document rendering systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: caching, flyweight-pattern, backend-systems
@@ -300,7 +284,7 @@ Example:
 
 ```text id="6m3qpd"
 Database connection metadata reused across requests
-````
+```
 
 Similarity:
 
@@ -321,9 +305,6 @@ Flyweight can be considered a specialized memory-sharing optimization strategy.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: thread-safety, flyweight-pattern, software-design
@@ -345,7 +326,7 @@ Best practice:
 
 ```text id="1q8vza"
 Keep intrinsic state immutable
-````
+```
 
 Benefits of immutability:
 
@@ -357,9 +338,6 @@ Immutable flyweights are ideal for concurrent systems.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: flyweight-pattern, trade-offs, software-design
@@ -389,7 +367,7 @@ Example:
 
 ```text id="7v2xpd"
 Intrinsic state shared across many objects
-````
+```
 
 Flyweight is most useful when:
 

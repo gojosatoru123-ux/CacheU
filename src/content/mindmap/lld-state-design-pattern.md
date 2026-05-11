@@ -1,6 +1,6 @@
 ---
 title: State Design Pattern
-articleSlug: state-design-pattern
+articleSlug: lld-state-design-pattern
 ---
 
 # State Design Pattern

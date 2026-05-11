@@ -1,3 +1,9 @@
+---
+title:  Distributed Caching
+articleSlug: distributed-caching
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-cache, scalability, performance-engineering
@@ -16,7 +22,7 @@ Architecture:
 
 ```text
 Client → Cache → Database
-````
+```
 
 Benefits:
 
@@ -37,9 +43,6 @@ Distributed caching is foundational for internet-scale performance optimization.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cache-aside, distributed-cache, database-scaling
@@ -53,7 +56,7 @@ Workflow:
 
 ```text
 Request → Cache Miss → Database → Populate Cache
-````
+```
 
 Benefits:
 
@@ -80,9 +83,6 @@ Cache-Aside is widely used because of its simplicity and scalability.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cache-invalidation, distributed-systems, consistency
@@ -96,7 +96,7 @@ Problem:
 
 ```text
 Database changes but cache still contains old data
-````
+```
 
 Consequences:
 
@@ -128,9 +128,6 @@ Cache invalidation fundamentally involves distributed consistency tradeoffs.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: redis, partitioning, distributed-cache
@@ -149,7 +146,7 @@ Architecture:
 
 ```text id="5m2xqc"
 Key Hash → Assigned Cache Shard
-````
+```
 
 Benefits:
 
@@ -170,9 +167,6 @@ Partitioning is fundamental for large-scale distributed caching.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cache-consistency, distributed-cache, eventual-consistency
@@ -196,7 +190,7 @@ Example:
 
 ```text id="clt6p5"
 Temporary stale profile data acceptable for few seconds
-````
+```
 
 Benefits:
 
@@ -216,9 +210,6 @@ Eventual consistency is a practical tradeoff in distributed caching architecture
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cache-eviction, lru, memory-management
@@ -232,7 +223,7 @@ When cache fills up:
 
 ```text
 Some entries must be removed
-````
+```
 
 Common eviction strategies:
 
@@ -259,9 +250,6 @@ Eviction strategy directly impacts cache efficiency.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cache-stampede, distributed-systems, backend-performance
@@ -277,7 +265,7 @@ Problem:
 
 ```text
 Thousands of requests bypass cache together
-````
+```
 
 Consequences:
 
@@ -303,9 +291,6 @@ Cache stampedes are major reliability risks at scale.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: write-through, write-back, distributed-cache
@@ -323,7 +308,7 @@ Workflow:
 
 ```text id="6m3qpd"
 Write → Cache + Database Together
-````
+```
 
 Benefits:
 
@@ -354,9 +339,6 @@ Choice depends on workload consistency requirements.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cdn, edge-caching, distributed-systems
@@ -370,7 +352,7 @@ Architecture:
 
 ```text id="1q8vza"
 User → Edge Cache → Origin Server
-````
+```
 
 Cached content:
 
@@ -397,9 +379,6 @@ CDNs are effectively internet-scale distributed caching layers.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-cache, trade-offs, system-design
@@ -430,7 +409,7 @@ Example:
 
 ```text id="7v2xpd"
 Aggressive caching may serve outdated financial data
-````
+```
 
 Distributed caching fundamentally balances:
 

@@ -1,3 +1,9 @@
+---
+title:  Outbox Pattern
+articleSlug: outbox-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: outbox-pattern, distributed-systems, reliability
@@ -14,7 +20,7 @@ Problem:
 
 ```text
 Database write and message publish are separate operations
-````
+```
 
 Failure scenario:
 
@@ -44,9 +50,6 @@ Outbox Pattern improves reliability of distributed event propagation.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: dual-write-problem, outbox-pattern, distributed-systems
@@ -62,7 +65,7 @@ Problem:
 
 ```text
 One operation may succeed while the other fails
-````
+```
 
 Example:
 
@@ -94,9 +97,6 @@ Outbox Pattern guarantees reliable event generation from committed transactions.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: eventual-consistency, outbox-pattern, event-driven-architecture
@@ -110,7 +110,7 @@ Workflow:
 
 ```text id="6p1qxt"
 Database Commit → Outbox Polling → Event Publishing
-````
+```
 
 Problem:
 
@@ -141,9 +141,6 @@ Outbox Pattern prioritizes reliability over immediate synchronization.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: polling, cdc, outbox-pattern
@@ -164,7 +161,7 @@ Polling workflow:
 
 ```text id="5m2xqc"
 Outbox Table → Poller → Message Broker
-````
+```
 
 CDC workflow:
 
@@ -183,9 +180,6 @@ Both approaches reliably propagate outbox events asynchronously.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: idempotency, retries, outbox-pattern
@@ -202,7 +196,7 @@ Problem:
 
 ```text
 Duplicate events may reach consumers
-````
+```
 
 Example:
 
@@ -227,9 +221,6 @@ Consumers must safely tolerate duplicates.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: ordering, event-streaming, outbox-pattern
@@ -243,7 +234,7 @@ Problem:
 
 ```text
 Out-of-order event delivery may corrupt downstream state
-````
+```
 
 Example:
 
@@ -269,9 +260,6 @@ Correct event ordering is critical for distributed consistency.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: scalability, outbox-pattern, distributed-systems
@@ -288,7 +276,7 @@ Problem:
 
 ```text
 Outbox table grows rapidly under high traffic
-````
+```
 
 Consequences:
 
@@ -314,9 +302,6 @@ Outbox scalability becomes critical at internet-scale workloads.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: failure-recovery, outbox-pattern, distributed-systems
@@ -330,7 +315,7 @@ Problem solved:
 
 ```text
 Temporary broker outages no longer lose events
-````
+```
 
 Workflow:
 
@@ -356,9 +341,6 @@ Outbox Pattern significantly improves distributed reliability guarantees.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, outbox-pattern, distributed-systems
@@ -376,7 +358,7 @@ Problem:
 
 ```text
 Undelivered events may silently create inconsistent systems
-````
+```
 
 Key monitoring areas:
 
@@ -403,9 +385,6 @@ Outbox systems require strong operational monitoring and alerting.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: outbox-pattern, trade-offs, system-design
@@ -436,7 +415,7 @@ Example:
 
 ```text id="7v2xpd"
 Outbox improves consistency guarantees but complicates event processing pipelines
-````
+```
 
 Outbox architecture fundamentally balances:
 

@@ -97,7 +97,7 @@ The Proxy pattern provides a surrogate or placeholder for another object to cont
 
 ## Proxy structure
 
-```mermaid id="proxy_structure_01"
+```mermaid
 classDiagram
     class Subject {
         <<interface>>
@@ -166,7 +166,7 @@ Client → Real Object
 Client → Proxy → Real Object
 ```
 
-```mermaid id="proxy_flow_01"
+```mermaid
 flowchart LR
     A[Client] --> B[Proxy]
     B --> C[Real Object]
@@ -193,7 +193,7 @@ The most common proxy types are:
 2. Protection Proxy
 3. Remote Proxy
 
-```mermaid id="proxy_types_01"
+```mermaid
 flowchart TD
     A[Proxy Pattern] --> B[Virtual Proxy]
     A --> C[Protection Proxy]
@@ -244,7 +244,7 @@ With proxy:
 
 ## Virtual proxy flow
 
-```mermaid id="virtual_proxy_flow_01"
+```mermaid
 flowchart TD
     A[Client creates proxy] --> B[Proxy stores image path]
     B --> C{display() called?}
@@ -257,7 +257,7 @@ flowchart TD
 
 ## Virtual proxy structure
 
-```mermaid id="virtual_proxy_uml_01"
+```mermaid
 classDiagram
     class Image {
         <<interface>>
@@ -452,7 +452,7 @@ The proxy can check authorization before forwarding the request.
 
 ## Protection proxy flow
 
-```mermaid id="protection_proxy_flow_01"
+```mermaid
 flowchart TD
     A[Client requests access] --> B[Proxy checks permission]
     B --> C{Allowed?}
@@ -464,7 +464,7 @@ flowchart TD
 
 ## Protection proxy structure
 
-```mermaid id="protection_proxy_uml_01"
+```mermaid
 classDiagram
     class Document {
         <<interface>>
@@ -664,7 +664,7 @@ A remote proxy makes the remote service feel local.
 
 ## Remote proxy flow
 
-```mermaid id="remote_proxy_flow_01"
+```mermaid
 flowchart TD
     A[Client] --> B[Local Proxy]
     B --> C[Network Call]
@@ -678,7 +678,7 @@ flowchart TD
 
 ## Remote proxy structure
 
-```mermaid id="remote_proxy_uml_01"
+```mermaid
 classDiagram
     class DataService {
         <<interface>>
@@ -824,7 +824,7 @@ This gives us:
 * transparency
 * separation of concerns
 
-```mermaid id="proxy_unifying_01"
+```mermaid
 classDiagram
     class Subject {
         <<interface>>

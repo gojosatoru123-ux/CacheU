@@ -1,6 +1,6 @@
 ---
 title: Object Oriented Programming
-articleSlug: object-oriented-programming
+articleSlug: lld-oop-concepts
 ---
 
 # Object Oriented Programming

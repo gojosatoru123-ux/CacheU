@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Strategy Design Pattern
+articleSlug: lld-strategy-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: strategy-pattern, lld, design-patterns
@@ -12,7 +17,7 @@ Instead of hardcoded logic:
 
 ```text
 if(paymentType == CARD)
-````
+```
 
 Strategy Pattern provides:
 
@@ -32,9 +37,6 @@ The Strategy Pattern is a behavioral design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: strategy-pattern, software-design, lld
@@ -48,7 +50,7 @@ Without Strategy Pattern:
 
 ```text id="6m2xqc"
 Large if-else or switch statements
-````
+```
 
 Problems:
 
@@ -74,9 +76,6 @@ Strategy removes algorithm-specific conditionals from core logic.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: strategy-pattern, components, lld
@@ -101,7 +100,7 @@ Architecture:
 
 ```text
 Context → Strategy
-````
+```
 
 Example:
 
@@ -113,9 +112,6 @@ Strategies can be swapped dynamically at runtime.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: payment-systems, strategy-pattern, backend-engineering
@@ -135,7 +131,7 @@ Without Strategy:
 
 ```text id="5m2xqc"
 Large payment-type conditional blocks
-````
+```
 
 Strategy solution:
 
@@ -158,9 +154,6 @@ Payment gateways commonly use Strategy Pattern internally.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: strategy-vs-state, design-patterns, lld
@@ -184,7 +177,7 @@ Example Strategy:
 Sorting strategies:
 - QuickSort
 - MergeSort
-````
+```
 
 Example State:
 
@@ -198,9 +191,6 @@ Strategy focuses on choosing behavior, not state transitions.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: sorting-algorithms, strategy-pattern, algorithms
@@ -217,7 +207,7 @@ SortStrategy
  ├── QuickSort
  ├── MergeSort
  └── HeapSort
-````
+```
 
 Benefits:
 
@@ -237,9 +227,6 @@ Strategy simplifies runtime algorithm selection.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: dependency-injection, strategy-pattern, software-architecture
@@ -253,7 +240,7 @@ Without DI:
 
 ```text id="4v8qpd"
 Context creates strategies internally
-````
+```
 
 With DI:
 
@@ -273,9 +260,6 @@ Modern backend frameworks commonly combine Strategy with Dependency Injection.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: strategy-pattern, microservices, backend-systems
@@ -294,7 +278,7 @@ Architecture:
 
 ```text id="6m3qpd"
 Service → Strategy Interface → Algorithm Modules
-````
+```
 
 Benefits:
 
@@ -314,9 +298,6 @@ Strategy enables highly configurable backend systems.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: strategy-pattern, performance-engineering, software-design
@@ -338,7 +319,7 @@ Example:
 
 ```text id="1q8vza"
 Context → Strategy → Algorithm
-````
+```
 
 Optimizations:
 
@@ -350,9 +331,6 @@ In most systems, maintainability benefits outweigh minimal performance costs.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: strategy-pattern, trade-offs, software-design
@@ -382,7 +360,7 @@ Example:
 
 ```text id="7v2xpd"
 One strategy class per algorithm
-````
+```
 
 Strategy works best when:
 

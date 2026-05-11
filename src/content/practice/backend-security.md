@@ -35,9 +35,7 @@ Goals of backend security:
 
 Backend security is critical for modern web applications and SaaS platforms.
 <!-- END -->
-``` id="5v1xke"
 
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: authentication, authorization, backend-security
@@ -61,7 +59,7 @@ Example flow:
 
 ```text id="6m2xqc"
 Login → Identity Verified → Access Checked
-````
+```
 
 Example:
 
@@ -73,9 +71,6 @@ Both authentication and authorization are fundamental backend security concepts.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: hashing, passwords, backend-security
@@ -89,7 +84,7 @@ Instead of storing:
 
 ```text
 mypassword123
-````
+```
 
 servers store:
 
@@ -117,9 +112,6 @@ Passwords should never be stored in plaintext.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: sql-injection, backend-security, database-security
@@ -134,7 +126,7 @@ Dangerous example:
 ```sql
 SELECT * FROM users
 WHERE email = '$input'
-````
+```
 
 Malicious input:
 
@@ -166,9 +158,6 @@ SQL Injection is one of the most dangerous backend vulnerabilities.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: https, tls, encryption
@@ -182,7 +171,7 @@ Without HTTPS:
 
 ```text id="clt6p5"
 Traffic readable by attackers
-````
+```
 
 With HTTPS:
 
@@ -208,9 +197,6 @@ HTTPS is mandatory for secure modern web applications.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: rate-limiting, ddos-protection, backend-security
@@ -224,7 +210,7 @@ Example:
 
 ```text id="4q2xmc"
 100 requests per minute
-````
+```
 
 Benefits:
 
@@ -250,9 +236,6 @@ It is a critical backend security mechanism.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: csrf, backend-security, web-security
@@ -268,7 +251,7 @@ Attack example:
 Victim logged into bank
 ↓
 Malicious site sends transfer request
-````
+```
 
 Because cookies are automatically included:
 
@@ -288,9 +271,6 @@ CSRF primarily affects cookie-based authentication systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: xss, web-security, backend-security
@@ -304,7 +284,7 @@ Example dangerous input:
 
 ```html
 <script>alert('hacked')</script>
-````
+```
 
 Potential impact:
 
@@ -332,9 +312,6 @@ XSS is one of the most common web security vulnerabilities.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: jwt, session-security, backend-authentication
@@ -357,7 +334,7 @@ Example JWT header:
 
 ```text id="1q8vza"
 Authorization: Bearer <jwt>
-````
+```
 
 Security best practices:
 
@@ -370,9 +347,6 @@ JWT security depends heavily on proper implementation.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: defense-in-depth, backend-security, system-design
@@ -394,7 +368,7 @@ Authorization
 Input Validation
 ↓
 Database Security
-````
+```
 
 Benefits:
 
@@ -415,6 +389,3 @@ Examples:
 Modern backend security relies heavily on layered defensive strategies.
 
 <!-- END -->
-
-```
-```

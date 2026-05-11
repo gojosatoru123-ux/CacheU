@@ -1,6 +1,6 @@
 ---
 title: Caching in Distributed Systems
-articleSlug: caching-in-distributed-systems
+articleSlug: caching-strategies
 ---
 
 # Caching in Distributed Systems

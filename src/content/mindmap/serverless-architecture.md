@@ -1,6 +1,6 @@
 ---
 title: Serverless-First Architecture
-articleSlug: serverless-first-architecture
+articleSlug: serverless-architecture
 ---
 
 # Serverless-First Architecture

@@ -21,7 +21,7 @@ Problem:
 
 ```text
 Abrupt termination may interrupt in-flight operations
-````
+```
 
 Consequences:
 
@@ -48,9 +48,6 @@ Graceful shutdown is essential for reliable distributed systems.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: load-balancers, graceful-shutdown, distributed-systems
@@ -64,7 +61,7 @@ Problem:
 
 ```text
 Shutting down server may still receive incoming requests
-````
+```
 
 Workflow:
 
@@ -90,9 +87,6 @@ Traffic draining is foundational for graceful service termination.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-transactions, graceful-shutdown, backend-systems
@@ -109,7 +103,7 @@ Problem:
 
 ```text
 Termination during transaction execution may leave inconsistent state
-````
+```
 
 Example:
 
@@ -133,9 +127,6 @@ Proper shutdown handling protects transactional integrity.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: background-workers, graceful-shutdown, asynchronous-processing
@@ -152,7 +143,7 @@ Problem:
 
 ```text
 Worker termination may interrupt partially completed jobs
-````
+```
 
 Challenges:
 
@@ -178,9 +169,6 @@ Async systems require careful worker lifecycle management.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: websocket, long-connections, graceful-shutdown
@@ -197,7 +185,7 @@ Problem:
 
 ```text
 Persistent connections may remain active indefinitely
-````
+```
 
 Consequences:
 
@@ -223,9 +211,6 @@ Long-lived connections complicate graceful termination workflows.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: kubernetes, graceful-shutdown, cloud-systems
@@ -242,7 +227,7 @@ Problem:
 
 ```text
 Containers may terminate frequently during normal operations
-````
+```
 
 Kubernetes workflow:
 
@@ -262,9 +247,6 @@ Cloud-native systems depend heavily on graceful termination behavior.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-systems, fault-tolerance, graceful-shutdown
@@ -281,7 +263,7 @@ Problem:
 
 ```text
 Abrupt node failure may propagate errors across services
-````
+```
 
 Consequences:
 
@@ -307,9 +289,6 @@ Graceful shutdown improves distributed system fault tolerance.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: signal-handling, operating-systems, backend-systems
@@ -328,7 +307,7 @@ Problem:
 
 ```text
 Applications must intercept termination signals to perform cleanup
-````
+```
 
 Workflow:
 
@@ -352,9 +331,6 @@ Signal management is foundational for graceful backend lifecycle control.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, graceful-shutdown, backend-operations
@@ -372,7 +348,7 @@ Problem:
 
 ```text
 Improper shutdown behavior may silently cause request loss
-````
+```
 
 Key monitoring areas:
 
@@ -399,9 +375,6 @@ Graceful shutdown requires strong operational visibility.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: graceful-shutdown, trade-offs, backend-systems
@@ -436,7 +409,7 @@ Example:
 
 ```text id="7v2xpd"
 Graceful draining improves reliability but increases deployment coordination complexity
-````
+```
 
 Graceful shutdown fundamentally balances:
 
@@ -446,6 +419,3 @@ Graceful shutdown fundamentally balances:
 * deployment speed
 
 <!-- END -->
-
-```
-```

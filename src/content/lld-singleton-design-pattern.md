@@ -42,7 +42,7 @@ It ensures that:
 
 The Singleton pattern ensures a class has only one instance and provides a single global point of access to it.
 
-```mermaid id="singleton_core_01"
+```mermaid
 flowchart TD
     A[Client Code] --> B[getInstance()]
     B --> C{Instance exists?}
@@ -179,7 +179,7 @@ The logic is:
 * if instance is null, create it
 * otherwise, return the existing instance
 
-```mermaid id="singleton_lazy_01"
+```mermaid
 flowchart TD
     A[getInstance called] --> B{instance == null?}
     B -->|Yes| C[Create Singleton object]
@@ -192,7 +192,7 @@ flowchart TD
 
 # Singleton structure
 
-```mermaid id="singleton_structure_01"
+```mermaid
 classDiagram
     class Singleton {
         -static instance
@@ -305,7 +305,7 @@ If two threads call `getInstance()` at the same time, both may see `instance == 
 
 That breaks the Singleton rule.
 
-```mermaid id="singleton_race_01"
+```mermaid
 sequenceDiagram
     actor T1 as Thread 1
     actor T2 as Thread 2
@@ -514,7 +514,7 @@ if s1 is s2:
 
 Lazy initialization creates the object only when needed.
 
-```mermaid id="singleton_lazy_init_02"
+```mermaid
 flowchart TD
     A[Program starts] --> B[No object created yet]
     B --> C[getInstance called first time]
@@ -529,7 +529,7 @@ flowchart TD
 
 Eager initialization creates the object early.
 
-```mermaid id="singleton_eager_01"
+```mermaid
 flowchart TD
     A[Class loaded] --> B[Create singleton immediately]
     B --> C[Store object in static variable]
@@ -664,7 +664,7 @@ That means:
 
 # Singleton diagram
 
-```mermaid id="singleton_lifecycle_01"
+```mermaid
 sequenceDiagram
     actor Client
     participant SingletonClass

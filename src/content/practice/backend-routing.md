@@ -21,7 +21,7 @@ Routing determines:
 
 ```text
 Which handler or service processes a request
-````
+```
 
 Without efficient routing:
 
@@ -46,9 +46,6 @@ Routing is fundamental for scalability, reliability, and request orchestration.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: api-routing, scalability, backend-systems
@@ -70,7 +67,7 @@ Architecture:
 
 ```text id="6m2xqc"
 API Gateway / Router → Business Services
-````
+```
 
 Benefits:
 
@@ -84,9 +81,6 @@ Modern distributed systems often isolate routing into dedicated infrastructure l
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: load-balancing, routing, distributed-systems
@@ -100,7 +94,7 @@ Problem:
 
 ```text
 Poor routing may overload certain servers while others remain idle
-````
+```
 
 Routing strategies:
 
@@ -127,9 +121,6 @@ Routing directly impacts distributed system performance and stability.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: service-discovery, microservices, routing
@@ -146,7 +137,7 @@ Problem:
 
 ```text
 Backend service locations constantly change
-````
+```
 
 Static routing tables become unreliable.
 
@@ -174,9 +165,6 @@ Routing and service discovery are tightly coupled in microservice architectures.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: sticky-sessions, routing, distributed-systems
@@ -193,7 +181,7 @@ Problem:
 
 ```text
 Requests routed to different servers may lose session continuity
-````
+```
 
 Sticky sessions ensure:
 
@@ -219,9 +207,6 @@ Sticky routing improves stateful communication at the cost of flexibility.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: geo-routing, latency-optimization, distributed-systems
@@ -235,7 +220,7 @@ Problem:
 
 ```text
 Requests traveling long distances increase latency
-````
+```
 
 Geographic routing directs traffic to:
 
@@ -267,9 +252,6 @@ Geo-routing is critical for low-latency global systems.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: failover-routing, resilience, backend-systems
@@ -287,7 +269,7 @@ Problem:
 
 ```text
 Requests routed to failed instances increase outages
-````
+```
 
 Failover routing dynamically bypasses unhealthy systems.
 
@@ -309,9 +291,6 @@ Routing plays a major role in distributed fault tolerance.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: api-gateway, routing, microservices
@@ -328,7 +307,7 @@ Problem:
 
 ```text
 Clients cannot efficiently manage direct communication with all services
-````
+```
 
 API Gateway centralizes:
 
@@ -355,9 +334,6 @@ API Gateways act as intelligent routing layers in microservice ecosystems.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, routing, distributed-systems
@@ -375,7 +351,7 @@ Problem:
 
 ```text
 Routing issues may silently degrade system performance
-````
+```
 
 Key monitoring areas:
 
@@ -402,9 +378,6 @@ Routing infrastructure requires strong monitoring and telemetry systems.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: routing, trade-offs, system-design
@@ -439,7 +412,7 @@ Example:
 
 ```text id="7v2xpd"
 Geo-routing improves latency but increases routing coordination complexity
-````
+```
 
 Routing architecture fundamentally balances:
 
@@ -449,6 +422,3 @@ Routing architecture fundamentally balances:
 * operational simplicity
 
 <!-- END -->
-
-```
-```

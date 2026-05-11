@@ -1,6 +1,6 @@
 ---
 title: OAuth Open Authorization
-articleSlug: oauth-open-authorization
+articleSlug: oauth
 ---
 
 # OAuth Open Authorization

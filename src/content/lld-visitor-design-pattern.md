@@ -206,7 +206,7 @@ The Visitor pattern creates **two separate hierarchies**:
 
 # Architecture Diagram
 
-```mermaid id="u2b0dq"
+```mermaid
 classDiagram
 
     class Element {
@@ -446,7 +446,7 @@ inside SizeVisitor.
 
 # Full Interaction Diagram
 
-```mermaid id="my3jyt"
+```mermaid
 sequenceDiagram
     participant Client
     participant TextFile
@@ -558,7 +558,7 @@ Each visitor performs a different operation across the object structure.
 
 # Detailed Workflow
 
-```mermaid id="4e3oq6"
+```mermaid
 flowchart TD
 
     A[Client] --> B[Element.accept(visitor)]
@@ -705,7 +705,7 @@ Visitor automatically executes correct logic for each object.
 
 # Example Traversal
 
-```mermaid id="flk91p"
+```mermaid
 flowchart LR
 
     A[Collection] --> B[TextFile]

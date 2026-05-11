@@ -23,7 +23,7 @@ Example:
 
 ```text id="4m8qza"
 DATABASE_URL=postgres://localhost:5432/app
-````
+```
 
 Benefits:
 
@@ -37,9 +37,6 @@ Configuration management is essential in modern backend architectures.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: environment-variables, backend, configuration
@@ -54,7 +51,7 @@ Example:
 ```text
 PORT=3000
 JWT_SECRET=mysecret
-````
+```
 
 Applications read them during startup.
 
@@ -82,9 +79,6 @@ They are one of the most common backend configuration methods.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: environments, deployment, backend
@@ -106,7 +100,7 @@ Example configuration:
 
 ```text id="6p1qxt"
 NODE_ENV=production
-````
+```
 
 Benefits:
 
@@ -131,9 +125,6 @@ Environment separation is a core backend deployment practice.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: secrets-management, security, backend
@@ -153,7 +144,7 @@ Dangerous example:
 
 ```text id="5m2xqc"
 const password = "mypassword123"
-````
+```
 
 Risks:
 
@@ -173,9 +164,6 @@ Secrets should always be stored securely outside application code.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: feature-flags, deployment, backend
@@ -189,7 +177,7 @@ Example:
 
 ```text id="clt6p5"
 ENABLE_NEW_DASHBOARD=true
-````
+```
 
 Benefits:
 
@@ -215,9 +203,6 @@ They improve deployment flexibility and operational safety.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: centralized-configuration, distributed-systems, backend
@@ -239,7 +224,7 @@ Architecture:
 
 ```text id="4q2xmc"
 Services → Central Config Store
-````
+```
 
 Benefits:
 
@@ -252,9 +237,6 @@ Centralized configuration is common in microservice architectures.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: configuration-drift, infrastructure, devops
@@ -268,7 +250,7 @@ Example:
 
 ```text id="4v8qpd"
 Server A ≠ Server B
-````
+```
 
 Causes:
 
@@ -294,9 +276,6 @@ Configuration drift is a major operational challenge in large systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: infrastructure-as-code, devops, backend
@@ -318,7 +297,7 @@ Example concept:
 
 ```text id="6m3qpd"
 Servers defined in code
-````
+```
 
 Benefits:
 
@@ -337,9 +316,6 @@ IaC is foundational for modern cloud-native backend systems.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: hot-reload-configuration, distributed-systems, backend
@@ -353,7 +329,7 @@ Example:
 
 ```text id="1q8vza"
 Change Feature Flag → App Updates Automatically
-````
+```
 
 Benefits:
 
@@ -379,9 +355,6 @@ Dynamic configuration management improves operational flexibility.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: kubernetes-config, containers, backend
@@ -406,7 +379,7 @@ Example:
 ```text id="7v2xpd"
 Database Host → ConfigMap
 Database Password → Secret
-````
+```
 
 Benefits:
 

@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Command Design Pattern
+articleSlug: lld-command-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: command-pattern, lld, design-patterns
@@ -12,7 +17,7 @@ Instead of directly calling methods:
 
 ```text
 Button → Light.turnOn()
-````
+```
 
 the request becomes:
 
@@ -32,9 +37,6 @@ The Command Pattern is a behavioral design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: command-pattern, request-encapsulation, lld
@@ -50,7 +52,7 @@ Without Command:
 
 ```text id="6m2xqc"
 UI Button directly calls business logic
-````
+```
 
 With Command:
 
@@ -70,9 +72,6 @@ It is commonly used in UI systems and backend task processing.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: command-pattern, lld, object-oriented-design
@@ -93,7 +92,7 @@ Architecture:
 Client → Command → Receiver
          ↑
       Invoker
-````
+```
 
 Responsibilities:
 
@@ -109,9 +108,6 @@ This separation improves flexibility and maintainability.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: undo-redo, command-pattern, lld
@@ -129,7 +125,7 @@ Execute Command
 Store History
 ↓
 Undo Command
-````
+```
 
 Undo support:
 
@@ -156,9 +152,6 @@ This is widely used in editors and productivity applications.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: queues, asynchronous-processing, command-pattern
@@ -172,7 +165,7 @@ Architecture:
 
 ```text id="clt6p5"
 Producer → Queue → Worker → Execute Command
-````
+```
 
 Examples:
 
@@ -192,9 +185,6 @@ Commands naturally represent queueable units of work.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: command-vs-strategy, design-patterns, lld
@@ -218,7 +208,7 @@ Example Command:
 
 ```text id="4q2xmc"
 DeleteFileCommand
-````
+```
 
 Example Strategy:
 
@@ -230,9 +220,6 @@ Both patterns use composition but solve different design problems.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: event-sourcing, command-pattern, distributed-systems
@@ -248,7 +235,7 @@ Flow:
 
 ```text id="4v8qpd"
 Command → Validation → Event Creation → Event Store
-````
+```
 
 Example:
 
@@ -270,9 +257,6 @@ Commands represent user intent in event-driven architectures.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: command-pattern, cqrs, software-architecture
@@ -291,7 +275,7 @@ Architecture:
 ```text id="6m3qpd"
 Command Side → State Changes
 Query Side → Data Retrieval
-````
+```
 
 Example commands:
 
@@ -310,9 +294,6 @@ The Command Pattern is foundational in CQRS systems.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: macro-commands, command-pattern, lld
@@ -329,7 +310,7 @@ MorningRoutineCommand:
 - OpenCurtains
 - StartCoffeeMachine
 - TurnOnLights
-````
+```
 
 Execution:
 
@@ -353,9 +334,6 @@ Macro Commands are useful in:
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: command-pattern, trade-offs, software-design
@@ -385,7 +363,7 @@ Example:
 
 ```text id="7v2xpd"
 Invoker → Command → Receiver
-````
+```
 
 The Command Pattern is highly valuable in:
 

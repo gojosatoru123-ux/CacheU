@@ -1,6 +1,6 @@
 ---
 title: Adapter Design Pattern
-articleSlug: adapter-design-pattern
+articleSlug: lld-adapter-design-pattern
 ---
 
 # Adapter Design Pattern

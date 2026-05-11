@@ -1,6 +1,6 @@
 ---
 title: Chain of Responsibility Design Pattern
-articleSlug: chain-of-responsibility-design-pattern
+articleSlug: lld-chain-of-responsibility-design-pattern
 ---
 
 # Chain of Responsibility Design Pattern

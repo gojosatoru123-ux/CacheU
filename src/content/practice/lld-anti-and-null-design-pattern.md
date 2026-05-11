@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Anti and Null Design Pattern
+articleSlug: lld-anti-and-null-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: null-object-pattern, lld, design-patterns
@@ -12,7 +17,7 @@ Instead of:
 
 ```text
 if(object != null)
-````
+```
 
 systems use:
 
@@ -38,9 +43,6 @@ The Null Object Pattern is a behavioral design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: anti-patterns, software-design, lld
@@ -67,15 +69,12 @@ Example:
 
 ```text id="6m2xqc"
 One massive class handling everything
-````
+```
 
 Recognizing anti-patterns is important in software architecture and low-level design interviews.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: null-object-pattern, clean-code, lld
@@ -89,7 +88,7 @@ Without Null Object:
 
 ```text id="6p1qxt"
 if(user != null)
-````
+```
 
 With Null Object:
 
@@ -115,9 +114,6 @@ The Null Object Pattern improves code maintainability.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: god-object, anti-patterns, software-architecture
@@ -136,7 +132,7 @@ UserManager handles:
 - emails
 - database access
 - logging
-````
+```
 
 Problems:
 
@@ -156,9 +152,6 @@ God Objects are common in poorly structured backend systems.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: null-object-pattern, polymorphism, lld
@@ -174,7 +167,7 @@ Architecture:
 Service Interface
  ├── RealService
  └── NullService
-````
+```
 
 Example behavior:
 
@@ -193,9 +186,6 @@ Polymorphism allows clients to treat null objects like normal objects safely.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: spaghetti-code, anti-patterns, maintainability
@@ -214,7 +204,7 @@ Example:
 
 ```text id="4q2xmc"
 if → else → nested if → switch → goto-like flow
-````
+```
 
 Problems:
 
@@ -234,9 +224,6 @@ Spaghetti Code is one of the most common software anti-patterns.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: singleton-anti-pattern, global-state, lld
@@ -258,7 +245,7 @@ Example:
 
 ```text id="4v8qpd"
 GlobalConfig.getInstance()
-````
+```
 
 Overuse leads to:
 
@@ -270,9 +257,6 @@ Singleton is useful in limited scenarios but becomes harmful when abused.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: null-object-pattern, domain-driven-design, lld
@@ -292,7 +276,7 @@ Example:
 
 ```text id="6m3qpd"
 GuestUser instead of null User
-````
+```
 
 Benefits:
 
@@ -310,9 +294,6 @@ It is widely used in:
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: lava-flow, anti-patterns, legacy-systems
@@ -326,7 +307,7 @@ Example:
 
 ```text id="1q8vza"
 Unused modules kept "just in case"
-````
+```
 
 Problems:
 
@@ -346,9 +327,6 @@ Lava Flow commonly appears in large long-running enterprise systems.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: anti-patterns, technical-debt, software-engineering
@@ -381,4 +359,3 @@ Strong engineers identify both:
 - good patterns
 - dangerous anti-patterns
 <!-- END -->
-````

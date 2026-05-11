@@ -1,6 +1,6 @@
 ---
 title: Template Method Design Pattern
-articleSlug: template-method-design-pattern
+articleSlug: lld-template-method-design-pattern
 ---
 
 # Template Method Design Pattern

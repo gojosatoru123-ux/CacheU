@@ -1,3 +1,9 @@
+---
+title:  CAP Theorem
+articleSlug: cap-theorem
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: cap-theorem, distributed-systems, consistency
@@ -18,7 +24,7 @@ Example:
 
 ```text
 Two database replicas become disconnected
-````
+```
 
 If both continue accepting writes:
 
@@ -43,9 +49,6 @@ In distributed systems, network partitions are unavoidable.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cap-theorem, partition-tolerance, distributed-systems
@@ -65,7 +68,7 @@ Without partition tolerance:
 
 ```text id="6m2xqc"
 System becomes unusable during network failures
-````
+```
 
 Modern distributed systems must assume:
 
@@ -89,9 +92,6 @@ Because partitions are unavoidable, practical systems usually choose:
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cp-systems, distributed-databases, consistency
@@ -105,7 +105,7 @@ Critical requirement:
 
 ```text
 Account balances must never diverge
-````
+```
 
 CP systems provide:
 
@@ -137,9 +137,6 @@ Financial systems typically sacrifice availability to maintain consistency guara
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: ap-systems, scalability, distributed-systems
@@ -169,7 +166,7 @@ Example:
 
 ```text id="5m2xqc"
 Follower count differs briefly across regions
-````
+```
 
 Tradeoff:
 
@@ -181,9 +178,6 @@ User experience often benefits more from availability than perfect synchronizati
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: eventual-consistency, distributed-databases, cap-theorem
@@ -197,7 +191,7 @@ Workflow:
 
 ```text
 Nodes accept writes independently
-````
+```
 
 Synchronization occurs later:
 
@@ -228,9 +222,6 @@ Eventual consistency is common in:
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-consensus, raft, paxos
@@ -249,7 +240,7 @@ During partitions:
 
 ```text id="4q2xmc"
 Minority nodes stop accepting writes
-````
+```
 
 Benefits:
 
@@ -269,9 +260,6 @@ Consensus systems intentionally reject some requests to preserve correctness gua
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cap-theorem-misconceptions, distributed-systems, architecture
@@ -285,7 +273,7 @@ Reality:
 
 ```text id="4v8qpd"
 Tradeoff matters only during network partitions
-````
+```
 
 Without partitions:
 
@@ -316,9 +304,6 @@ Therefore practical systems are usually:
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cap-theorem, multi-region-systems, distributed-architecture
@@ -343,7 +328,7 @@ Strong consistency requires:
 
 ```text id="6m3qpd"
 Cross-region coordination before writes commit
-````
+```
 
 This increases:
 
@@ -364,9 +349,6 @@ Global-scale systems continuously balance:
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cap-theorem, distributed-caches, backend-engineering
@@ -395,7 +377,7 @@ Example:
 
 ```text id="1q8vza"
 Cached product price slightly outdated
-````
+```
 
 is preferable to:
 
@@ -407,9 +389,6 @@ Systems like Redis Cluster often favor availability and partition tolerance.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cap-theorem, trade-offs, system-design

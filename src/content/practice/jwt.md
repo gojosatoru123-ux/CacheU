@@ -1,3 +1,9 @@
+---
+title:  JWT
+articleSlug: jwt
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: jwt, authentication, distributed-systems
@@ -20,7 +26,7 @@ Architecture:
 
 ```text
 Client → JWT → Multiple Stateless Services
-````
+```
 
 Benefits:
 
@@ -34,9 +40,6 @@ JWTs are highly suitable for microservices and distributed architectures.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: jwt-structure, authentication, security
@@ -48,7 +51,7 @@ JWT payloads are:
 
 ```text
 Base64 encoded, not encrypted
-````
+```
 
 Anyone possessing the token can decode payload contents.
 
@@ -80,9 +83,6 @@ JWT signatures guarantee integrity, not confidentiality.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: stateless-authentication, scaling, microservices
@@ -101,7 +101,7 @@ Workflow:
 
 ```text id="6p1qxt"
 Client sends JWT with every request
-````
+```
 
 Benefits:
 
@@ -121,9 +121,6 @@ JWTs eliminate many scalability bottlenecks of server-side sessions.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: jwt-expiration, security, token-management
@@ -137,7 +134,7 @@ Meaning:
 
 ```text
 Anyone possessing token may use it
-````
+```
 
 Problem:
 
@@ -165,9 +162,6 @@ Short-lived access tokens combined with refresh tokens improve authentication se
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: refresh-token, authentication, jwt-security
@@ -185,7 +179,7 @@ Workflow:
 
 ```text id="clt6p5"
 Expired Access Token → Refresh Token → New Access Token
-````
+```
 
 Benefits:
 
@@ -206,9 +200,6 @@ Refresh token architecture balances usability and security.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: jwt-revocation, distributed-systems, authentication
@@ -222,7 +213,7 @@ Once issued:
 
 ```text
 Servers validate token locally without centralized lookup
-````
+```
 
 Problem:
 
@@ -254,9 +245,6 @@ JWT revocation fundamentally conflicts with pure statelessness.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: jwt-signature, cryptography, security
@@ -268,7 +256,7 @@ JWT signatures verify:
 
 ```text
 Token contents were not modified
-````
+```
 
 Workflow:
 
@@ -294,9 +282,6 @@ Signatures protect JWT integrity but not confidentiality.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: jwt-vs-session, authentication, scalability
@@ -326,7 +311,7 @@ Architecture:
 
 ```text id="6m3qpd"
 Client → JWT → Multiple Independent Services
-````
+```
 
 Tradeoff:
 
@@ -339,9 +324,6 @@ JWTs fit naturally into distributed service architectures.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: jwt-security, xss, csrf
@@ -362,7 +344,7 @@ Problem:
 
 ```text
 No browser storage mechanism is completely risk-free
-````
+```
 
 Mitigations:
 
@@ -381,9 +363,6 @@ JWT browser storage requires balancing multiple web security concerns.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: jwt, authentication, trade-offs
@@ -414,7 +393,7 @@ Example:
 
 ```text id="7v2xpd"
 Compromised JWT remains valid until expiration
-````
+```
 
 JWT systems fundamentally balance:
 

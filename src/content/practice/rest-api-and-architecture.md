@@ -25,7 +25,7 @@ Architecture:
 
 ```text id="u1vcqn"
 Client → HTTP Request → REST Resource Endpoint
-````
+```
 
 Benefits:
 
@@ -45,9 +45,6 @@ REST became dominant due to simplicity, scalability, and ecosystem adoption.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: statelessness, rest-api, distributed-systems
@@ -59,7 +56,7 @@ REST requires:
 
 ```text
 Each request contains all necessary context
-````
+```
 
 Problem solved:
 
@@ -91,9 +88,6 @@ Statelessness enables scalable distributed API architectures.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: http-methods, rest-api, api-design
@@ -125,15 +119,12 @@ Example:
 
 ```text id="6p1qxt"
 GET /users/42 retrieves user resource
-````
+```
 
 HTTP method semantics are foundational for REST consistency.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: idempotency, rest-api, distributed-systems
@@ -150,7 +141,7 @@ Problem:
 
 ```text
 Repeated requests may unintentionally duplicate operations
-````
+```
 
 Idempotent operations guarantee:
 
@@ -179,9 +170,6 @@ Idempotency is critical for resilient API behavior.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: rest-vs-graphql, api-design, backend-systems
@@ -195,7 +183,7 @@ Problem:
 
 ```text
 Clients may receive too much or too little data
-````
+```
 
 Examples:
 
@@ -220,9 +208,6 @@ This limitation motivated alternatives like GraphQL.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: caching, rest-api, performance-engineering
@@ -241,7 +226,7 @@ Workflow:
 
 ```text id="4q2xmc"
 Client → Cache Validation → Conditional Response
-````
+```
 
 Benefits:
 
@@ -261,9 +246,6 @@ REST aligns naturally with web caching infrastructure.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: versioning, api-design, rest-api
@@ -280,7 +262,7 @@ Problem:
 
 ```text
 Breaking changes may disrupt existing clients
-````
+```
 
 Versioning approaches:
 
@@ -306,9 +288,6 @@ REST API evolution introduces long-term compatibility complexity.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: microservices, rest-api, distributed-systems
@@ -322,7 +301,7 @@ Problem:
 
 ```text
 Multiple chained HTTP calls increase latency
-````
+```
 
 Example:
 
@@ -354,9 +333,6 @@ REST simplicity may become costly in highly distributed systems.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, rest-api, distributed-systems
@@ -373,7 +349,7 @@ Problem:
 
 ```text
 API failures may propagate across distributed systems
-````
+```
 
 Key monitoring areas:
 
@@ -400,9 +376,6 @@ REST APIs require strong observability and traffic monitoring.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: rest-api, trade-offs, system-design
@@ -437,7 +410,7 @@ Example:
 
 ```text id="7v2xpd"
 REST simplifies API design but may increase latency in service-heavy architectures
-````
+```
 
 REST architecture fundamentally balances:
 

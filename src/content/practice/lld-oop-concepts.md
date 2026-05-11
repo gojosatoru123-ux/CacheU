@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: OOP Concepts
+articleSlug: lld-oop-concepts
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: oops, object-oriented-programming, software-design
@@ -19,7 +24,7 @@ Car Object
  ├── color
  ├── speed
  └── drive()
-````
+```
 
 Core idea:
 
@@ -39,9 +44,6 @@ OOP is widely used in backend, frontend, and enterprise systems.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: classes-and-objects, oops, lld
@@ -58,7 +60,7 @@ Example:
 ```text id="6m2xqc"
 Class → Car
 Object → BMW Car
-````
+```
 
 Comparison:
 
@@ -78,9 +80,6 @@ Classes define structure and behavior for objects.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: encapsulation, oops, software-design
@@ -94,7 +93,7 @@ Example:
 
 ```text id="6p1qxt"
 Private variables + Public getter/setter methods
-````
+```
 
 Benefits:
 
@@ -116,9 +115,6 @@ Encapsulation improves security and abstraction in software systems.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: abstraction, oops, software-engineering
@@ -132,7 +128,7 @@ Example:
 
 ```text id="5m2xqc"
 Car.drive()
-````
+```
 
 The user drives the car without understanding:
 
@@ -155,9 +151,6 @@ Abstraction is commonly implemented using:
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: inheritance, oops, software-design
@@ -173,7 +166,7 @@ Example:
 Vehicle
  ├── Car
  └── Bike
-````
+```
 
 Benefits:
 
@@ -195,9 +188,6 @@ Inheritance represents an:
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: polymorphism, oops, design-patterns
@@ -211,7 +201,7 @@ Example:
 
 ```text id="4q2xmc"
 Vehicle vehicle = new Car()
-````
+```
 
 Types:
 
@@ -232,9 +222,6 @@ Polymorphism is fundamental to scalable object-oriented systems.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: composition-vs-inheritance, oops, software-design
@@ -258,7 +245,7 @@ Example Inheritance:
 
 ```text id="4v8qpd"
 Car extends Vehicle
-````
+```
 
 Example Composition:
 
@@ -270,9 +257,6 @@ Modern software design often prefers composition over inheritance for flexibilit
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: interfaces, abstraction, oops
@@ -296,7 +280,7 @@ Example:
 
 ```text id="6m3qpd"
 interface PaymentProcessor
-````
+```
 
 Benefits of interfaces:
 
@@ -308,9 +292,6 @@ Interfaces are heavily used in scalable backend systems.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: access-modifiers, encapsulation, oops
@@ -333,7 +314,7 @@ Example:
 
 ```text id="1q8vza"
 private int balance;
-````
+```
 
 Benefits:
 
@@ -347,9 +328,6 @@ Access modifiers are critical for maintainable OOP design.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: solid-principles, oops, clean-code
@@ -381,11 +359,8 @@ Example:
 
 ```text id="7v2xpd"
 One class should have one responsibility
-````
+```
 
 SOLID principles form the foundation of professional object-oriented design.
 
 <!-- END -->
-
-```
-```

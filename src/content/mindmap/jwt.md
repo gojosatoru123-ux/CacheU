@@ -1,6 +1,6 @@
 ---
 title: JWT Authentication
-articleSlug: jwt-authentication
+articleSlug: jwt
 ---
 
 # JWT Authentication

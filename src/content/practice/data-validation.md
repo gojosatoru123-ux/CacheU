@@ -23,7 +23,7 @@ Example:
 
 ```text
 Email must contain @
-````
+```
 
 Typical validations:
 
@@ -50,9 +50,6 @@ Validation is critical for:
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="3n8qza"
 <!-- QUESTION -->
 difficulty: Easy
 tags: frontend-validation, backend-validation, security
@@ -71,7 +68,7 @@ Example dangerous assumption:
 
 ```text id="6m2xqc"
 Frontend already validated input
-````
+```
 
 Backend validation ensures:
 
@@ -97,9 +94,6 @@ Backend validation is mandatory for secure applications.
 
 <!-- END -->
 
-````id="7q4vpa"
-
-```md id="9x1mke"
 <!-- QUESTION -->
 difficulty: Easy
 tags: sanitization, validation, security
@@ -123,7 +117,7 @@ Validation example:
 
 ```js
 email.includes('@')
-````
+```
 
 Sanitization example:
 
@@ -144,9 +138,6 @@ Applications commonly use both:
 
 <!-- END -->
 
-````id="2w7qxt"
-
-```md id="6p3vke"
 <!-- QUESTION -->
 difficulty: Medium
 tags: schema-validation, api, backend
@@ -163,7 +154,7 @@ Example JSON schema:
   "type": "object",
   "required": ["email", "password"]
 }
-````
+```
 
 Incoming request:
 
@@ -201,9 +192,6 @@ Schema validation is widely used in APIs and microservices.
 
 <!-- END -->
 
-````id="8n5xqc"
-
-```md id="1v9qza"
 <!-- QUESTION -->
 difficulty: Medium
 tags: input-validation, security, sql-injection
@@ -217,7 +205,7 @@ Dangerous query construction:
 
 ```js
 const query = "SELECT * FROM users WHERE id = " + userInput
-````
+```
 
 Attacker input:
 
@@ -257,9 +245,6 @@ Validation is an important layer in SQL injection prevention.
 
 <!-- END -->
 
-````id="4x2qwc"
-
-```md id="7m8vke"
 <!-- QUESTION -->
 difficulty: Medium
 tags: regex, validation, backend
@@ -273,7 +258,7 @@ Example email regex:
 
 ```regex
 ^[^\s@]+@[^\s@]+\.[^\s@]+$
-````
+```
 
 Validation example:
 
@@ -306,9 +291,6 @@ Regex is powerful but should be used carefully.
 
 <!-- END -->
 
-````id="9k4xza"
-
-```md id="5w1qxt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: whitelist-validation, blacklist-validation, security
@@ -332,7 +314,7 @@ Whitelist example:
 
 ```js id="6m3vke"
 const allowedRoles = ['admin', 'user']
-````
+```
 
 Blacklist example:
 
@@ -356,9 +338,6 @@ Whitelist validation provides stronger security guarantees.
 
 <!-- END -->
 
-````id="3x9vyt"
-
-```md id="2k7qwr"
 <!-- QUESTION -->
 difficulty: Hard
 tags: validation-layers, backend-architecture, security
@@ -381,7 +360,7 @@ Example flow:
 
 ```text id="4v8xmc"
 Client → API → Service → Database
-````
+```
 
 Benefits of layered validation:
 
@@ -406,9 +385,6 @@ Layered validation is a core secure architecture principle.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: file-validation, upload-security, backend-security
@@ -428,7 +404,7 @@ Dangerous example:
 
 ```text id="2m7qxt"
 shell.php
-````
+```
 
 Validation should check:
 
@@ -458,9 +434,6 @@ File uploads are a common attack vector in web applications.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: business-validation, backend, application-logic
@@ -479,7 +452,7 @@ Example:
 
 ```text id="7v2xpd"
 Withdrawal amount ≤ account balance
-````
+```
 
 Unlike format validation:
 

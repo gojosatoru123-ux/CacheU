@@ -41,7 +41,7 @@ You do not need to know every step to start the machine.
 
 That single button is a great real-world example of a **Facade**.
 
-```mermaid id="facade_intro_01"
+```mermaid
 flowchart TD
     A[User Presses Power Button] --> B[Power Supply]
     B --> C[CPU Initialization]
@@ -96,7 +96,7 @@ It provides:
 
 ## Facade structure
 
-```mermaid id="facade_structure_01"
+```mermaid
 classDiagram
     class Client {
         +start()
@@ -157,7 +157,7 @@ The client talks to one simple object.
 
 The facade internally orchestrates the subsystem.
 
-```mermaid id="facade_vs_direct_01"
+```mermaid
 flowchart LR
     A[Client] --> B[Direct Access to Many Subsystem Classes]
     C[Client] --> D[Facade]
@@ -317,7 +317,7 @@ You have incompatible interfaces that do not match.
 
 ## Comparison diagram
 
-```mermaid id="facade_vs_adapter_01"
+```mermaid
 flowchart LR
     A[Facade] --> B[Simplify complex subsystem]
     C[Adapter] --> D[Translate incompatible interfaces]
@@ -346,7 +346,7 @@ A facade usually:
 * exposes a few simple methods
 * hides internal workflow from the client
 
-```mermaid id="facade_workflow_01"
+```mermaid
 flowchart TD
     A[Client calls facade] --> B[Facade starts workflow]
     B --> C[Subsystem Step 1]
@@ -376,7 +376,7 @@ Instead, it should call:
 
 ## Facade diagram for computer startup
 
-```mermaid id="computer_facade_01"
+```mermaid
 classDiagram
     class ComputerFacade {
         +startComputer()
@@ -611,7 +611,7 @@ computer.start_computer()
 
 # Facade in sequence form
 
-```mermaid id="facade_sequence_01"
+```mermaid
 sequenceDiagram
     actor Client
     participant Facade
@@ -644,7 +644,7 @@ A payment system may need to do many things:
 
 Instead of exposing all those details to the client, we can wrap them in a facade method like `makePayment()`.
 
-```mermaid id="payment_facade_01"
+```mermaid
 flowchart TD
     A[Client] --> B[PaymentFacade.makePayment()]
     B --> C[Validate User]

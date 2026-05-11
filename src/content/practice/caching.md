@@ -19,7 +19,7 @@ Instead of repeatedly fetching data from slow systems:
 Database
 Disk
 External APIs
-````
+```
 
 applications retrieve it from a faster cache layer.
 
@@ -48,9 +48,6 @@ Caching is one of the most important performance optimization techniques in dist
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: cache-hit, cache-miss, system-design
@@ -68,7 +65,7 @@ Example flow:
 Request → Cache
            ├── Hit → Return Cached Data
            └── Miss → Fetch From Database
-````
+```
 
 Comparison:
 
@@ -97,9 +94,6 @@ High cache hit rates improve:
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: redis, memcached, caching
@@ -121,7 +115,7 @@ Example Redis usage:
 
 ```text id="6p1qxt"
 SET user:42 "Alex"
-````
+```
 
 Common caching use cases:
 
@@ -140,9 +134,6 @@ Redis is one of the most widely used caching systems in modern architectures.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: cache-aside, caching-patterns, system-design
@@ -158,7 +149,7 @@ Flow:
 Request → Cache
            ├── Hit → Return Data
            └── Miss → Database → Update Cache
-````
+```
 
 Example process:
 
@@ -184,9 +175,6 @@ Cache-Aside is one of the most common caching patterns in backend systems.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: ttl, cache-expiration, backend
@@ -200,7 +188,7 @@ Example:
 
 ```text id="clt6p5"
 TTL = 3600 seconds
-````
+```
 
 After expiration:
 
@@ -233,9 +221,6 @@ Choosing proper TTL values is important for balancing:
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: distributed-cache, scalability, system-design
@@ -254,7 +239,7 @@ Distributed cache architecture:
 
 ```text id="4q2xmc"
 Application → Cache Cluster → Database
-````
+```
 
 Benefits:
 
@@ -277,9 +262,6 @@ Distributed caching is essential for:
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cache-invalidation, system-design, consistency
@@ -294,7 +276,7 @@ Problem example:
 ```text
 Database Updated
 Cache Still Old
-````
+```
 
 This causes:
 
@@ -333,9 +315,6 @@ Cache invalidation is a major system design challenge.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: write-through, write-back, caching-strategies
@@ -359,7 +338,7 @@ Write-through flow:
 
 ```text id="6m3qpd"
 Application → Cache + Database
-````
+```
 
 Write-back flow:
 
@@ -381,9 +360,6 @@ Different systems choose strategies based on performance vs consistency requirem
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cdn, edge-caching, web-performance
@@ -397,7 +373,7 @@ Example architecture:
 
 ```text
 User → CDN Edge Server → Origin Server
-````
+```
 
 Cached CDN content:
 
@@ -426,9 +402,6 @@ CDN caching is essential for modern high-performance web applications.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cache-consistency, distributed-systems, backend
@@ -444,7 +417,7 @@ Example:
 Database Updated
 One Cache Updated
 Another Cache Still Old
-````
+```
 
 Potential issues:
 

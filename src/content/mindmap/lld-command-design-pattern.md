@@ -1,6 +1,6 @@
 ---
 title: Command Design Pattern
-articleSlug: command-design-pattern
+articleSlug: lld-command-design-pattern
 ---
 
 # Command Design Pattern

@@ -1,6 +1,6 @@
 ---
 title: Network Protocols in High Level Design
-articleSlug: network-protocols-in-high-level-design
+articleSlug: network-protocols
 ---
 
 # Network Protocols in High Level Design

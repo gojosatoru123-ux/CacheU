@@ -1,6 +1,6 @@
 ---
 title: Composite Design Pattern
-articleSlug: composite-design-pattern
+articleSlug: lld-composite-design-pattern
 ---
 
 # Composite Design Pattern

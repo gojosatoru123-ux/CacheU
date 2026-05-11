@@ -1,6 +1,6 @@
 ---
 title: SQL vs NoSQL Databases
-articleSlug: sql-vs-nosql-databases
+articleSlug: sql-vs-nosql
 ---
 
 # SQL vs NoSQL Databases

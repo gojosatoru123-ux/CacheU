@@ -17,7 +17,7 @@ Typical location:
 
 ```text
 https://example.com/sitemap.xml
-````
+```
 
 Basic structure:
 
@@ -56,9 +56,6 @@ Sitemaps are especially important for:
 
 <!-- END -->
 
-````id="7d1xqp"
-
-```md id="9k4vte"
 <!-- QUESTION -->
 difficulty: Easy
 tags: robots-txt, crawlers, seo
@@ -72,7 +69,7 @@ Location:
 
 ```text
 https://example.com/robots.txt
-````
+```
 
 Example:
 
@@ -117,9 +114,6 @@ Sensitive content should still be protected using:
 
 <!-- END -->
 
-````id="2n6xmr"
-
-```md id="5v3qwp"
 <!-- QUESTION -->
 difficulty: Easy
 tags: web-manifest, pwa, frontend
@@ -133,7 +127,7 @@ Typical location:
 
 ```text
 /site.webmanifest
-````
+```
 
 Linked inside HTML:
 
@@ -175,9 +169,6 @@ Without a manifest, browsers cannot fully install the website as a PWA.
 
 <!-- END -->
 
-````id="1q8kza"
-
-```md id="8p5xwd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: sitemap, crawl-budget, seo
@@ -207,7 +198,7 @@ Example sitemap entry:
   <lastmod>2026-01-09</lastmod>
   <priority>0.8</priority>
 </url>
-````
+```
 
 Important sitemap metadata:
 
@@ -231,9 +222,6 @@ Sitemaps are especially useful for:
 
 <!-- END -->
 
-````id="6w2mpy"
-
-```md id="3x9vla"
 <!-- QUESTION -->
 difficulty: Medium
 tags: robots-txt, seo, crawler-control
@@ -248,7 +236,7 @@ Dangerous example:
 ```txt
 User-agent: *
 Disallow: /
-````
+```
 
 This blocks the entire website from crawling.
 
@@ -293,9 +281,6 @@ Sensitive pages may still appear in search results if linked externally.
 
 <!-- END -->
 
-````id="4v1xzb"
-
-```md id="7m6qke"
 <!-- QUESTION -->
 difficulty: Medium
 tags: pwa, web-manifest, mobile-web
@@ -311,7 +296,7 @@ Example:
 {
   "display": "standalone"
 }
-````
+```
 
 Available display modes:
 
@@ -348,9 +333,6 @@ Display modes are an important part of Progressive Web App behavior.
 
 <!-- END -->
 
-````id="8n3wqy"
-
-```md id="2p7xmc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: pwa, manifest, service-worker
@@ -374,7 +356,7 @@ Example manifest:
   "start_url": "/",
   "display": "standalone"
 }
-````
+```
 
 Example service worker registration:
 

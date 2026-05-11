@@ -1,6 +1,6 @@
 ---
 title: Geospatial System Design
-articleSlug: geospatial-system-design
+articleSlug: geospatial-design
 ---
 
 # Geospatial System Design

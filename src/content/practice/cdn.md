@@ -1,3 +1,9 @@
+---
+title:  CDN
+articleSlug: cdn
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: cdn, distributed-systems, scalability
@@ -11,7 +17,7 @@ Without CDN:
 
 ```text
 All requests travel to centralized origin servers
-````
+```
 
 Problems:
 
@@ -39,9 +45,6 @@ CDNs are foundational for scalable global content delivery.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: edge-caching, performance-engineering, cdn
@@ -60,7 +63,7 @@ Workflow:
 
 ```text id="6m2xqc"
 User Request → Nearby CDN Edge Cache
-````
+```
 
 Benefits:
 
@@ -80,9 +83,6 @@ Edge caching dramatically improves internet-scale responsiveness.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cache-invalidation, cdn, distributed-systems
@@ -99,7 +99,7 @@ Problem:
 
 ```text
 Updated content may coexist with stale cached versions
-````
+```
 
 Example:
 
@@ -119,9 +119,6 @@ Cache invalidation is fundamentally challenging in distributed caching systems.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: static-content, cdn, scalability
@@ -151,15 +148,12 @@ Workflow:
 ```text id="5m2xqc"
 First Request → Origin Fetch
 Subsequent Requests → CDN Cache Hit
-````
+```
 
 Static assets align naturally with distributed edge caching architectures.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: dynamic-content, cdn, distributed-systems
@@ -177,7 +171,7 @@ Problem:
 
 ```text
 Cached responses may become user-specific or stale
-````
+```
 
 Examples:
 
@@ -203,9 +197,6 @@ Dynamic content significantly increases CDN complexity.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: ddos-protection, cdn, cybersecurity
@@ -230,7 +221,7 @@ Architecture:
 
 ```text id="4q2xmc"
 Attack Traffic → CDN Edge Network → Filtered Requests → Origin
-````
+```
 
 Examples:
 
@@ -242,9 +233,6 @@ CDNs significantly improve internet-scale defensive capacity.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: anycast, networking, cdn
@@ -256,7 +244,7 @@ Anycast allows:
 
 ```text
 Multiple edge servers share the same IP address
-````
+```
 
 Traffic automatically routes to nearest healthy location.
 
@@ -284,9 +272,6 @@ Anycast is foundational for globally distributed CDN infrastructure.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: origin-shielding, cdn, backend-protection
@@ -298,7 +283,7 @@ Without shielding:
 
 ```text
 Cache misses from many edge servers hit origin directly
-````
+```
 
 Problem:
 
@@ -326,9 +311,6 @@ Origin shielding protects backend infrastructure during traffic spikes.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, cdn, distributed-systems
@@ -346,7 +328,7 @@ Problem:
 
 ```text
 Performance bottlenecks may occur across multiple geographic regions
-````
+```
 
 Key monitoring areas:
 
@@ -373,9 +355,6 @@ CDNs require strong global observability and telemetry systems.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cdn, trade-offs, system-design
@@ -406,7 +385,7 @@ Example:
 
 ```text id="7v2xpd"
 Aggressive CDN caching improves performance but delays content updates
-````
+```
 
 CDN architecture fundamentally balances:
 

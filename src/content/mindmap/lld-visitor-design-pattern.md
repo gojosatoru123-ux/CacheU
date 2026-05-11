@@ -1,6 +1,6 @@
 ---
 title: Visitor Design Pattern
-articleSlug: visitor-design-pattern
+articleSlug: lld-visitor-design-pattern
 ---
 
 # Visitor Design Pattern

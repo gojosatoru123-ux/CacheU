@@ -1,6 +1,6 @@
 ---
 title: Memento Design Pattern
-articleSlug: memento-design-pattern
+articleSlug: lld-memento-design-pattern
 ---
 
 # Memento Design Pattern

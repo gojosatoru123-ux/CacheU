@@ -1,6 +1,6 @@
 ---
 title: Content Delivery Network
-articleSlug: content-delivery-network
+articleSlug: cdn
 ---
 
 # Content Delivery Network

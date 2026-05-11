@@ -23,7 +23,7 @@ Example flow:
 ```text
 Browser → HTTP Request → Server
 Server → HTTP Response → Browser
-````
+```
 
 Example request:
 
@@ -56,9 +56,6 @@ HTTP is the foundation of modern web communication.
 
 <!-- END -->
 
-````id="z0k1vt"
-
-```md id="4m7xpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: http, request-response, networking
@@ -79,7 +76,7 @@ Architecture:
 ```text
 Client → Request → Server
 Client ← Response ← Server
-````
+```
 
 Example request:
 
@@ -116,9 +113,6 @@ Every web interaction follows this cycle.
 
 <!-- END -->
 
-````id="x5l2qe"
-
-```md id="1p9vzc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: http-methods, rest, api
@@ -142,7 +136,7 @@ Examples:
 
 ```http
 GET /users
-````
+```
 
 ```http id="8n3ztw"
 POST /users
@@ -165,9 +159,6 @@ REST APIs heavily rely on proper HTTP method usage.
 
 <!-- END -->
 
-````id="3v7mky"
-
-```md id="6x1qpa"
 <!-- QUESTION -->
 difficulty: Easy
 tags: status-codes, http, api
@@ -204,7 +195,7 @@ Example response:
 
 ```http
 HTTP/1.1 404 Not Found
-````
+```
 
 Status codes help clients understand:
 
@@ -215,9 +206,6 @@ Status codes help clients understand:
 
 <!-- END -->
 
-````id="n4q8tw"
-
-```md id="9k3xvd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: headers, http, networking
@@ -234,7 +222,7 @@ GET /api/users HTTP/1.1
 Host: example.com
 Authorization: Bearer token
 Content-Type: application/json
-````
+```
 
 Common request headers:
 
@@ -269,9 +257,6 @@ Headers are essential for:
 
 <!-- END -->
 
-````id="b9x1pr"
-
-```md id="5w2mza"
 <!-- QUESTION -->
 difficulty: Medium
 tags: stateless, http, backend
@@ -287,7 +272,7 @@ Example:
 
 ```text
 Request 1 ≠ Request 2
-````
+```
 
 The server processes every request separately.
 
@@ -321,9 +306,6 @@ Modern web systems add state management on top of HTTP.
 
 <!-- END -->
 
-````id="m2q7ty"
-
-```md id="7n4xqc"
 <!-- QUESTION -->
 difficulty: Medium
 tags: https, tls, security
@@ -337,7 +319,7 @@ HTTPS uses:
 
 ```text id="8c5ywu"
 TLS (Transport Layer Security)
-````
+```
 
 to encrypt communication.
 
@@ -380,9 +362,6 @@ HTTPS is mandatory for:
 
 <!-- END -->
 
-````id="f8k2qa"
-
-```md id="2v9mpe"
 <!-- QUESTION -->
 difficulty: Hard
 tags: http2, performance, networking
@@ -405,7 +384,7 @@ HTTP/1.1 problem:
 
 ```text id="z1v7ks"
 Head-of-line blocking
-````
+```
 
 Multiple requests often required multiple TCP connections.
 
@@ -436,9 +415,6 @@ Most modern websites use HTTP/2.
 
 <!-- END -->
 
-````id="r3q8tn"
-
-```md id="4p1xza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cookies, sessions, http
@@ -452,7 +428,7 @@ Server sends cookie:
 
 ```http
 Set-Cookie: session=abc123
-````
+```
 
 Browser stores it.
 
@@ -488,9 +464,6 @@ Cookies are essential for maintaining user sessions in stateless HTTP systems.
 
 <!-- END -->
 
-````id="x2m9qw"
-
-```md id="9t5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: caching, http, performance
@@ -504,7 +477,7 @@ Architecture:
 
 ```text
 Client → Cache → Server
-````
+```
 
 If cached data exists:
 

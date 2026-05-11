@@ -165,7 +165,7 @@ The extrinsic state is stored in a lightweight context object.
 
 This dramatically reduces memory usage.
 
-```mermaid id="flyweight_state_01"
+```mermaid
 flowchart TD
     A[Object Data] --> B[Intrinsic State]
     A --> C[Extrinsic State]
@@ -194,7 +194,7 @@ The Flyweight pattern is a structural design pattern used to reduce memory usage
 
 # UML Structure
 
-```mermaid id="flyweight_uml_01"
+```mermaid
 classDiagram
     class Flyweight {
         <<interface>>
@@ -246,7 +246,7 @@ When the client asks for a flyweight:
 3. if yes, return the existing object
 4. if no, create a new one and store it
 
-```mermaid id="flyweight_factory_01"
+```mermaid
 flowchart TD
     A[Request Flyweight] --> B{Exists in factory cache?}
     B -->|Yes| C[Return existing flyweight]
@@ -298,7 +298,7 @@ So one shared flyweight can represent all asteroids of the same type.
 
 Every asteroid stores everything.
 
-```mermaid id="flyweight_before_01"
+```mermaid
 flowchart LR
     A[Asteroid 1] --> S1[Shared Data]
     B[Asteroid 2] --> S2[Shared Data]
@@ -314,7 +314,7 @@ This duplicates the same shared information many times.
 
 Shared state is reused.
 
-```mermaid id="flyweight_after_01"
+```mermaid
 flowchart LR
     A[Context 1] --> F1[Flyweight A]
     B[Context 2] --> F1
@@ -378,7 +378,7 @@ That defeats the purpose of safe sharing.
 
 # Flyweight pattern flow
 
-```mermaid id="flyweight_flow_01"
+```mermaid
 flowchart TD
     A[Client requests object] --> B[Factory checks cache]
     B --> C{Flyweight exists?}
@@ -731,7 +731,7 @@ a3.draw()
 
 # Factory cache diagram
 
-```mermaid id="flyweight_cache_01"
+```mermaid
 flowchart TD
     A[Client Requests Asteroid] --> B[Factory Cache Lookup]
     B --> C{Key Exists?}
@@ -794,7 +794,7 @@ Maps may share:
 
 # Example: Text editor flyweight idea
 
-```mermaid id="flyweight_text_01"
+```mermaid
 flowchart LR
     A[Character A] --> B[Glyph Flyweight A]
     C[Character A] --> B

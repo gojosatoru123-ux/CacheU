@@ -1,6 +1,6 @@
 ---
 title: Anti-Patterns and Null Object Pattern
-articleSlug: bridge-design-pattern
+articleSlug: lld-anti-and-null-design-pattern
 ---
 # Anti-Patterns and Null Object Pattern
 

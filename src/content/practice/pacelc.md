@@ -1,3 +1,9 @@
+---
+title:  PACELC
+articleSlug: pacelc
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: pacelc, distributed-systems, consistency
@@ -11,7 +17,7 @@ PACELC extends this idea by addressing:
 
 ```text
 What happens when there is no partition?
-````
+```
 
 PACELC states:
 
@@ -34,9 +40,6 @@ This better models real-world distributed systems where partitions are relativel
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: pacelc, latency, distributed-databases
@@ -50,7 +53,7 @@ Workflow:
 
 ```text
 Write → Replicate → Consensus → Acknowledge
-````
+```
 
 This introduces:
 
@@ -83,9 +86,6 @@ Strong consistency fundamentally trades performance for correctness guarantees.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: eventual-consistency, pacelc, scalability
@@ -118,7 +118,7 @@ Example:
 
 ```text id="6p1qxt"
 Follower count temporarily differs across regions
-````
+```
 
 PACELC interpretation:
 
@@ -130,9 +130,6 @@ These systems intentionally sacrifice strict synchronization to achieve global r
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: quorum, distributed-databases, pacelc
@@ -146,7 +143,7 @@ Typical rule:
 
 ```text
 R + W > N
-````
+```
 
 Where:
 
@@ -183,9 +180,6 @@ Distributed databases like Cassandra expose quorum tuning directly.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: multi-region-systems, pacelc, distributed-architecture
@@ -202,7 +196,7 @@ Strong consistency requires:
 
 ```text
 Cross-region synchronization
-````
+```
 
 Problems:
 
@@ -231,9 +225,6 @@ Global-scale architectures must carefully choose between:
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cassandra, pacelc, distributed-databases
@@ -262,7 +253,7 @@ Example:
 
 ```text id="4q2xmc"
 Local replica serves requests quickly
-````
+```
 
 Tradeoff:
 
@@ -282,9 +273,6 @@ Cassandra is optimized for massive-scale distributed workloads.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: spanner, pacelc, strongly-consistent-systems
@@ -313,7 +301,7 @@ Tradeoff:
 
 ```text id="4v8qpd"
 Higher write latency for global consistency
-````
+```
 
 PACELC classification:
 
@@ -327,9 +315,6 @@ Spanner optimizes for correctness even at the cost of latency.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: pacelc, distributed-caches, backend-performance
@@ -346,7 +331,7 @@ Strong consistency in caches would require:
 
 ```text
 Cross-node synchronization before serving data
-````
+```
 
 Problems:
 
@@ -378,9 +363,6 @@ PACELC explains why low-latency caches often accept eventual consistency.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: pacelc, microservices, distributed-systems
@@ -418,7 +400,7 @@ Example:
 
 ```text id="1q8vza"
 Order service publishes async inventory update
-````
+```
 
 PACELC helps architects decide:
 
@@ -427,9 +409,6 @@ PACELC helps architects decide:
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: pacelc, trade-offs, system-design
@@ -458,7 +437,7 @@ Should system reject requests or risk stale data?
 
 During normal operation:
 Should system wait for coordination or respond quickly?
-````
+```
 
 PACELC encourages practical distributed design thinking beyond CAP theorem.
 

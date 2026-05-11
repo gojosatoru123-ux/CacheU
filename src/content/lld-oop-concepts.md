@@ -540,7 +540,8 @@ It tells the class **what to do**, not **how to do it**.
 
 ```mermaid
 classDiagram
-    class Vehicle["Vehicle <<abstract>>"] {
+    class Vehicle {
+        abstract
         +start()
     }
 

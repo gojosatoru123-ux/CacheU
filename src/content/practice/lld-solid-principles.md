@@ -4,7 +4,6 @@ articleSlug: lld-solid-principles
 difficulty: Intermediate
 estimatedTime: 25 mins
 ---
-
 <!-- QUESTION -->
 difficulty: Easy
 tags: SRP, single-responsibility

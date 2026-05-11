@@ -1,3 +1,9 @@
+---
+title:  Long Polling vs Server Sent Events
+articleSlug: long-polling-vs-server-sent-events
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: long-polling, sse, realtime-systems
@@ -9,7 +15,7 @@ Traditional HTTP follows:
 
 ```text
 Client Request → Server Response → Connection Closed
-````
+```
 
 Problem:
 
@@ -39,9 +45,6 @@ Both approaches improve real-time data delivery over HTTP.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: long-polling, realtime-communication, distributed-systems
@@ -55,7 +58,7 @@ Problem:
 
 ```text
 Updates may arrive between polling intervals
-````
+```
 
 Consequences:
 
@@ -86,9 +89,6 @@ Long Polling improves responsiveness while remaining HTTP-compatible.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: sse, streaming, realtime-systems
@@ -105,7 +105,7 @@ Problem:
 
 ```text
 Repeated connection setup increases overhead
-````
+```
 
 SSE maintains a persistent HTTP connection.
 
@@ -127,9 +127,6 @@ SSE is highly efficient for server-to-client event streaming.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: websocket-vs-sse, realtime-communication, networking
@@ -146,7 +143,7 @@ Problem:
 
 ```text
 Many applications only require server-to-client updates
-````
+```
 
 Examples:
 
@@ -172,9 +169,6 @@ SSE is ideal for lightweight unidirectional streaming use cases.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: scalability, long-polling, realtime-systems
@@ -188,7 +182,7 @@ Problem:
 
 ```text
 Large numbers of open connections consume server resources
-````
+```
 
 Consequences:
 
@@ -214,9 +208,6 @@ Long Polling becomes operationally expensive at internet scale.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: sse-limitations, networking, distributed-systems
@@ -228,7 +219,7 @@ SSE only supports:
 
 ```text
 Server → Client communication
-````
+```
 
 Limitations:
 
@@ -253,9 +244,6 @@ SSE is optimized specifically for unidirectional event streaming.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: connection-management, realtime-systems, performance-engineering
@@ -272,7 +260,7 @@ Problem:
 
 ```text
 Connection overhead grows rapidly with user scale
-````
+```
 
 Challenges:
 
@@ -299,9 +287,6 @@ Connection scalability is a core challenge in real-time architectures.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: load-balancing, sticky-sessions, realtime-systems
@@ -318,7 +303,7 @@ Problem:
 
 ```text
 Requests routed to different servers may lose connection state
-````
+```
 
 Example:
 
@@ -338,9 +323,6 @@ Persistent connection architectures complicate distributed load balancing.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, realtime-systems, networking
@@ -358,7 +340,7 @@ Problem:
 
 ```text
 Connection failures may silently degrade real-time updates
-````
+```
 
 Key monitoring areas:
 
@@ -385,9 +367,6 @@ Real-time streaming systems require strong operational visibility.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: long-polling, sse, trade-offs, system-design
@@ -418,7 +397,7 @@ Example:
 
 ```text id="7v2xpd"
 Live notifications use SSE while legacy environments may use Long Polling
-````
+```
 
 Real-time architecture design fundamentally balances:
 

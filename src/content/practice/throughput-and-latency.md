@@ -1,3 +1,9 @@
+---
+title: Throughput and Latency
+articleSlug: throughput-and-latency
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: throughput, latency, performance-engineering
@@ -22,7 +28,7 @@ Example:
 ```text id="u1vcqn"
 Low latency = fast responses
 High throughput = many requests handled simultaneously
-````
+```
 
 Both metrics define:
 
@@ -34,9 +40,6 @@ Performance engineering fundamentally revolves around balancing latency and thro
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: latency, user-experience, distributed-systems
@@ -50,7 +53,7 @@ Problem:
 
 ```text
 Slow response times degrade user interaction quality
-````
+```
 
 Examples:
 
@@ -78,9 +81,6 @@ Latency strongly impacts perceived application quality.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: throughput, scalability, distributed-systems
@@ -97,7 +97,7 @@ Problem:
 
 ```text
 Low throughput creates bottlenecks under high traffic
-````
+```
 
 Examples:
 
@@ -123,9 +123,6 @@ Throughput determines system capacity at scale.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: throughput-vs-latency, performance-engineering, distributed-systems
@@ -142,7 +139,7 @@ Problem:
 
 ```text
 Batching improves throughput but increases waiting time
-````
+```
 
 Example:
 
@@ -167,9 +164,6 @@ Throughput and latency optimization often require different architectural strate
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: queueing-theory, latency, overload
@@ -181,7 +175,7 @@ As traffic approaches system capacity:
 
 ```text
 Requests begin waiting in queues
-````
+```
 
 Problem:
 
@@ -209,9 +203,6 @@ Latency often increases nonlinearly near saturation points.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: tail-latency, distributed-systems, performance
@@ -230,7 +221,7 @@ Problem:
 
 ```text
 Few slow dependencies may dominate end-user experience
-````
+```
 
 Example:
 
@@ -256,9 +247,6 @@ Tail latency dominates distributed system responsiveness.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: parallelism, throughput, concurrency
@@ -277,7 +265,7 @@ Architecture:
 
 ```text id="4v8qpd"
 Multiple Workers → Concurrent Request Processing
-````
+```
 
 Benefits:
 
@@ -297,9 +285,6 @@ Parallelism is fundamental for scalable throughput optimization.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: caching, latency, performance-engineering
@@ -320,7 +305,7 @@ Workflow:
 
 ```text id="6m3qpd"
 Request → Cache Hit → Immediate Response
-````
+```
 
 Benefits:
 
@@ -340,9 +325,6 @@ Caching is one of the most effective latency optimization techniques.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, slos, performance-monitoring
@@ -361,7 +343,7 @@ Problem:
 
 ```text
 Performance degradation may remain invisible without monitoring
-````
+```
 
 Key metrics:
 
@@ -389,9 +371,6 @@ Performance engineering requires strong observability systems.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: throughput, latency, trade-offs, system-design
@@ -430,7 +409,7 @@ Example:
 
 ```text id="7v2xpd"
 Large batch processing improves throughput but delays individual requests
-````
+```
 
 System design fundamentally balances:
 

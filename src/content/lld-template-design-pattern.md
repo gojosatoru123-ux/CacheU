@@ -146,7 +146,7 @@ This is why the Template Method Pattern is so useful for predictable workflows.
 
 # UML structure
 
-```mermaid id="template_method_uml_01"
+```mermaid
 classDiagram
     class ModelTrainer {
         <<abstract>>
@@ -183,7 +183,7 @@ The parent class defines the sequence of steps.
 
 The child class fills in the variable parts.
 
-```mermaid id="template_method_flow_01"
+```mermaid
 flowchart TD
     A[Client calls template method] --> B[Fixed step 1]
     B --> C[Fixed step 2]
@@ -301,7 +301,7 @@ The only thing that changes is **how training is done** and sometimes **how savi
 
 # Workflow diagram
 
-```mermaid id="template_method_ml_01"
+```mermaid
 flowchart TD
     A[trainPipeline()] --> B[loadData()]
     B --> C[preprocessData()]
@@ -314,7 +314,7 @@ flowchart TD
 
 # Example: Model training hierarchy
 
-```mermaid id="template_method_models_01"
+```mermaid
 classDiagram
     class ModelTrainer {
         <<abstract>>
@@ -684,7 +684,7 @@ Hooks often do nothing in the base class.
 
 ## Hook diagram
 
-```mermaid id="template_method_hooks_01"
+```mermaid
 flowchart TD
     A[Template Method] --> B[before hook]
     B --> C[Main steps]

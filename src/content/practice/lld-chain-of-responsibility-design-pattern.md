@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Chain of Responsibility Design Pattern
+articleSlug: lld-chain-of-responsibility-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: chain-of-responsibility, lld, design-patterns
@@ -12,7 +17,7 @@ Architecture:
 
 ```text
 Request → Handler1 → Handler2 → Handler3
-````
+```
 
 Each handler can:
 
@@ -38,9 +43,6 @@ The Chain of Responsibility is a behavioral design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: chain-of-responsibility, request-processing, lld
@@ -60,7 +62,7 @@ Example:
 
 ```text id="6m2xqc"
 Request → Auth → Validation → Business Logic
-````
+```
 
 Benefits:
 
@@ -74,9 +76,6 @@ It is widely used in backend frameworks and web servers.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: handlers, chain-of-responsibility, lld
@@ -95,7 +94,7 @@ Architecture:
 Client → Handler Interface
            ↓
     Concrete Handlers
-````
+```
 
 Responsibilities:
 
@@ -115,9 +114,6 @@ Handlers are connected sequentially to form the chain.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: middleware, backend-frameworks, chain-of-responsibility
@@ -139,7 +135,7 @@ Logging Middleware
 Validation Middleware
 ↓
 Controller
-````
+```
 
 Benefits:
 
@@ -159,9 +155,6 @@ Middleware architectures commonly use Chain of Responsibility internally.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: chain-of-responsibility, authentication, backend-security
@@ -181,7 +174,7 @@ API Key Validation
 JWT Validation
 ↓
 Permission Check
-````
+```
 
 Each handler:
 
@@ -201,9 +194,6 @@ This pattern is widely used in API gateways and backend security systems.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: chain-of-responsibility-vs-decorator, lld, design-patterns
@@ -227,7 +217,7 @@ Example Chain:
 
 ```text id="4q2xmc"
 Auth → Validation → Processing
-````
+```
 
 Example Decorator:
 
@@ -239,9 +229,6 @@ Both patterns use composition but solve different design problems.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: chain-of-responsibility, event-processing, distributed-systems
@@ -261,7 +248,7 @@ Validation Handler
 Transformation Handler
 ↓
 Persistence Handler
-````
+```
 
 Benefits:
 
@@ -281,9 +268,6 @@ The pattern naturally models sequential event processing systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: chain-of-responsibility, error-handling, backend-systems
@@ -303,7 +287,7 @@ Validation Handler
 Authorization Handler
 ↓
 Business Handler
-````
+```
 
 Possible behavior:
 
@@ -323,9 +307,6 @@ This pattern is widely used in backend request-processing pipelines.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: dynamic-pipelines, chain-of-responsibility, lld
@@ -344,7 +325,7 @@ Example:
 
 ```text id="1q8vza"
 Logging → Auth → Validation
-````
+```
 
 can become:
 
@@ -368,9 +349,6 @@ This flexibility makes the pattern useful in:
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: chain-of-responsibility, trade-offs, software-design
@@ -400,7 +378,7 @@ Example:
 
 ```text id="7v2xpd"
 Request traverses many handlers before completion
-````
+```
 
 The pattern works best for:
 

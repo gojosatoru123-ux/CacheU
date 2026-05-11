@@ -15,7 +15,7 @@ Authentication answers:
 
 ```text
 Who is the user?
-````
+```
 
 Authorization answers:
 
@@ -51,9 +51,6 @@ Authentication and authorization solve fundamentally different backend security 
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: stateless-authentication, jwt, distributed-systems
@@ -70,7 +67,7 @@ Problem:
 
 ```text
 Session management becomes difficult at large scale
-````
+```
 
 JWT-based authentication embeds:
 
@@ -96,9 +93,6 @@ Stateless authentication aligns naturally with distributed architectures.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: authorization, rbac, backend-security
@@ -115,7 +109,7 @@ Problem:
 
 ```text
 Managing permissions individually does not scale
-````
+```
 
 RBAC groups permissions into roles.
 
@@ -143,9 +137,6 @@ RBAC simplifies authorization management in large backend systems.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: oauth, delegated-authentication, distributed-systems
@@ -162,7 +153,7 @@ Problem:
 
 ```text
 Sharing user passwords across services is insecure
-````
+```
 
 OAuth enables:
 
@@ -188,9 +179,6 @@ OAuth is foundational for secure delegated authorization.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: token-security, authentication, backend-security
@@ -207,7 +195,7 @@ Problem:
 
 ```text
 Anyone possessing valid token may impersonate user
-````
+```
 
 Consequences:
 
@@ -233,9 +221,6 @@ Token protection is critical for backend security integrity.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-authorization, microservices, backend-security
@@ -252,7 +237,7 @@ Problem:
 
 ```text
 Authorization decisions must remain consistent across many services
-````
+```
 
 Challenges:
 
@@ -278,9 +263,6 @@ Distributed authorization introduces major coordination complexity.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: zero-trust, authentication, distributed-systems
@@ -296,7 +278,7 @@ Problem:
 
 ```text
 Compromised internal services may move laterally across systems
-````
+```
 
 Zero Trust principles:
 
@@ -322,9 +304,6 @@ Zero Trust aligns with modern distributed cloud architectures.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: session-management, authentication, backend-systems
@@ -341,7 +320,7 @@ Problem:
 
 ```text
 Distributed servers must synchronize session state consistently
-````
+```
 
 Challenges:
 
@@ -367,9 +346,6 @@ Session management complexity grows significantly at scale.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, authentication, authorization
@@ -387,7 +363,7 @@ Problem:
 
 ```text
 Authentication failures or unauthorized access attempts may go unnoticed
-````
+```
 
 Key monitoring areas:
 
@@ -414,9 +390,6 @@ Security observability is essential for backend protection and incident response
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: authentication, authorization, trade-offs, backend-security
@@ -457,7 +430,7 @@ Example:
 
 ```text id="7v2xpd"
 JWT improves scalability but complicates immediate token revocation
-````
+```
 
 Authentication and authorization architecture fundamentally balances:
 
@@ -467,6 +440,3 @@ Authentication and authorization architecture fundamentally balances:
 * operational simplicity
 
 <!-- END -->
-
-```
-```

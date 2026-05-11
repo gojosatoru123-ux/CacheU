@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Factory Design Pattern
+articleSlug: lld-factory-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: factory-pattern, lld, design-patterns
@@ -13,7 +18,7 @@ Instead of:
 ```text
 new Car()
 new Bike()
-````
+```
 
 Factory provides:
 
@@ -33,9 +38,6 @@ The Factory Pattern is a creational design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: object-creation, factory-pattern, lld
@@ -50,7 +52,7 @@ Example problem:
 ```text id="6m2xqc"
 if(type == "car")
   return new Car()
-````
+```
 
 Problems:
 
@@ -76,9 +78,6 @@ Factory simplifies dynamic object creation.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: factory-pattern, polymorphism, lld
@@ -92,7 +91,7 @@ Example:
 
 ```text id="6p1qxt"
 Vehicle vehicle = Factory.create()
-````
+```
 
 Possible objects:
 
@@ -112,9 +111,6 @@ Polymorphism allows factories to return interchangeable objects.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: simple-factory, factory-method, design-patterns
@@ -138,7 +134,7 @@ Example Simple Factory:
 
 ```text id="5m2xqc"
 VehicleFactory.create("car")
-````
+```
 
 Example Factory Method:
 
@@ -151,9 +147,6 @@ Factory Method follows the Open/Closed Principle more effectively.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: factory-vs-builder, design-patterns, lld
@@ -177,7 +170,7 @@ Example Factory:
 
 ```text id="clt6p5"
 VehicleFactory.createCar()
-````
+```
 
 Example Builder:
 
@@ -189,9 +182,6 @@ Both are creational patterns but solve different problems.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: dependency-injection, factory-pattern, backend-architecture
@@ -205,7 +195,7 @@ Example:
 
 ```text id="4q2xmc"
 ServiceFactory → DatabaseService
-````
+```
 
 Benefits:
 
@@ -225,9 +215,6 @@ Dependency Injection containers internally rely heavily on factory concepts.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: abstract-factory, design-patterns, lld
@@ -243,7 +230,7 @@ Example:
 GUIFactory
  ├── WindowsFactory
  └── MacFactory
-````
+```
 
 Each factory creates related components:
 
@@ -263,9 +250,6 @@ Abstract Factory is an advanced creational pattern built on factory principles.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: factory-pattern, backend-systems, lld
@@ -286,7 +270,7 @@ Example:
 CacheFactory
  ├── RedisCache
  └── MemoryCache
-````
+```
 
 Benefits:
 
@@ -300,9 +284,6 @@ Factories are widely used in scalable backend architectures.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: open-closed-principle, factory-pattern, software-design
@@ -314,7 +295,7 @@ The Open/Closed Principle states:
 
 ```text id="1q8vza"
 Open for extension, closed for modification
-````
+```
 
 Factories support this by allowing new object types without changing client logic.
 
@@ -336,9 +317,6 @@ Factories help isolate creation-related changes.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: factory-pattern, trade-offs, software-design
@@ -368,7 +346,7 @@ Example:
 
 ```text id="7v2xpd"
 Client → Factory → Concrete Object
-````
+```
 
 Factory is highly valuable in:
 

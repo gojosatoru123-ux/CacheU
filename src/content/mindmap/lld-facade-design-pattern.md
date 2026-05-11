@@ -1,6 +1,6 @@
 ---
 title: Facade Design Pattern
-articleSlug: facade-design-pattern
+articleSlug: lld-facade-design-pattern
 ---
 
 # Facade Design Pattern

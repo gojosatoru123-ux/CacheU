@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Facade Design Pattern
+articleSlug: lld-facade-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: facade-pattern, lld, design-patterns
@@ -14,7 +19,7 @@ Instead of interacting with multiple classes directly:
 Client → Subsystem A
        → Subsystem B
        → Subsystem C
-````
+```
 
 Facade provides:
 
@@ -34,9 +39,6 @@ The Facade Pattern is a structural design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: facade-pattern, subsystem-management, lld
@@ -50,7 +52,7 @@ Without Facade:
 
 ```text id="6m2xqc"
 Client manually coordinates multiple subsystem calls
-````
+```
 
 Problems:
 
@@ -76,9 +78,6 @@ Facade improves usability of large systems.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: facade-pattern, architecture, lld
@@ -95,7 +94,7 @@ Architecture:
 
 ```text
 Client → Facade → Subsystem Classes
-````
+```
 
 Responsibilities:
 
@@ -118,9 +117,6 @@ Facade coordinates subsystem interactions internally.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: facade-vs-adapter, design-patterns, lld
@@ -144,7 +140,7 @@ Example Facade:
 
 ```text id="5m2xqc"
 Single API for payment workflow
-````
+```
 
 Example Adapter:
 
@@ -156,9 +152,6 @@ Both are structural patterns but solve different architectural problems.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: facade-pattern, backend-systems, api-design
@@ -178,7 +171,7 @@ InventoryService
 PaymentService
 ↓
 NotificationService
-````
+```
 
 Facade solution:
 
@@ -198,9 +191,6 @@ Backend orchestration layers commonly use Facade.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: microservices, facade-pattern, distributed-systems
@@ -214,7 +204,7 @@ Without Facade:
 
 ```text id="4q2xmc"
 Frontend directly calls multiple microservices
-````
+```
 
 Problems:
 
@@ -240,9 +230,6 @@ API gateways commonly behave like Facades in distributed systems.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: facade-pattern, layered-architecture, software-design
@@ -261,7 +248,7 @@ Architecture:
 
 ```text id="4v8qpd"
 Controller → ServiceFacade → Multiple Services
-````
+```
 
 Benefits:
 
@@ -281,9 +268,6 @@ It is widely used in enterprise backend systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: facade-pattern, third-party-integrations, lld
@@ -301,7 +285,7 @@ Payment Provider:
 - token management
 - payment execution
 - refund APIs
-````
+```
 
 Facade solution:
 
@@ -325,9 +309,6 @@ Facade is commonly used in:
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: facade-pattern, dependency-management, software-architecture
@@ -339,7 +320,7 @@ Without Facade:
 
 ```text id="1q8vza"
 Client depends on many subsystem classes
-````
+```
 
 With Facade:
 
@@ -365,9 +346,6 @@ This improves long-term maintainability.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: facade-pattern, trade-offs, software-design
@@ -397,7 +375,7 @@ Example:
 
 ```text id="7v2xpd"
 Facade internally coordinates many subsystems
-````
+```
 
 Facade works best when:
 

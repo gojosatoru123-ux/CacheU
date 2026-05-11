@@ -1,3 +1,9 @@
+---
+title: OAuth
+articleSlug: oauth
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: oauth, authorization, distributed-systems
@@ -18,7 +24,7 @@ Workflow:
 
 ```text
 User → Authorization Server → Access Token → Third-Party App
-````
+```
 
 Benefits:
 
@@ -42,9 +48,6 @@ OAuth fundamentally separates:
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: oauth-access-token, api-security, authorization
@@ -71,7 +74,7 @@ Example:
 
 ```text id="6m2xqc"
 Calendar app receives only calendar-read permission
-````
+```
 
 Problem solved:
 
@@ -83,9 +86,6 @@ Access tokens improve security isolation in distributed APIs.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: oauth-scopes, authorization, api-design
@@ -99,7 +99,7 @@ Without scopes:
 
 ```text
 Tokens may gain excessive privileges
-````
+```
 
 Example scopes:
 
@@ -125,9 +125,6 @@ Scopes are fundamental for secure delegated authorization.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: oauth-refresh-token, token-management, security
@@ -141,7 +138,7 @@ Problem:
 
 ```text
 Frequent logins reduce user experience
-````
+```
 
 Refresh tokens solve this by issuing new access tokens.
 
@@ -170,9 +167,6 @@ Refresh tokens balance security and usability.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: oauth-authorization-code-flow, backend-security, authentication
@@ -193,7 +187,7 @@ Workflow:
 
 ```text id="clt6p5"
 Client → Authorization Code → Backend → Access Token
-````
+```
 
 Benefits:
 
@@ -207,9 +201,6 @@ Modern OAuth systems strongly prefer Authorization Code Flow with PKCE.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: pkce, oauth-security, mobile-apps
@@ -228,7 +219,7 @@ Problem:
 
 ```text
 Authorization codes may be intercepted
-````
+```
 
 PKCE introduces:
 
@@ -253,9 +244,6 @@ PKCE is now a recommended OAuth security standard.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: oauth, microservices, distributed-authentication
@@ -274,7 +262,7 @@ Architecture:
 
 ```text id="4v8qpd"
 User → Authorization Server → Access Token → APIs
-````
+```
 
 Benefits:
 
@@ -294,9 +282,6 @@ OAuth is foundational for secure distributed API ecosystems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: oauth-vs-jwt, authentication, authorization
@@ -308,7 +293,7 @@ OAuth is an:
 
 ```text
 Authorization framework
-````
+```
 
 JWT is a:
 
@@ -345,9 +330,6 @@ OAuth and JWT solve different authentication and authorization concerns.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: oauth-revocation, distributed-systems, token-management
@@ -361,7 +343,7 @@ Problem:
 
 ```text
 Revoked tokens may remain temporarily usable
-````
+```
 
 Challenges:
 
@@ -388,9 +370,6 @@ Token revocation fundamentally conflicts with pure stateless scalability.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: oauth, security, trade-offs
@@ -421,7 +400,7 @@ Example:
 
 ```text id="7v2xpd"
 Improperly scoped tokens may expose excessive permissions
-````
+```
 
 OAuth systems fundamentally balance:
 

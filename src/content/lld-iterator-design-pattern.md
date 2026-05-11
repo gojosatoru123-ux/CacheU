@@ -165,7 +165,7 @@ These should be separated.
 
 # The Core Design Flaw
 
-```mermaid id="j3kk9v"
+```mermaid
 flowchart TD
     A[Playlist] --> B[Stores Songs]
     A --> C[Knows Traversal Logic]
@@ -319,7 +319,7 @@ Problems:
 
 # BEFORE Flowchart
 
-```mermaid id="dn4b6g"
+```mermaid
 flowchart TD
     A[Playlist] --> B{Collection Type?}
 
@@ -353,7 +353,7 @@ Now Playlist doesn’t care about storage structure.
 
 # AFTER Flowchart
 
-```mermaid id="jlwm2y"
+```mermaid
 flowchart TD
     A[Playlist] --> B[Creates Iterator]
     B --> C[Iterator Traverses Internally]
@@ -380,7 +380,7 @@ The pattern usually contains:
 
 # UML Diagram
 
-```mermaid id="z85m0w"
+```mermaid
 classDiagram
 
 class Iterator {
@@ -458,7 +458,7 @@ song = iterator.next()
 
 # Full Sequence Diagram
 
-```mermaid id="t5a0kc"
+```mermaid
 sequenceDiagram
     participant Client
     participant Playlist
@@ -583,7 +583,7 @@ public class Main {
 
 # Java Execution Flow
 
-```mermaid id="qwxq7m"
+```mermaid
 flowchart TD
     A[Client] --> B[getIterator()]
     B --> C[PlaylistIterator Created]
@@ -719,7 +719,7 @@ The iterator maintains:
 
 # Example Internal Movement
 
-```mermaid id="t2xoqk"
+```mermaid
 flowchart LR
     A[Song1] --> B[Song2]
     B --> C[Song3]

@@ -1,3 +1,9 @@
+---
+title:  SQL vs NoSQL
+articleSlug: sql-vs-nosql
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: sql-vs-nosql, distributed-databases, scalability
@@ -29,7 +35,7 @@ Example:
 
 ```text id="4m8qza"
 Social feeds generating billions of writes daily
-````
+```
 
 Tradeoff:
 
@@ -41,9 +47,6 @@ This is why SQL and NoSQL are often complementary rather than mutually exclusive
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: relational-databases, transactions, consistency
@@ -69,7 +72,7 @@ Example:
 
 ```text id="6m2xqc"
 Money transfer between accounts
-````
+```
 
 Problems with eventual consistency:
 
@@ -81,9 +84,6 @@ SQL databases prioritize correctness over distributed scalability.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: sharding, nosql, scalability
@@ -110,7 +110,7 @@ Example:
 
 ```text id="6p1qxt"
 Cassandra distributes partitions automatically
-````
+```
 
 NoSQL systems often sacrifice:
 
@@ -122,9 +122,6 @@ to achieve massive horizontal scalability.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: schema-design, nosql, product-engineering
@@ -151,7 +148,7 @@ Example:
 
 ```text id="5m2xqc"
 User profile structure changes weekly
-````
+```
 
 SQL drawbacks in such environments:
 
@@ -163,9 +160,6 @@ NoSQL improves developer velocity during rapid product evolution.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: joins, relational-modeling, distributed-systems
@@ -189,7 +183,7 @@ Problem:
 
 ```text
 Cross-partition joins become extremely expensive
-````
+```
 
 Example:
 
@@ -214,9 +208,6 @@ Complex analytics are usually easier in relational systems.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: eventual-consistency, distributed-databases, nosql
@@ -241,7 +232,7 @@ Example:
 
 ```text id="4q2xmc"
 Social media likes appearing asynchronously
-````
+```
 
 Tradeoff:
 
@@ -259,9 +250,6 @@ where perfect synchronization is not mandatory.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: polyglot-persistence, system-design, distributed-architecture
@@ -284,7 +272,7 @@ Architecture:
 
 ```text id="4v8qpd"
 Transactional DB + Cache + Search Engine + Analytics Store
-````
+```
 
 Benefits:
 
@@ -304,9 +292,6 @@ Modern distributed systems rarely rely on a single database technology.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: indexing, sql-vs-nosql, performance-engineering
@@ -333,7 +318,7 @@ NoSQL indexing often prioritizes:
 
 ```text id="6m3qpd"
 Fast partition-key lookups
-````
+```
 
 Tradeoff:
 
@@ -350,9 +335,6 @@ Improper indexing in distributed NoSQL systems can cause:
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-transactions, sql-vs-nosql, consistency
@@ -382,7 +364,7 @@ Example:
 
 ```text id="1q8vza"
 Multi-document updates across partitions
-````
+```
 
 Many NoSQL systems intentionally avoid:
 
@@ -393,9 +375,6 @@ to preserve scalability and availability.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: sql-vs-nosql, trade-offs, system-design

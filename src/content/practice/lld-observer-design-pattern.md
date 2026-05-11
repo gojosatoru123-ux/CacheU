@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Observer Design Pattern
+articleSlug: lld-observer-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: observer-pattern, lld, design-patterns
@@ -12,7 +17,7 @@ Architecture:
 
 ```text
 Subject → Observers
-````
+```
 
 Purpose:
 
@@ -32,9 +37,6 @@ The Observer Pattern is a behavioral design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: observer-pattern, event-driven-systems, lld
@@ -48,7 +50,7 @@ Without Observer:
 
 ```text id="6m2xqc"
 Subject directly updates every dependent component
-````
+```
 
 Problems:
 
@@ -74,9 +76,6 @@ Observer is widely used in event-driven systems.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: observer-pattern, components, lld
@@ -106,15 +105,12 @@ Subject
  ├── Observer A
  ├── Observer B
  └── Observer C
-````
+```
 
 Observers register themselves with the subject.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: publish-subscribe, observer-pattern, distributed-systems
@@ -128,7 +124,7 @@ Observer architecture:
 
 ```text id="5m2xqc"
 Subject → Observers
-````
+```
 
 Publish-Subscribe architecture:
 
@@ -154,9 +150,6 @@ Modern event-driven architectures heavily use Observer principles.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: observer-pattern, ui-frameworks, lld
@@ -175,7 +168,7 @@ Architecture:
 
 ```text id="clt6p5"
 Model → UI Components
-````
+```
 
 Benefits:
 
@@ -195,9 +188,6 @@ Modern frontend frameworks heavily rely on Observer-like mechanisms.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: observer-vs-mediator, design-patterns, lld
@@ -221,7 +211,7 @@ Example Observer:
 
 ```text id="4q2xmc"
 Stock price updates notify subscribers
-````
+```
 
 Example Mediator:
 
@@ -233,9 +223,6 @@ Both reduce coupling but solve different interaction problems.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: reactive-systems, observer-pattern, backend-engineering
@@ -249,7 +236,7 @@ Observer enables:
 
 ```text id="4v8qpd"
 Automatic propagation of updates
-````
+```
 
 Examples:
 
@@ -269,9 +256,6 @@ Reactive programming frameworks heavily rely on Observer concepts.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observer-pattern, memory-leaks, software-design
@@ -285,7 +269,7 @@ Example problem:
 
 ```text id="6m3qpd"
 Destroyed UI component still subscribed to events
-````
+```
 
 Potential issues:
 
@@ -311,9 +295,6 @@ Observer lifecycle management is critical in long-running systems.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: asynchronous-events, observer-pattern, distributed-systems
@@ -327,7 +308,7 @@ Architecture:
 
 ```text id="1q8vza"
 Subject → Event Queue → Observers
-````
+```
 
 Benefits:
 
@@ -347,9 +328,6 @@ Asynchronous Observer systems are common in distributed architectures.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observer-pattern, trade-offs, software-design
@@ -379,7 +357,7 @@ Example:
 
 ```text id="7v2xpd"
 One subject notifying hundreds of observers
-````
+```
 
 Observer works best when:
 

@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Adapter Design Pattern
+articleSlug: lld-adapter-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: adapter-pattern, lld, design-patterns
@@ -16,7 +21,7 @@ Architecture:
 
 ```text
 Client → Adapter → Adaptee
-````
+```
 
 Purpose:
 
@@ -36,9 +41,6 @@ The Adapter pattern is a structural design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: adapter-pattern, structural-patterns, lld
@@ -57,7 +59,7 @@ Example:
 
 ```text id="6m2xqc"
 PaymentGatewayA ≠ ExpectedPaymentInterface
-````
+```
 
 Solution:
 
@@ -77,9 +79,6 @@ It is commonly used in enterprise backend systems.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: object-adapter, class-adapter, lld
@@ -103,7 +102,7 @@ Example Object Adapter:
 
 ```text id="6p1qxt"
 Adapter HAS-A Adaptee
-````
+```
 
 Example Class Adapter:
 
@@ -115,9 +114,6 @@ Object Adapter is more commonly used in modern object-oriented systems.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: legacy-systems, adapter-pattern, software-design
@@ -131,7 +127,7 @@ Example:
 
 ```text id="5m2xqc"
 OldPaymentAPI → incompatible with new checkout system
-````
+```
 
 Adapter solution:
 
@@ -151,9 +147,6 @@ The Adapter Pattern is heavily used during system modernization projects.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: api-integration, adapter-pattern, lld
@@ -167,7 +160,7 @@ Example:
 
 ```text id="clt6p5"
 Stripe API ≠ Internal Payment Interface
-````
+```
 
 Adapter flow:
 
@@ -193,9 +186,6 @@ API integrations commonly rely on adapters.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: adapter-vs-facade, lld, design-patterns
@@ -219,7 +209,7 @@ Example Adapter:
 
 ```text id="4q2xmc"
 Convert XML API → JSON Interface
-````
+```
 
 Example Facade:
 
@@ -231,9 +221,6 @@ Both are structural design patterns but solve different problems.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: dependency-inversion, adapter-pattern, solid-principles
@@ -245,7 +232,7 @@ The Dependency Inversion Principle states:
 
 ```text id="4v8qpd"
 High-level modules should not depend on low-level modules directly
-````
+```
 
 Adapters help by introducing abstraction layers.
 
@@ -267,9 +254,6 @@ Adapters are commonly used in clean architecture and hexagonal architecture.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: adapter-pattern, clean-architecture, lld
@@ -283,7 +267,7 @@ Without adapter:
 
 ```text id="6m3qpd"
 Business Logic → Direct External API Call
-````
+```
 
 With adapter:
 
@@ -309,9 +293,6 @@ This significantly improves maintainable testing architectures.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: anti-corruption-layer, microservices, adapter-pattern
@@ -327,7 +308,7 @@ Architecture:
 
 ```text id="1q8vza"
 External System → ACL → Internal Domain Model
-````
+```
 
 Responsibilities:
 
@@ -353,9 +334,6 @@ The Adapter Pattern is a core building block of Anti-Corruption Layers.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: adapter-pattern, performance, software-architecture
@@ -385,7 +363,7 @@ Example:
 
 ```text id="7v2xpd"
 Client → Adapter → Wrapper → External API
-````
+```
 
 Excessive adapters may overcomplicate system design.
 

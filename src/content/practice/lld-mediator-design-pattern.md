@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Mediator Design Pattern
+articleSlug: lld-mediator-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: mediator-pattern, lld, design-patterns
@@ -12,7 +17,7 @@ Instead of objects communicating directly:
 
 ```text
 Object A ↔ Object B ↔ Object C
-````
+```
 
 Mediator provides:
 
@@ -32,9 +37,6 @@ The Mediator Pattern is a behavioral design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: mediator-pattern, object-communication, lld
@@ -48,7 +50,7 @@ Example problem:
 
 ```text id="6m2xqc"
 Chat users directly connected to every other user
-````
+```
 
 Problems:
 
@@ -74,9 +76,6 @@ Mediator reduces communication complexity in large systems.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: mediator-pattern, components, lld
@@ -93,7 +92,7 @@ Architecture:
 
 ```text
 Colleagues ↔ Mediator
-````
+```
 
 Responsibilities:
 
@@ -113,9 +112,6 @@ Colleagues avoid direct references to one another.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: ui-systems, mediator-pattern, lld
@@ -132,7 +128,7 @@ Button click updates:
 - TextBox
 - Dropdown
 - Checkbox
-````
+```
 
 Without Mediator:
 
@@ -158,9 +154,6 @@ GUI frameworks commonly use Mediator internally.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: chat-systems, mediator-pattern, distributed-systems
@@ -174,7 +167,7 @@ Without Mediator:
 
 ```text id="clt6p5"
 Every user connected to every other user
-````
+```
 
 Mediator solution:
 
@@ -194,9 +187,6 @@ Chat rooms are classic real-world examples of the Mediator Pattern.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: mediator-vs-observer, design-patterns, lld
@@ -220,7 +210,7 @@ Example Mediator:
 
 ```text id="4q2xmc"
 DialogMediator controls UI interactions
-````
+```
 
 Example Observer:
 
@@ -232,9 +222,6 @@ Both reduce coupling but solve different communication problems.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: workflow-orchestration, mediator-pattern, backend-systems
@@ -254,7 +241,7 @@ PaymentService
 InventoryService
 ↓
 NotificationService
-````
+```
 
 Mediator solution:
 
@@ -274,9 +261,6 @@ Mediator is useful in complex orchestration systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: mediator-pattern, microservices, software-architecture
@@ -290,7 +274,7 @@ Without Mediator:
 
 ```text id="6m3qpd"
 Every service directly communicates with many others
-````
+```
 
 Problems:
 
@@ -316,9 +300,6 @@ API orchestration layers often resemble Mediator implementations.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: mediator-pattern, coupling, software-design
@@ -330,7 +311,7 @@ Without Mediator:
 
 ```text id="1q8vza"
 Objects directly reference each other
-````
+```
 
 With Mediator:
 
@@ -352,9 +333,6 @@ This significantly improves maintainability in complex systems.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: mediator-pattern, trade-offs, software-design
@@ -384,7 +362,7 @@ Example:
 
 ```text id="7v2xpd"
 Many colleagues depend on one mediator
-````
+```
 
 Mediator works best when:
 

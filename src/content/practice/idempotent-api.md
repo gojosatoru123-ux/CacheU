@@ -1,3 +1,9 @@
+---
+title:  Idempotent API
+articleSlug: idempotent-api
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: idempotency, api-design, distributed-systems
@@ -15,7 +21,7 @@ Without idempotency:
 
 ```text
 Repeated requests may execute the same operation multiple times
-````
+```
 
 Problems:
 
@@ -41,9 +47,6 @@ Idempotency is foundational for reliable distributed API design.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: http-methods, rest-api, idempotency
@@ -55,7 +58,7 @@ Idempotency means:
 
 ```text
 Repeated identical requests produce the same final state
-````
+```
 
 Behavior comparison:
 
@@ -87,9 +90,6 @@ may create multiple orders if retried repeatedly.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: idempotency-keys, payment-systems, api-design
@@ -103,7 +103,7 @@ Common failure scenario:
 
 ```text
 Payment succeeds but response timeout occurs
-````
+```
 
 Client retries request because status is unknown.
 
@@ -136,9 +136,6 @@ Idempotency keys are critical for financial correctness in distributed APIs.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-systems, retries, fault-tolerance
@@ -157,7 +154,7 @@ Retry mechanisms improve reliability:
 
 ```text
 Retry until request succeeds
-````
+```
 
 Problem without idempotency:
 
@@ -183,9 +180,6 @@ Reliable retry systems require idempotent operations.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: eventual-consistency, distributed-transactions, idempotency
@@ -202,7 +196,7 @@ Problem:
 
 ```text
 The same operation may arrive multiple times
-````
+```
 
 Example:
 
@@ -228,9 +222,6 @@ Idempotency is fundamental in event-driven architectures.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: database-design, unique-constraints, idempotency
@@ -247,7 +238,7 @@ Example approach:
 
 ```text id="4q2xmc"
 Store request using unique idempotency key
-````
+```
 
 If duplicate request arrives:
 
@@ -273,9 +264,6 @@ Database-level guarantees strengthen idempotent API behavior.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: message-brokers, kafka, idempotent-processing
@@ -287,7 +275,7 @@ Kafka commonly provides:
 
 ```text
 At-least-once delivery semantics
-````
+```
 
 Meaning:
 
@@ -325,9 +313,6 @@ Idempotent consumers are essential in reliable event-driven systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: api-gateway, distributed-systems, idempotency
@@ -349,7 +334,7 @@ Architecture:
 
 ```text id="6m3qpd"
 Client → API Gateway → Backend Services
-````
+```
 
 Gateway stores:
 
@@ -368,9 +353,6 @@ Gateway-level idempotency improves system-wide reliability.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-locking, concurrency, idempotency
@@ -384,7 +366,7 @@ Race condition:
 
 ```text
 Both requests check before either writes result
-````
+```
 
 Consequences:
 
@@ -410,9 +392,6 @@ Concurrency handling is critical for correct idempotent APIs.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: idempotency, trade-offs, system-design
@@ -443,7 +422,7 @@ Example:
 
 ```text id="7v2xpd"
 Millions of idempotency keys require scalable storage
-````
+```
 
 Idempotency is essential for reliable distributed APIs despite added complexity.
 

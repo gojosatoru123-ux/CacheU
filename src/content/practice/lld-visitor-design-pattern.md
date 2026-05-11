@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Visitor Design Pattern
+articleSlug: lld-visitor-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: visitor-pattern, lld, design-patterns
@@ -12,7 +17,7 @@ Architecture:
 
 ```text
 Visitor → Element
-````
+```
 
 Purpose:
 
@@ -32,9 +37,6 @@ The Visitor Pattern is a behavioral design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: visitor-pattern, software-design, lld
@@ -48,7 +50,7 @@ Without Visitor:
 
 ```text id="6m2xqc"
 Add new methods to every class repeatedly
-````
+```
 
 Problems:
 
@@ -74,9 +76,6 @@ Visitor prevents continuous modification of domain classes.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: visitor-pattern, components, lld
@@ -103,7 +102,7 @@ Architecture:
 
 ```text
 Element.accept(visitor)
-````
+```
 
 Example:
 
@@ -115,9 +114,6 @@ Elements delegate operations to visitors.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: compiler-design, visitor-pattern, software-architecture
@@ -136,7 +132,7 @@ Architecture:
 
 ```text id="5m2xqc"
 AST Node → Visitor
-````
+```
 
 Benefits:
 
@@ -156,9 +152,6 @@ Compilers are one of the most common real-world Visitor Pattern examples.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: double-dispatch, visitor-pattern, object-oriented-design
@@ -174,7 +167,7 @@ Workflow:
 
 ```text id="clt6p5"
 element.accept(visitor)
-````
+```
 
 Then internally:
 
@@ -194,9 +187,6 @@ Double dispatch is a core mechanism behind the Visitor Pattern.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: reporting-systems, visitor-pattern, backend-engineering
@@ -216,7 +206,7 @@ Architecture:
 
 ```text id="4q2xmc"
 Document Elements → Report Visitors
-````
+```
 
 Benefits:
 
@@ -236,9 +226,6 @@ Visitor works well for document-processing systems.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: visitor-vs-strategy, design-patterns, lld
@@ -262,7 +249,7 @@ Example Visitor:
 
 ```text id="4v8qpd"
 AstNode.accept(OptimizationVisitor)
-````
+```
 
 Example Strategy:
 
@@ -274,9 +261,6 @@ Visitor is useful when operations change frequently but object structure remains
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: open-closed-principle, visitor-pattern, software-design
@@ -290,7 +274,7 @@ Without Visitor:
 
 ```text id="6m3qpd"
 Modify every class for every new feature
-````
+```
 
 With Visitor:
 
@@ -316,9 +300,6 @@ Visitor strongly supports extensible object-oriented architectures.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: visitor-pattern, maintainability, software-architecture
@@ -332,7 +313,7 @@ Problem:
 
 ```text id="1q8vza"
 Adding new element types requires updating all visitors
-````
+```
 
 Potential issues:
 
@@ -351,9 +332,6 @@ Frequent structural changes reduce Visitor effectiveness.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: visitor-pattern, trade-offs, software-design
@@ -383,7 +361,7 @@ Example:
 
 ```text id="7v2xpd"
 New AST node requires visitor updates
-````
+```
 
 Visitor works best when:
 

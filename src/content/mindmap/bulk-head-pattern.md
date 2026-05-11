@@ -1,6 +1,6 @@
 ---
 title: Bulkhead Pattern
-articleSlug: bulkhead-pattern
+articleSlug: bulk-head-pattern
 ---
 
 # Bulkhead Pattern

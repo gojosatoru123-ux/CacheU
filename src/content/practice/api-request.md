@@ -17,7 +17,7 @@ Example flow:
 
 ```text
 Client → API Request → Server
-````
+```
 
 Example request:
 
@@ -46,9 +46,6 @@ API requests are the foundation of client-server communication.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: http-methods, api, backend
@@ -72,7 +69,7 @@ Examples:
 
 ```http
 GET /users
-````
+```
 
 ```http id="6m2xqc"
 POST /users
@@ -92,9 +89,6 @@ Benefits:
 
 <!-- END -->
 
-````id="9k4xza"
-
-```md id="4v8qwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: api-request, headers, http
@@ -110,7 +104,7 @@ Example request:
 GET /api/users HTTP/1.1
 Authorization: Bearer token
 Content-Type: application/json
-````
+```
 
 Common request headers:
 
@@ -138,9 +132,6 @@ Headers are an essential part of every API request.
 
 <!-- END -->
 
-````id="3x1vke"
-
-```md id="7m2qza"
 <!-- QUESTION -->
 difficulty: Medium
 tags: request-body, json, api
@@ -162,7 +153,7 @@ Example JSON body:
   "name": "Alex",
   "email": "alex@example.com"
 }
-````
+```
 
 Example request:
 
@@ -191,9 +182,6 @@ The request body carries the actual data payload of an API request.
 
 <!-- END -->
 
-````id="8p5vyt"
-
-```md id="1k9qwr"
 <!-- QUESTION -->
 difficulty: Medium
 tags: query-parameters, api, routing
@@ -207,7 +195,7 @@ Example:
 
 ```http
 GET /users?page=2&limit=10
-````
+```
 
 Structure:
 
@@ -234,9 +222,6 @@ Query parameters make APIs flexible without changing routes.
 
 <!-- END -->
 
-````id="2v7xke"
-
-```md id="6w4qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: path-parameters, api-routing, backend
@@ -250,7 +235,7 @@ Example:
 
 ```http
 GET /users/42
-````
+```
 
 Here:
 
@@ -282,9 +267,6 @@ Path parameters uniquely identify specific resources.
 
 <!-- END -->
 
-````id="7p3vke"
-
-```md id="3m8qza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: idempotency, http, api-design
@@ -307,7 +289,7 @@ Example:
 
 ```http
 DELETE /users/1
-````
+```
 
 First request:
 
@@ -335,9 +317,6 @@ Payment APIs often implement idempotency keys to avoid duplicate transactions.
 
 <!-- END -->
 
-````id="5q2xmc"
-
-```md id="9x1vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: authentication, api-security, authorization
@@ -360,7 +339,7 @@ JWT example:
 
 ```http
 Authorization: Bearer <jwt>
-````
+```
 
 API key example:
 
@@ -390,9 +369,6 @@ Authentication is critical for API security.
 
 <!-- END -->
 
-````id="1w9xpd"
-
-```md id="4k7qxt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: rate-limiting, api-security, backend
@@ -406,7 +382,7 @@ Example:
 
 ```text id="6m1xke"
 100 requests per minute
-````
+```
 
 Why rate limiting is important:
 
@@ -440,9 +416,6 @@ It is a critical API protection mechanism.
 
 <!-- END -->
 
-````id="8p2vma"
-
-```md id="2x5qza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: api-errors, status-codes, backend
@@ -458,7 +431,7 @@ Example error response:
 {
   "error": "Invalid email format"
 }
-````
+```
 
 Common HTTP error codes:
 

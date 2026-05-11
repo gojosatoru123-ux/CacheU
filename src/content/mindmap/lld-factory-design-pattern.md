@@ -1,6 +1,6 @@
 ---
 title: Factory Design Pattern
-articleSlug: factory-design-pattern
+articleSlug: lld-factory-design-pattern
 ---
 
 # Factory Design Pattern

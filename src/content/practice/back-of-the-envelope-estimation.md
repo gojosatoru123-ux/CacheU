@@ -1,3 +1,9 @@
+---
+title:  Back of the Envelope Estimation
+articleSlug: back-of-the-envelope-estimation
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: back-of-the-envelope, capacity-planning, hld
@@ -25,7 +31,7 @@ Example:
 
 ```text id="4m8qza"
 100M users × 10 requests/day
-````
+```
 
 Benefits:
 
@@ -37,9 +43,6 @@ Estimations guide architecture decisions before detailed engineering begins.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: traffic-estimation, scalability, system-design
@@ -53,7 +56,7 @@ Formula:
 
 ```text
 RPS = Total Requests / Seconds
-````
+```
 
 Example:
 
@@ -83,9 +86,6 @@ Accurate RPS estimation influences:
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: storage-estimation, distributed-systems, databases
@@ -110,7 +110,7 @@ Calculation:
 
 ```text id="6p1qxt"
 5M × 2 MB = 10 TB/day
-````
+```
 
 Implications:
 
@@ -124,9 +124,6 @@ Storage estimation directly affects infrastructure architecture.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: bandwidth-estimation, cdn, performance-engineering
@@ -151,7 +148,7 @@ Calculation:
 
 ```text id="5m2xqc"
 50 TB concurrent outbound traffic
-````
+```
 
 Problems without estimation:
 
@@ -171,9 +168,6 @@ Bandwidth often becomes a major operational cost at scale.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cache-sizing, memory-estimation, scalability
@@ -194,7 +188,7 @@ Backend traffic:
 
 ```text id="clt6p5"
 Only 5% reaches databases
-````
+```
 
 Calculation:
 
@@ -214,9 +208,6 @@ Cache sizing estimation is essential for high-throughput architectures.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: peak-traffic, scalability, hld
@@ -236,7 +227,7 @@ Problem:
 
 ```text
 Average traffic hides real bottlenecks
-````
+```
 
 Example:
 
@@ -261,9 +252,6 @@ Peak traffic estimation is critical for resilient distributed systems.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: read-write-ratio, databases, scaling
@@ -291,7 +279,7 @@ Example:
 
 ```text id="4v8qpd"
 Social feed systems are heavily read-dominated
-````
+```
 
 Incorrect assumptions may cause:
 
@@ -303,9 +291,6 @@ Read/write estimation is foundational for database design.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: latency-budgeting, distributed-systems, performance-engineering
@@ -319,7 +304,7 @@ Example workflow:
 
 ```text
 Client → API Gateway → Service → Database
-````
+```
 
 Each hop contributes latency.
 
@@ -349,9 +334,6 @@ Latency estimation is essential for high-performance systems.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: queue-estimation, asynchronous-systems, scalability
@@ -365,7 +347,7 @@ Problem:
 
 ```text
 Producer throughput may exceed consumer capacity
-````
+```
 
 Example:
 
@@ -396,9 +378,6 @@ This is critical for Kafka and event-driven systems.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: back-of-the-envelope, trade-offs, system-design
@@ -421,7 +400,7 @@ Example:
 
 ```text id="7v2xpd"
 Unexpected viral traffic invalidates estimates
-````
+```
 
 Despite limitations, estimations remain valuable because they:
 

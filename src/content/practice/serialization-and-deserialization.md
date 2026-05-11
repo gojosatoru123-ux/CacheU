@@ -22,7 +22,7 @@ Problem:
 
 ```text
 Application objects cannot directly travel across networks or storage layers
-````
+```
 
 Serialization converts:
 
@@ -46,9 +46,6 @@ Serialization is fundamental for backend communication and persistence.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: api-design, serialization, backend-systems
@@ -70,7 +67,7 @@ Problem:
 
 ```text
 JSON parsing is slower and larger than binary formats
-````
+```
 
 Tradeoffs:
 
@@ -90,9 +87,6 @@ JSON optimizes usability and compatibility over raw efficiency.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: backend-performance, serialization, latency
@@ -110,7 +104,7 @@ Problem:
 
 ```text
 Large object graphs require expensive encoding and parsing
-````
+```
 
 Consequences:
 
@@ -136,9 +130,6 @@ Serialization efficiency directly impacts backend scalability.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: schema-evolution, microservices, backend-systems
@@ -152,7 +143,7 @@ Problem:
 
 ```text
 Different service versions may exchange incompatible payloads
-````
+```
 
 Examples:
 
@@ -184,9 +175,6 @@ Schema evolution is a critical backend compatibility challenge.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: caching, serialization, backend-performance
@@ -204,7 +192,7 @@ Problem:
 
 ```text
 Runtime objects must be converted into storable formats
-````
+```
 
 Workflow:
 
@@ -230,9 +218,6 @@ Serialization directly affects cache efficiency and latency.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: security, deserialization, backend-security
@@ -246,7 +231,7 @@ Problem:
 
 ```text
 Untrusted payloads may trigger malicious object creation
-````
+```
 
 Risks:
 
@@ -272,9 +257,6 @@ Unsafe deserialization is one of the most critical backend security risks.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: microservices, serialization, distributed-systems
@@ -291,7 +273,7 @@ Problem:
 
 ```text
 Inconsistent serialization formats break inter-service communication
-````
+```
 
 Examples:
 
@@ -317,9 +299,6 @@ Serialization consistency enables reliable service communication.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: database-systems, orm, serialization
@@ -338,7 +317,7 @@ Workflow:
 
 ```text id="6m3qpd"
 Database Rows ↔ ORM Serialization Layer ↔ Application Objects
-````
+```
 
 Problem:
 
@@ -362,9 +341,6 @@ ORM abstractions fundamentally depend on serialization pipelines.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, serialization, backend-performance
@@ -382,7 +358,7 @@ Problem:
 
 ```text
 Serialization bottlenecks are difficult to detect without monitoring
-````
+```
 
 Key metrics:
 
@@ -409,9 +385,6 @@ Serialization observability is critical for backend performance engineering.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: serialization, backend-systems, trade-offs
@@ -452,7 +425,7 @@ Example:
 
 ```text id="7v2xpd"
 Protocol Buffers improve throughput but increase operational schema management complexity
-````
+```
 
 Backend serialization fundamentally balances:
 
@@ -462,6 +435,3 @@ Backend serialization fundamentally balances:
 * operational safety
 
 <!-- END -->
-
-```
-```

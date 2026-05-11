@@ -1,3 +1,9 @@
+---
+title:  Microservices Design Patterns
+articleSlug: microservices-design-patterns
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: microservices, database-per-service, distributed-systems
@@ -17,7 +23,7 @@ Database-per-Service ensures:
 
 ```text
 Each service owns its data independently
-````
+```
 
 Benefits:
 
@@ -40,9 +46,6 @@ This pattern is foundational for service autonomy in distributed systems.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: api-gateway, microservices, scalability
@@ -71,7 +74,7 @@ Architecture:
 
 ```text id="6m2xqc"
 Client → API Gateway → Microservices
-````
+```
 
 Benefits:
 
@@ -83,9 +86,6 @@ API Gateways simplify client interactions and centralize cross-cutting concerns.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: saga-pattern, distributed-transactions, consistency
@@ -102,7 +102,7 @@ Saga Pattern uses:
 
 ```text
 Sequence of local transactions
-````
+```
 
 Each step has:
 
@@ -127,9 +127,6 @@ Saga trades immediate consistency for eventual consistency and resilience.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: circuit-breaker, resilience, fault-tolerance
@@ -143,7 +140,7 @@ Without protection:
 
 ```text
 One failing service can cascade failures system-wide
-````
+```
 
 Circuit Breaker states:
 
@@ -171,9 +168,6 @@ Circuit breakers are fundamental for fault-tolerant distributed systems.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: event-driven-architecture, asynchronous-communication, microservices
@@ -190,7 +184,7 @@ Event-driven systems use:
 
 ```text
 Asynchronous message passing
-````
+```
 
 Architecture:
 
@@ -216,9 +210,6 @@ Event-driven systems are widely used for scalable distributed workflows.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cqrs, read-write-separation, scalability
@@ -247,7 +238,7 @@ Architecture:
 
 ```text id="4q2xmc"
 Write Service → Event Store → Read Models
-````
+```
 
 Tradeoff:
 
@@ -259,9 +250,6 @@ CQRS is especially useful in high-read distributed systems.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: service-discovery, distributed-systems, scalability
@@ -281,7 +269,7 @@ Service Discovery provides:
 
 ```text
 Dynamic service location resolution
-````
+```
 
 Benefits:
 
@@ -307,9 +295,6 @@ Service Discovery is essential for elastic distributed systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: sidecar-pattern, service-mesh, infrastructure
@@ -330,7 +315,7 @@ Instead of implementing them inside every service:
 
 ```text
 Infrastructure logic moved to sidecar proxies
-````
+```
 
 Architecture:
 
@@ -355,9 +340,6 @@ Sidecars simplify operational concerns in large microservice deployments.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: strangler-pattern, migration, legacy-systems
@@ -376,7 +358,7 @@ Workflow:
 
 ```text
 New services gradually intercept old functionality
-````
+```
 
 Architecture:
 
@@ -396,9 +378,6 @@ This pattern enables safer modernization of legacy systems.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: bulkhead-pattern, fault-isolation, resilience
@@ -412,7 +391,7 @@ Example:
 
 ```text
 One overloaded service exhausts thread pool resources
-````
+```
 
 Bulkhead Pattern isolates:
 

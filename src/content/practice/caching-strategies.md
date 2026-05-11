@@ -1,3 +1,9 @@
+---
+title:  Caching Strategies
+articleSlug: caching-strategies
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: caching-strategies, distributed-systems, performance-engineering
@@ -27,15 +33,12 @@ Example:
 ```text id="4m8qza"
 Financial systems prioritize consistency
 while analytics systems prioritize throughput
-````
+```
 
 Caching strategy selection is fundamentally a tradeoff decision.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cache-aside, lazy-loading, scalability
@@ -49,7 +52,7 @@ Workflow:
 
 ```text
 Cache Miss → Fetch from DB → Populate Cache
-````
+```
 
 Benefits:
 
@@ -76,9 +79,6 @@ Its simplicity and scalability make Cache-Aside widely adopted in production sys
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: write-through, consistency, distributed-cache
@@ -96,7 +96,7 @@ Workflow:
 
 ```text id="6p1qxt"
 Write Request → Cache + Database Together
-````
+```
 
 Benefits:
 
@@ -121,9 +121,6 @@ Write-Through is suitable for:
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: write-back, high-throughput, caching-strategies
@@ -137,7 +134,7 @@ Workflow:
 
 ```text id="5m2xqc"
 Write → Cache First → Database Later
-````
+```
 
 Benefits:
 
@@ -164,9 +161,6 @@ Write-Back is optimized for throughput-heavy workloads.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: read-through, distributed-cache, abstraction
@@ -182,7 +176,7 @@ Workflow:
 
 ```text
 Application → Cache → Database
-````
+```
 
 Benefits:
 
@@ -209,9 +203,6 @@ Read-Through centralizes caching responsibilities into infrastructure.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: write-around, cache-pollution, performance-engineering
@@ -226,7 +217,7 @@ Workflow:
 ```text
 Write → Database Directly
 Read → Cache Population On Demand
-````
+```
 
 Benefits:
 
@@ -253,9 +244,6 @@ Write-Around is useful when writes greatly exceed reads.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cache-invalidation, distributed-systems, consistency
@@ -269,7 +257,7 @@ Problem:
 
 ```text
 Database updates may leave cache stale
-````
+```
 
 Different strategies handle invalidation differently.
 
@@ -298,9 +286,6 @@ Caching strategy design fundamentally includes invalidation strategy selection.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cache-stampede, distributed-caching, backend-reliability
@@ -316,7 +301,7 @@ Problem:
 
 ```text
 Backend receives sudden request flood
-````
+```
 
 Example:
 
@@ -342,9 +327,6 @@ Caching strategies must account for synchronized expiration risks.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: multi-layer-cache, cdn, distributed-systems
@@ -364,7 +346,7 @@ Architecture:
 
 ```text id="1q8vza"
 Browser → CDN → App Cache → Database
-````
+```
 
 Benefits:
 
@@ -385,9 +367,6 @@ Multi-layer caching is common in internet-scale systems.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: caching-strategies, trade-offs, system-design
@@ -414,7 +393,7 @@ Example:
 
 ```text id="7v2xpd"
 Aggressive caching may improve performance but increase stale reads
-````
+```
 
 Choosing a caching strategy requires understanding:
 

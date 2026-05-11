@@ -1,3 +1,9 @@
+---
+title:  Circuit Breaker
+articleSlug: circuit-breaker
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: circuit-breaker, resilience, distributed-systems
@@ -15,7 +21,7 @@ Without protection:
 
 ```text
 Clients continuously retry failing services
-````
+```
 
 Consequences:
 
@@ -43,9 +49,6 @@ Circuit Breakers are foundational resilience mechanisms in distributed architect
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: circuit-breaker-states, fault-tolerance, distributed-systems
@@ -67,7 +70,7 @@ Workflow:
 
 ```text id="6m2xqc"
 Repeated Failures → Open State → Recovery Probe → Closed State
-````
+```
 
 Benefits:
 
@@ -81,9 +84,6 @@ State transitions enable intelligent fault handling in distributed systems.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: cascading-failures, resilience-engineering, circuit-breaker
@@ -100,7 +100,7 @@ Problem:
 
 ```text
 Upstream services continue waiting on failing downstream systems
-````
+```
 
 Consequences:
 
@@ -126,9 +126,6 @@ Circuit Breakers reduce distributed outage amplification.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: timeout-management, circuit-breaker, distributed-systems
@@ -142,7 +139,7 @@ Without timeouts:
 
 ```text
 Requests may hang indefinitely
-````
+```
 
 Problem:
 
@@ -170,9 +167,6 @@ Timeouts and Circuit Breakers work together to improve resilience.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: retry-pattern, resilience-patterns, circuit-breaker
@@ -186,7 +180,7 @@ Problem:
 
 ```text
 Uncontrolled retries may overwhelm failing services
-````
+```
 
 Circuit Breakers stop retries during severe outages.
 
@@ -208,9 +202,6 @@ Retries and Circuit Breakers complement each other in resilient distributed syst
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: half-open-state, recovery-testing, distributed-systems
@@ -229,7 +220,7 @@ Workflow:
 
 ```text id="4q2xmc"
 Open State → Limited Probe Requests → Recovery Decision
-````
+```
 
 Benefits:
 
@@ -249,9 +240,6 @@ Half-Open state enables intelligent dependency recovery management.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: fallback-strategies, graceful-degradation, circuit-breaker
@@ -275,7 +263,7 @@ Workflow:
 
 ```text id="4v8qpd"
 Circuit Open → Fallback Response Returned
-````
+```
 
 Benefits:
 
@@ -289,9 +277,6 @@ Fallbacks support graceful degradation in distributed systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-systems, observability, circuit-breaker
@@ -305,7 +290,7 @@ Problem:
 
 ```text
 Hidden breaker activity may obscure real system health
-````
+```
 
 Important metrics:
 
@@ -332,9 +317,6 @@ Circuit Breakers require strong monitoring and operational visibility.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: distributed-systems, false-positives, circuit-breaker
@@ -351,7 +333,7 @@ Problem:
 
 ```text
 Healthy systems may become artificially unavailable
-````
+```
 
 Example:
 
@@ -370,9 +352,6 @@ Circuit Breaker tuning requires careful balance between sensitivity and stabilit
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: circuit-breaker, trade-offs, system-design
@@ -403,7 +382,7 @@ Example:
 
 ```text id="7v2xpd"
 Overly sensitive breaker may reject healthy traffic unnecessarily
-````
+```
 
 Circuit Breaker design fundamentally balances:
 

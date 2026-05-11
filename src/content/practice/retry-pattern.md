@@ -1,3 +1,9 @@
+---
+title:  Retry Pattern
+articleSlug: retry-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Hard
 tags: retry-pattern, distributed-systems, resilience
@@ -19,7 +25,7 @@ Workflow:
 
 ```text
 Request Failure → Retry → Success
-````
+```
 
 Benefits:
 
@@ -39,9 +45,6 @@ Retries are fundamental for resilient distributed communication.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: transient-failures, distributed-systems, retry-pattern
@@ -63,7 +66,7 @@ Problem:
 
 ```text
 Retrying permanent failures wastes resources
-````
+```
 
 Example:
 
@@ -83,9 +86,6 @@ Retries should target only recoverable failure scenarios.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: exponential-backoff, retry-pattern, resilience-engineering
@@ -99,7 +99,7 @@ Problem:
 
 ```text
 Simultaneous retries amplify traffic spikes
-````
+```
 
 Exponential backoff gradually increases retry delay.
 
@@ -121,9 +121,6 @@ Exponential backoff is a core resilience strategy in distributed systems.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: jitter, retry-pattern, distributed-systems
@@ -135,7 +132,7 @@ Without jitter:
 
 ```text
 Clients retry at identical intervals
-````
+```
 
 Problem:
 
@@ -169,9 +166,6 @@ Jitter is essential for stable large-scale retry behavior.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Hard
 tags: idempotency, retries, distributed-systems
@@ -185,7 +179,7 @@ Problem:
 
 ```text
 Repeated operations may create duplicate side effects
-````
+```
 
 Examples:
 
@@ -211,9 +205,6 @@ Retries without idempotency can corrupt distributed system state.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: retry-storms, cascading-failures, distributed-systems
@@ -227,7 +218,7 @@ Problem:
 
 ```text
 Overloaded services receive even more retry traffic
-````
+```
 
 Consequences:
 
@@ -255,9 +246,6 @@ Retries must be carefully controlled in distributed architectures.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: circuit-breaker, retry-pattern, resilience
@@ -273,7 +261,7 @@ Workflow:
 
 ```text id="4v8qpd"
 Repeated Failures → Circuit Opens → Retries Suspended
-````
+```
 
 Benefits:
 
@@ -293,9 +281,6 @@ Retries and circuit breakers complement each other in resilient systems.
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: timeout-management, retries, distributed-systems
@@ -307,7 +292,7 @@ Without timeouts:
 
 ```text
 Requests may hang indefinitely
-````
+```
 
 Problem:
 
@@ -341,9 +326,6 @@ Retries without proper timeout management can degrade system performance.
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: observability, distributed-systems, retry-pattern
@@ -361,7 +343,7 @@ Problem:
 
 ```text
 Retries may mask underlying system instability
-````
+```
 
 Key observability metrics:
 
@@ -388,9 +370,6 @@ Retry systems require strong monitoring and visibility.
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: retry-pattern, trade-offs, system-design
@@ -421,7 +400,7 @@ Example:
 
 ```text id="7v2xpd"
 Aggressive retries may worsen large-scale outages
-````
+```
 
 Retry strategy design fundamentally balances:
 

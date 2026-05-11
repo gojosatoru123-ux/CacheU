@@ -1,4 +1,9 @@
-````md id="8m2qva"
+---
+title: Singleton Design Pattern
+articleSlug: lld-singleton-design-pattern
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: singleton-pattern, lld, design-patterns
@@ -12,7 +17,7 @@ Purpose:
 
 ```text id="4m8qza"
 One instance globally shared
-````
+```
 
 Architecture:
 
@@ -32,9 +37,6 @@ The Singleton Pattern is a creational design pattern.
 
 <!-- END -->
 
-````id="5v1xke"
-
-```md id="2n7qpd"
 <!-- QUESTION -->
 difficulty: Easy
 tags: singleton-pattern, object-creation, lld
@@ -53,7 +55,7 @@ Without Singleton:
 
 ```text id="6m2xqc"
 Multiple instances cause inconsistent state
-````
+```
 
 Singleton solution:
 
@@ -73,9 +75,6 @@ Singleton prevents uncontrolled object duplication.
 
 <!-- END -->
 
-````id="9x2vke"
-
-```md id="4q7xwc"
 <!-- QUESTION -->
 difficulty: Easy
 tags: singleton-pattern, implementation, lld
@@ -94,7 +93,7 @@ Example structure:
 private constructor
 static instance
 getInstance()
-````
+```
 
 Workflow:
 
@@ -115,9 +114,6 @@ Singleton implementation varies across programming languages.
 
 <!-- END -->
 
-````id="3x5vke"
-
-```md id="1n8qpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: lazy-initialization, singleton-pattern, performance-engineering
@@ -131,7 +127,7 @@ Without lazy initialization:
 
 ```text id="5m2xqc"
 Object created during application startup
-````
+```
 
 With lazy initialization:
 
@@ -151,9 +147,6 @@ Lazy initialization is useful for expensive singleton objects.
 
 <!-- END -->
 
-````id="8w4qza"
-
-```md id="5x1vyt"
 <!-- QUESTION -->
 difficulty: Medium
 tags: thread-safety, singleton-pattern, concurrency
@@ -167,7 +160,7 @@ Problem:
 
 ```text id="clt6p5"
 Two threads call getInstance() together
-````
+```
 
 Possible result:
 
@@ -187,9 +180,6 @@ Thread safety is critical in concurrent applications.
 
 <!-- END -->
 
-````id="2v7qwr"
-
-```md id="9m3xpd"
 <!-- QUESTION -->
 difficulty: Medium
 tags: singleton-vs-static-class, design-patterns, lld
@@ -213,7 +203,7 @@ Example Singleton:
 
 ```text id="4q2xmc"
 Logger.getInstance()
-````
+```
 
 Example Static Class:
 
@@ -225,9 +215,6 @@ Singleton provides more flexibility than static classes.
 
 <!-- END -->
 
-````id="7n1qxt"
-
-```md id="3m5vke"
 <!-- QUESTION -->
 difficulty: Hard
 tags: singleton-pattern, distributed-systems, backend-engineering
@@ -241,7 +228,7 @@ In distributed systems:
 
 ```text id="4v8qpd"
 Multiple servers create multiple singleton instances
-````
+```
 
 Problems:
 
@@ -265,9 +252,6 @@ Distributed environments require additional coordination beyond traditional Sing
 
 <!-- END -->
 
-````id="5w2qwc"
-
-```md id="1x7vza"
 <!-- QUESTION -->
 difficulty: Hard
 tags: dependency-injection, singleton-pattern, software-architecture
@@ -281,7 +265,7 @@ Traditional Singleton:
 
 ```text id="6m3qpd"
 Service.getInstance()
-````
+```
 
 Dependency Injection:
 
@@ -301,9 +285,6 @@ Modern frameworks often manage singleton scope through dependency injection cont
 
 <!-- END -->
 
-````id="8p5vke"
-
-```md id="6n2xpd"
 <!-- QUESTION -->
 difficulty: Hard
 tags: singleton-anti-pattern, software-design, clean-code
@@ -325,7 +306,7 @@ Example issue:
 
 ```text id="1q8vza"
 Multiple modules silently modify shared singleton
-````
+```
 
 Risks:
 
@@ -337,9 +318,6 @@ Singleton should be used carefully and only when true single-instance behavior i
 
 <!-- END -->
 
-````id="1q8vza"
-
-```md id="9m4qwc"
 <!-- QUESTION -->
 difficulty: Hard
 tags: singleton-pattern, trade-offs, software-design
@@ -369,7 +347,7 @@ Example:
 
 ```text id="7v2xpd"
 Global Logger singleton
-````
+```
 
 Singleton works best when:
 

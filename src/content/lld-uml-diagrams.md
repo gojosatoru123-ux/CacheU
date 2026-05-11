@@ -1064,7 +1064,7 @@ It represents a usable object in the system.
 
 ### Java
 
-```java id="k4z0bn"
+```java
 abstract class Animal {
     abstract void sound();
 

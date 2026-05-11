@@ -1,6 +1,6 @@
 ---
 title: Distributed Transactions
-articleSlug: distributed-transactions
+articleSlug: distributed-transaction
 ---
 
 # Distributed Transactions

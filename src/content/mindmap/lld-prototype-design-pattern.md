@@ -1,6 +1,6 @@
 ---
 title: Prototype Design Pattern
-articleSlug: prototype-design-pattern
+articleSlug: lld-prototype-design-pattern
 ---
 
 # Prototype Design Pattern

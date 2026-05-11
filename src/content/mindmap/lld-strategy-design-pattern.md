@@ -1,6 +1,6 @@
 ---
 title: Strategy Pattern
-articleSlug: strategy-pattern
+articleSlug: lld-strategy-design-pattern
 ---
 
 # Strategy Pattern
