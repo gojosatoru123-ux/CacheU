@@ -1,6 +1,6 @@
 ---
 title: Content Security Policy (CSP)
-articleSlug: web-csp
+articleSlug: content-security-policy
 ---
 
 # Content Security Policy (CSP)

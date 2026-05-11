@@ -1,4 +1,9 @@
-````md id="2m8vqa"
+---
+title:  Cross Site Request Forgery
+articleSlug: cross-site-request-forgery
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: csrf, web-security, authentication

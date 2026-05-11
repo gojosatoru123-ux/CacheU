@@ -1,3 +1,9 @@
+---
+title:  Content Security Policy
+articleSlug: content-security-policy
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: csp, web-security, xss

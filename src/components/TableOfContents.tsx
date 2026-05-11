@@ -12,7 +12,8 @@ interface TableOfContentsProps {
 }
 
 function extractHeadings(content: string): Heading[] {
-  const headingRegex = /^(#{2,3})\s+(.+)$/gm;
+  // Updated to handle 1 to 6 hashes: #{1,6}
+  const headingRegex = /^(#{1,6})\s+(.+)$/gm;
   const headings: Heading[] = [];
   let match;
 
@@ -52,21 +53,26 @@ export function TableOfContents({ content }: TableOfContentsProps) {
     });
 
     return () => observer.disconnect();
-  }, [content]);
+    // Keep 'content' as dependency so it re-runs when the MD changes
+  }, [content, headings]); 
 
   if (headings.length === 0) return null;
 
   return (
     <nav className="sticky top-24 flex flex-col max-h-[calc(100vh-7rem)]">
-      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3 shrink-0">On this page</p>
+      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3 shrink-0">
+        On this page
+      </p>
       <ul className="space-y-1 border-l border-slate-100 overflow-y-auto min-h-0">
         {headings.map((h) => (
           <li key={h.id}>
             <a
               href={`#${h.id}`}
+              // Dynamically calculate padding based on level
+              // H1 (level 1) = 1rem, H2 = 1.75rem, H3 = 2.5rem, etc.
+              style={{ paddingLeft: `${(h.level - 1) * 12 + 16}px` }}
               className={cn(
                 'block py-1 text-sm transition-all border-l-2 -ml-px',
-                h.level === 2 ? 'pl-4' : 'pl-7',
                 activeId === h.id
                   ? 'border-violet-500 text-violet-700 font-semibold'
                   : 'border-transparent text-slate-400 hover:text-slate-700 hover:border-slate-300'

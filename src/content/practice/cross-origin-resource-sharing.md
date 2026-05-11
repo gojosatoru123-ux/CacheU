@@ -1,8 +1,8 @@
 ---
-title:  
-articleSlug: 
-difficulty: 
-estimatedTime: 
+title:  Cross Origin Resource Sharing
+articleSlug: cross-origin-resource-sharing
+difficulty: Intermediate
+estimatedTime: 20 mins
 ---
 <!-- QUESTION -->
 difficulty: Easy

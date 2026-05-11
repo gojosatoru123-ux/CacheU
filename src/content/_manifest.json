@@ -927,7 +927,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "websec-cors",
+    "slug": "cross-origin-resource-sharing",
     "title": "Cross-Origin Resource Sharing (CORS)",
     "description": "A deep dive into how browsers securely allow controlled cross-origin HTTP requests using CORS headers, preflight requests, and origin validation.",
     "category": "Web Security",
@@ -936,7 +936,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "websec-csrf",
+    "slug": "cross-site-request-forgery",
     "title": "Cross-Site Request Forgery (CSRF)",
     "description": "A detailed explanation of CSRF attacks, how they exploit browser cookie behavior, and how modern web applications prevent them using tokens, SameSite cookies, and origin validation.",
     "category": "Web Security",
@@ -945,7 +945,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "websec-csp",
+    "slug": "content-security-policy",
     "title": "Content Security Policy (CSP)",
     "description": "A comprehensive guide to Content Security Policy (CSP), how it protects applications from XSS and injection attacks, how browsers enforce it, and how to configure it safely in production systems.",
     "category": "Web Security",

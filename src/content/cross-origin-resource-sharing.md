@@ -5,8 +5,6 @@ category: Web Security
 order: 1
 ---
 
-# Cross-Origin Resource Sharing (CORS)
-
 Modern web applications frequently need to communicate with resources hosted on different domains. However, browsers enforce strict security rules to protect users from malicious websites attempting to access sensitive data.
 
 **Cross-Origin Resource Sharing (CORS)** is an HTTP-header-based mechanism that allows servers to **explicitly permit cross-origin requests** in a controlled and secure manner.

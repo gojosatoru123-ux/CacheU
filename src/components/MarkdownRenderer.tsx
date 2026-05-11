@@ -125,6 +125,16 @@ function buildHtml(content: string): string {
   });
 
   const defaultRenderer = new marked.Renderer();
+  defaultRenderer.heading = ({ text, depth }) => {
+    // This MUST match the slugify logic in your TableOfContents.tsx
+    const id = text
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-');
+
+    return `<h${depth} id="${id}">${text}</h${depth}>`;
+  };
   defaultRenderer.code = ({ text, lang }) => renderSingleCode(text, lang ?? 'plaintext');
   const markedWithRenderer = marked.use({ renderer: defaultRenderer });
 

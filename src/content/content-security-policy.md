@@ -5,8 +5,6 @@ category: Web Security
 order: 3
 ---
 
-# Content Security Policy (CSP)
-
 **Content Security Policy (CSP)** is a browser security mechanism that helps prevent attacks such as:
 
 - Cross-Site Scripting (**XSS**)
@@ -23,7 +21,7 @@ The browser will **block anything that is not explicitly allowed**.
 
 ---
 
-# The Core Problem CSP Solves
+## The Core Problem CSP Solves
 
 Modern websites load many types of resources:
 
@@ -51,7 +49,7 @@ CSP acts like a **security guard that decides which scripts are allowed to run**
 
 ---
 
-# Real World Analogy
+## Real World Analogy
 
 Imagine an **airport security checkpoint**.
 
@@ -77,7 +75,7 @@ Similarly, CSP allows only **approved sources of resources**.
 
 ---
 
-# How CSP Works
+## How CSP Works
 
 The server sends a **CSP policy** in HTTP response headers.
 
@@ -101,7 +99,7 @@ The browser blocks it immediately.
 
 ---
 
-# CSP Request Flow
+## CSP Request Flow
 
 ```mermaid
 sequenceDiagram
@@ -116,7 +114,7 @@ The browser enforces CSP **before executing scripts**.
 
 ---
 
-# Example CSP Header
+## Example CSP Header
 
 ```http
 Content-Security-Policy:
@@ -135,13 +133,13 @@ Explanation:
 
 ---
 
-# CSP Directives Explained
+## CSP Directives Explained
 
 CSP consists of **directives** controlling different resource types.
 
 ---
 
-# 1. `default-src`
+### 1. default-src
 
 Fallback rule if no specific directive exists.
 
@@ -159,7 +157,7 @@ Only load resources from the same domain.
 
 ---
 
-# 2. `script-src`
+### 2. script-src
 
 Controls where JavaScript can load from.
 
@@ -182,7 +180,7 @@ https://malicious-site.com/script.js
 
 ---
 
-# 3. `style-src`
+### 3. style-src
 
 Controls CSS sources.
 
@@ -194,7 +192,7 @@ style-src 'self' https://fonts.googleapis.com
 
 ---
 
-# 4. `img-src`
+### 4. img-src
 
 Controls image sources.
 
@@ -212,7 +210,7 @@ This allows:
 
 ---
 
-# 5. `font-src`
+### 5. font-src
 
 Controls font loading.
 
@@ -224,7 +222,7 @@ font-src https://fonts.gstatic.com
 
 ---
 
-# 6. `connect-src`
+### 6. connect-src
 
 Controls API calls and fetch requests.
 
@@ -243,7 +241,7 @@ Applies to:
 
 ---
 
-# 7. `frame-src`
+### 7. frame-src
 
 Controls which sites can be embedded using iframes.
 
@@ -255,7 +253,7 @@ frame-src https://youtube.com
 
 ---
 
-# 8. `object-src`
+### 8. object-src
 
 Controls legacy plugins.
 
@@ -269,13 +267,13 @@ Recommended to disable completely.
 
 ---
 
-# CSP Source Values
+## CSP Source Values
 
 Sources define **where resources are allowed from**.
 
 ---
 
-# `'self'`
+### self
 
 Allows the same origin.
 
@@ -287,7 +285,7 @@ script-src 'self'
 
 ---
 
-# `*`
+### *
 
 Allow everything.
 
@@ -299,7 +297,7 @@ script-src *
 
 ---
 
-# Specific Domains
+### Specific Domains
 
 Example:
 
@@ -309,7 +307,7 @@ script-src https://cdn.example.com
 
 ---
 
-# Data URIs
+### Data URIs
 
 Example:
 
@@ -321,7 +319,7 @@ Allows base64 images.
 
 ---
 
-# Nonces
+### Nonces
 
 Nonces allow specific inline scripts to run.
 
@@ -343,7 +341,7 @@ Any script without the nonce is blocked.
 
 ---
 
-# Hash-Based CSP
+### Hash-Based CSP
 
 Instead of nonces, CSP can allow scripts using **hashes**.
 
@@ -357,7 +355,7 @@ The hash corresponds to the script content.
 
 ---
 
-# Why Inline Scripts Are Dangerous
+## Why Inline Scripts Are Dangerous
 
 Without CSP, inline scripts execute automatically.
 
@@ -383,7 +381,7 @@ unsafe-inline (not recommended)
 
 ---
 
-# CSP and XSS Protection
+## CSP and XSS Protection
 
 CSP significantly reduces the impact of XSS attacks.
 
@@ -407,7 +405,7 @@ Browser blocks evil.com script
 
 ---
 
-# CSP Blocking Example
+## CSP Blocking Example
 
 Request:
 
@@ -429,7 +427,7 @@ Refused to load script because it violates Content Security Policy
 
 ---
 
-# CSP Violation Reporting
+## CSP Violation Reporting
 
 CSP can report violations.
 
@@ -454,7 +452,7 @@ This helps detect attacks.
 
 ---
 
-# CSP Report-Only Mode
+## CSP Report-Only Mode
 
 Before enforcing CSP, it can run in **report-only mode**.
 
@@ -475,7 +473,7 @@ Useful during development.
 
 ---
 
-# Full CSP Example
+## Full CSP Example
 
 Example production CSP:
 
@@ -493,7 +491,7 @@ object-src 'none';
 
 ---
 
-# Real World Architecture Example
+## Real World Architecture Example
 
 Imagine this architecture:
 
@@ -515,7 +513,7 @@ connect-src https://api.example.com
 
 ---
 
-# CSP in Node.js Example
+## CSP in Node.js Example
 
 Example Express middleware:
 
@@ -541,7 +539,7 @@ Helmet automatically sets CSP headers.
 
 ---
 
-# CSP vs CORS vs CSRF
+## CSP vs CORS vs CSRF
 
 These three mechanisms serve different purposes.
 
@@ -561,11 +559,11 @@ Forged authenticated requests → CSRF protection
 
 ---
 
-# Common CSP Mistakes
+## Common CSP Mistakes
 
 ---
 
-# 1. Using `unsafe-inline`
+### 1. Using `unsafe-inline`
 
 Example:
 
@@ -581,7 +579,7 @@ XSS protection is weakened.
 
 ---
 
-# 2. Using wildcard `*`
+### 2. Using wildcard `*`
 
 Example:
 
@@ -593,7 +591,7 @@ This allows scripts from anywhere.
 
 ---
 
-# 3. Allowing too many domains
+### 3. Allowing too many domains
 
 Example:
 
@@ -605,7 +603,7 @@ Expands attack surface.
 
 ---
 
-# Best Practices for CSP
+## Best Practices for CSP
 
 Recommended secure policy:
 
@@ -631,7 +629,7 @@ unsafe-eval
 
 ---
 
-# Production CSP Strategy
+## Production CSP Strategy
 
 Step-by-step approach:
 
@@ -642,7 +640,7 @@ Step-by-step approach:
 
 ---
 
-# Modern Browser Support
+## Modern Browser Support
 
 CSP is supported by all major browsers.
 
@@ -655,7 +653,7 @@ CSP is supported by all major browsers.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 * CSP prevents malicious scripts from executing
 * It enforces a **whitelist model for resource loading**

@@ -1,6 +1,6 @@
 ---
 title: Cross-Site Request Forgery (CSRF)
-articleSlug: web-csrf
+articleSlug: cross-site-request-forgery
 ---
 
 # Cross-Site Request Forgery (CSRF)

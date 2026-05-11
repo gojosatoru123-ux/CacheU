@@ -4,9 +4,6 @@ description: A detailed explanation of CSRF attacks, how they exploit browser co
 category: Web Security
 order: 2
 ---
-
-# Cross-Site Request Forgery (CSRF)
-
 **Cross-Site Request Forgery (CSRF)**, also called **XSRF** or **Session Riding**, is a web security vulnerability where an attacker tricks an authenticated user into performing unintended actions on a web application.
 
 The attack exploits the **trust a server has in the user's browser**.
@@ -28,7 +25,7 @@ Web applications often rely on **cookies for authentication**.
 
 Example login flow:
 
-```mermaid id="b3t3qf"
+```mermaid
 sequenceDiagram
 User->>Server: Login Request
 Server-->>Browser: Session Cookie
@@ -75,7 +72,7 @@ https://malicious-site.com
 
 That page secretly triggers:
 
-```html id="0yhr5s"
+```html
 <img src="https://bank.com/transfer?amount=1000&to=attacker">
 ```
 
@@ -154,7 +151,7 @@ Common delivery methods:
 
 Example malicious page:
 
-```html id="7n2hzr"
+```html
 <form action="https://bank.com/transfer" method="POST">
   <input type="hidden" name="amount" value="5000">
   <input type="hidden" name="to" value="attacker">
@@ -173,7 +170,7 @@ The form automatically submits when the page loads.
 
 The victim's browser sends the request.
 
-```mermaid id="h41rci"
+```mermaid
 sequenceDiagram
 Victim Browser->>Bank Server: POST /transfer
 Note right of Victim Browser: Includes session cookie
@@ -211,7 +208,7 @@ to=attacker_account
 
 Attacker page:
 
-```html id="7yrn2e"
+```html
 <img src="https://bank.com/transfer?amount=1000&to=attacker_account">
 ```
 
@@ -288,7 +285,7 @@ This token is included in forms.
 
 Example:
 
-```html id="skj3yd"
+```html
 <form action="/transfer" method="POST">
   <input type="hidden" name="csrf_token" value="f91a82db129fa">
 </form>
@@ -321,7 +318,7 @@ So they cannot include the correct token.
 
 ## Example Implementation (Node.js)
 
-```javascript id="p4em4g"
+```javascript
 import crypto from "crypto";
 
 function generateCSRFToken() {
@@ -331,13 +328,13 @@ function generateCSRFToken() {
 
 Attach token to session:
 
-```javascript id="n2o31n"
+```javascript
 req.session.csrfToken = generateCSRFToken();
 ```
 
 Validate request:
 
-```javascript id="8l81s6"
+```javascript
 if (req.body.csrfToken !== req.session.csrfToken) {
   return res.status(403).send("CSRF validation failed");
 }
@@ -389,7 +386,7 @@ Origin: https://app.bank.com
 
 Server logic:
 
-```javascript id="7y4qzk"
+```javascript
 const allowedOrigin = "https://app.bank.com";
 
 if (req.headers.origin !== allowedOrigin) {
@@ -425,7 +422,7 @@ X-CSRF-Token
 
 JavaScript request:
 
-```javascript id="2px6rv"
+```javascript
 fetch("/transfer", {
   method: "POST",
   headers: {
@@ -472,7 +469,7 @@ Examples:
 
 Example Express middleware:
 
-```javascript id="1gg6c1"
+```javascript
 import csrf from "csurf";
 
 const csrfProtection = csrf();
@@ -521,7 +518,7 @@ This is why **CORS alone cannot stop CSRF**.
 
 # Attack Flow Diagram
 
-```mermaid id="kp0fs0"
+```mermaid
 flowchart LR
 A[User Logs into bank.com] --> B[Session Cookie Stored]
 B --> C[User Visits Malicious Site]

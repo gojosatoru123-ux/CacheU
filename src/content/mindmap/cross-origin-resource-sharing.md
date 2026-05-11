@@ -1,6 +1,6 @@
 ---
 title: Cross-Origin Resource Sharing (CORS)
-articleSlug: cors
+articleSlug: cross-origin-resource-sharing
 ---
 
 # Cross-Origin Resource Sharing (CORS)
