@@ -5,7 +5,6 @@ category: Design
 order: 14
 ---
 
-# Design a Complete Search Engine Like Google
 
 A search engine looks deceptively simple.
 
@@ -211,7 +210,7 @@ A search engine has two major planes:
 1. **Crawl and indexing plane**
 2. **Query serving plane**
 
-```mermaid id="s1xwq7"
+```mermaid
 flowchart LR
     Web[Internet / Web Pages] --> DNS[URL Discovery / DNS]
     DNS --> Scheduler[Crawl Scheduler]
@@ -295,7 +294,7 @@ It finds pages, fetches them, and feeds the indexing pipeline.
 * track content changes
 * prioritize important pages
 
-```mermaid id="x9wzpl"
+```mermaid
 flowchart TD
     Seeds[Seed URLs / Sitemaps / Feeds] --> Frontier[Crawl Frontier]
     Frontier --> Politeness[Politeness Scheduler]
@@ -376,7 +375,7 @@ The web is messy:
 
 The parser must isolate useful content from noise.
 
-```mermaid id="k2qj11"
+```mermaid
 flowchart LR
     HTML[Raw HTML] --> Clean[Boilerplate Removal]
     Clean --> Text[Main Text Extraction]
@@ -446,7 +445,7 @@ A query can be matched against the terms efficiently without scanning every docu
 * positional indexes for phrase search
 * field-level indexes for title/body/anchor text
 
-```mermaid id="r8bafm"
+```mermaid
 flowchart LR
     Docs[Documents] --> Tokenizer[Tokenizer]
     Tokenizer --> Terms[Terms]
@@ -535,7 +534,7 @@ Pages that many authoritative pages link to are often more important.
 * freshness propagation
 * topic clustering
 
-```mermaid id="z2plq4"
+```mermaid
 flowchart TD
     PageA --> PageB
     PageA --> PageC
@@ -583,7 +582,7 @@ It orders them by usefulness.
 4. snippet generation
 5. final result assembly
 
-```mermaid id="m5jll2"
+```mermaid
 flowchart LR
     Query[User Query] --> Retrieve[Candidate Retrieval]
     Retrieve --> Rank1[First-Stage Ranker]
@@ -656,7 +655,7 @@ It predicts likely completions based on:
 * trending topics
 * personalization signals
 
-```mermaid id="f4m8dc"
+```mermaid
 flowchart TD
     Prefix[Typed Prefix] --> Suggest[Suggestion Engine]
     Suggest --> Popularity[Query Log Stats]
@@ -717,7 +716,7 @@ The system should recrawl pages based on:
 * user demand
 * topic sensitivity
 
-```mermaid id="u9jve1"
+```mermaid
 flowchart LR
     PageChangeSignals --> Scheduler[Recrawl Scheduler]
     Scheduler --> HighFreq[High Priority Recrawl]
@@ -748,7 +747,7 @@ The query serving path must be extremely fast.
 
 The entire path must often fit in a very small latency budget.
 
-```mermaid id="n3kqyr"
+```mermaid
 sequenceDiagram
     participant U as User
     participant Q as Query Service
@@ -845,7 +844,7 @@ Examples:
 * behavioral signals
 * manual review pipelines
 
-```mermaid id="p3xqz5"
+```mermaid
 flowchart LR
     Crawl[Fetched Content] --> Classifier[Quality / Spam Classifier]
     Classifier --> Good[Eligible for Index]
@@ -992,7 +991,7 @@ Every index shard should have replicas for:
 * failover
 * rolling upgrades
 
-```mermaid id="b2sq9k"
+```mermaid
 flowchart LR
     Shard1[Shard 1 Primary] --> Rep1[Replica 1]
     Shard1 --> Rep2[Replica 2]
@@ -1037,7 +1036,7 @@ Search engines should always prefer degraded availability over complete outage.
 
 Updates should move through a robust pipeline.
 
-```mermaid id="q4hy6p"
+```mermaid
 flowchart TD
     CrawlOutput[Crawl Output] --> Parse[Parser]
     Parse --> Dedup[Deduplication]
@@ -1179,7 +1178,7 @@ The system should support:
 * globally coordinated crawl pipeline
 * disaster recovery between regions
 
-```mermaid id="w7rj1e"
+```mermaid
 flowchart TB
     UsersUS[US Users] --> RegionUS[US Query Region]
     UsersEU[EU Users] --> RegionEU[EU Query Region]
@@ -1198,7 +1197,7 @@ Regional search quality can differ slightly due to freshness and replication del
 
 # 38. Final Architecture Diagram
 
-```mermaid id="h2p7c3"
+```mermaid
 flowchart TB
     Seeds[Seeds / Sitemaps / Links]
     Frontier[Crawl Frontier]

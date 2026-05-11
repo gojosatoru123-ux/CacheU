@@ -5,8 +5,6 @@ category: Design
 order: 8
 ---
 
-# Design a Complete Instagram-Like Social Media System
-
 An Instagram-like system is one of the most realistic and challenging system design problems because it combines nearly every major distributed systems concern in one product:
 
 * social graph
@@ -138,7 +136,7 @@ They are foundational.
 
 # 5. High-Level Architecture
 
-```mermaid id="insta_arch_01"
+```mermaid
 flowchart TB
     Mobile[Mobile App]
     Web[Web App]
@@ -262,7 +260,7 @@ The product has distinct surfaces with different architecture needs.
 
 A user typically follows this path:
 
-```mermaid id="insta_flow_01"
+```mermaid
 sequenceDiagram
     participant U as User
     participant G as Gateway
@@ -360,7 +358,7 @@ A graph DB or graph-like store is useful, but at huge scale many teams use a sha
 
 ## Graph Diagram
 
-```mermaid id="insta_graph_01"
+```mermaid
 flowchart LR
     A[User A] --> B[User B]
     A --> C[User C]
@@ -385,7 +383,7 @@ Access must be checked before content is returned.
 
 A private account should only expose content to approved followers.
 
-```mermaid id="insta_acl_01"
+```mermaid
 flowchart TD
     Request[Content Request] --> Auth[Authenticate User]
     Auth --> Privacy[Check Privacy Policy]
@@ -453,7 +451,7 @@ The media bytes should go directly to object storage, not through app servers.
 
 ## Upload Flow
 
-```mermaid id="insta_media_upload_01"
+```mermaid
 sequenceDiagram
     participant U as User
     participant M as Media Service
@@ -472,7 +470,7 @@ sequenceDiagram
 
 After upload, background workers should process the file.
 
-```mermaid id="insta_media_pipeline_01"
+```mermaid
 flowchart TD
     Upload[Raw Upload] --> Validate[Validate Type/Size]
     Validate --> ImageResize[Resize Images]
@@ -507,7 +505,7 @@ It reduces:
 * bandwidth cost
 * origin load
 
-```mermaid id="insta_cdn_01"
+```mermaid 
 flowchart LR
     User --> CDN[CDN Edge]
     CDN -->|Cache Hit| User
@@ -518,7 +516,7 @@ flowchart LR
 
 # 16. Post Creation Flow
 
-```mermaid id="insta_post_create_01"
+```mermaid
 sequenceDiagram
     participant U as User
     participant G as Gateway
@@ -601,7 +599,7 @@ This is usually the best production approach.
 * Fanout on read for high-fanout users
 * Cache merged feed results
 
-```mermaid id="insta_fanout_01"
+```mermaid 
 flowchart TB
     A[New Post]
     B{Follower Count Large?}
@@ -615,7 +613,7 @@ flowchart TB
 
 # 19. Feed Service Architecture
 
-```mermaid id="insta_feed_arch_01"
+```mermaid 
 flowchart LR
     PostCreated --> Kafka[(Kafka)]
     Kafka --> FeedWorker[Feed Worker]
@@ -649,7 +647,7 @@ Instagram-like ranking considers:
 
 ## Ranking Pipeline
 
-```mermaid id="insta_ranking_01"
+```mermaid 
 flowchart TB
     CandidateGen[Candidate Generation] --> Ranker[Ranking Model]
     Features[Feature Store] --> Ranker
@@ -699,7 +697,7 @@ They require:
 
 ## Story Architecture
 
-```mermaid id="insta_story_01"
+```mermaid
 flowchart LR
     User --> StorySvc[Story Service]
     StorySvc --> StoryDB[(Story Store)]
@@ -732,7 +730,7 @@ Reels are often served from a specialized ranking pipeline.
 
 ## Reels Feed Flow
 
-```mermaid id="insta_reels_01"
+```mermaid
 flowchart LR
     User --> ReelsAPI
     ReelsAPI --> CandidateGen
@@ -782,7 +780,7 @@ Comments should support:
 
 # 25. Likes Flow
 
-```mermaid id="insta_like_flow_01"
+```mermaid
 sequenceDiagram
     participant U as User
     participant L as Like Service
@@ -802,7 +800,7 @@ sequenceDiagram
 
 # 26. Comments Flow
 
-```mermaid id="insta_comment_flow_01"
+```mermaid
 sequenceDiagram
     participant U as User
     participant C as Comment Service
@@ -840,7 +838,7 @@ Use:
 * queue-backed delivery
 * presence service
 
-```mermaid id="insta_dm_01"
+```mermaid
 flowchart LR
     Sender --> WS[WebSocket Gateway]
     WS --> DM[Message Service]
@@ -869,7 +867,7 @@ Use Kafka and worker fleets to fan out notifications.
 
 ## Notification Flow
 
-```mermaid id="insta_notify_01"
+```mermaid
 flowchart LR
     Event[Social Event] --> Kafka[(Kafka)]
     Kafka --> Workers[Notification Workers]
@@ -902,7 +900,7 @@ Search should index:
 * metadata
 * popularity scores
 
-```mermaid id="insta_search_01"
+```mermaid
 flowchart LR
     PostEvents --> Kafka[(Kafka)]
     Kafka --> Indexer[Search Indexer]
@@ -944,7 +942,7 @@ Users may:
 
 Privacy rules must be enforced before any content is returned.
 
-```mermaid id="insta_privacy_01"
+```mermaid
 flowchart TD
     Request[Content Request] --> Auth[Authenticate]
     Auth --> BlockCheck[Check Blocks]
@@ -993,7 +991,7 @@ Use:
 
 # 34. Real-Time Activity Flow
 
-```mermaid id="insta_realtime_01"
+```mermaid
 flowchart LR
     Event[Post/Like/Comment Event] --> Kafka[(Kafka)]
     Kafka --> RealtimeGateway[WebSocket Gateway]
@@ -1089,7 +1087,7 @@ For celebrities:
 
 So the best production design is hybrid.
 
-```mermaid id="insta_fanout_hybrid_01"
+```mermaid
 flowchart TD
     PostCreated --> Decide{Celebrity?}
     Decide -->|No| FanoutWrite[Fanout on Write]
@@ -1143,7 +1141,7 @@ This is typically a multi-stage ranking system:
 
 # 42. Feed Rendering Flow
 
-```mermaid id="insta_feed_01"
+```mermaid
 sequenceDiagram
     participant User
     participant FeedAPI
@@ -1188,7 +1186,7 @@ Moderation should include:
 * rate limits
 * human review queues
 
-```mermaid id="insta_mod_01"
+```mermaid
 flowchart LR
     Content[New Content] --> Kafka[(Kafka)]
     Kafka --> TextFilter[Text Filter]
@@ -1221,7 +1219,7 @@ Track:
 
 Use Kafka to stream events into a warehouse for BI and ML.
 
-```mermaid id="insta_analytics_01"
+```mermaid
 flowchart TB
     SocialEvents --> Kafka[(Kafka)]
     Kafka --> StreamProc[Stream Processing]
@@ -1358,7 +1356,7 @@ Use:
 * CDN edge delivery
 * asynchronous event replication
 
-```mermaid id="insta_multi_region_01"
+```mermaid 
 flowchart TB
     US[US Region]
     EU[EU Region]
@@ -1417,7 +1415,7 @@ That separation makes the system scalable and maintainable.
 
 # 51. Final Production Architecture
 
-```mermaid id="insta_final_arch_01"
+```mermaid
 flowchart TB
     Client[Mobile / Web / Desktop]
     Gateway[API Gateway]

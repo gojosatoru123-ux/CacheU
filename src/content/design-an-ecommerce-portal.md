@@ -5,7 +5,6 @@ category: Design
 order: 16
 ---
 
-# Design a Complete Online E-Commerce Store
 
 An e-commerce system looks simple from the customer’s perspective.
 
@@ -252,7 +251,7 @@ But the writes are the most sensitive, especially checkout, inventory reservatio
 
 A real ecommerce system is typically service-oriented or microservices-based.
 
-```mermaid id="ecom1"
+```mermaid
 flowchart LR
     C[Customer App / Web / Mobile] --> LB[Load Balancer]
     LB --> APIGW[API Gateway]
@@ -585,7 +584,7 @@ Instead of immediately deducting stock at checkout initiation, the system can:
 4. convert reservation into final deduction
 5. release reservation if payment fails or times out
 
-```mermaid id="ecom-inv-1"
+```mermaid
 flowchart TD
     A[Checkout Request] --> B[Check Availability]
     B --> C{Enough Stock?}
@@ -647,7 +646,7 @@ This should be done as a **saga**, not a single distributed transaction.
 
 ## Checkout sequence
 
-```mermaid id="ecom-checkout-1"
+```mermaid
 sequenceDiagram
     participant U as Customer
     participant C as Cart Service
@@ -756,7 +755,7 @@ If order creation fails after payment authorization:
 
 This is essential for correctness.
 
-```mermaid id="ecom-saga-1"
+```mermaid
 flowchart LR
     A[Start Checkout] --> B[Reserve Inventory]
     B --> C[Authorize Payment]
@@ -802,7 +801,7 @@ For some orders, capture is delayed until shipment or fulfillment.
 
 An order should move through explicit states.
 
-```mermaid id="ecom-order-1"
+```mermaid
 stateDiagram-v2
     [*] --> Created
     Created --> InventoryReserved
@@ -854,7 +853,7 @@ The final checkout price may depend on:
 
 The pricing service should compute a **price quote** before checkout finalization.
 
-```mermaid id="ecom-price-1"
+```mermaid
 flowchart TD
     A[Cart] --> B[Base Price Lookup]
     B --> C[Promotion Engine]
@@ -959,7 +958,7 @@ If users cannot find products, the platform loses sales.
 
 ## Search pipeline
 
-```mermaid id="ecom-search-1"
+```mermaid
 flowchart LR
     CatalogChange[Catalog Update] --> Bus[(Event Bus)]
     Bus --> Indexer[Search Indexer]
@@ -1102,7 +1101,7 @@ After the order is created, the fulfillment pipeline begins.
 * address validation
 * zone/routing logic
 
-```mermaid id="ecom-ship-1"
+```mermaid
 sequenceDiagram
     participant O as Order Service
     participant F as Fulfillment Service
@@ -1133,7 +1132,7 @@ Customers expect:
 
 ## Return flow
 
-```mermaid id="ecom-return-1"
+```mermaid
 flowchart TD
     A[Customer Requests Return] --> B[Eligibility Check]
     B --> C{Eligible?}
@@ -1203,7 +1202,7 @@ The notification system informs users of:
 
 Notifications should be asynchronous.
 
-```mermaid id="ecom-notif-1"
+```mermaid
 flowchart LR
     Orders[Order Events] --> Bus[(Event Bus)]
     Bus --> Email[Email Service]
@@ -1395,7 +1394,7 @@ Example events:
 * ReturnRequested
 * RefundIssued
 
-```mermaid id="ecom-events-1"
+```mermaid
 flowchart LR
     Checkout[Checkout Orchestrator] --> Kafka[(Kafka Topics)]
     Kafka --> OrderSvc[Order Service]
@@ -1536,7 +1535,7 @@ A global ecommerce system should operate across regions.
 * warehouse proximity
 * reduced blast radius
 
-```mermaid id="ecom-region-1"
+```mermaid
 flowchart TB
     UsersNA[North America Users] --> NA[NA Region]
     UsersEU[Europe Users] --> EU[EU Region]
@@ -1561,7 +1560,7 @@ A practical design is:
 
 # 39. Order Lifecycle in Depth
 
-```mermaid id="ecom-order-lifecycle-1"
+```mermaid
 stateDiagram-v2
     [*] --> Draft
     Draft --> PendingInventory
@@ -1621,7 +1620,7 @@ Combine CDN, cache, and precomputed metadata so product pages are fast even unde
 
 # 42. Final Architecture Diagram
 
-```mermaid id="ecom-final-1"
+```mermaid
 flowchart TB
     Client[Web / Mobile / App]
     CDN[CDN]
@@ -1750,5 +1749,3 @@ The right production design uses:
 * **Observability** for everything that can fail
 
 The system succeeds when the customer experiences a simple flow, while the backend quietly handles an enormous amount of distributed complexity.
-
-If you want, I can turn this into an even more exhaustive version with separate deep dives for **search**, **inventory reservation algorithms**, **payment orchestration**, **marketplace seller flows**, and **return/refund systems**.

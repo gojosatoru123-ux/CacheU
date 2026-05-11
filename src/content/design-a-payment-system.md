@@ -5,8 +5,6 @@ category: Design
 order: 11
 ---
 
-# Design a Complete Online Payment System
-
 An online payment system looks simple when you see the user flow.
 
 A customer enters card details.
@@ -1497,5 +1495,3 @@ The core architectural principles are:
 * **Design for reconciliation from the start**
 
 That is what turns a payment API into a real-world payment platform.
-
-If you send the next system design topic, I’ll follow this same depth and structure.

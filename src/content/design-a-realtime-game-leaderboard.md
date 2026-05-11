@@ -5,7 +5,6 @@ category: Design
 order: 13
 ---
 
-# Design a Real-Time Game Leaderboard
 
 A real-time game leaderboard looks simple on the surface.
 
@@ -937,5 +936,3 @@ The main idea is simple:
 > keep the hot path fast, keep the truth durable, and keep the system recoverable.
 
 That is what turns a basic leaderboard into a production-grade real-time ranking platform.
-
-If you send the next topic, I’ll follow the same format and depth.

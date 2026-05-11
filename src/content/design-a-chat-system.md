@@ -5,8 +5,6 @@ category: Design
 order: 1
 ---
 
-# Design a Chat System
-
 Designing a chat system looks simple at first.
 
 A user sends a message.  

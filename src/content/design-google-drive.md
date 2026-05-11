@@ -5,8 +5,6 @@ category: Design
 order: 7
 ---
 
-# Design Google Drive
-
 Google Drive looks simple from the outside:
 
 * upload a file
@@ -38,7 +36,7 @@ A real Google Drive-like service must support:
 * quota enforcement
 * auditability and recovery
 
-Google’s real product behavior gives strong clues about the design. Google Drive supports shared drives where files belong to the team rather than an individual, and files remain in the shared drive even if members leave. Google also documents that Google storage is shared across Drive, Gmail, WhatsApp backups, and Google Photos. Drive for desktop supports syncing files and working offline, including shared drives. Google also documents upload and copy limits in shared drives, including a 750 GB per 24 hours per user limit and file support up to 5 TB. Sharing permissions include viewer, commenter, and editor roles. ([Google Help][1])
+Google’s real product behavior gives strong clues about the design. Google Drive supports shared drives where files belong to the team rather than an individual, and files remain in the shared drive even if members leave. Google also documents that Google storage is shared across Drive, Gmail, WhatsApp backups, and Google Photos. Drive for desktop supports syncing files and working offline, including shared drives. Google also documents upload and copy limits in shared drives, including a 750 GB per 24 hours per user limit and file support up to 5 TB. Sharing permissions include viewer, commenter, and editor roles.
 
 That means a real production design must handle both:
 
@@ -109,15 +107,15 @@ Design a Google Drive-like system where users can:
 
 A production design should reflect several real-world constraints documented by Google.
 
-Shared drives are team-owned spaces where files remain even if individual members leave, and access can be granted through shared drive membership or file-level permissions. ([Google Help][1])
+Shared drives are team-owned spaces where files remain even if individual members leave, and access can be granted through shared drive membership or file-level permissions. 
 
-Drive for desktop supports syncing files to a computer and allows offline work, including files from shared drives. ([Google Help][2])
+Drive for desktop supports syncing files to a computer and allows offline work, including files from shared drives. 
 
-Google storage is shared across Drive, Gmail, WhatsApp backups, and Google Photos, so quota management must be centralized at the account level. ([Google Help][3])
+Google storage is shared across Drive, Gmail, WhatsApp backups, and Google Photos, so quota management must be centralized at the account level.
 
-Google also documents shared-drive upload and copy limits of 750 GB per 24 hours per user, and file synchronization support up to 5 TB per file in shared drives. ([Google Help][4])
+Google also documents shared-drive upload and copy limits of 750 GB per 24 hours per user, and file synchronization support up to 5 TB per file in shared drives.
 
-Google Drive sharing supports permission levels such as viewer, commenter, and editor, which means access control must be enforced at both file and folder levels. ([Google Help][5])
+Google Drive sharing supports permission levels such as viewer, commenter, and editor, which means access control must be enforced at both file and folder levels. 
 
 ---
 
@@ -323,7 +321,7 @@ erDiagram
 
 This is one of the most important design distinctions.
 
-Google’s shared drives are team-owned storage spaces where the organization owns the files, not an individual. Files remain after members leave, and access is granted through membership and file/folder permissions. ([Google Help][1])
+Google’s shared drives are team-owned storage spaces where the organization owns the files, not an individual. Files remain after members leave, and access is granted through membership and file/folder permissions.
 
 That means the system needs two ownership models:
 
@@ -346,7 +344,7 @@ That means the system needs two ownership models:
 * shared visibility by default
 * folder-level limited access possible
 
-This is especially important for enterprise collaboration. ([Google Help][1])
+This is especially important for enterprise collaboration.
 
 ---
 
@@ -517,7 +515,7 @@ flowchart LR
 
 # 15. Permission Model
 
-Google Drive sharing supports viewer, commenter, and editor roles, so access control must be granular and explicit. ([Google Help][5])
+Google Drive sharing supports viewer, commenter, and editor roles, so access control must be granular and explicit. 
 
 A production system should support:
 
@@ -574,7 +572,7 @@ Sharing can happen in multiple ways:
 * folder inheritance
 * external collaborator access
 
-Google’s shared drives support membership-based access and tailored sharing with non-members, and files contributed by external people in a shared drive owned by the organization are owned by the organization. ([Google Help][1])
+Google’s shared drives support membership-based access and tailored sharing with non-members, and files contributed by external people in a shared drive owned by the organization are owned by the organization. 
 
 This means sharing must be modeled as a combination of:
 
@@ -587,7 +585,7 @@ This means sharing must be modeled as a combination of:
 
 # 17. Shared Drive Semantics
 
-Shared drives are team-owned and persistent by design. Even if a user leaves, files remain in the shared drive and continue to be available to the team. Google also notes that shared drives can be synced to desktop. ([Google Help][1])
+Shared drives are team-owned and persistent by design. Even if a user leaves, files remain in the shared drive and continue to be available to the team. Google also notes that shared drives can be synced to desktop. 
 
 This is an important architectural signal:
 
@@ -601,7 +599,7 @@ This is an important architectural signal:
 
 A Drive-like desktop client must maintain local and cloud copies.
 
-Google Drive for desktop supports syncing files to the cloud and using files offline, including files from shared drives. ([Google Help][2])
+Google Drive for desktop supports syncing files to the cloud and using files offline, including files from shared drives. 
 
 A production sync engine should support:
 
@@ -650,7 +648,7 @@ Users should be able to:
 * sync later
 * resolve conflicts safely
 
-Google explicitly states that Drive for desktop supports offline use and that changes sync back to the cloud when the device is online. ([Google Help][2])
+Google explicitly states that Drive for desktop supports offline use and that changes sync back to the cloud when the device is online. 
 
 ---
 
@@ -739,7 +737,7 @@ flowchart TD
 
 # 23. Storage Quota System
 
-Google notes that storage is shared across Google Drive, Gmail, WhatsApp backups, and Google Photos, so quota must be account-wide. ([Google Help][3])
+Google notes that storage is shared across Google Drive, Gmail, WhatsApp backups, and Google Photos, so quota must be account-wide. 
 
 This implies a unified quota service.
 
@@ -769,7 +767,7 @@ flowchart LR
 
 # 24. Large File Support
 
-Google documents that shared drive files can be uploaded and synchronized up to 5 TB in size, and users can upload/copy 750 GB within 24 hours. ([Google Help][4])
+Google documents that shared drive files can be uploaded and synchronized up to 5 TB in size, and users can upload/copy 750 GB within 24 hours. 
 
 That means the system must support:
 
@@ -799,7 +797,7 @@ A typical design:
 * retain for 30 days
 * purge after retention
 
-Google documents that files in Trash are deleted forever after 30 days and that shared drives have their own Trash. ([Google Help][1])
+Google documents that files in Trash are deleted forever after 30 days and that shared drives have their own Trash. 
 
 ---
 
@@ -992,7 +990,7 @@ This is why folder moves should emit events rather than trigger massive synchron
 
 # 34. Device Sync and Local Cache
 
-Google Drive for desktop provides local access and sync behavior, and offline files sync back when online. ([Google Help][2])
+Google Drive for desktop provides local access and sync behavior, and offline files sync back when online. 
 
 A production sync client should maintain:
 
@@ -1103,7 +1101,7 @@ So the design should enforce:
 
 The shared-drive model changes how ownership works.
 
-Google states that shared drive files belong to the team rather than an individual, and they remain in the drive even if members leave. ([Google Help][1])
+Google states that shared drive files belong to the team rather than an individual, and they remain in the drive even if members leave.
 
 So the data model must include:
 
@@ -1259,7 +1257,7 @@ Use:
 * malware scanning
 * suspicious activity detection
 
-Google documents shared-drive upload and copy limits, which shows that upload throttling is a real operational constraint. ([Google Help][4])
+Google documents shared-drive upload and copy limits, which shows that upload throttling is a real operational constraint. 
 
 ---
 
@@ -1388,11 +1386,11 @@ flowchart TB
 
 This design reflects the way Google Drive actually behaves in several important ways:
 
-* shared drives are team-owned and survive member departure ([Google Help][1])
-* Drive for desktop supports offline sync and sync back to cloud ([Google Help][2])
-* storage is shared across Drive, Gmail, WhatsApp backups, and Photos ([Google Help][3])
-* shared-drive uploads have large file support and daily caps ([Google Help][4])
-* sharing must support viewer/commenter/editor access patterns ([Google Help][5])
+* shared drives are team-owned and survive member departure 
+* Drive for desktop supports offline sync and sync back to cloud 
+* storage is shared across Drive, Gmail, WhatsApp backups, and Photos 
+* shared-drive uploads have large file support and daily caps 
+* sharing must support viewer/commenter/editor access patterns 
 
 Those product details are not just UI features. They shape the architecture itself.
 
@@ -1449,7 +1447,7 @@ The architecture should separate:
 
 That separation is what allows the system to remain scalable and maintainable at massive scale.
 
-The real Google Drive product behavior around shared drives, shared quota, offline sync, large upload limits, and permission roles strongly reinforces this architecture. ([Google Help][1])
+The real Google Drive product behavior around shared drives, shared quota, offline sync, large upload limits, and permission roles strongly reinforces this architecture.
 
 A production-grade Drive system is therefore a combination of:
 
@@ -1465,9 +1463,3 @@ A production-grade Drive system is therefore a combination of:
 * audit and compliance
 
 That is how you build a cloud file platform that can safely support personal storage, enterprise collaboration, offline access, and global scale.
-
-[1]: https://support.google.com/a/users/answer/7212025?hl=en "What are shared drives? - Google Workspace Learning Center"
-[2]: https://support.google.com/drive/answer/10838124?hl=en "Use Google Drive for desktop - Google Drive Help"
-[3]: https://support.google.com/drive/answer/6374270?hl=en "Manage your storage in Drive, Gmail & Photos - Google Drive Help"
-[4]: https://support.google.com/a/users/answer/7338880?hl=en "Shared drive limits in Google Drive - Google Workspace Learning Center"
-[5]: https://support.google.com/drive/answer/2494822?co=GENIE.Platform%3DDesktop&hl=en "Share files from Google Drive - Computer - Google Drive Help"

@@ -191,7 +191,7 @@
   {
     "slug": "design-a-live-streaming-service",
     "title": "Design a Live Streaming Service for Global Sports Broadcasting",
-    "description": "A production-grade, internet-scale architecture for live sports streaming across phones, TVs, web, and set-top boxes, covering ingest, transcoding, packaging, DRM, CDN delivery, low-latency playback, personalization, resilience, failover, observability, and multi-region operations.",
+    "description": "A deeper production-grade architecture for a global live sports streaming platform, with dedicated sections on HLS vs DASH vs CMAF, low-latency streaming, CDN architecture, DRM systems, and multi-region failover.",
     "category": "Design",
     "order": 3,
     "hasPractice": false,
@@ -272,7 +272,7 @@
   {
     "slug": "design-a-realtime-ai-chat-system",
     "title": "Design a ChatGPT-Style Real-Time AI Chat System",
-    "description": "A production-grade, internet-scale architecture for a ChatGPT or Gemini-like conversational AI platform supporting millions of chats, real-time token streaming, tool execution, retrieval-augmented generation, memory, multimodal inputs, safety, observability, and multi-region resilience.",
+    "description": "A deeper production-grade architecture for a ChatGPT or Gemini-like conversational AI platform, with dedicated sections on LLM serving internals, KV cache and batching, RAG architecture, agent/tool execution, memory design, and multi-region GPU orchestration.",
     "category": "Design",
     "order": 12,
     "hasPractice": false,
@@ -299,7 +299,7 @@
   {
     "slug": "design-a-url-shortner",
     "title": "Design a URL Shortener",
-    "description": "A production-grade, internet-scale architecture for a URL shortener supporting high-volume redirects, durable storage, custom aliases, analytics, abuse prevention, caching, multi-region availability, and failure recovery.",
+    "description": "A staff-level production architecture for a URL shortener, with dedicated deep dives on Base62 ID generation, distributed sharding, Redis cluster topology, CDN redirect caching, analytics schema, and multi-region failover.",
     "category": "Design",
     "order": 15,
     "hasPractice": false,

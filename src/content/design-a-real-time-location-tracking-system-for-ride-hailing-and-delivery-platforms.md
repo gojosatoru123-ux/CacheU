@@ -5,8 +5,6 @@ category: Design
 order: 4
 ---
 
-# Design a Real-Time Location Tracking System
-
 Ride-hailing and delivery platforms live or die by one capability:
 
 > knowing where the driver, rider, or delivery partner is right now, and doing it at scale.
@@ -154,7 +152,7 @@ That means:
 
 # 5. High-Level Architecture
 
-```mermaid id="loc_track_arch_01"
+```mermaid
 flowchart TB
     ClientApp[Driver / Courier Mobile App]
     RiderApp[Rider / Customer App]
@@ -276,7 +274,7 @@ The client should adapt based on:
 
 The mobile app captures location periodically and sends it to the backend.
 
-```mermaid id="gps_flow_01"
+```mermaid
 sequenceDiagram
     participant App as Driver App
     participant API as Ingest API
@@ -431,7 +429,7 @@ A common practical choice is:
 
 ## Nearby Search Diagram
 
-```mermaid id="geo_search_01"
+```mermaid
 flowchart LR
     Rider[Rider Request] --> Search[Geo Search]
     Search --> Bucket1[Geohash Bucket A]
@@ -460,7 +458,7 @@ The system then:
 
 ## Matching Flow
 
-```mermaid id="match_flow_01"
+```mermaid
 sequenceDiagram
     participant Rider as Rider App
     participant Match as Matching Service
@@ -508,7 +506,7 @@ Real ETA should consider:
 
 # 16. ETA Pipeline
 
-```mermaid id="eta_pipeline_01"
+```mermaid
 flowchart LR
     Location[Current Location] --> Route[Route Engine]
     Traffic[Traffic Feed] --> Route
@@ -537,7 +535,7 @@ This improves:
 
 ## Map Matching Flow
 
-```mermaid id="mapmatch_01"
+```mermaid
 flowchart TD
     RawGPS[Raw GPS Point] --> CandidateRoads[Candidate Road Segments]
     CandidateRoads --> ProbabilisticMatch[Best Match]
@@ -577,7 +575,7 @@ The system must detect:
 
 ## Geofence Flow
 
-```mermaid id="geofence_01"
+```mermaid
 flowchart LR
     GPS[Location Event] --> Fence[Geofence Engine]
     Fence -->|Enter| Enter[Zone Enter Event]
@@ -595,7 +593,7 @@ Polling is inefficient.
 
 Use WebSockets or server-sent events.
 
-```mermaid id="realtime_01"
+```mermaid
 flowchart LR
     LocationUpdate[New Location Event] --> RealtimeGW[Realtime Gateway]
     RealtimeGW --> CustomerApp[Customer App]
@@ -638,7 +636,7 @@ Kafka or a similar bus should carry:
 * dispatch events
 * alert events
 
-```mermaid id="event_bus_01"
+```mermaid
 flowchart LR
     Ingest[Location Ingest] --> Kafka[(Kafka)]
     Kafka --> Geo[Geofence Worker]
@@ -686,7 +684,7 @@ A history store should be append-only and partitioned by:
 
 ## History Flow
 
-```mermaid id="history_01"
+```mermaid
 flowchart LR
     LocationEvent --> HistoryWriter[History Writer]
     HistoryWriter --> HistoryDB[(History DB)]
@@ -726,7 +724,7 @@ You should detect:
 
 ## Fraud Detection Pipeline
 
-```mermaid id="fraud_01"
+```mermaid
 flowchart LR
     GPS[Location Events] --> Rules[Rule Engine]
     GPS --> ML[Anomaly Model]
@@ -752,7 +750,7 @@ Heartbeat signals help determine:
 
 ## Heartbeat Flow
 
-```mermaid id="heartbeat_01"
+```mermaid
 sequenceDiagram
     participant App
     participant Ingest
@@ -804,7 +802,7 @@ The backend must enforce ordering using:
 
 ## Ordering Logic
 
-```mermaid id="ordering_01"
+```mermaid
 flowchart TD
     Event[Incoming Location Event] --> Check[Check Sequence / Timestamp]
     Check --> Old{Older than latest?}
@@ -838,7 +836,7 @@ This improves locality and reduces cross-region traffic.
 
 ## Geo Sharding Diagram
 
-```mermaid id="shard_01"
+```mermaid
 flowchart LR
     Router[Location Router]
     Router --> City1[City Shard A]
@@ -879,7 +877,7 @@ Cache:
 * route summary
 * dispatcher view models
 
-```mermaid id="cache_01"
+```mermaid
 flowchart TB
     Client --> App
     App --> Redis[(Redis Cache)]
@@ -1132,7 +1130,7 @@ Cross-region replication should be used for:
 * backup/failover
 * admin visibility
 
-```mermaid id="multi_region_01"
+```mermaid
 flowchart TB
     India[India Region]
     SEA[SEA Region]
@@ -1221,7 +1219,7 @@ Track:
 
 # 44. Monitoring Architecture
 
-```mermaid id="obs_01"
+```mermaid
 flowchart TB
     Services --> Logs[(Logs)]
     Services --> Metrics[(Metrics)]
@@ -1269,7 +1267,7 @@ This prevents the live system from being slowed down by batch processing.
 
 # 46. Final Production Architecture
 
-```mermaid id="final_arch_01"
+```mermaid
 flowchart TB
     Driver[Driver / Courier / Pilot App]
     Rider[Customer / Dispatcher App]

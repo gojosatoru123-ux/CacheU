@@ -5,8 +5,6 @@ category: Design
 order: 10
 ---
 
-# Design YouTube
-
 Designing a YouTube-like system is one of the most interesting high-level design problems because it combines almost every major distributed systems challenge in one product:
 
 - massive video uploads
@@ -147,7 +145,7 @@ At peak, traffic can be 5x–10x higher.
 
 A YouTube-like system is best built using multiple specialized services.
 
-```mermaid id="yt_arch_01"
+```mermaid
 flowchart TB
     Client1[Web Client]
     Client2[Mobile Client]
@@ -256,7 +254,7 @@ It handles:
 * SSL termination
 * API versioning
 
-```mermaid id="yt_gateway_01"
+```mermaid
 flowchart LR
     Client --> Gateway[API Gateway]
     Gateway --> AuthSvc[Auth Service]
@@ -323,7 +321,7 @@ The platform must generate:
 
 This is expensive and must be asynchronous.
 
-```mermaid id="yt_transcode_01"
+```mermaid
 flowchart TD
     A[Raw Upload] --> B[Queue / Event Bus]
     B --> C[Transcoding Workers]
@@ -375,7 +373,7 @@ With CDN:
 * playback becomes faster
 * origin storage load drops dramatically
 
-```mermaid id="yt_cdn_01"
+```mermaid
 flowchart LR
     User --> Edge[CDN Edge Node]
     Edge -->|Cache Hit| User
@@ -479,7 +477,7 @@ Uploading a video should not block the user until transcoding finishes.
 
 Instead:
 
-```mermaid id="yt_upload_01"
+```mermaid
 sequenceDiagram
     participant Client
     participant API
@@ -524,7 +522,7 @@ The system should optimize it aggressively.
 
 ## Playback Flow
 
-```mermaid id="yt_playback_01"
+```mermaid
 sequenceDiagram
     participant User
     participant Player
@@ -556,7 +554,7 @@ The player chooses among:
 
 If the network is slow, the player switches to a lower bitrate.
 
-```mermaid id="yt_adaptive_01"
+```mermaid
 flowchart TB
     A[Player] --> B{Network Quality}
     B -->|Low| C[240p / 360p]
@@ -643,7 +641,7 @@ Store small structured metadata separately from video blobs.
 
 ## ER Diagram
 
-```mermaid id="yt_er_01"
+```mermaid
 erDiagram
     USER ||--o{ VIDEO : uploads
     USER ||--o{ COMMENT : writes
@@ -717,7 +715,7 @@ Caching is essential.
 
 ## Cache Layers
 
-```mermaid id="yt_cache_01"
+```mermaid
 flowchart LR
     User --> App
     App --> Redis[(Redis Cache)]
@@ -745,7 +743,7 @@ Better approach:
 
 ## Counter Flow
 
-```mermaid id="yt_counter_01"
+```mermaid
 flowchart LR
     User --> LikeService
     LikeService --> Kafka[(Kafka)]
@@ -775,7 +773,7 @@ Users subscribe to channels and receive notifications when creators upload new v
 
 ## Subscription Flow
 
-```mermaid id="yt_sub_01"
+```mermaid
 flowchart LR
     User --> SubService
     SubService --> SubDB[(Subscription DB)]
@@ -797,7 +795,7 @@ To handle this:
 * prioritize active users
 * avoid synchronous fanout
 
-```mermaid id="yt_notify_01"
+```mermaid
 flowchart TB
     UploadEvent[New Video Uploaded] --> Kafka[(Kafka)]
     Kafka --> Worker1[Notification Worker 1]
@@ -816,7 +814,7 @@ Every uploaded video should eventually be searchable.
 
 The search pipeline is async.
 
-```mermaid id="yt_search_01"
+```mermaid
 flowchart LR
     VideoUpload --> Kafka[(Kafka)]
     Kafka --> SearchIndexer
@@ -869,7 +867,7 @@ Used for:
 
 ## Recommendation Pipeline Diagram
 
-```mermaid id="yt_rec_01"
+```mermaid
 flowchart TB
     Events[User Events] --> Kafka[(Kafka)]
     Kafka --> BatchPipeline[Offline Batch Processing]
@@ -923,7 +921,7 @@ Usually use:
 
 ## Comment Flow
 
-```mermaid id="yt_comment_01"
+```mermaid
 sequenceDiagram
     participant User
     participant CommentSvc
@@ -983,7 +981,7 @@ The upload pipeline is one of the most complex parts of the system.
 
 ## Pipeline Diagram
 
-```mermaid id="yt_pipeline_01"
+```mermaid
 flowchart TD
     A[Raw Upload] --> B[Virus Scan]
     B --> C[Metadata Extraction]
@@ -1020,7 +1018,7 @@ This improves:
 
 ## Chunking Diagram
 
-```mermaid id="yt_chunks_01"
+```mermaid
 flowchart LR
     Video[Video File] --> Segments[Chunk 1 / Chunk 2 / Chunk 3 / ...]
     Segments --> CDN[CDN Distribution]
@@ -1044,7 +1042,7 @@ You need:
 
 ## Multi-Region Design
 
-```mermaid id="yt_region_01"
+```mermaid
 flowchart TB
     U1[Users - India] --> R1[India Region]
     U2[Users - US] --> R2[US Region]
@@ -1072,7 +1070,7 @@ It should be written asynchronously.
 
 ## Watch History Flow
 
-```mermaid id="yt_watch_01"
+```mermaid
 flowchart LR
     Player --> EventBus[(Kafka)]
     EventBus --> WatchHistoryService
@@ -1100,7 +1098,7 @@ Use asynchronous pipelines.
 
 ## Analytics Architecture
 
-```mermaid id="yt_analytics_01"
+```mermaid
 flowchart TB
     Events[Playback / Engagement Events] --> Kafka[(Kafka)]
     Kafka --> StreamProcessor[Streaming Job]
@@ -1135,7 +1133,7 @@ The design must handle:
 
 ## Viral Spike Flow
 
-```mermaid id="yt_viral_01"
+```mermaid
 flowchart TD
     ViralVideo --> MoreViews
     MoreViews --> CDNPressure
@@ -1277,7 +1275,7 @@ The system must shard large data sets.
 
 ## Sharding Diagram
 
-```mermaid id="yt_shard_01"
+```mermaid
 flowchart LR
     V1[Video 1] --> S1[Shard 1]
     V2[Video 2] --> S2[Shard 2]
@@ -1415,7 +1413,7 @@ Use sharding, caches, and asynchronous aggregation.
 
 # 42. Final Production Architecture
 
-```mermaid id="yt_final_01"
+```mermaid
 flowchart TB
     Client --> LB[Load Balancer]
     LB --> APIGW[API Gateway]

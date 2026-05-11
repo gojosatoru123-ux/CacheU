@@ -1,41 +1,36 @@
 ---
 title: Design a URL Shortener
-description: A production-grade, internet-scale architecture for a URL shortener supporting high-volume redirects, durable storage, custom aliases, analytics, abuse prevention, caching, multi-region availability, and failure recovery.
+description: A staff-level production architecture for a URL shortener, with dedicated deep dives on Base62 ID generation, distributed sharding, Redis cluster topology, CDN redirect caching, analytics schema, and multi-region failover.
 category: Design
 order: 15
 ---
-
-# Design a URL Shortener
 
 A URL shortener seems simple at first.
 
 A user submits a long URL.
 The system returns a short one.
-When someone opens the short link, they get redirected to the original destination.
+Someone clicks it.
+They get redirected to the original destination.
 
 That is the user-facing behavior.
 
-Underneath, a real production URL shortener must handle:
+Behind it, a production URL shortener is a **read-heavy, latency-critical distributed system** that must handle:
 
-* enormous redirect traffic
-* low-latency redirection
+* billions of redirects
+* extreme burst traffic from viral links
 * custom aliases
-* link expiration
-* analytics and click tracking
-* anti-abuse checks
-* deduplication and idempotency
-* hot-link protection
+* expiration and deletion
+* abuse prevention and safe browsing
+* durable storage
+* analytics collection
+* CDN and edge optimization
 * multi-region availability
 * disaster recovery
-* cache efficiency
-* durable storage
-* safe and scalable short code generation
+* fast and safe short code generation
 
-At scale, the system becomes a **read-heavy, latency-critical distributed service**.
+The core principle is simple:
 
-The most important thing to understand is this:
-
-> creating short URLs is the easy part; serving billions of redirects reliably is the hard part.
+> Creating short URLs is easy. Serving billions of redirects reliably is the hard part.
 
 ---
 
@@ -61,8 +56,8 @@ A serious URL shortener may see:
 
 * tens or hundreds of millions of shortened URLs
 * billions of redirect requests
-* a few write requests compared to an enormous number of read requests
-* huge bursts when short links go viral
+* read traffic that dwarfs write traffic
+* sudden traffic spikes when links go viral
 
 ## Why this problem is difficult
 
@@ -72,18 +67,16 @@ The hard parts are:
 
 * generating unique short codes at scale
 * keeping redirect latency extremely low
-* preventing a single viral link from overloading origin infrastructure
+* preventing one viral link from overwhelming origin infrastructure
 * supporting analytics without slowing redirects
-* handling link spam and phishing
-* keeping services online during regional failures
+* handling spam, phishing, and abuse
+* keeping the service online during partial region failures
 
-A good URL shortener is really a **global redirect and tracking system**.
+A good URL shortener is really a **global redirect and tracking platform**.
 
 ---
 
 # 2. Functional Requirements
-
-The system should support:
 
 | Requirement      | Description                               |
 | ---------------- | ----------------------------------------- |
@@ -136,11 +129,11 @@ For 5 billion redirects/day:
 5,000,000,000 / 86,400 ≈ 57,870 redirects/sec average
 ```
 
-Peak traffic could easily be 5x–20x higher due to viral links, social media amplification, or campaigns.
+Peak traffic could be 5x–20x higher due to viral links, social amplification, or campaigns.
 
 So the platform should be designed for:
 
-* tens of thousands of redirects per second average
+* tens of thousands of redirects/sec average
 * hundreds of thousands or more during peaks
 
 ## Storage estimate
@@ -164,18 +157,7 @@ For 100 million links at ~500 bytes each:
 100,000,000 × 500 bytes = 50,000,000,000 bytes ≈ 50 GB raw
 ```
 
-With replicas, indexes, and backup copies, real operational storage is much higher.
-
-## Bandwidth
-
-Redirect responses are very small compared to video or media systems, but the sheer request volume is massive.
-
-A redirect service must therefore optimize:
-
-* response headers
-* cache hits
-* DB lookups
-* edge routing
+With replicas, indexes, and backups, real operational storage is much higher.
 
 ---
 
@@ -265,16 +247,9 @@ This is a classic production design rule.
 }
 ```
 
----
-
 ## 7.2 Redirect
 
 `GET /{short_code}`
-
-This endpoint should return:
-
-* `301 Moved Permanently` for permanent links
-* `302 Found` or `307 Temporary Redirect` for temporary links
 
 ### Redirect flow
 
@@ -299,8 +274,6 @@ sequenceDiagram
     R->>K: Emit click event async
 ```
 
----
-
 ## 7.3 Link analytics
 
 `GET /v1/links/{short_code}/stats`
@@ -312,9 +285,7 @@ Returns:
 * clicks by device
 * clicks by date
 * referrers
-* user agent breakdown
-
----
+* browser breakdown
 
 ## 7.4 Update link
 
@@ -364,764 +335,661 @@ This keeps the primary write path clean.
 
 ---
 
-# 9. Short Code Generation
+# 9. Base62 ID Generation Deep Dive
 
-This is one of the central design decisions.
+This is one of the most important design choices.
 
-A short code must be:
-
-* unique
-* compact
-* easy to generate
-* easy to resolve
-* scalable
-* safe from collisions
-
-## Option 1: Base62 encoding of a unique numeric ID
-
-This is usually the best production choice.
-
-Example numeric ID:
-
-```text
-123456789
-```
-
-Base62 encoding converts it to a shorter alphanumeric string.
-
-Base62 alphabet:
-
-* a-z
-* A-Z
-* 0-9
-
-### Why Base62 is good
+The system needs a short code that is:
 
 * compact
 * URL-safe
+* unique
+* fast to generate
 * easy to decode
-* deterministic
-* very scalable
+* scalable under high concurrency
 
----
+## Why Base62 is a strong fit
 
-## Option 2: Hash of long URL
+Base62 uses:
 
-This may look attractive, but it is usually not ideal by itself.
+* lowercase letters
+* uppercase letters
+* digits
 
-Problems:
+That gives 62 symbols and makes codes much shorter than decimal or hex.
 
-* collisions are possible
-* identical long URLs would always map to the same short code unless additional logic is added
-* changing one character in the URL produces a completely different code
-* custom aliases become awkward
+Example:
 
-Hashing can still be useful for deduplication or canonicalization, but not as the sole short code strategy.
-
----
-
-## Option 3: Distributed ID generation
-
-To support massive scale, generate unique IDs using:
-
-* central sequence service
-* Snowflake-style distributed ID generation
-* pre-allocated ID blocks
-
-Then encode the numeric ID into Base62.
-
-### Example
-
-* internal numeric ID: `987654321`
+* internal ID: `987654321`
 * Base62 code: `g5Hk2`
 
-This is simple and production friendly.
+The code is shorter, easy to embed in URLs, and avoids punctuation.
 
 ---
 
-# 10. ID Generation at Scale
+## Base62 math
 
-A single central counter can become a bottleneck.
+If the code length is 6 characters:
 
-There are several practical strategies.
+```text
+62^6 ≈ 56 billion
+```
 
-## Strategy 1: Central ID service
+That is enough space for very large scale.
 
-A dedicated service allocates IDs sequentially.
+If length is 7:
+
+```text
+62^7 ≈ 3.5 trillion
+```
+
+That gives even more room for future growth.
+
+---
+
+## Recommended generation pipeline
+
+The cleanest production approach is:
+
+1. generate a unique numeric ID
+2. encode it into Base62
+3. store mapping from short code to long URL
+4. enforce a unique index on short code
+
+```mermaid
+flowchart TD
+    A[Request Create Short URL] --> B[Generate Numeric ID]
+    B --> C[Base62 Encode]
+    C --> D[Store short_code -> long_url]
+    D --> E[Return Short URL]
+```
+
+---
+
+## Numeric ID generation strategies
+
+### 1. Central sequence service
+
+A dedicated sequence allocator returns monotonically increasing IDs.
 
 Pros:
 
 * simple
-* no collisions
+* deterministic
+* easy to reason about
 
 Cons:
 
-* can become a hotspot
-* availability must be high
+* can become a bottleneck
+* needs strong availability
 
----
+### 2. Block allocation
 
-## Strategy 2: Pre-allocated blocks
-
-Each app server gets a block of IDs from the ID service.
+Each app node gets a block of IDs.
 
 Example:
 
-* server A gets 1,000,000–1,999,999
-* server B gets 2,000,000–2,999,999
+* node A gets 1,000,000–1,999,999
+* node B gets 2,000,000–2,999,999
 
 Pros:
 
-* reduces central contention
-* scalable
+* low contention
+* good throughput
 
 Cons:
 
-* block waste if a server crashes
+* unused blocks may be wasted on node failure
 
----
+### 3. Snowflake-style IDs
 
-## Strategy 3: Snowflake-style distributed IDs
-
-Combine:
-
-* timestamp
-* machine ID
-* sequence number
+Combine timestamp, machine id, and sequence bits.
 
 Pros:
 
 * highly scalable
-* no central bottleneck
+* distributed
+* no single writer bottleneck
 
 Cons:
 
-* more complex
-* must manage clock drift carefully
+* requires clock discipline
+* more engineering complexity
 
-For a URL shortener, **pre-allocated blocks or Snowflake-style IDs** are the most practical options.
+### Recommended choice
 
----
-
-# 11. Redirect Path Design
-
-The redirect path is the most performance-sensitive part of the system.
-
-## Redirect requirements
-
-* extremely low latency
-* very high availability
-* tiny CPU overhead
-* minimal external calls
-* cache-first resolution
-
-## Redirect flow
-
-1. user requests `/{short_code}`
-2. service checks local in-memory cache or Redis
-3. if hit, immediately return redirect
-4. if miss, query database
-5. fill cache
-6. return redirect
-7. asynchronously emit click event
-
-```mermaid
-flowchart TD
-    A[Incoming GET /{short_code}] --> B[Edge / CDN / LB]
-    B --> C[Redirect Service]
-    C --> D{Cache hit?}
-    D -->|Yes| E[Return redirect immediately]
-    D -->|No| F[DB lookup]
-    F --> G{Found?}
-    G -->|Yes| H[Populate cache]
-    H --> E
-    G -->|No| I[404 / 410 response]
-```
-
-### Why click logging must be async
-
-If redirect waits for analytics write, latency goes up and throughput drops.
-
-A user cares about being redirected.
-Analytics can arrive a few milliseconds or seconds later.
+For a URL shortener, **block allocation or Snowflake-style IDs** are the most practical at high scale.
 
 ---
 
-# 12. Caching Strategy
+## Collision handling
 
-Cache is critical.
+Even with strong ID generation, the database should still enforce uniqueness.
 
-Redirect traffic is much larger than creation traffic, so the cache must absorb the majority of reads.
+If the generated short code already exists:
 
-## Cache layers
+* retry generation
+* generate a new numeric ID
+* store again
 
-### L1: In-process memory cache
-
-Very fast, small size, best for hot URLs.
-
-### L2: Redis cluster
-
-Shared cache for all app servers.
-
-### L3: Database fallback
-
-Used only on cache miss or cold start.
-
-## What to cache
-
-* short_code → long_url
-* short_code → status
-* short_code → expiration info
-* short_code → redirect type
-
-### Why cache is powerful
-
-A viral short link may receive millions of clicks.
-If every click hits the database, the system can collapse.
-A cache turns repeated reads into memory lookups.
+Because uniqueness is enforced at the DB layer, the system remains correct even under rare collisions.
 
 ---
 
-# 13. Bloom Filter for Nonexistent Codes
+## Custom alias handling
 
-A Bloom filter can help reject invalid short codes quickly.
+Custom aliases bypass automatic generation.
 
-## Why use it
+Example:
 
-Many requests may be:
+* user requests `/systemdesign`
+* service checks reserved words
+* validates uniqueness
+* writes alias as the primary short code
 
-* typos
-* bots
-* random scans
-* invalid codes
-
-If the system can quickly determine that a code almost certainly does not exist, it can avoid wasted DB lookups.
-
-## Tradeoff
-
-Bloom filters can produce false positives but not false negatives.
-
-That means:
-
-* if Bloom says “not present,” you can safely reject
-* if Bloom says “present,” you still verify in cache or DB
-
-This improves performance and lowers backend load.
+Custom aliases should be treated as a controlled namespace, often with stricter validation and abuse checks.
 
 ---
 
-# 14. CDN and Edge Optimization
+# 10. Distributed Sharding Deep Dive
 
-A CDN can help with:
+At scale, the link store cannot stay on one machine or even one database primary.
 
-* edge termination
-* geographic routing
-* cached redirect responses
-* DDoS protection
-* faster access close to the user
+It must be partitioned.
 
-## Why CDN matters
+## Sharding goals
 
-Short URL traffic can be geographically distributed.
-Pushing redirect handling closer to the edge reduces latency.
+* distribute load evenly
+* avoid hot partitions
+* support horizontal scale
+* keep lookup latency low
+* allow independent shard growth
 
-### When CDN caching is useful
+## Recommended shard key
 
-* highly popular links
-* static permanent redirects
-* custom brand domains
-* campaign links
-
-### When CDN is less useful
-
-* personalized dynamic redirects
-* rapidly changing link destinations
-* links with strict auth policies
-
----
-
-# 15. Multi-Region Architecture
-
-A global service should not depend on one region.
-
-## Goals
-
-* low latency for users worldwide
-* failover during region outages
-* continued read availability
-* geographically replicated link mappings
-
-```mermaid
-flowchart TB
-    UsersNA[North America Users] --> RegionNA[NA Region]
-    UsersEU[Europe Users] --> RegionEU[EU Region]
-    UsersAPAC[APAC Users] --> RegionAPAC[APAC Region]
-
-    RegionNA --> GlobalReplication[(Cross-Region Replication)]
-    RegionEU --> GlobalReplication
-    RegionAPAC --> GlobalReplication
-```
-
-## Practical design
-
-* one write primary per link or shard
-* replicated read copies in other regions
-* async replication for analytics and metadata
-* DNS or global load balancer routes users to nearest healthy region
-
-### Tradeoff
-
-Strong global consistency is expensive and unnecessary for most shortener use cases.
-Eventual consistency with safe redirects is usually the correct tradeoff.
-
----
-
-# 16. Replication and Consistency
-
-## Read consistency
-
-Redirects can usually tolerate read replicas if replication lag is small.
-
-## Write consistency
-
-Creation must be durable before the response returns.
-
-That means:
-
-* link creation should be acknowledged only after the mapping is stored safely
-* the DB write should be replicated enough to survive failures
-
-## What can be eventually consistent
-
-* click analytics
-* counter aggregation
-* dashboards
-* fraud scoring
-* trending statistics
-
-## What should be strongly durable
-
-* the mapping itself
-* custom alias uniqueness
-* expiration state
-* link disable/enable status
-
----
-
-# 17. Collision and Uniqueness Handling
-
-If the system generates a short code automatically, collisions must be avoided.
-
-## How to enforce uniqueness
-
-* use unique DB constraint on `short_code`
-* retry code generation if a collision occurs
-* pre-allocate ID blocks or use distributed IDs to reduce collision probability
-
-## Custom alias conflicts
-
-If a user requests:
-
-```text
-sho.rt/summer
-```
-
-and that alias already exists, the system must reject or suggest alternatives.
-
-This is a straightforward but important part of the write path.
-
----
-
-# 18. Custom Alias Support
-
-Custom aliases are useful for branding and memorability.
-
-Examples:
-
-* `sho.rt/sale`
-* `sho.rt/docs`
-* `sho.rt/event2026`
-
-## Validation rules
-
-* length limits
-* allowed characters
-* reserved words
-* profanity filters
-* uniqueness check
-* abuse check
-
-Custom aliases should be treated as premium or controlled resources because they are scarce and more likely to be abused.
-
----
-
-# 19. Link Expiration and Lifecycle
-
-Links may expire for:
-
-* campaigns
-* temporary promotions
-* safety reasons
-* user-specified TTL
-
-## Link states
-
-| State       | Meaning                          |
-| ----------- | -------------------------------- |
-| active      | Redirect works                   |
-| expired     | Time-based expiration reached    |
-| disabled    | Admin or owner disabled the link |
-| deleted     | Link removed or soft-deleted     |
-| quarantined | Under abuse review               |
-
-### Expired link response
-
-A good design returns:
-
-* `410 Gone` for expired links
-* `404 Not Found` for nonexistent links
-
-This distinction is useful and more semantically correct.
-
----
-
-# 20. Abuse Prevention and Security
-
-URL shorteners are frequently abused.
-
-They can hide:
-
-* phishing
-* malware
-* spam campaigns
-* tracking abuse
-* malicious redirects
-
-## Security defenses
-
-* URL reputation scanning
-* malware checks
-* safe browsing integration
-* domain blacklists
-* pattern-based abuse detection
-* rate limiting
-* sandboxed preview inspection
-* manual admin review
-
-## Why this matters
-
-A short link is designed to be opaque.
-That makes it attractive to attackers.
-Security is therefore a first-class requirement.
-
----
-
-# 21. Rate Limiting
-
-The platform should limit:
-
-* link creation per user
-* API requests per IP
-* custom alias attempts
-* suspicious redirect bursts
-* invalid code scans
-
-## Implementation
-
-A token bucket or leaky bucket algorithm backed by Redis is a common choice.
-
-### Example limits
-
-* anonymous creation: very limited
-* authenticated user creation: moderate
-* enterprise API key: higher quota
-* suspicious traffic: tightened or blocked
-
-Rate limiting protects both infrastructure and abuse response.
-
----
-
-# 22. Analytics Pipeline
-
-Analytics should never block redirects.
-
-## Event types
-
-* click event
-* referrer
-* country
-* device
-* browser
-* timestamp
-* link state
-* response type
-
-## Pipeline
-
-1. redirect happens immediately
-2. click event emitted to Kafka
-3. stream processor enriches event
-4. analytics store and warehouse update
-5. dashboard reads aggregated data
-
-```mermaid
-flowchart LR
-    Redirect[Redirect Service] --> Kafka[(Kafka)]
-    Kafka --> Stream[Stream Processor]
-    Stream --> AnalyticsDB[(Analytics Store)]
-    Stream --> Warehouse[(Data Warehouse)]
-```
-
-## Why asynchronous analytics is essential
-
-Tracking can fail without affecting the user-facing redirect flow.
-That is the correct separation of concerns.
-
----
-
-# 23. Search and Preview Features
-
-Some URL shorteners offer:
-
-* link previews
-* destination metadata
-* title extraction
-* safe browsing warnings
-* QR codes
-
-These are useful but secondary features.
-
-### Important design rule
-
-Do not fetch or preview destination URLs on the hot redirect path.
-If previews are needed, they should be done asynchronously or at creation time with careful sandboxing.
-
----
-
-# 24. API Keys and Developer Platform
-
-Many URL shorteners offer API access to partners or business users.
-
-## Developer features
-
-* API key management
-* usage quotas
-* custom domains
-* analytics exports
-* webhooks
-* bulk creation
-* campaign tagging
-
-This turns the shortener into a platform, not just a utility.
-
----
-
-# 25. Data Model
-
-A practical schema might include:
-
-## Links table
-
-| Field        | Type      | Notes                   |
-| ------------ | --------- | ----------------------- |
-| short_code   | string    | Primary key             |
-| long_url     | text      | Destination             |
-| user_id      | string    | Owner                   |
-| created_at   | timestamp | Creation                |
-| expire_at    | timestamp | Expiration              |
-| status       | enum      | active/expired/disabled |
-| click_count  | bigint    | Counter                 |
-| custom_alias | boolean   | Alias type              |
-| metadata     | json      | Optional tags           |
-
-## Click events table
-
-| Field           | Type      | Notes                        |
-| --------------- | --------- | ---------------------------- |
-| event_id        | string    | Unique ID                    |
-| short_code      | string    | Link                         |
-| timestamp       | timestamp | Event time                   |
-| referrer        | string    | Source                       |
-| country         | string    | Geo                          |
-| device          | string    | Device type                  |
-| user_agent_hash | string    | Privacy-friendly fingerprint |
-
----
-
-# 26. Sharding Strategy
-
-As the dataset grows, the database must be sharded.
-
-## Good shard key
-
-Short code hash is usually a good choice.
+For auto-generated codes, a hash of `short_code` is usually a good choice:
 
 ```text
 shard = hash(short_code) % N
 ```
 
-### Why this works
-
-* evenly distributes data
-* avoids hot partitions caused by sequential IDs
-* supports horizontal scale
-
-## Alternative
-
-Shard by user ID if per-user management and quotas matter heavily.
-
-That can simplify account-based dashboards but may create hotspots for power users.
+This spreads records evenly.
 
 ---
 
-# 27. Hot Link Problem
+## Why not shard by creation time
 
-A viral link can get enormous traffic.
+Creation time can create hot ranges because newly created links are accessed heavily right away.
+That makes time-based sharding risky.
 
-Example:
+## Why not shard by user_id only
 
-* celebrity post
-* major news event
-* campaign landing page
-
-## Risk
-
-One short link might receive millions of clicks per minute.
-
-## Mitigations
-
-* cache at edge and Redis
-* replicate hot records
-* keep redirect path CPU-light
-* async analytics
-* autoscale redirect servers
-* consider CDN response caching for permanent links
-
-This is one of the most important practical issues in URL shortening.
+User-based sharding can be helpful for dashboards and ownership views, but viral links might all belong to one user or one campaign, creating a hotspot.
 
 ---
 
-# 28. Data Lifecycle and Archival
+## Shard metadata service
 
-Not all links need to stay hot forever.
+The platform should maintain metadata about:
 
-## Lifecycle strategy
+* shard map
+* shard health
+* shard replicas
+* ownership
+* rebalancing state
 
-* active links remain in fast storage
-* old and inactive links can move to cold storage
-* expired links can be retained for audit or deleted per policy
+```mermaid
+flowchart LR
+    Client[Redirect/Create Request] --> Router[Shard Router]
+    Router --> S1[Shard 1]
+    Router --> S2[Shard 2]
+    Router --> S3[Shard 3]
+    Router --> S4[Shard 4]
+    Meta[Shard Metadata Service] --> Router
+```
 
-### Why archive
-
-* reduce cost
-* simplify active dataset
-* preserve analytics history
-* support compliance and user requests
-
----
-
-# 29. Observability
-
-A URL shortener must be observable.
-
-## Important metrics
-
-| Metric           | Why it matters              |
-| ---------------- | --------------------------- |
-| Redirect latency | User experience             |
-| Cache hit rate   | Performance and cost        |
-| DB read latency  | Backend load                |
-| Create latency   | Write path health           |
-| 404 / 410 rate   | Invalid/expired link trends |
-| Click event lag  | Analytics freshness         |
-| Abuse flags      | Security monitoring         |
-| CDN hit ratio    | Edge effectiveness          |
-
-## Logging
-
-Every request should log:
-
-* request id
-* short code
-* region
-* cache hit/miss
-* response status
-* timing breakdown
-
-This helps diagnose hot links, failures, and abuse.
+The router decides where the lookup or write should go.
 
 ---
 
-# 30. Failure Scenarios
+## Consistent hashing
 
-## Cache failure
+Consistent hashing helps reduce reshuffling when shards are added or removed.
 
-Fallback to DB, then repopulate cache.
+That matters because shard rebalancing can otherwise become expensive.
 
-## DB failure
+### Benefits
 
-Use replicas and failover.
+* fewer keys move during resharding
+* better operational stability
+* easier scale-out
 
-## Region failure
+### Tradeoff
 
-Route traffic to another region with replicated data.
-
-## Kafka failure
-
-Redirects continue; analytics may lag until Kafka recovers.
-
-## Bloom filter false positive
-
-No issue; DB verifies the mapping.
-
-The redirect flow should remain available even if non-critical subsystems are degraded.
+* more complex routing layer
+* still requires rebalancing tools and observability
 
 ---
 
-# 31. CAP Theorem Considerations
+## Hot partition mitigation
 
-URL shorteners generally favor:
+A viral link can cause a huge hotspot.
 
-* **Availability**
-* **Partition tolerance**
+Mitigations:
 
-Why?
-Because a redirect should work even if some replicas or analytics systems are partitioned.
-
-It is better to serve a slightly stale but valid redirect than to fail the redirect entirely.
-
-### Consistency tradeoff
-
-For the mapping itself, you want strong durability on create.
-For analytics and dashboards, eventual consistency is acceptable.
+* cache aggressively
+* place hot keys in Redis and CDN
+* replicate read traffic
+* isolate viral campaigns by region
+* rate limit abusive scanners
+* autoscale redirect workers
 
 ---
 
-# 32. Advanced Optimizations
+# 11. Redis Cluster Topology Deep Dive
 
-## 32.1 In-memory hotset
+Redis is crucial in a URL shortener because redirects are read-heavy and latency-sensitive.
 
-Keep the most frequently accessed links in local memory on redirect servers.
+## What Redis stores
 
-## 32.2 Negative cache
+Typical Redis keys:
 
-Cache nonexistent or expired codes briefly to avoid repeated DB misses.
+* `short_code -> long_url`
+* `short_code -> status`
+* `short_code -> expire_at`
+* `short_code -> redirect_policy`
+* `user_id -> quota`
+* `ip -> rate limit state`
 
-## 32.3 Prefix/range optimization
+Redis is used as:
 
-If short codes are sequential or partially structured, prefetching and locality-aware caching may help.
-
-## 32.4 Read replicas
-
-Use replicas for redirect reads while maintaining durable writes on primaries.
-
-## 32.5 Edge redirect caching
-
-For stable, permanent links, edge caches can reduce origin load significantly.
+* read cache
+* rate limiting store
+* hot-key buffer
+* negative cache for invalid or expired codes
 
 ---
 
-# 33. Final Architecture Diagram
+## Cluster topology
+
+A healthy Redis topology usually includes:
+
+* multiple shards
+* replicas per shard
+* automatic failover
+* read routing based on slot ownership
+
+```mermaid
+flowchart TB
+    AppServers[Redirect / Create Servers] --> RedisRouter[Redis Cluster Router]
+
+    RedisRouter --> R1P[Shard 1 Primary]
+    RedisRouter --> R2P[Shard 2 Primary]
+    RedisRouter --> R3P[Shard 3 Primary]
+
+    R1P --> R1R[Shard 1 Replica]
+    R2P --> R2R[Shard 2 Replica]
+    R3P --> R3R[Shard 3 Replica]
+```
+
+---
+
+## Why Redis works here
+
+Redirects are:
+
+* highly repetitive
+* small in payload
+* ideal for memory lookup
+* extremely latency-sensitive
+
+Redis provides:
+
+* sub-millisecond lookup in many cases
+* very high throughput
+* simple TTL handling
+* atomic counters and rate limiting
+
+---
+
+## Cache patterns
+
+### Cache-aside
+
+Redirect service checks Redis first. If miss, it queries the DB and writes back to cache.
+
+### Write-through
+
+Creation service writes to DB and Redis together.
+
+### Negative caching
+
+If a short code does not exist, store a short-lived negative entry to avoid repeated DB misses.
+
+---
+
+## Hot-key handling
+
+A viral short code can create a single Redis hotspot.
+
+Mitigations:
+
+* replicate hot keys across multiple read nodes
+* use local in-process hot cache
+* cache at CDN edge
+* shard by code hash
+* separate read and write paths where possible
+
+---
+
+## Redis failure behavior
+
+If Redis is down:
+
+* redirect service falls back to DB
+* DB read load increases
+* autoscaling may be necessary
+* caches refill after recovery
+
+The system should continue to function even during cache degradation.
+
+---
+
+# 12. CDN Redirect Caching Deep Dive
+
+CDN helps not just with media delivery but also with redirect acceleration.
+
+## When CDN helps
+
+* stable, permanent redirects
+* popular marketing links
+* branded domains
+* repeated global traffic from many users
+
+## What CDN can cache
+
+A CDN can cache:
+
+* 301 responses
+* 302 responses with a suitable TTL
+* header metadata
+* edge redirect logic for ultra-hot links
+
+## Important caveat
+
+You must be careful with cache control:
+
+* do not cache expired or disabled links too long
+* do not cache personal or security-sensitive redirects without policy
+* do not let stale redirects keep sending users to old destinations
+
+---
+
+## Edge redirect flow
+
+```mermaid
+flowchart LR
+    User[Browser/App] --> Edge[CDN Edge]
+    Edge -->|Hit| Redirect[Return Redirect at Edge]
+    Edge -->|Miss| Origin[Redirect Service]
+    Origin --> DB[(URL DB)]
+    Origin --> Kafka[(Click Event Stream)]
+```
+
+---
+
+## Why edge caching is valuable
+
+If a link goes viral:
+
+* edge can absorb a huge fraction of requests
+* origin load drops sharply
+* latency improves for distant users
+* backend becomes more resilient
+
+---
+
+## Cache invalidation
+
+If a short link changes destination or expires:
+
+* cache entries must be invalidated quickly
+* TTLs should be short for mutable links
+* control plane should propagate invalidation events to CDN and Redis
+
+That is essential to avoid stale redirects.
+
+---
+
+# 13. Analytics Schema Deep Dive
+
+Analytics should not be mixed into the core redirect path.
+
+## Why
+
+Redirects must be fast.
+Analytics can be slightly delayed.
+
+A separate analytics pipeline provides:
+
+* click counts
+* geolocation
+* device/browser breakdown
+* referrer analysis
+* campaign performance
+* fraud detection inputs
+
+---
+
+## Event schema
+
+A click event can look like this:
+
+| Field           | Type      | Notes                        |
+| --------------- | --------- | ---------------------------- |
+| event_id        | string    | Unique event identifier      |
+| short_code      | string    | Link being clicked           |
+| clicked_at      | timestamp | Event time                   |
+| user_agent_hash | string    | Privacy-friendly fingerprint |
+| country         | string    | Geo from IP                  |
+| region          | string    | Region grouping              |
+| device_type     | string    | mobile, desktop, tablet      |
+| browser         | string    | Optional classification      |
+| referrer        | string    | Source URL if available      |
+| response_code   | int       | 301/302/404/410              |
+| is_bot          | boolean   | Bot detection output         |
+
+---
+
+## Event pipeline
+
+```mermaid
+flowchart LR
+    Redirect[Redirect Service] --> Kafka[(Kafka Topics)]
+    Kafka --> Enrich[Stream Enrichment]
+    Enrich --> Agg[Real-Time Aggregator]
+    Enrich --> Fraud[Fraud Detector]
+    Agg --> OLAP[(Analytics Store)]
+    Agg --> Warehouse[(Data Warehouse)]
+```
+
+---
+
+## Aggregation levels
+
+Analytics can be computed at different layers:
+
+* per-minute click counts
+* per-hour and per-day rollups
+* per-country aggregates
+* per-campaign conversion metrics
+* per-device trend analytics
+
+## Why rollups matter
+
+You do not want every dashboard query to scan raw click events.
+Rollups keep dashboards fast and cheap.
+
+---
+
+## Privacy considerations
+
+Analytics should be privacy-aware:
+
+* hash or truncate IPs
+* minimize personally identifying data
+* define retention policies
+* support data deletion requests where required
+
+---
+
+# 14. Multi-Region Failover Deep Dive
+
+A global URL shortener must stay available even when a region fails.
+
+## Goals
+
+* keep redirects working during regional outages
+* keep writes durable
+* preserve analytics pipeline continuity
+* reduce latency through regional affinity
+* allow fast recovery after failover
+
+---
+
+## Multi-region topology
+
+```mermaid
+flowchart TB
+    UsersNA[North America] --> RegionNA[NA Region]
+    UsersEU[Europe] --> RegionEU[EU Region]
+    UsersAPAC[Asia Pacific] --> RegionAPAC[APAC Region]
+
+    RegionNA --> GlobalRep[(Global Replication Layer)]
+    RegionEU --> GlobalRep
+    RegionAPAC --> GlobalRep
+
+    GlobalRep --> Warehouse[(Global Analytics / Archive)]
+```
+
+---
+
+## Read and write ownership
+
+A practical design is:
+
+* writes go to a primary region or primary shard owner
+* reads are served locally whenever replication lag allows
+* analytics can be eventually consistent across regions
+
+## Failover strategy
+
+When a region fails:
+
+1. global traffic is rerouted
+2. read traffic shifts to healthy replicas
+3. write traffic routes to surviving primary ownership
+4. caches are rebuilt or warmed in the new active region
+5. telemetry and error rates are monitored closely
+
+---
+
+## Data replication model
+
+The URL mapping itself must be durable and replicated.
+A good design is:
+
+* synchronous durability within a region
+* asynchronous replication cross-region
+* conflict-free ownership model for writes
+* strong uniqueness checks for short codes
+
+This avoids split-brain problems and keeps writes safe.
+
+---
+
+## Disaster recovery
+
+The system should support:
+
+* point-in-time recovery
+* backup restoration
+* replay from event logs
+* replay of click analytics
+* rehydration of cache and hotset data
+
+---
+
+# 15. Link Lifecycle and Consistency
+
+A link can move through several states.
+
+| State       | Meaning                        |
+| ----------- | ------------------------------ |
+| pending     | Being created                  |
+| active      | Redirect resolves successfully |
+| expired     | Expiration time reached        |
+| disabled    | Owner/admin turned it off      |
+| deleted     | Soft or hard deleted           |
+| quarantined | Under abuse review             |
+
+## Consistency model
+
+The mapping should be strongly durable at creation time.
+After creation:
+
+* reads may be served from cache or replicas
+* analytics may lag slightly
+* invalidation must propagate fast when state changes
+
+---
+
+# 16. Abuse Prevention and Security
+
+URL shorteners are a favorite tool for abuse.
+
+They can hide:
+
+* phishing pages
+* malware
+* spam campaigns
+* malicious tracking
+* impersonation links
+
+## Security controls
+
+* URL reputation checks
+* safe browsing integration
+* malware scanning
+* domain blacklists and allowlists
+* custom alias validation
+* rate limiting
+* fraud scoring
+* admin review and takedown
+
+## Why this matters
+
+A short link is opaque.
+That is useful for sharing, but also useful for attackers.
+
+The system should therefore treat creation as a controlled action and redirects as a monitored action.
+
+---
+
+# 17. Advanced Bottlenecks and Mitigations
+
+| Bottleneck            | Cause                            | Mitigation                             |
+| --------------------- | -------------------------------- | -------------------------------------- |
+| DB hot shard          | Viral link or skew               | Cache aggressively, shard better       |
+| Cache miss storm      | Cold cache after deploy/failover | Warmup, shadow loading                 |
+| ID service bottleneck | High create rate                 | Block allocation or distributed IDs    |
+| CDN stale redirect    | Link updated after cache         | Invalidation and short TTL             |
+| Analytics lag         | Click spike                      | Kafka buffering and parallel consumers |
+| Abuse bursts          | Bots and scanners                | Rate limits and negative cache         |
+
+---
+
+# 18. Final Architecture Diagram
 
 ```mermaid
 flowchart TB
@@ -1136,13 +1004,15 @@ flowchart TB
     Admin[Admin / Abuse Service]
     Auth[Auth Service]
 
-    Cache[(Redis / In-Memory Cache)]
+    IDGen[Distributed ID Generator]
+    Router[Shard Router]
+    Cache[(Redis Cluster)]
     Bloom[Bloom Filter]
     DB[(Distributed URL DB)]
     Kafka[(Kafka / Event Stream)]
-    Analytics[Analytics / Stream Processing]
-    Warehouse[(Data Warehouse)]
-    Cold[(Cold Storage)]
+    Analytics[Analytics Aggregator]
+    Warehouse[(Analytics Warehouse)]
+    Replication[(Cross-Region Replication)]
 
     User --> DNS --> CDN --> LB --> APIGW
     APIGW --> Auth
@@ -1150,41 +1020,43 @@ flowchart TB
     APIGW --> Redirect
     APIGW --> Admin
 
+    Create --> IDGen
+    Create --> Router
     Create --> DB
     Create --> Cache
 
     Redirect --> Cache
     Redirect --> Bloom
-    Bloom --> DB
+    Redirect --> Router
     Redirect --> DB
     Redirect --> Kafka
+    Redirect --> CDN
 
     Kafka --> Analytics
     Analytics --> Warehouse
-    DB --> Cold
+    DB --> Replication
+    Replication --> DB
     Admin --> DB
 ```
 
 ---
 
-# 34. Conclusion
+# 19. Conclusion
 
-A production URL shortener is a simple product built on top of a very serious distributed system.
+A production URL shortener is a simple product built on top of a serious distributed system.
 
-The right architecture uses:
+The staff-level design choices that matter most are:
 
-* **Base62 or distributed ID generation** for compact unique codes
-* **Redis and in-memory caches** to absorb the huge redirect load
-* **DB replication and sharding** for durability and scale
-* **Kafka-based analytics** so tracking never slows redirects
-* **Bloom filters** to reduce wasted lookups
-* **CDN and edge routing** to lower latency globally
-* **rate limiting and abuse detection** to keep the system safe
-* **multi-region deployment** to stay available during failures
+* **Base62 or distributed ID generation** for compact, unique codes
+* **distributed sharding** to scale writes and reads
+* **Redis cluster topology** for ultra-fast redirect lookups
+* **CDN edge caching** for hot redirect traffic
+* **Kafka-backed analytics** so tracking never slows redirects
+* **multi-region failover** to survive regional outages
+* **strong durability on writes, eventual consistency on analytics**
+* **abuse prevention and rate limiting** to keep the service safe
 
-The redirect path must be extremely fast, and everything else must be designed around protecting it.
+The redirect path must stay tiny and fast.
+Everything else exists to protect that path.
 
-That is the core idea behind an industry-grade URL shortener.
-
-If you want, I can now turn this into a **full staff-level design doc** with deeper sections on:
-**Base62 ID generation, distributed sharding, Redis cluster topology, CDN redirect caching, analytics schema, and multi-region failover**.
+That is the difference between a toy URL shortener and an internet-scale one.

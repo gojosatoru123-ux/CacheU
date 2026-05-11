@@ -5,8 +5,6 @@ category: Design
 order: 6
 ---
 
-# Design a Reddit-Style Nested Infinite Comment System
-
 A Reddit-style comment system is much harder than a flat comment box.
 
 At first it looks simple:
@@ -240,7 +238,7 @@ This gives a good balance between:
 
 # 7. High-Level Architecture
 
-```mermaid id="reddit_comment_arch_01"
+```mermaid
 flowchart TB
     ClientWeb[Web Client]
     ClientMobile[Mobile Client]
@@ -371,7 +369,7 @@ A comment needs more than just text and author.
 
 A comment thread is a tree.
 
-```mermaid id="reddit_tree_01"
+```mermaid
 flowchart TB
     P[Post]
 
@@ -428,7 +426,7 @@ Creating a comment is a write operation.
 
 It should be fast, idempotent, and safe.
 
-```mermaid id="reddit_comment_create_01"
+```mermaid
 sequenceDiagram
     participant User
     participant API
@@ -485,7 +483,7 @@ A user may ask:
 * show a partial subtree
 * show collapsed branches
 
-```mermaid id="reddit_comment_read_01"
+```mermaid
 sequenceDiagram
     participant User
     participant API
@@ -753,7 +751,7 @@ A good system stores:
 
 ## Ranking Pipeline
 
-```mermaid id="reddit_ranking_01"
+```mermaid
 flowchart LR
     Votes[Vote Events] --> Kafka[(Kafka)]
     Kafka --> Ranker[Ranking Worker]
@@ -804,7 +802,7 @@ A user should be able to:
 
 ## Vote State Machine
 
-```mermaid id="reddit_vote_state_01"
+```mermaid
 stateDiagram-v2
     [*] --> Neutral
     Neutral --> Upvoted
@@ -851,7 +849,7 @@ Hot data:
 
 ## Cache Layers
 
-```mermaid id="reddit_cache_01"
+```mermaid
 flowchart TB
     Client --> CDN[Client Cache / CDN]
     CDN --> App[Application Service]
@@ -914,7 +912,7 @@ For very hot threads, a single post may still be too large, so virtual sharding 
 
 ## Sharding Diagram
 
-```mermaid id="reddit_shard_01"
+```mermaid
 flowchart LR
     Router[Comment Router]
     Router --> S1[Shard 1]
@@ -1035,7 +1033,7 @@ Moderation should include:
 * shadow banning
 * content removal
 
-```mermaid id="reddit_moderation_01"
+```mermaid
 flowchart LR
     CommentCreated --> Kafka[(Kafka)]
     Kafka --> SpamFilter
@@ -1078,7 +1076,7 @@ Comments should be searchable by:
 
 Use a search engine rather than the primary DB.
 
-```mermaid id="reddit_search_01"
+```mermaid
 flowchart LR
     CommentService --> Kafka[(Kafka)]
     Kafka --> Indexer[Search Indexer]
@@ -1108,7 +1106,7 @@ Use:
 * per-thread subscriptions
 * backpressure handling
 
-```mermaid id="reddit_realtime_01"
+```mermaid
 flowchart LR
     CommentPosted --> Kafka[(Kafka)]
     Kafka --> FanoutService
@@ -1173,7 +1171,7 @@ This avoids the classic N+1 problem.
 
 # 41. Read Flow for a Post Page
 
-```mermaid id="reddit_read_flow_01"
+```mermaid
 sequenceDiagram
     participant User
     participant API
@@ -1298,7 +1296,7 @@ DELETE /comments/{commentId}
 
 # 45. Sequence for Nested Reply Creation
 
-```mermaid id="reddit_reply_create_01"
+```mermaid
 sequenceDiagram
     participant User
     participant API
@@ -1380,7 +1378,7 @@ The comment system should publish events for:
 * ranking updates
 * cache invalidation
 
-```mermaid id="reddit_events_01"
+```mermaid
 flowchart LR
     CommentSvc --> Kafka[(Kafka)]
     Kafka --> SearchSvc
@@ -1497,7 +1495,7 @@ These are product features, but they affect the architecture heavily.
 
 # 54. Final Production Architecture
 
-```mermaid id="reddit_final_arch_01"
+```mermaid
 flowchart TB
     Web[Web Client]
     Mobile[Mobile Client]

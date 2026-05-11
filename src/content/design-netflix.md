@@ -5,11 +5,9 @@ category: Design
 order: 9
 ---
 
-# Design Netflix
-
 Netflix is one of the most demanding system design problems in modern backend engineering because it combines almost every hard distributed-systems challenge in one product: massive video ingestion, expensive transcoding, global delivery, extreme read traffic, personalization, search, analytics, multi-device playback, and multi-region reliability.
 
-Public Netflix engineering material shows several strong architectural signals that shape a realistic design. Netflix has publicly said it uses AWS for compute, storage, and networking, it runs Open Connect as its own global CDN to localize traffic near users, it rebuilt its video processing pipeline with microservices, it uses a sophisticated recommendation stack with many specialized machine-learned models, and it operates with a global active-active cloud mindset across AWS regions. Netflix also describes Zuul as its edge gateway and has publicly documented work to reduce connection churn there. ([Netflix Tech Blog][1])
+Public Netflix engineering material shows several strong architectural signals that shape a realistic design. Netflix has publicly said it uses AWS for compute, storage, and networking, it runs Open Connect as its own global CDN to localize traffic near users, it rebuilt its video processing pipeline with microservices, it uses a sophisticated recommendation stack with many specialized machine-learned models, and it operates with a global active-active cloud mindset across AWS regions. Netflix also describes Zuul as its edge gateway and has publicly documented work to reduce connection churn there.
 
 The design below treats those public signals as the architectural backbone and then builds a complete production-grade Netflix-like platform around them.
 
@@ -99,7 +97,7 @@ If 1 billion playback requests happen daily:
 
 Peak load can easily be 10x that number.
 
-The real scaling challenge is not only request count. Video delivery consumes enormous bandwidth, which is why Netflix’s public Open Connect documentation emphasizes localized traffic and proactive caching close to members. ([OpenConnect][2])
+The real scaling challenge is not only request count. Video delivery consumes enormous bandwidth, which is why Netflix’s public Open Connect documentation emphasizes localized traffic and proactive caching close to members. 
 
 ---
 
@@ -203,9 +201,9 @@ flowchart TB
 
 Public Netflix engineering posts strongly support a design centered around AWS, Open Connect, microservices, and rich personalization.
 
-Netflix has stated that it uses AWS for compute, storage, and networking for its streaming platform. It also says Open Connect localizes traffic close to members and uses proactive, directed caching to reduce upstream bandwidth demand, while the Open Connect program is built around intelligent clients, a central control system, and a network of Open Connect Appliances. ([Netflix Tech Blog][1])
+Netflix has stated that it uses AWS for compute, storage, and networking for its streaming platform. It also says Open Connect localizes traffic close to members and uses proactive, directed caching to reduce upstream bandwidth demand, while the Open Connect program is built around intelligent clients, a central control system, and a network of Open Connect Appliances. 
 
-Netflix has also publicly described rebuilding its video processing pipeline with microservices to keep up with delivery speed, and its recommendation stack as a complex system with many specialized machine-learned models. Public posts also show that Netflix’s edge layer, Zuul, handles authentication and routing and has been optimized to reduce connection churn. Netflix has further described a global active-active cloud strategy across AWS regions. ([Netflix Tech Blog][3])
+Netflix has also publicly described rebuilding its video processing pipeline with microservices to keep up with delivery speed, and its recommendation stack as a complex system with many specialized machine-learned models. Public posts also show that Netflix’s edge layer, Zuul, handles authentication and routing and has been optimized to reduce connection churn. Netflix has further described a global active-active cloud strategy across AWS regions. 
 
 Those public signals are exactly what a production-grade Netflix design should reflect.
 
@@ -291,7 +289,7 @@ sequenceDiagram
 
 # 11. Why Open Connect is Central
 
-Netflix’s public Open Connect documentation describes it as the global network responsible for delivering Netflix TV shows and movies efficiently by bringing content close to viewers. It is designed around proactive, directed caching and ISP-localized traffic, which reduces demand on upstream network capacity. Public Open Connect materials also describe embedded appliances and a central control system as core parts of the delivery model. ([OpenConnect][2])
+Netflix’s public Open Connect documentation describes it as the global network responsible for delivering Netflix TV shows and movies efficiently by bringing content close to viewers. It is designed around proactive, directed caching and ISP-localized traffic, which reduces demand on upstream network capacity. Public Open Connect materials also describe embedded appliances and a central control system as core parts of the delivery model.
 
 A Netflix design without a CDN would not survive global scale.
 
@@ -328,7 +326,7 @@ flowchart TD
     L --> M[Encoded Store]
 ```
 
-Public Netflix posts show that Netflix rebuilt its own video processing pipeline with microservices, which strongly supports this separation of upload ingestion from asynchronous transformation work. ([Netflix Tech Blog][3])
+Public Netflix posts show that Netflix rebuilt its own video processing pipeline with microservices, which strongly supports this separation of upload ingestion from asynchronous transformation work.
 
 ---
 
@@ -528,7 +526,7 @@ flowchart LR
     Redis --> DB[(Metadata DB)]
 ```
 
-Public Netflix engineering material also notes that Netflix uses proactive caching and localized delivery in Open Connect, which is a strong signal that content and metadata should be cached aggressively near users. ([OpenConnect][2])
+Public Netflix engineering material also notes that Netflix uses proactive caching and localized delivery in Open Connect, which is a strong signal that content and metadata should be cached aggressively near users.
 
 ---
 
@@ -576,7 +574,7 @@ The recommendation system typically uses:
 * impression history
 * feedback loops
 
-Public Netflix posts describe its recommender as a complex system with many specialized machine-learned models, and more recent work emphasizes that tracking impressions is important because the system must know what content the user has already encountered. ([Netflix Tech Blog][4])
+Public Netflix posts describe its recommender as a complex system with many specialized machine-learned models, and more recent work emphasizes that tracking impressions is important because the system must know what content the user has already encountered.
 
 ---
 
@@ -621,7 +619,7 @@ Impressions are important because recommendations must distinguish between:
 * content the user saw but ignored
 * content never shown
 
-This helps ranking systems learn true user preference rather than just exposure bias. Netflix’s own public work on impressions explicitly frames impression tracking as crucial for tailoring recommendations more effectively. ([Netflix Tech Blog][5])
+This helps ranking systems learn true user preference rather than just exposure bias. Netflix’s own public work on impressions explicitly frames impression tracking as crucial for tailoring recommendations more effectively.
 
 ```mermaid
 flowchart TD
@@ -715,7 +713,7 @@ flowchart LR
 
 The edge layer is one of the most important parts of the design.
 
-Public Netflix engineering material describes Zuul as the edge gateway and documents its role in authentication and request routing. Netflix has also publicly discussed connection-churn reduction at Zuul, which supports designing a strong edge tier with efficient connection reuse and load-aware routing. ([Netflix Tech Blog][6])
+Public Netflix engineering material describes Zuul as the edge gateway and documents its role in authentication and request routing. Netflix has also publicly discussed connection-churn reduction at Zuul, which supports designing a strong edge tier with efficient connection reuse and load-aware routing. 
 
 The edge layer should handle:
 
@@ -750,7 +748,7 @@ A Netflix-like platform supports:
 * device identity
 * secure session propagation
 
-Edge-authenticated identity propagation helps keep internal services simpler. Netflix publicly described moving complex handling of user and device authentication to the edge and propagating identity in a token-agnostic way. ([Netflix Tech Blog][6])
+Edge-authenticated identity propagation helps keep internal services simpler. Netflix publicly described moving complex handling of user and device authentication to the edge and propagating identity in a token-agnostic way.
 
 A good design:
 
@@ -825,7 +823,7 @@ flowchart TD
     OpenConnect --> Origin[(Encoded Store)]
 ```
 
-Public Netflix materials describe Open Connect as a global network responsible for delivering Netflix content efficiently, with traffic localized as close as possible to members. That makes CDN-first delivery the correct architecture for playback. ([OpenConnect][2])
+Public Netflix materials describe Open Connect as a global network responsible for delivering Netflix content efficiently, with traffic localized as close as possible to members. That makes CDN-first delivery the correct architecture for playback.
 
 ---
 
@@ -850,7 +848,7 @@ This enables:
 
 # 32. Multi-Region Architecture
 
-Public Netflix engineering posts describe a global active-active cloud approach across AWS regions, which is the right mental model for a Netflix-like platform: users should be served from the nearest healthy region, and failure of one region should not take the platform down. ([Tech Blog][7])
+Public Netflix engineering posts describe a global active-active cloud approach across AWS regions, which is the right mental model for a Netflix-like platform: users should be served from the nearest healthy region, and failure of one region should not take the platform down. 
 
 ```mermaid
 flowchart TB
@@ -910,7 +908,7 @@ flowchart TD
     Store --> RecFeatures[Recommendation Features]
 ```
 
-Netflix publicly described rebuilding its video processing pipeline with microservices, which supports precisely this asynchronous, staged architecture. ([Netflix Tech Blog][3])
+Netflix publicly described rebuilding its video processing pipeline with microservices, which supports precisely this asynchronous, staged architecture. 
 
 ---
 
@@ -979,7 +977,7 @@ flowchart TB
 
 # 37. Experimentation Platform
 
-Netflix is known publicly for experimentation culture, and a streaming platform at this scale should support A/B testing for UI, ranking, and playback changes. ([Netflix Tech Blog][8])
+Netflix is known publicly for experimentation culture, and a streaming platform at this scale should support A/B testing for UI, ranking, and playback changes. 
 
 Support:
 
@@ -1046,7 +1044,7 @@ The highest-value cache is the CDN because video traffic dominates bandwidth.
 
 # 40. Open Connect as Delivery Backbone
 
-Netflix’s public Open Connect documentation is very explicit that the program is designed to improve member experience by localizing traffic near users and reducing transit-provider delivery. The Open Connect network is described as a combination of intelligent clients, a central control system, and OCAs, with proactive caching as a major differentiator. ([OpenConnect][2])
+Netflix’s public Open Connect documentation is very explicit that the program is designed to improve member experience by localizing traffic near users and reducing transit-provider delivery. The Open Connect network is described as a combination of intelligent clients, a central control system, and OCAs, with proactive caching as a major differentiator. 
 
 That means a Netflix-like system should:
 
@@ -1158,7 +1156,7 @@ The recommendation stack should include:
 5. Business rules
 6. Exploration/exploitation balancing
 
-Public Netflix material says recommendation is already a complex system with many specialized machine-learned models, so a production design should treat recommendations as a major first-class platform rather than a simple “similar titles” feature. ([Netflix Tech Blog][4])
+Public Netflix material says recommendation is already a complex system with many specialized machine-learned models, so a production design should treat recommendations as a major first-class platform rather than a simple “similar titles” feature.
 
 ---
 
@@ -1206,7 +1204,7 @@ Watch history alone is not enough.
 
 Impressions matter too.
 
-If the system never knows what the user saw, it cannot distinguish true dislike from lack of exposure. Public Netflix work on impressions explicitly reflects this. ([Netflix Tech Blog][5])
+If the system never knows what the user saw, it cannot distinguish true dislike from lack of exposure. Public Netflix work on impressions explicitly reflects this. 
 
 Store:
 
@@ -1276,7 +1274,7 @@ Solution:
 * continue playback with CDN fallback
 * keep metadata replicated
 
-Public Netflix material supports the idea of serving requests from any deployed AWS region in a global active-active setup. ([Tech Blog][7])
+Public Netflix material supports the idea of serving requests from any deployed AWS region in a global active-active setup.
 
 ---
 
@@ -1335,7 +1333,7 @@ Solution:
 | Connection churn       | Edge gateway optimization and reuse     |
 | Analytics overhead     | Kafka and offline pipelines             |
 
-Public Netflix work on Zuul specifically highlights efforts to reduce connection churn and use HTTP/2 multiplexing to origins, which reinforces the need for efficient connection reuse at the edge. ([Netflix Tech Blog][9])
+Public Netflix work on Zuul specifically highlights efforts to reduce connection churn and use HTTP/2 multiplexing to origins, which reinforces the need for efficient connection reuse at the edge.
 
 ---
 
@@ -1451,7 +1449,7 @@ This architecture works because it cleanly separates the main concerns:
 | Security            | Edge auth, signed URLs, DRM         |
 | Maintainability     | Small independent services          |
 
-This separation aligns well with the public Netflix engineering signals about AWS infrastructure, Open Connect, microservices, edge auth, and advanced recommendation systems. ([Netflix Tech Blog][1])
+This separation aligns well with the public Netflix engineering signals about AWS infrastructure, Open Connect, microservices, edge auth, and advanced recommendation systems. 
 
 ---
 
@@ -1487,16 +1485,6 @@ A production-grade Netflix design should use:
 * feature stores and offline pipelines for recommendations
 * active-active global deployment for resilience
 
-Public Netflix engineering posts show that Netflix already leans on AWS, Open Connect, microservices, Zuul, and advanced recommendation systems, and this design reflects those public architectural signals in a scalable way. ([Netflix Tech Blog][1])
+Public Netflix engineering posts show that Netflix already leans on AWS, Open Connect, microservices, Zuul, and advanced recommendation systems, and this design reflects those public architectural signals in a scalable way.
 
 The result is a platform that can stream smoothly, scale globally, and remain resilient even under extreme load.
-
-[1]: https://netflixtechblog.com/cloud-efficiency-at-netflix-f2a142955f83?utm_source=chatgpt.com "Cloud Efficiency at Netflix. By J Han, Pallavi Phadnis - Netflix TechBlog"
-[2]: https://openconnect.netflix.com/Open-Connect-Overview.pdf?utm_source=chatgpt.com "Open Connect Overview"
-[3]: https://netflixtechblog.com/rebuilding-netflix-video-processing-pipeline-with-microservices-4e5e6310e359?utm_source=chatgpt.com "Rebuilding Netflix Video Processing Pipeline with ..."
-[4]: https://netflixtechblog.com/foundation-model-for-personalized-recommendation-1a0bd8e02d39?utm_source=chatgpt.com "Foundation Model for Personalized Recommendation"
-[5]: https://netflixtechblog.com/introducing-impressions-at-netflix-e2b67c88c9fb?utm_source=chatgpt.com "Introducing Impressions at Netflix"
-[6]: https://netflixtechblog.com/edge-authentication-and-token-agnostic-identity-propagation-514e47e0b602?utm_source=chatgpt.com "Edge Authentication and Token-Agnostic Identity Propagation"
-[7]: https://techblog.netflix.com/2016/03/global-cloud-active-active-and-beyond.html?utm_source=chatgpt.com "Global Cloud — Active-Active and Beyond"
-[8]: https://netflixtechblog.com/what-is-an-a-b-test-b08cc1b57962?utm_source=chatgpt.com "What is an A/B Test? - Netflix TechBlog"
-[9]: https://netflixtechblog.com/curbing-connection-churn-in-zuul-2feb273a3598?utm_source=chatgpt.com "Curbing Connection Churn in Zuul"

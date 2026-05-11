@@ -5,8 +5,6 @@ category: Design
 order: 2
 ---
 
-# Design a Complete Like and View System
-
 A like and view system seems simple on the surface.
 
 A user taps a heart.
@@ -134,7 +132,7 @@ A robust design must separate:
 
 # 5. High-Level Architecture
 
-```mermaid id="like_view_arch_01"
+```mermaid
 flowchart TB
     Client[Mobile / Web / TV Clients]
     Gateway[API Gateway]
@@ -247,7 +245,7 @@ A like is:
 
 ## 7.2 Like API Flow
 
-```mermaid id="like_flow_01"
+```mermaid
 sequenceDiagram
     participant User
     participant App
@@ -287,7 +285,7 @@ Use:
 
 ## 7.4 Like State Machine
 
-```mermaid id="like_state_01"
+```mermaid
 stateDiagram-v2
     [*] --> Neutral
     Neutral --> Liked
@@ -368,7 +366,7 @@ This prevents trivial inflation.
 
 ## 8.4 View Flow
 
-```mermaid id="view_flow_01"
+```mermaid
 sequenceDiagram
     participant User
     participant App
@@ -439,7 +437,7 @@ A good pipeline is:
 
 ## Count Pipeline
 
-```mermaid id="count_pipeline_01"
+```mermaid
 flowchart TD
     Action[Like/View Action] --> Validate[Validate & Deduplicate]
     Validate --> EventBus[(Kafka)]
@@ -587,7 +585,7 @@ So we must optimize the read path using:
 
 # 17. Content Card Rendering Flow
 
-```mermaid id="card_flow_01"
+```mermaid
 sequenceDiagram
     participant Client
     participant FeedAPI
@@ -621,7 +619,7 @@ Use:
 
 This reduces latency and keeps user interaction fast.
 
-```mermaid id="region_01"
+```mermaid
 flowchart TB
     US[US Region]
     EU[EU Region]
@@ -695,7 +693,7 @@ Example:
 * each shard handles a fraction of updates
 * background job merges totals
 
-```mermaid id="counter_shard_01"
+```mermaid
 flowchart LR
     LikeEvents --> S1[Shard 1]
     LikeEvents --> S2[Shard 2]
@@ -768,7 +766,7 @@ Detection signals:
 * no-scroll/no-interaction views
 * repetitive play/pause cycles
 
-```mermaid id="fraud_01"
+```mermaid
 flowchart LR
     Events[Like/View Events] --> Rules[Rule Engine]
     Events --> ML[Anomaly Model]
@@ -814,7 +812,7 @@ Track:
 * region breakdown
 * device breakdown
 
-```mermaid id="analytics_01"
+```mermaid
 flowchart TB
     Events[Like/View Events] --> Kafka[(Kafka)]
     Kafka --> Stream[Stream Processor]
@@ -859,7 +857,7 @@ Instead:
 * update top-K candidates
 * store in a hot trend cache
 
-```mermaid id="trending_01"
+```mermaid
 flowchart LR
     EventBus[(Kafka)] --> StreamAgg[Streaming Aggregator]
     StreamAgg --> HotTrend[(Hot Trending Cache)]
@@ -965,7 +963,7 @@ GET /engagement/summary/{contentId}
 
 # 31. Real-Time Sync Flow
 
-```mermaid id="realtime_like_view_01"
+```mermaid
 sequenceDiagram
     participant User
     participant App
@@ -1148,7 +1146,7 @@ Why?
 * to detect fraud
 * to rebuild derived counters after outage
 
-```mermaid id="reconcile_01"
+```mermaid
 flowchart LR
     EventLog[Event Log] --> BatchJob[Reconciliation Job]
     BatchJob --> SnapshotDB[(Snapshot Store)]
@@ -1239,7 +1237,7 @@ Mitigation:
 
 # 43. Example End-to-End Like Flow
 
-```mermaid id="like_e2e_01"
+```mermaid
 sequenceDiagram
     participant User
     participant Client
@@ -1262,7 +1260,7 @@ sequenceDiagram
 
 # 44. Example End-to-End View Flow
 
-```mermaid id="view_e2e_01"
+```mermaid
 sequenceDiagram
     participant User
     participant Client
@@ -1324,7 +1322,7 @@ This means engagement events should be treated as first-class events in the anal
 
 # 47. Final Production Architecture
 
-```mermaid id="final_like_view_arch_01"
+```mermaid
 flowchart TB
     Client[Mobile / Web / TV Clients]
     Gateway[API Gateway]

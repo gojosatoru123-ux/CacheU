@@ -5,7 +5,6 @@ category: Design
 order: 17
 ---
 
-# Design Google Docs Real-Time Collaboration System
 
 A real-time collaborative document editor looks simple from the outside.
 

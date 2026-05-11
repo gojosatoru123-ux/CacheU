@@ -5,8 +5,6 @@ category: Design
 order: 5
 ---
 
-# Design a Complete Stock Brokerage Platform Like Zerodha
-
 A stock brokerage platform looks simple from the outside:
 
 * open an account
@@ -35,7 +33,7 @@ It must handle:
 * reports and analytics
 * fraud detection and auditability
 
-Zerodha’s public product pages show that its current ecosystem includes trading and investing across stocks, futures, options, commodities, currency, ETFs, mutual funds, and bonds. Kite is its flagship all-device trading platform with streaming market data, advanced charts, market depth, GTT, baskets, alerts, risk warnings, IPO investing via UPI, and APIs. Console is its reporting and analytics dashboard, and Coin supports direct mutual fund investing. Zerodha also publicly advertises a digital account-opening flow using details entry, e-sign, and verification, along with a pricing model that charges zero for equity and mutual fund investments and a flat ₹20 for intraday and F&O trades. ([Zerodha][1])
+Zerodha’s public product pages show that its current ecosystem includes trading and investing across stocks, futures, options, commodities, currency, ETFs, mutual funds, and bonds. Kite is its flagship all-device trading platform with streaming market data, advanced charts, market depth, GTT, baskets, alerts, risk warnings, IPO investing via UPI, and APIs. Console is its reporting and analytics dashboard, and Coin supports direct mutual fund investing. Zerodha also publicly advertises a digital account-opening flow using details entry, e-sign, and verification, along with a pricing model that charges zero for equity and mutual fund investments and a flat ₹20 for intraday and F&O trades.
 
 A real brokerage platform must therefore be designed as a **financial operating system**, not just a trading app. It is a combination of:
 
@@ -113,9 +111,9 @@ Design a brokerage platform where users can:
 
 # 4. Current Product Scope and Why It Matters
 
-A realistic design should reflect the public scope of a modern discount broker like Zerodha. Zerodha publicly markets itself as a platform for stocks, futures, options, commodities, currency, ETFs, mutual funds, and bonds. Its Kite platform is described as a cross-device trading terminal with market data, advanced charts, 20-level market depth, GTT, baskets, alerts, a risk-warning system called Nudge, IPO applications via UPI, and an ecosystem that includes Kite Connect APIs. Console is positioned as a reporting and analytics dashboard, while Coin is used for direct mutual fund investing. ([Zerodha][1])
+A realistic design should reflect the public scope of a modern discount broker like Zerodha. Zerodha publicly markets itself as a platform for stocks, futures, options, commodities, currency, ETFs, mutual funds, and bonds. Its Kite platform is described as a cross-device trading terminal with market data, advanced charts, 20-level market depth, GTT, baskets, alerts, a risk-warning system called Nudge, IPO applications via UPI, and an ecosystem that includes Kite Connect APIs. Console is positioned as a reporting and analytics dashboard, while Coin is used for direct mutual fund investing.
 
-Onboarding is also heavily digital. Zerodha’s account-opening flow publicly shows a simple path: enter details, complete e-sign and verification, and start investing. Its public pricing page advertises zero charges for equity and mutual fund investments and a flat ₹20 fee for intraday and F&O trades. ([Zerodha][2])
+Onboarding is also heavily digital. Zerodha’s account-opening flow publicly shows a simple path: enter details, complete e-sign and verification, and start investing. Its public pricing page advertises zero charges for equity and mutual fund investments and a flat ₹20 fee for intraday and F&O trades.
 
 These public product signals matter because they define the breadth of the system we need to build:
 
@@ -132,7 +130,7 @@ These public product signals matter because they define the breadth of the syste
 
 The exchange schedule strongly affects the design of the order system.
 
-The NSE normal market currently runs from 09:15 to 15:30, with trade modification ending at 16:15 for equity and equity derivatives. NSE also documents a pre-open session from 09:00 to 09:08 in the live trading circular, and market segments such as derivatives and commodities have their own session rules. ([NSE India][3])
+The NSE normal market currently runs from 09:15 to 15:30, with trade modification ending at 16:15 for equity and equity derivatives. NSE also documents a pre-open session from 09:00 to 09:08 in the live trading circular, and market segments such as derivatives and commodities have their own session rules.
 
 This means the brokerage platform must support:
 
@@ -250,7 +248,7 @@ It is a regulated financial ledger with a trading UI attached to it.
 
 # 8. Account Opening and KYC Flow
 
-The onboarding system must support a fully digital path because the public Zerodha flow is digital-first and based on entering details, completing e-sign, and verification. ([Zerodha][2])
+The onboarding system must support a fully digital path because the public Zerodha flow is digital-first and based on entering details, completing e-sign, and verification.
 
 The onboarding stack should include:
 
@@ -308,7 +306,7 @@ This service should be mostly read-heavy and heavily cached.
 
 # 10. Product Surface: Kite, Console, Coin, APIs
 
-The public Zerodha ecosystem shows how a brokerage platform often splits into multiple surfaces. Kite is the trading surface, Console is the reporting surface, Coin is the mutual-fund surface, and Kite Connect APIs expose integration capabilities. ([Zerodha][4])
+The public Zerodha ecosystem shows how a brokerage platform often splits into multiple surfaces. Kite is the trading surface, Console is the reporting surface, Coin is the mutual-fund surface, and Kite Connect APIs expose integration capabilities.
 
 A production brokerage should mirror that split:
 
@@ -336,7 +334,7 @@ A modern trading terminal should support the same style of features publicly sho
 * risk warnings
 * IPO applications
 * P&L visibility
-* fast cross-device access ([Zerodha][4])
+* fast cross-device access
 
 This affects the frontend and backend architecture because the terminal must support:
 
@@ -365,7 +363,7 @@ The system must stream:
 * circuit limits
 * trade status
 
-Kite publicly advertises 20-level market depth, advanced charts, and streaming data, which is the kind of experience a real platform must support. ([Zerodha][4])
+Kite publicly advertises 20-level market depth, advanced charts, and streaming data, which is the kind of experience a real platform must support.
 
 ---
 
@@ -424,7 +422,7 @@ This is the canonical registry of everything tradable:
 * bonds
 * IPO symbols
 
-Zerodha publicly markets support for these asset classes, so the platform should model the instrument universe in a normalized way rather than hard-coding equity-only logic. ([Zerodha][1])
+Zerodha publicly markets support for these asset classes, so the platform should model the instrument universe in a normalized way rather than hard-coding equity-only logic.
 
 ---
 
@@ -432,7 +430,7 @@ Zerodha publicly markets support for these asset classes, so the platform should
 
 Order entry is where brokerage systems live or die.
 
-Zerodha’s official support pages document market orders, limit orders, stop-loss orders, GTT, AMO, and OCO-style advanced exits. Market orders are more likely to fill but can execute at unfavorable prices, while limit orders provide price protection but do not guarantee execution. AMO helps queue orders outside market hours, and GTT/OCO helps users set trigger-based exits with target and stop-loss behavior. ([Zerodha Support][5])
+Zerodha’s official support pages document market orders, limit orders, stop-loss orders, GTT, AMO, and OCO-style advanced exits. Market orders are more likely to fill but can execute at unfavorable prices, while limit orders provide price protection but do not guarantee execution. AMO helps queue orders outside market hours, and GTT/OCO helps users set trigger-based exits with target and stop-loss behavior.
 
 ---
 
@@ -587,7 +585,7 @@ This component is usually tightly regulated, highly monitored, and extremely rob
 
 The market-session scheduler must understand exchange calendars and trading sessions.
 
-NSE currently documents that the normal market runs from 09:15 to 15:30, with pre-open starting at 09:00 and trade modification ending at 16:15 for equity and equity derivatives. ([NSE India][3])
+NSE currently documents that the normal market runs from 09:15 to 15:30, with pre-open starting at 09:00 and trade modification ending at 16:15 for equity and equity derivatives.
 
 This means the brokerage should have a session-aware scheduler that:
 
@@ -682,7 +680,7 @@ The portfolio service should derive views from trades, corporate actions, and se
 
 # 26. P&L and Analytics
 
-Console-style reporting is a major back-office capability. Zerodha’s Console is publicly positioned as a central dashboard with reporting and analytics, and its product page notes that it computes accurate P&L using a large historical trade breakdown and corporate-action awareness. ([Zerodha][6])
+Console-style reporting is a major back-office capability. Zerodha’s Console is publicly positioned as a central dashboard with reporting and analytics, and its product page notes that it computes accurate P&L using a large historical trade breakdown and corporate-action awareness. 
 
 A brokerage platform should therefore generate:
 
@@ -720,7 +718,7 @@ These events must flow through portfolio and ledger systems so that account stat
 
 A complete brokerage platform should not stop at equities.
 
-Zerodha’s public product pages show direct mutual funds via Coin, with over 2000 direct mutual funds available. ([Zerodha][7])
+Zerodha’s public product pages show direct mutual funds via Coin, with over 2000 direct mutual funds available. 
 
 That means the system must support:
 
@@ -737,7 +735,7 @@ That means the system must support:
 
 # 29. IPO Module
 
-Kite publicly supports applying for IPOs through UPI, which means the brokerage platform needs a primary-market module as well. ([Zerodha][4])
+Kite publicly supports applying for IPOs through UPI, which means the brokerage platform needs a primary-market module as well. 
 
 This module should handle:
 
@@ -762,7 +760,7 @@ A strong trading platform should support:
 * portfolio-linked alerts
 * trigger alerts for price levels and percentage moves
 
-Zerodha’s Kite publicly advertises alerts, advanced charting, market depth, and cloud-based market alerts, so the backend must support low-latency subscriptions and event-driven triggers. ([Zerodha][4])
+Zerodha’s Kite publicly advertises alerts, advanced charting, market depth, and cloud-based market alerts, so the backend must support low-latency subscriptions and event-driven triggers. 
 
 ---
 
@@ -795,7 +793,6 @@ Zerodha publicly describes universal instrument search across tens of thousands 
 * mutual funds
 * bonds
 
-([Zerodha][4])
 
 A search engine like Elasticsearch or OpenSearch is the right choice.
 
@@ -1150,7 +1147,7 @@ Console-like reporting should provide:
 * corporate actions
 * reconciliation outputs
 
-Zerodha’s Console is publicly described as the central back-office dashboard for reporting and analytics, which is exactly the kind of dedicated reporting layer a brokerage platform needs. ([Zerodha][6])
+Zerodha’s Console is publicly described as the central back-office dashboard for reporting and analytics, which is exactly the kind of dedicated reporting layer a brokerage platform needs. 
 
 ---
 
@@ -1244,7 +1241,7 @@ A modern platform can include advanced trading tools such as:
 * mutual fund investing
 * tax and analytics dashboards
 
-Those capabilities are directly aligned with Zerodha’s public product surface. ([Zerodha][4])
+Those capabilities are directly aligned with Zerodha’s public product surface. 
 
 ---
 
@@ -1353,12 +1350,12 @@ flowchart TB
 | Concept            | Summary                                                                                         |
 | ------------------ | ----------------------------------------------------------------------------------------------- |
 | Account opening    | Digital onboarding with e-sign and verification                                                 |
-| Trading scope      | Stocks, F&O, commodities, currency, ETFs, mutual funds, bonds ([Zerodha][1])                    |
-| Trading terminal   | Kite-like app with streaming data, charts, depth, GTT, baskets, alerts, and APIs ([Zerodha][4]) |
-| Back office        | Console-like analytics and reports ([Zerodha][6])                                               |
-| Mutual funds       | Direct mutual fund investing via a separate product surface ([Zerodha][7])                      |
-| Order types        | Market, limit, stop-loss, GTT, AMO, OCO ([Zerodha Support][5])                                  |
-| Market hours       | NSE normal market 09:15–15:30, with pre-open and modification windows ([NSE India][3])          |
+| Trading scope      | Stocks, F&O, commodities, currency, ETFs, mutual funds, bonds                                   |
+| Trading terminal   | Kite-like app with streaming data, charts, depth, GTT, baskets, alerts, and APIs                |
+| Back office        | Console-like analytics and reports                                                              |
+| Mutual funds       | Direct mutual fund investing via a separate product surface                                     |
+| Order types        | Market, limit, stop-loss, GTT, AMO, OCO                                                         |
+| Market hours       | NSE normal market 09:15–15:30, with pre-open and modification windows                           |
 | Core systems       | OMS, RMS, ledger, market data, portfolio, reports, alerts                                       |
 | Critical principle | Money correctness before speed                                                                  |
 | Scaling principle  | Separate reads, writes, and event streams                                                       |
@@ -1386,15 +1383,15 @@ It is a regulated financial infrastructure system that must safely coordinate:
 
 The right design uses:
 
-* a **digital onboarding pipeline** for KYC and e-sign verification ([Zerodha][2])
-* a **real-time market data system** for streaming quotes, depth, and charts ([Zerodha][4])
+* a **digital onboarding pipeline** for KYC and e-sign verification 
+* a **real-time market data system** for streaming quotes, depth, and charts 
 * a **strict OMS + RMS + exchange gateway** for order safety
 * a **double-entry ledger** for money correctness
 * a **portfolio/holdings layer** for positions and P&L
 * a **Kafka-driven event backbone** for notifications, analytics, and downstream processing
 * a **Redis cache layer** for hot market data and session reads
 * a **search index** for fast instrument discovery
-* a **reporting backend** for statements, tax reports, and analytics ([Zerodha][6])
+* a **reporting backend** for statements, tax reports, and analytics 
 * **multi-region resilience** for availability
 
 A brokerage platform succeeds only when it is:
@@ -1406,13 +1403,3 @@ A brokerage platform succeeds only when it is:
 * observable enough for operations
 
 That is what makes a Zerodha-like platform a true world-class system design problem.
-
-[1]: https://zerodha.com/ "Zerodha: Online brokerage platform for stock trading & investing"
-[2]: https://zerodha.com/open-account/ "Open a free demat and trading account online at Zerodha"
-[3]: https://www.nseindia.com/static/market-data/market-timings "
-    NSE - National Stock Exchange of India Ltd.
-"
-[4]: https://zerodha.com/products/kite/ "Kite: Zerodha's premier trading platform for all devices"
-[5]: https://support.zerodha.com/category/trading-and-markets/general-kite/others-kite/articles/order-types-and-execution "Types of stock market orders: complete guide"
-[6]: https://zerodha.com/products/console/ "Console by Zerodha: Tax ready reports, statement and analytics"
-[7]: https://zerodha.com/investments/ "Stock market investments instruments and financial products - mutual funds, bonds and more"
