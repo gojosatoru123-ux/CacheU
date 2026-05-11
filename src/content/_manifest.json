@@ -918,7 +918,7 @@
     "hasMindmap": true
   },
   {
-    "slug": "seo-sitemap-robots",
+    "slug": "sitemap-robots-web-manifest",
     "title": "Sitemap, Robots.txt, and Web Manifest",
     "description": "A deep technical guide to sitemap.xml, robots.txt, and site.webmanifest — how search engines crawl your site, how bots are controlled, and how websites become installable PWAs.",
     "category": "SEO",

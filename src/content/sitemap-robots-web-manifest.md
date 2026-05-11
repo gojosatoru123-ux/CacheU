@@ -93,7 +93,7 @@ Each `<url>` entry describes a single page.
 
 # Important Sitemap Tags
 
-### `<urlset>`
+### urlset
 
 Root container for all URLs.
 
@@ -106,7 +106,7 @@ The **xmlns attribute defines the sitemap specification version**.
 
 ---
 
-### `<url>`
+### url
 
 Represents a single webpage.
 
@@ -117,7 +117,7 @@ Represents a single webpage.
 
 ---
 
-### `<loc>`
+### loc
 
 The page URL.
 
@@ -129,7 +129,7 @@ Must be **absolute URLs**.
 
 ---
 
-### `<lastmod>`
+### lastmod
 
 Indicates the last modification date.
 
@@ -141,7 +141,7 @@ Search engines may prioritize recently updated pages.
 
 ---
 
-### `<changefreq>`
+### changefreq
 
 Tells bots how often the page changes.
 
@@ -164,7 +164,7 @@ This is only a **hint**, not a strict instruction.
 
 ---
 
-### `<priority>`
+### priority
 
 Relative importance.
 

@@ -1,4 +1,9 @@
-````md id="4m8qza"
+---
+title:  Sitemap, Robot.txt, Webmanifest
+articleSlug: sitemap-robots-web-manifest
+difficulty: Intermediate
+estimatedTime: 20 mins
+---
 <!-- QUESTION -->
 difficulty: Easy
 tags: sitemap, seo, search-engines

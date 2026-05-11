@@ -1597,24 +1597,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cacheu.dev/docs/seo-sitemap-robots</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cacheu.dev/practice/seo-sitemap-robots</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cacheu.dev/mindmap/seo-sitemap-robots</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://cacheu.dev/docs/serverless-architecture</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -1646,6 +1628,24 @@
   </url>
   <url>
     <loc>https://cacheu.dev/mindmap/service-mesh</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cacheu.dev/docs/sitemap-robots-web-manifest</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cacheu.dev/practice/sitemap-robots-web-manifest</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cacheu.dev/mindmap/sitemap-robots-web-manifest</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

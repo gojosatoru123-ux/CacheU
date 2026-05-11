@@ -1,6 +1,6 @@
 ---
 title: Sitemap, Robots.txt, and Web Manifest
-articleSlug: seo-sitemap-robots-manifest
+articleSlug: sitemap-robots-web-manifest
 ---
 
 # Sitemap, Robots.txt, and Web Manifest
