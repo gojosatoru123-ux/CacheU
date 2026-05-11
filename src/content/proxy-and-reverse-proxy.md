@@ -64,7 +64,7 @@ A **proxy server** is an intermediary that forwards requests from clients to ser
 
 Client → Proxy → Server
 
-````id="9b5ppp"
+```
 
 The proxy hides the **client's identity from the server**.
 
@@ -155,9 +155,9 @@ Proxy -->|Blocked| Denied
 
 If the student tries accessing restricted sites:
 
-````
+```
 Access Denied
-``` id="zmx93x"
+```
 
 ---
 
@@ -288,17 +288,15 @@ Reverse proxies can store frequently requested responses.
 
 Example:
 
-````
+```
 GET /images/logo.png
-``` id="ngmxqt"
+```
 
 If cached:
 
-````
-
+```
 Response served directly by proxy
-
-````id="a4v2am"
+```
 
 No request reaches the backend server.
 

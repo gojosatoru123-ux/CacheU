@@ -493,22 +493,3 @@ A typical microservices system includes:
   * Sidecar
 
 These patterns form the **foundation of modern large-scale distributed systems** used by companies like Netflix, Amazon, and Uber.
-
-```
-
-If you'd like, I can also :contentReference[oaicite:0]{index=0}:
-
-:contentReference[oaicite:1]{index=1}
-
-It would include:
-
-- Service mesh
-- API gateway internals
-- distributed tracing
-- service registry internals
-- message broker design
-- microservice deployment pipeline
-- real-world architecture of Netflix/Uber
-
-That article would be **one of the most complete HLD resources on microservices**.
-```

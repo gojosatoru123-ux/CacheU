@@ -515,6 +515,3 @@ The system remains available even when **servers, nodes, or regions fail**.
 | Hybrid architecture | Combines both models in real-world systems         |
 
 High availability design is a **core principle of distributed system architecture**, enabling modern platforms to deliver reliable services at global scale.
-
-```
-```

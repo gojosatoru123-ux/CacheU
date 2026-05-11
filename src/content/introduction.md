@@ -459,4 +459,4 @@ It focuses on:
 
 By designing systems at a high level, engineers can ensure that applications are **scalable, resilient, and capable of supporting massive workloads**.
 
-Modern distributed systems used by companies like **Amazon**, **Netflix**, and **Uber rely on strong high-level architecture to handle billions of operations every day.
+Modern distributed systems used by companies like **Amazon**, **Netflix**, and **Uber** rely on strong high-level architecture to handle billions of operations every day.

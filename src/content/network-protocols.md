@@ -319,10 +319,13 @@ Unlike HTTP:
 
 ```mermaid
 sequenceDiagram
+    participant Client
+    participant Server
 
-Client->>Server: HTTP Upgrade Request
-Server->>Client: 101 Switching Protocols
-Client<->>Server: Persistent WebSocket Communication
+    Client->>Server: HTTP Upgrade Request
+    Server-->>Client: 101 Switching Protocols
+    Client->>Server: WebSocket Message
+    Server->>Client: WebSocket Message
 ```
 
 ---
@@ -529,15 +532,3 @@ Protocols used:
 * Choosing the correct protocol is critical for **performance, scalability, and reliability**
 
 Understanding network protocols is fundamental to designing **large-scale distributed systems**.
-
-```
-
-If you want, I can also write a **much deeper follow-up HLD article** that connects this topic with real system design:
-
-- **How Netflix uses network protocols**
-- **How CDNs optimize protocols**
-- **HTTP/1.1 vs HTTP/2 vs HTTP/3**
-- **QUIC protocol (modern internet transport)**
-- **Load balancers and network protocols**
-
-Those are usually the **next layer of HLD understanding** after network protocols.

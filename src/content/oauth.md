@@ -532,15 +532,3 @@ OAuth is ideal for:
 * Often combined with **OpenID Connect for authentication**
 
 OAuth is a **fundamental building block of modern distributed systems**, enabling secure integrations across thousands of applications on the internet.
-
-```
-
-If you'd like, I can also generate a **much deeper follow-up article** on:
-
-- **:contentReference[oaicite:0]{index=0}**
-- **:contentReference[oaicite:1]{index=1}**
-- **:contentReference[oaicite:2]{index=2}**
-- **:contentReference[oaicite:3]{index=3}**
-- **:contentReference[oaicite:4]{index=4}**
-
-Those topics connect directly with OAuth in system design.

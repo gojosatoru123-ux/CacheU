@@ -36,7 +36,7 @@ Typical validations:
 
 Example validation:
 
-```js id="2x7qpd"
+```js
 if (!email.includes('@')) {
   throw new Error('Invalid email')
 }
@@ -78,7 +78,7 @@ Backend validation ensures:
 
 Example:
 
-```js id="4p7vyt"
+```js
 if (password.length < 8) {
   return res.status(400).send('Weak password')
 }
@@ -158,7 +158,7 @@ Example JSON schema:
 
 Incoming request:
 
-```json id="5m2qwr"
+```json
 {
   "email": "alex@example.com",
   "password": "secret123"
@@ -227,7 +227,7 @@ Validation helps by:
 
 Example validation:
 
-```js id="5p1vyt"
+```js
 if (!Number.isInteger(userId)) {
   throw new Error('Invalid ID')
 }
@@ -262,7 +262,7 @@ Example email regex:
 
 Validation example:
 
-```js id="1n7qpd"
+```js
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 ```
 
@@ -312,13 +312,13 @@ Comparison:
 
 Whitelist example:
 
-```js id="6m3vke"
+```js
 const allowedRoles = ['admin', 'user']
 ```
 
 Blacklist example:
 
-```js id="2p8qza"
+```js
 if (input.includes('<script>'))
 ```
 
@@ -417,7 +417,7 @@ Validation should check:
 
 Example validation:
 
-```js id="4x1vke"
+```js
 if (!allowedTypes.includes(file.mimetype)) {
   throw new Error('Invalid file type')
 }
@@ -464,7 +464,7 @@ Unlike format validation:
 
 Example business validation:
 
-```js id="5m1qke"
+```js
 if (withdrawal > balance) {
   throw new Error('Insufficient funds')
 }

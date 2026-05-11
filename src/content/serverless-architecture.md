@@ -155,11 +155,11 @@ Example architecture:
 
 ```mermaid
 flowchart LR
-    Client --> API Gateway
-    API Gateway --> Lambda
-    Lambda --> Database
-    Database --> EventStream
-    EventStream --> WorkerLambda
+    Client[Client] --> APIGateway[API Gateway]
+    APIGateway --> Lambda[Lambda]
+    Lambda --> Database[(Database)]
+    Database --> EventStream[Event Stream]
+    EventStream --> WorkerLambda[Worker Lambda]
 ```
 
 ---
@@ -377,9 +377,9 @@ Each service can be represented by a **set of functions**.
 
 ```mermaid
 flowchart LR
-    API Gateway --> UserLambda
-    API Gateway --> OrderLambda
-    API Gateway --> PaymentLambda
+    APIGateway[API Gateway] --> UserLambda[User Lambda]
+    APIGateway --> OrderLambda[Order Lambda]
+    APIGateway --> PaymentLambda[Payment Lambda]
 ```
 
 Each function handles a specific domain.

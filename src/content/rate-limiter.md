@@ -516,12 +516,9 @@ expire after 60 seconds
 
 ```mermaid
 flowchart TD
-
-Clients --> API Servers
-
-API Servers --> TokenBucketStore
-
-TokenBucketStore --> RedisCluster
+    Clients[Clients] --> APIServers[API Servers]
+    APIServers --> TokenBucketStore[Token Bucket Store]
+    TokenBucketStore --> RedisCluster[(Redis Cluster)]
 ```
 
 All servers share token state.

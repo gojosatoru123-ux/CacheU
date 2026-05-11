@@ -27,7 +27,7 @@ If we execute the following query:
 
 ```sql
 SELECT * FROM users WHERE email = 'user@example.com';
-````
+```
 
 Without an index, the database must perform a **Full Table Scan**.
 
@@ -49,7 +49,7 @@ This is extremely slow for large tables.
 
 With an index on the `email` column, the database can quickly find the required row.
 
-```mermaid id="b6j3nt"
+```mermaid 
 flowchart TD
     Query --> IndexLookup
     IndexLookup --> RowPointer
@@ -94,7 +94,7 @@ The most common structure used by databases is the **B-Tree**.
 
 ## B-Tree Structure
 
-```mermaid id="h4as7k"
+```mermaid
 flowchart TD
     Root --> Node1
     Root --> Node2
@@ -200,7 +200,7 @@ Useful when queries filter using **multiple columns**.
 
 ## Composite Index Example
 
-```mermaid id="v1oq3g"
+```mermaid
 flowchart LR
     Index --> UserID
     Index --> Date
@@ -249,7 +249,7 @@ Databases like Elasticsearch specialize in full-text indexing.
 
 Hash indexes store values using **hash functions**.
 
-```mermaid id="ztp4tq"
+```mermaid
 flowchart LR
     Key --> HashFunction --> Bucket
 ```
@@ -276,7 +276,7 @@ Indexes can be categorized based on how they store data.
 
 A **clustered index determines the physical order of rows**.
 
-```mermaid id="gczsvq"
+```mermaid
 flowchart TD
     Index --> Row1
     Index --> Row2
@@ -294,7 +294,7 @@ Characteristics:
 
 A **non-clustered index stores pointers to rows**.
 
-```mermaid id="9jq9aa"
+```mermaid
 flowchart TD
     Index --> Pointer1 --> TableRow
     Index --> Pointer2 --> TableRow
@@ -394,7 +394,7 @@ Common tasks include:
 
 Frequent inserts and updates can cause index fragmentation.
 
-```mermaid id="sot3rq"
+```mermaid
 flowchart LR
     Insert1 --> Gap
     Gap --> Insert2

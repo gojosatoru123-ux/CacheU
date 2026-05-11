@@ -913,7 +913,7 @@ POST /engagement/like
 
 Request:
 
-```json id="like_req_01"
+```json
 {
   "contentId": "post_123",
   "userId": "user_45",
@@ -940,7 +940,7 @@ POST /engagement/view
 
 Request:
 
-```json id="view_req_01"
+```json
 {
   "contentId": "video_987",
   "viewerId": "user_45",

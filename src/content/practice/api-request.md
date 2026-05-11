@@ -214,7 +214,7 @@ Common uses:
 
 Backend access example:
 
-```js id="4m1qza"
+```js
 req.query.page
 ```
 

@@ -105,7 +105,7 @@ This creates uncertainty.
 
 Consider payment processing.
 
-```mermaid id="oj5u4p"
+```mermaid
 sequenceDiagram
     participant User
     participant PaymentService
@@ -157,7 +157,7 @@ Duplicate requests are extremely common.
 
 # 1. Network Timeouts
 
-```mermaid id="8z6h17"
+```mermaid
 flowchart LR
     A[Client Request]
     B[Server Processes]
@@ -257,7 +257,7 @@ Repeated 100 times:
 
 Final state remains:
 
-```json id="5f44cc"
+```json
 {
   "name": "John"
 }
@@ -313,7 +313,7 @@ Server stores result associated with key.
 
 # Idempotency Workflow
 
-```mermaid id="t9r4we"
+```mermaid
 sequenceDiagram
     participant Client
     participant API
@@ -374,7 +374,7 @@ Server detects duplicate:
 
 # Internal Architecture
 
-```mermaid id="k9v4qg"
+```mermaid
 flowchart TD
     A[Incoming Request]
     B[Extract Idempotency Key]
@@ -398,7 +398,7 @@ flowchart TD
 
 # Database Schema Example
 
-```sql id="cb1szy"
+```sql
 CREATE TABLE idempotency_keys (
     idempotency_key VARCHAR(255) PRIMARY KEY,
     response_body TEXT,
@@ -477,7 +477,7 @@ Duplicate execution becomes common.
 
 # Example Architecture
 
-```mermaid id="omjnza"
+```mermaid
 flowchart LR
     A[Client]
     B[API Gateway]
@@ -513,7 +513,7 @@ Consumers MUST be idempotent.
 
 # Queue Example
 
-```mermaid id="0ih0v9"
+```mermaid
 sequenceDiagram
     participant Queue
     participant Consumer
@@ -648,7 +648,7 @@ Concurrent requests create challenges.
 
 Example:
 
-```mermaid id="4vuzut"
+```mermaid
 sequenceDiagram
     participant Client1
     participant Client2
@@ -738,7 +738,7 @@ Bad user experience.
 
 # E-Commerce Example
 
-```mermaid id="c5lhrh"
+```mermaid
 flowchart TD
     A[Place Order]
     B[Payment]
@@ -766,7 +766,7 @@ But retries are dangerous without idempotency.
 
 # Retry + Idempotency = Reliability
 
-```mermaid id="43kjrn"
+```mermaid
 flowchart LR
     A[Request]
     B[Failure]
@@ -877,7 +877,7 @@ Tradeoff is worth it for correctness.
 
 # Advanced Architecture
 
-```mermaid id="g8n8h6"
+```mermaid
 flowchart TB
     A[Client]
     B[API Gateway]
@@ -949,7 +949,7 @@ Absolutely critical in:
 
 # Final Architecture Summary
 
-```mermaid id="ayq8a4"
+```mermaid
 flowchart TD
     A[Client Sends Request]
     B[Generate Idempotency Key]
