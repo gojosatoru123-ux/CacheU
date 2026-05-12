@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 interface Heading {
@@ -12,49 +12,78 @@ interface TableOfContentsProps {
 }
 
 function extractHeadings(content: string): Heading[] {
-  // Updated to handle 1 to 6 hashes: #{1,6}
   const headingRegex = /^(#{1,6})\s+(.+)$/gm;
+
   const headings: Heading[] = [];
+  const slugCount: Record<string, number> = {};
+
   let match;
 
   while ((match = headingRegex.exec(content)) !== null) {
     const level = match[1].length;
-    const text = match[2].trim();
-    const id = text
+
+    // Remove custom ids like {#some-id}
+    const rawText = match[2].replace(/\s*\{#.*\}$/, '').trim();
+
+    // Create base slug
+    const baseSlug = rawText
       .toLowerCase()
       .replace(/[^\w\s-]/g, '')
       .replace(/\s+/g, '-')
       .replace(/-+/g, '-');
-    headings.push({ id, text, level });
+
+    // Ensure unique ids
+    const count = slugCount[baseSlug] || 0;
+    slugCount[baseSlug] = count + 1;
+
+    const uniqueId = count === 0 ? baseSlug : `${baseSlug}-${count}`;
+
+    headings.push({
+      id: uniqueId,
+      text: rawText,
+      level,
+    });
   }
 
   return headings;
 }
 
-export function TableOfContents({ content }: TableOfContentsProps) {
+export function TableOfContents({
+  content,
+}: TableOfContentsProps) {
   const [activeId, setActiveId] = useState('');
-  const headings = extractHeadings(content);
+
+  const headings = useMemo(
+    () => extractHeadings(content),
+    [content]
+  );
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
+        const visible = entries.find(
+          (entry) => entry.isIntersecting
+        );
+
+        if (visible) {
+          setActiveId(visible.target.id);
         }
       },
-      { rootMargin: '-80px 0px -60% 0px' }
+      {
+        rootMargin: '-80px 0px -60% 0px',
+      }
     );
 
     headings.forEach(({ id }) => {
       const el = document.getElementById(id);
-      if (el) observer.observe(el);
+
+      if (el) {
+        observer.observe(el);
+      }
     });
 
     return () => observer.disconnect();
-    // Keep 'content' as dependency so it re-runs when the MD changes
-  }, [content, headings]); 
+  }, [headings]);
 
   if (headings.length === 0) return null;
 
@@ -63,14 +92,15 @@ export function TableOfContents({ content }: TableOfContentsProps) {
       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3 shrink-0">
         On this page
       </p>
+
       <ul className="space-y-1 border-l border-slate-100 overflow-y-auto min-h-0 pb-11">
-        {headings.map((h) => (
-          <li key={h.id}>
+        {headings.map((h, index) => (
+          <li key={`${h.id}-${index}`}>
             <a
               href={`#${h.id}`}
-              // Dynamically calculate padding based on level
-              // H1 (level 1) = 1rem, H2 = 1.75rem, H3 = 2.5rem, etc.
-              style={{ paddingLeft: `${(h.level - 1) * 12 + 16}px` }}
+              style={{
+                paddingLeft: `${(h.level - 1) * 12 + 16}px`,
+              }}
               className={cn(
                 'block py-1 text-sm transition-all border-l-2 -ml-px',
                 activeId === h.id

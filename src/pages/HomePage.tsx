@@ -285,6 +285,44 @@ export default function HomePage() {
         </div>
       </section>
 
+            {/* ══════════════════════════════════════════════════════════════
+          NEWSLETTER CARD
+      ══════════════════════════════════════════════════════════════ */}
+      <section className="pb-12">
+        <div className="bg-linear-to-r from-violet-600 to-indigo-700 rounded-3xl p-8 md:p-10 text-white relative overflow-hidden">
+          <div className="absolute -right-10 -top-10 w-52 h-52 bg-white/10 rounded-full" />
+          <div className="absolute left-1/2 -bottom-16 w-72 h-72 bg-teal-400/10 rounded-full blur-3xl" />
+
+          <div className="relative flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+                <Sparkles className="w-3.5 h-3.5" />
+                Coming Soon
+              </div>
+
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-[1.15] mb-3">
+                Newsletter Service<br />
+                coming soon for free.
+              </h2>
+
+              <p className="text-violet-100 leading-relaxed text-sm md:text-base max-w-xl">
+                Get curated system design insights, newly added articles, interview prep notes,
+                and engineering deep-dives delivered straight to your inbox.
+              </p>
+            </div>
+
+            <div className="shrink-0">
+              <div className="bg-white/10 border border-white/20 backdrop-blur-sm rounded-2xl px-5 py-4">
+                <div className="text-2xl font-black">100% Free</div>
+                <div className="text-violet-100 text-sm mt-1">
+                  No spam. Only high-quality engineering content.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ══════════════════════════════════════════════════════════════
           ROADMAP
       ══════════════════════════════════════════════════════════════ */}

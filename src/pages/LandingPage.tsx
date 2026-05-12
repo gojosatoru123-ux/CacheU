@@ -8,19 +8,19 @@ import {
 import { MANIFEST, CATEGORIES, CATEGORY_ORDER } from '../lib/content';
 
 // ─── Dynamic data from MANIFEST ──────────────────────────────────────────────
-const totalArticles  = MANIFEST.length;
-const totalPractice  = MANIFEST.filter(a => a.hasPractice).length;
-const totalMindmaps  = MANIFEST.filter(a => a.hasMindmap).length;
-const totalCats      = [...new Set(MANIFEST.map(a => a.category))].length;
+const totalArticles = MANIFEST.length;
+const totalPractice = MANIFEST.filter(a => a.hasPractice).length;
+const totalMindmaps = MANIFEST.filter(a => a.hasMindmap).length;
+const totalCats = [...new Set(MANIFEST.map(a => a.category))].length;
 
 const CATEGORY_CONFIG: Record<string, { color: string; gradient: string; icon: React.ReactNode; accent: string }> = {
-  'Low Level Design':  { color: '#a78bfa', gradient: 'from-violet-500 to-indigo-600',  icon: <Code className="w-5 h-5" />,       accent: '#7c3aed' },
-  'High Level Design': { color: '#34d399', gradient: 'from-emerald-500 to-teal-600',   icon: <LayoutGrid className="w-5 h-5" />, accent: '#059669' },
-  'Backend Design':    { color: '#fbbf24', gradient: 'from-amber-400 to-orange-500',   icon: <Zap className="w-5 h-5" />,        accent: '#d97706' },
-  'Web Security':      { color: '#f87171', gradient: 'from-rose-500 to-red-600',        icon: <Shield className="w-5 h-5" />,     accent: '#dc2626' },
-  'SEO':               { color: '#4ade80', gradient: 'from-green-400 to-emerald-600',   icon: <Globe className="w-5 h-5" />,      accent: '#059669' },
-  'Design':            { color: '#f472b6', gradient: 'from-pink-400 to-rose-500',        icon: <LayersIcon className="w-5 h-5" />,   accent: '#ec4899' },
-  'Networking':        { color: '#38bdf8', gradient: 'from-sky-400 to-cyan-500',        icon: <Network className="w-5 h-5" />,    accent: '#0284c7' },
+  'Low Level Design': { color: '#a78bfa', gradient: 'from-violet-500 to-indigo-600', icon: <Code className="w-5 h-5" />, accent: '#7c3aed' },
+  'High Level Design': { color: '#34d399', gradient: 'from-emerald-500 to-teal-600', icon: <LayoutGrid className="w-5 h-5" />, accent: '#059669' },
+  'Backend Design': { color: '#fbbf24', gradient: 'from-amber-400 to-orange-500', icon: <Zap className="w-5 h-5" />, accent: '#d97706' },
+  'Web Security': { color: '#f87171', gradient: 'from-rose-500 to-red-600', icon: <Shield className="w-5 h-5" />, accent: '#dc2626' },
+  'SEO': { color: '#4ade80', gradient: 'from-green-400 to-emerald-600', icon: <Globe className="w-5 h-5" />, accent: '#059669' },
+  'Design': { color: '#f472b6', gradient: 'from-pink-400 to-rose-500', icon: <LayersIcon className="w-5 h-5" />, accent: '#ec4899' },
+  'Networking': { color: '#38bdf8', gradient: 'from-sky-400 to-cyan-500', icon: <Network className="w-5 h-5" />, accent: '#0284c7' },
 };
 const FALLBACK_CFG = { color: '#818cf8', gradient: 'from-indigo-400 to-purple-600', icon: <BookOpen className="w-5 h-5" />, accent: '#6366f1' };
 
@@ -37,7 +37,7 @@ const orderedCats = getOrderedCats();
 function TickerTape() {
   const titles = MANIFEST.map(a => a.title);
   // duplicate for seamless loop
-  const items  = [...titles, ...titles];
+  const items = [...titles, ...titles];
   return (
     <div className="overflow-hidden py-3 border-y border-white/5 my-12">
       <div className="flex gap-8 animate-ticker whitespace-nowrap">
@@ -77,7 +77,7 @@ function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
 
 // ─── Scroll-reveal wrapper ────────────────────────────────────────────────────
 function Reveal({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
-  const ref  = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [vis, setVis] = useState(false);
 
   useEffect(() => {
@@ -93,8 +93,8 @@ function Reveal({ children, delay = 0, className = '' }: { children: React.React
       ref={ref}
       className={className}
       style={{
-        opacity:    vis ? 1 : 0,
-        transform:  vis ? 'translateY(0)' : 'translateY(32px)',
+        opacity: vis ? 1 : 0,
+        transform: vis ? 'translateY(0)' : 'translateY(32px)',
         transition: `opacity 0.7s ease ${delay}ms, transform 0.7s ease ${delay}ms`,
       }}
     >
@@ -112,9 +112,12 @@ export default function LandingPage() {
 
       {/* ── CSS for ticker + grain ── */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap');
 
-        .font-display { font-family: 'Syne', sans-serif; }
+.font-display {
+  font-family: 'Nunito', sans-serif;
+  line-height: 1.15;
+}
         .font-body    { font-family: 'DM Sans', sans-serif; }
         .font-mono-dm { font-family: 'DM Mono', monospace; }
 
@@ -210,7 +213,7 @@ export default function LandingPage() {
 
           {/* Headline */}
           <h1
-            className="font-display text-[clamp(3rem,10vw,7rem)] leading-[0.95] tracking-tighter text-white mb-6 max-w-5xl"
+            className="font-display text-[clamp(3rem,10vw,7rem)] leading-[1.28] tracking-tighter text-white mb-6 max-w-5xl pb-[0.08em]"
             style={{ opacity: 0, animation: 'fadeSlideUp 0.9s ease 0.2s forwards' }}
           >
             The system design<br />
@@ -265,10 +268,10 @@ export default function LandingPage() {
         <section className="px-6 md:px-12 py-16">
           <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { val: totalArticles, suffix: '',   label: 'In-depth articles',        color: '#a78bfa' },
-              { val: totalPractice, suffix: '+',  label: 'Practice quiz sets',       color: '#34d399' },
-              { val: totalMindmaps, suffix: '',   label: 'Interactive mind maps',    color: '#38bdf8' },
-              { val: totalCats,     suffix: '',   label: 'Subject tracks',           color: '#fbbf24' },
+              { val: totalArticles, suffix: '', label: 'In-depth articles', color: '#a78bfa' },
+              { val: totalPractice, suffix: '+', label: 'Practice quiz sets', color: '#34d399' },
+              { val: totalMindmaps, suffix: '', label: 'Interactive mind maps', color: '#38bdf8' },
+              { val: totalCats, suffix: '', label: 'Subject tracks', color: '#fbbf24' },
             ].map(({ val, suffix, label, color }, i) => (
               <Reveal key={label} delay={i * 80}>
                 <div
@@ -286,6 +289,30 @@ export default function LandingPage() {
         </section>
 
         {/* ════════════════════════════════════════════════════════
+            NEWSLETTER CARD
+        ════════════════════════════════════════════════════════ */}
+        <section className="px-6 md:px-12 py-4">
+          <div className="max-w-5xl mx-auto">
+            <Reveal>
+              <div className="relative overflow-hidden border border-violet-500/20 bg-white/3 rounded-3xl p-6 md:p-8">
+                <div className="absolute inset-0 pointer-events-none bg-linear-to-r from-violet-500/10 via-transparent to-teal-500/10" />
+                <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-mono-dm text-violet-300 uppercase tracking-widest mb-3">Coming soon</p>
+                    <h3 className="font-display text-2xl md:text-3xl text-white leading-[1.15]">
+                      Newsletter Service coming soon for free.
+                    </h3>
+                  </div>
+                  <p className="text-sm text-white/35 max-w-md leading-relaxed">
+                    Curated system design updates, new content drops, and interview prep notes delivered in one simple newsletter.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════════
             SUBJECT TRACKS — fully dynamic
         ════════════════════════════════════════════════════════ */}
         <section className="px-6 md:px-12 py-16">
@@ -293,7 +320,7 @@ export default function LandingPage() {
             <Reveal>
               <div className="mb-12">
                 <p className="text-xs font-mono-dm text-white/30 uppercase tracking-widest mb-3">What's inside</p>
-                <h2 className="font-display text-4xl md:text-5xl text-white tracking-tight leading-tight">
+                <h2 className="font-display text-4xl md:text-5xl text-white tracking-tight leading-[1.18] pb-[0.06em]">
                   {totalCats} tracks.<br />
                   <span className="text-white/30">Every layer of the stack.</span>
                 </h2>
@@ -302,10 +329,10 @@ export default function LandingPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {orderedCats.map((cat, i) => {
-                const cfg       = getCfg(cat);
-                const articles  = CATEGORIES[cat] ?? [];
-                const withQuiz  = articles.filter(a => a.hasPractice).length;
-                const withMap   = articles.filter(a => a.hasMindmap).length;
+                const cfg = getCfg(cat);
+                const articles = CATEGORIES[cat] ?? [];
+                const withQuiz = articles.filter(a => a.hasPractice).length;
+                const withMap = articles.filter(a => a.hasMindmap).length;
                 const firstSlug = articles[0]?.slug;
                 const isHovered = hoveredCat === cat;
 
@@ -316,7 +343,7 @@ export default function LandingPage() {
                         className="group relative border rounded-2xl p-6 cursor-pointer transition-all duration-300 overflow-hidden"
                         style={{
                           borderColor: isHovered ? `${cfg.color}40` : 'rgba(255,255,255,0.06)',
-                          background:  isHovered ? `${cfg.color}08` : 'rgba(255,255,255,0.02)',
+                          background: isHovered ? `${cfg.color}08` : 'rgba(255,255,255,0.02)',
                         }}
                         onMouseEnter={() => setHoveredCat(cat)}
                         onMouseLeave={() => setHoveredCat(null)}
@@ -381,7 +408,7 @@ export default function LandingPage() {
                           <ArrowRight
                             className="w-4 h-4 shrink-0 mt-1 transition-all duration-300"
                             style={{
-                              color:     isHovered ? cfg.color : 'rgba(255,255,255,0.15)',
+                              color: isHovered ? cfg.color : 'rgba(255,255,255,0.15)',
                               transform: isHovered ? 'translateX(2px)' : 'translateX(0)',
                             }}
                           />
@@ -402,7 +429,7 @@ export default function LandingPage() {
           <div className="max-w-5xl mx-auto">
             <Reveal>
               <p className="text-xs font-mono-dm text-white/30 uppercase tracking-widest mb-3">How it works</p>
-              <h2 className="font-display text-4xl md:text-5xl text-white tracking-tight mb-14">
+              <h2 className="font-display text-4xl md:text-5xl text-white tracking-tight mb-14 leading-[1.18] pb-[0.06em]">
                 Three ways to learn.<br />
                 <span className="text-white/25">One place to master.</span>
               </h2>
@@ -448,7 +475,7 @@ export default function LandingPage() {
                       </div>
                       <span className="font-mono-dm text-4xl font-bold text-white/5 group-hover:text-white/10 transition-colors">{num}</span>
                     </div>
-                    <h3 className="font-display text-xl text-white mb-3">{title}</h3>
+                    <h3 className="font-display text-xl text-white mb-3 leading-[1.15]">{title}</h3>
                     <p className="text-sm text-white/35 leading-relaxed mb-6 flex-1">{desc}</p>
                     <Link
                       href={href}
@@ -475,7 +502,7 @@ export default function LandingPage() {
                 <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                   <div>
                     <p className="text-xs font-mono-dm text-violet-400 uppercase tracking-widest mb-3">Hidden feature</p>
-                    <h3 className="font-display text-3xl md:text-4xl text-white mb-4 leading-tight">
+                    <h3 className="font-display text-3xl md:text-4xl text-white mb-4 leading-[1.2] pb-[0.05em]">
                       Generate interview questions<br />with one click.
                     </h3>
                     <p className="text-white/40 text-sm leading-relaxed mb-6">
@@ -518,7 +545,7 @@ export default function LandingPage() {
         <section className="px-6 md:px-12 py-24 text-center">
           <Reveal>
             <p className="text-xs font-mono-dm text-white/25 uppercase tracking-widest mb-6">No account. No paywall. No excuses.</p>
-            <h2 className="font-display text-5xl md:text-7xl text-white tracking-tight mb-8 leading-none">
+            <h2 className="font-display text-5xl md:text-7xl text-white tracking-tight mb-8 leading-[1.16] pb-[0.08em]">
               Start learning<br />
               <span className="hero-line">right now.</span>
             </h2>

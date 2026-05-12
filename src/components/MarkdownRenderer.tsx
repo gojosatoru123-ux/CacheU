@@ -135,6 +135,37 @@ function buildHtml(content: string): string {
 
     return `<h${depth} id="${id}">${text}</h${depth}>`;
   };
+
+  defaultRenderer.table = (token) => {
+    const header = token.header
+      .map((cell: any) => `<th>${cell.text}</th>`)
+      .join('');
+  
+    const body = token.rows
+      .map(
+        (row: any[]) => `
+          <tr>
+            ${row.map((cell: any) => `<td>${cell.text}</td>`).join('')}
+          </tr>
+        `
+      )
+      .join('');
+  
+    return `
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>${header}</tr>
+          </thead>
+  
+          <tbody>
+            ${body}
+          </tbody>
+        </table>
+      </div>
+    `;
+  };
+
   defaultRenderer.code = ({ text, lang }) => renderSingleCode(text, lang ?? 'plaintext');
   const markedWithRenderer = marked.use({ renderer: defaultRenderer });
 
@@ -820,11 +851,44 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
             border-radius: 0;
           }
         }
+
+        /* ═══════════════════════════════════════════════════════════
+          TABLE
+        ═══════════════════════════════════════════════════════════ */
+
+        .table-wrapper {
+          width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          margin: 1.5rem 0;
+          border-radius: 16px;
+        }
+
+        .table-wrapper table {
+          width: max-content;
+          min-width: 100%;
+          max-width: none;
+        }
+
+        .table-wrapper::-webkit-scrollbar {
+          height: 8px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-thumb {
+          background: rgba(148, 163, 184, 0.4);
+          border-radius: 999px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
       `}</style>
 
       <div
         ref={ref}
-        className="prose prose-slate prose-lg max-w-none
+        className="
+          prose prose-slate prose-lg max-w-none
           prose-headings:font-bold prose-headings:tracking-tight
           prose-h1:text-3xl prose-h1:text-slate-900
           prose-h2:text-2xl prose-h2:text-slate-800 prose-h2:border-b prose-h2:border-slate-100 prose-h2:pb-3 prose-h2:mt-10
@@ -834,9 +898,36 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
           prose-code:text-violet-700 prose-code:bg-violet-50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-code:before:content-none prose-code:after:content-none
           prose-pre:bg-transparent prose-pre:p-0 prose-pre:m-0
           prose-blockquote:border-l-violet-400 prose-blockquote:bg-violet-50 prose-blockquote:rounded-r-lg prose-blockquote:py-1
-          prose-table:border-collapse
-          prose-th:bg-slate-50 prose-th:text-slate-700 prose-th:font-semibold
-          prose-td:border-slate-200
+
+          prose-table:min-w-full
+          prose-table:border-separate
+          prose-table:border-spacing-0
+          prose-table:rounded-2xl
+          prose-table:border
+          prose-table:border-slate-200
+          prose-table:overflow-hidden
+
+          /* HEADER */
+          prose-th:bg-violet-400
+          prose-th:text-white
+          prose-th:px-5
+          prose-th:py-4
+          prose-th:text-left
+          prose-th:text-sm
+          prose-th:font-semibold
+          prose-th:border-b
+          prose-th:border-violet-500
+          prose-th:whitespace-nowrap
+
+          /* BODY */
+          prose-td:px-5
+          prose-td:py-4
+          prose-td:text-sm
+          prose-td:text-slate-600
+          prose-td:border-b
+          prose-td:border-slate-100
+          prose-td:whitespace-nowrap
+
           prose-strong:text-slate-900 prose-strong:font-semibold
           prose-ul:text-slate-600 prose-ol:text-slate-600
           prose-li:marker:text-violet-400
