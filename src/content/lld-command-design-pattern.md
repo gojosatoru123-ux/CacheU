@@ -111,38 +111,37 @@ The pattern has four major participants:
 
 ```mermaid
 classDiagram
-    class Client {
-        +createObjects()
-    }
+class Client {
+    createObjects
+}
 
-    class Invoker {
-        -command
-        +setCommand()
-        +pressButton()
-    }
+class Invoker {
+    command
+    setCommand
+    pressButton
+}
 
-    class Command {
-        <<interface>>
-        +execute()
-        +undo()
-    }
+class Command {
+    execute
+    undo
+}
 
-    class ConcreteCommand {
-        -receiver
-        +execute()
-        +undo()
-    }
+class ConcreteCommand {
+    receiver
+    execute
+    undo
+}
 
-    class Receiver {
-        +action()
-    }
+class Receiver {
+    action
+}
 
-    Client --> Invoker
-    Client --> Receiver
-    Client --> ConcreteCommand
-    Invoker --> Command
-    ConcreteCommand --> Receiver
-    Command <|.. ConcreteCommand
+Client --> Invoker
+Client --> Receiver
+Client --> ConcreteCommand
+Invoker --> Command
+ConcreteCommand --> Receiver
+Command <|-- ConcreteCommand
 ```
 
 ---
@@ -213,13 +212,13 @@ Here is how a command flow works in a smart remote:
 
 ```mermaid
 flowchart TD
-    A[Client creates Receiver] --> B[Client creates Command]
-    B --> C[Command gets Receiver reference]
-    C --> D[Client assigns Command to Invoker]
-    D --> E[User presses button]
-    E --> F[Invoker calls execute()]
-    F --> G[Command calls Receiver action]
-    G --> H[Receiver performs work]
+A[Client creates Receiver] --> B[Client creates Command]
+B --> C[Command gets Receiver reference]
+C --> D[Client assigns Command to Invoker]
+D --> E[User presses button]
+E --> F[Invoker calls execute]
+F --> G[Command calls receiver action]
+G --> H[Receiver performs work]
 ```
 
 ---
@@ -248,43 +247,41 @@ we create commands for each action.
 
 ```mermaid
 classDiagram
-    class RemoteControl {
-        -commands
-        +setCommand()
-        +pressButton()
-        +pressUndo()
-    }
+class RemoteControl {
+    commands
+    setCommand
+    pressButton
+    pressUndo
+}
 
-    class Command {
-        <<interface>>
-        +execute()
-        +undo()
-    }
+class Command {
+    execute
+    undo
+}
 
-    class LightOnCommand {
-        -light
-        +execute()
-        +undo()
-    }
+class LightOnCommand {
+    light
+    execute
+    undo
+}
 
-    class LightOffCommand {
-        -light
-        +execute()
-        +undo()
-    }
+class LightOffCommand {
+    light
+    execute
+    undo
+}
 
-    class Light {
-        +on()
-        +off()
-    }
+class Light {
+    on
+    off
+}
 
-    RemoteControl --> Command
-    LightOnCommand ..|> Command
-    LightOffCommand ..|> Command
-    LightOnCommand --> Light
-    LightOffCommand --> Light
+RemoteControl --> Command
+Command <|-- LightOnCommand
+Command <|-- LightOffCommand
+LightOnCommand --> Light
+LightOffCommand --> Light
 ```
-
 ---
 
 # Why Command Pattern improves design
@@ -421,10 +418,10 @@ This is very useful in:
 
 ```mermaid
 flowchart TD
-    A[execute()] --> B[Perform action]
-    B --> C[Store command in history]
-    C --> D[undo()]
-    D --> E[Reverse last action]
+A[Execute command] --> B[Perform action]
+B --> C[Store command in history]
+C --> D[Undo command]
+D --> E[Reverse last action]
 ```
 
 ---

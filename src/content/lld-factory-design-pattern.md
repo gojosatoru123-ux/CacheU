@@ -158,7 +158,7 @@ Suppose we want to create different notification objects:
 
 ### Bad approach: creation inside business logic
 
-```python id="simple_factory_bad_01"
+```python
 class NotificationService:
     def send(self, channel, message):
         if channel == "email":
@@ -366,35 +366,34 @@ This means:
 ```mermaid
 classDiagram
     class Creator {
-        +createProduct()
-        +businessOperation()
+        +createProduct
+        +businessOperation
     }
 
     class ConcreteCreatorA {
-        +createProduct()
+        +createProduct
     }
 
     class ConcreteCreatorB {
-        +createProduct()
+        +createProduct
     }
 
     class Product {
-        <<interface>>
-        +use()
+        +use
     }
 
     class ConcreteProductA {
-        +use()
+        +use
     }
 
     class ConcreteProductB {
-        +use()
+        +use
     }
 
     Creator <|-- ConcreteCreatorA
     Creator <|-- ConcreteCreatorB
-    Product <|.. ConcreteProductA
-    Product <|.. ConcreteProductB
+    Product <|-- ConcreteProductA
+    Product <|-- ConcreteProductB
     Creator --> Product
 ```
 
@@ -419,9 +418,7 @@ But the exact burger type may differ.
 
 ## Factory Method example in three languages
 
-### C++
-
-```cpp id="factory_method_cpp_01"
+```cpp
 #include <iostream>
 #include <memory>
 using namespace std;
@@ -471,10 +468,7 @@ public:
     }
 };
 ```
-
-### Java
-
-```java id="factory_method_java_01"
+```java
 interface Burger {
     void prepare();
 }
@@ -512,10 +506,7 @@ class KingBurgerFactory extends BurgerFactory {
     }
 }
 ```
-
-### Python
-
-```python id="factory_method_python_01"
+```python
 from abc import ABC, abstractmethod
 
 class Burger(ABC):
@@ -618,49 +609,44 @@ The products within a family should be compatible.
 ```mermaid
 classDiagram
     class MealFactory {
-        <<interface>>
-        +createBurger()
-        +createBread()
+        +createBurger
+        +createBread
     }
 
     class RegularMealFactory {
-        +createBurger()
-        +createBread()
+        +createBurger
+        +createBread
     }
 
     class HealthyMealFactory {
-        +createBurger()
-        +createBread()
+        +createBurger
+        +createBread
     }
 
-    class Burger {
-        <<interface>>
-    }
+    class Burger
 
-    class Bread {
-        <<interface>>
-    }
+    class Bread
 
-    class RegularBurger {
-    }
+    class RegularBurger
 
-    class RegularBread {
-    }
+    class RegularBread
 
-    class WheatBurger {
-    }
+    class WheatBurger
 
-    class WheatBread {
-    }
+    class WheatBread
 
-    MealFactory <|.. RegularMealFactory
-    MealFactory <|.. HealthyMealFactory
-    Burger <|.. RegularBurger
-    Burger <|.. WheatBurger
-    Bread <|.. RegularBread
-    Bread <|.. WheatBread
+    MealFactory <|-- RegularMealFactory
+    MealFactory <|-- HealthyMealFactory
+
+    Burger <|-- RegularBurger
+    Burger <|-- WheatBurger
+
+    Bread <|-- RegularBread
+    Bread <|-- WheatBread
+
     RegularMealFactory --> RegularBurger
     RegularMealFactory --> RegularBread
+
     HealthyMealFactory --> WheatBurger
     HealthyMealFactory --> WheatBread
 ```
@@ -696,9 +682,7 @@ The meal style determines which family of products is created.
 
 ## Abstract Factory example in three languages
 
-### C++
-
-```cpp id="abstract_factory_cpp_01"
+```cpp
 #include <iostream>
 #include <memory>
 using namespace std;
@@ -772,10 +756,7 @@ public:
     }
 };
 ```
-
-### Java
-
-```java id="abstract_factory_java_01"
+```java
 interface Burger {
     void eat();
 }
@@ -833,10 +814,7 @@ class HealthyMealFactory implements MealFactory {
     }
 }
 ```
-
-### Python
-
-```python id="abstract_factory_python_01"
+```python
 from abc import ABC, abstractmethod
 
 class Burger(ABC):

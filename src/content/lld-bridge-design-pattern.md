@@ -171,32 +171,31 @@ This is what makes the design flexible.
 
 ```mermaid
 classDiagram
-    class Car {
-        -Engine engine
-        +drive()
-    }
+class Car {
+    engine
+    drive
+}
 
-    class Engine {
-        <<interface>>
-        +start()
-    }
+class Engine {
+    start
+}
 
-    class PetrolEngine {
-        +start()
-    }
+class PetrolEngine {
+    start
+}
 
-    class DieselEngine {
-        +start()
-    }
+class DieselEngine {
+    start
+}
 
-    class ElectricEngine {
-        +start()
-    }
+class ElectricEngine {
+    start
+}
 
-    Car --> Engine
-    Engine <|.. PetrolEngine
-    Engine <|.. DieselEngine
-    Engine <|.. ElectricEngine
+Car --> Engine
+Engine <|-- PetrolEngine
+Engine <|-- DieselEngine
+Engine <|-- ElectricEngine
 ```
 
 ---
@@ -344,35 +343,34 @@ A remote should not need separate code for every TV model.
 
 ```mermaid
 classDiagram
-    class RemoteControl {
-        -TV tv
-        +turnOn()
-        +turnOff()
-        +setChannel()
-    }
+class RemoteControl {
+    tv
+    turnOn
+    turnOff
+    setChannel
+}
 
-    class TV {
-        <<interface>>
-        +powerOn()
-        +powerOff()
-        +tuneChannel()
-    }
+class TV {
+    powerOn
+    powerOff
+    tuneChannel
+}
 
-    class LCDTV {
-        +powerOn()
-        +powerOff()
-        +tuneChannel()
-    }
+class LCDTV {
+    powerOn
+    powerOff
+    tuneChannel
+}
 
-    class OLEDTV {
-        +powerOn()
-        +powerOff()
-        +tuneChannel()
-    }
+class OLEDTV {
+    powerOn
+    powerOff
+    tuneChannel
+}
 
-    RemoteControl --> TV
-    TV <|.. LCDTV
-    TV <|.. OLEDTV
+RemoteControl --> TV
+TV <|-- LCDTV
+TV <|-- OLEDTV
 ```
 
 ---
@@ -403,30 +401,29 @@ Bridge lets the widget remain generic while the renderer handles platform-specif
 
 ```mermaid
 classDiagram
-    class Widget {
-        -Renderer renderer
-        +draw()
-    }
+class Widget {
+    renderer
+    draw
+}
 
-    class Renderer {
-        <<interface>>
-        +renderButton()
-        +renderTextBox()
-    }
+class Renderer {
+    renderButton
+    renderTextBox
+}
 
-    class WindowsRenderer {
-        +renderButton()
-        +renderTextBox()
-    }
+class WindowsRenderer {
+    renderButton
+    renderTextBox
+}
 
-    class MacRenderer {
-        +renderButton()
-        +renderTextBox()
-    }
+class MacRenderer {
+    renderButton
+    renderTextBox
+}
 
-    Widget --> Renderer
-    Renderer <|.. WindowsRenderer
-    Renderer <|.. MacRenderer
+Widget --> Renderer
+Renderer <|-- WindowsRenderer
+Renderer <|-- MacRenderer
 ```
 
 ---
@@ -784,46 +781,23 @@ car2.drive()
 
 ```mermaid
 classDiagram
-    class Car {
-        -Engine engine
-        +drive()
-    }
 
-    class Sedan {
-        +drive()
-    }
+class Car
+class Sedan
+class SUV
 
-    class SUV {
-        +drive()
-    }
+class Engine
+class PetrolEngine
+class DieselEngine
+class ElectricEngine
 
-    class Engine {
-        <<interface>>
-        +start()
-        +type()
-    }
+Car <|-- Sedan
+Car <|-- SUV
+Car --> Engine
 
-    class PetrolEngine {
-        +start()
-        +type()
-    }
-
-    class DieselEngine {
-        +start()
-        +type()
-    }
-
-    class ElectricEngine {
-        +start()
-        +type()
-    }
-
-    Car <|-- Sedan
-    Car <|-- SUV
-    Car --> Engine
-    Engine <|.. PetrolEngine
-    Engine <|.. DieselEngine
-    Engine <|.. ElectricEngine
+Engine <|.. PetrolEngine
+Engine <|.. DieselEngine
+Engine <|.. ElectricEngine
 ```
 
 ---
@@ -981,40 +955,40 @@ Used to choose one behavior from many behaviors.
 
 ```mermaid
 classDiagram
-    class Shape {
-        -Renderer renderer
-        +draw()
-    }
 
-    class Circle {
-        +draw()
-    }
+class Shape {
+  -renderer
+  +draw
+}
 
-    class Rectangle {
-        +draw()
-    }
+class Circle {
+  +draw
+}
 
-    class Renderer {
-        <<interface>>
-        +renderCircle()
-        +renderRectangle()
-    }
+class Rectangle {
+  +draw
+}
 
-    class WindowsRenderer {
-        +renderCircle()
-        +renderRectangle()
-    }
+class Renderer {
+  +renderCircle
+  +renderRectangle
+}
 
-    class MacRenderer {
-        +renderCircle()
-        +renderRectangle()
-    }
+class WindowsRenderer {
+  +renderCircle
+  +renderRectangle
+}
 
-    Shape <|-- Circle
-    Shape <|-- Rectangle
-    Shape --> Renderer
-    Renderer <|.. WindowsRenderer
-    Renderer <|.. MacRenderer
+class MacRenderer {
+  +renderCircle
+  +renderRectangle
+}
+
+Shape <|-- Circle
+Shape <|-- Rectangle
+Shape --> Renderer
+Renderer <|.. WindowsRenderer
+Renderer <|.. MacRenderer
 ```
 
 ---

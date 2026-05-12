@@ -109,9 +109,9 @@ This creates a long chain of constructors that becomes painful to maintain.
 
 ```mermaid
 flowchart TD
-    A[HttpRequest(url, method)] --> B[HttpRequest(url, method, headers)]
-    B --> C[HttpRequest(url, method, headers, body)]
-    C --> D[HttpRequest(url, method, headers, body, timeout)]
+    A[HttpRequest: url + method] --> B[Add headers]
+    B --> C[Add body]
+    C --> D[Add timeout]
 ```
 
 ---
@@ -204,9 +204,9 @@ Then we call `build()` to produce the final object.
 ```mermaid
 flowchart TD
     A[Client] --> B[Builder]
-    B --> C[Set required fields]
-    B --> D[Set optional fields]
-    D --> E[build()]
+    B --> C[Set Required Fields]
+    C --> D[Set Optional Fields]
+    D --> E[Build]
     E --> F[Final Immutable Object]
 ```
 
@@ -693,10 +693,10 @@ This prevents incorrect order at compile time.
 
 ```mermaid
 flowchart LR
-    A[start()] --> B[withUrl()]
-    B --> C[withMethod()]
-    C --> D[optional settings]
-    D --> E[build()]
+    A[Start] --> B[withUrl]
+    B --> C[withMethod]
+    C --> D[Optional Settings]
+    D --> E[Build]
 ```
 
 ---
@@ -705,33 +705,39 @@ flowchart LR
 
 ```mermaid
 classDiagram
-    class StartStep {
-        <<interface>>
-        +withUrl()
-    }
 
-    class MethodStep {
-        <<interface>>
-        +withMethod()
-    }
+class StartStep {
+    withUrl
+}
 
-    class OptionalStep {
-        <<interface>>
-        +withHeader()
-        +withBody()
-        +withTimeout()
-        +build()
-    }
+class MethodStep {
+    withMethod
+}
 
-    class HttpRequestBuilder {
-        +start()
-    }
+class OptionalStep {
+    withHeader
+    withBody
+    withTimeout
+    build
+}
 
-    StartStep <|.. HttpRequestBuilder
-    MethodStep <|.. HttpRequestBuilder
-    OptionalStep <|.. HttpRequestBuilder
+class HttpRequestBuilder {
+    start
+    withUrl
+    withMethod
+    withHeader
+    withBody
+    withTimeout
+    build
+}
+
+class HttpRequest
+
+StartStep <|-- HttpRequestBuilder
+MethodStep <|-- HttpRequestBuilder
+OptionalStep <|-- HttpRequestBuilder
+HttpRequestBuilder --> HttpRequest
 ```
-
 ---
 
 # Step Builder example in Java

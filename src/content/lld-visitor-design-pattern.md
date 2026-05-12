@@ -210,8 +210,7 @@ The Visitor pattern creates **two separate hierarchies**:
 classDiagram
 
     class Element {
-        <<interface>>
-        +accept(Visitor)
+        +accept
     }
 
     class TextFile
@@ -223,10 +222,9 @@ classDiagram
     Element <|.. Video
 
     class Visitor {
-        <<interface>>
-        +visit(TextFile)
-        +visit(Image)
-        +visit(Video)
+        +visitTextFile
+        +visitImage
+        +visitVideo
     }
 
     class CompressVisitor
@@ -561,13 +559,13 @@ Each visitor performs a different operation across the object structure.
 ```mermaid
 flowchart TD
 
-    A[Client] --> B[Element.accept(visitor)]
+    A["Client"] --> B["Element accept visitor"]
 
-    B --> C[visitor.visit(this)]
+    B --> C["Visitor visits element"]
 
-    C --> D[Correct overloaded method selected]
+    C --> D["Correct method selected"]
 
-    D --> E[Operation executed]
+    D --> E["Operation executed"]
 ```
 
 ---
@@ -723,7 +721,7 @@ flowchart LR
 
 # Step 1: Visitor Interface
 
-```cpp id="fs9p9v"
+```cpp
 class TextFile;
 class Image;
 
@@ -738,7 +736,7 @@ public:
 
 # Step 2: Element Interface
 
-```cpp id="hjlwm8"
+```cpp
 class Element {
 public:
     virtual void accept(Visitor* visitor) = 0;
@@ -749,7 +747,7 @@ public:
 
 # Step 3: Concrete Elements
 
-```cpp id="u4tfpb"
+```cpp
 class TextFile : public Element {
 public:
     void accept(Visitor* visitor) override {
@@ -769,7 +767,7 @@ public:
 
 # Step 4: Concrete Visitor
 
-```cpp id="mcbmsf"
+```cpp
 class SizeVisitor : public Visitor {
 public:
     void visit(TextFile* file) override {
@@ -786,7 +784,7 @@ public:
 
 # Step 5: Client
 
-```cpp id="8xxd9o"
+```cpp
 int main() {
     Visitor* visitor = new SizeVisitor();
 
@@ -797,12 +795,7 @@ int main() {
     image->accept(visitor);
 }
 ```
-
----
-
-# Java Example
-
-```java id="vs5miv"
+```java
 interface Visitor {
     void visit(TextFile file);
     void visit(Image image);
@@ -846,12 +839,7 @@ public class Main {
     }
 }
 ```
-
----
-
-# Python Example
-
-```python id="2r0ic5"
+```python
 class TextFile:
     def accept(self, visitor):
         visitor.visit_text(self)

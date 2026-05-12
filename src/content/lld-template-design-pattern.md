@@ -148,32 +148,31 @@ This is why the Template Method Pattern is so useful for predictable workflows.
 
 ```mermaid
 classDiagram
-    class ModelTrainer {
-        <<abstract>>
-        +trainPipeline()
-        #loadData()
-        #preprocessData()
-        #trainModel()
-        #evaluateModel()
-        #saveModel()
-        #beforeTraining()
-        #afterTraining()
-    }
+class ModelTrainer {
+    trainPipeline
+    loadData
+    preprocessData
+    trainModel
+    evaluateModel
+    saveModel
+    beforeTraining
+    afterTraining
+}
 
-    class NeuralNetworkTrainer {
-        +trainModel()
-        +evaluateModel()
-        +saveModel()
-    }
+class NeuralNetworkTrainer {
+    trainModel
+    evaluateModel
+    saveModel
+}
 
-    class DecisionTreeTrainer {
-        +trainModel()
-        +evaluateModel()
-    }
+class DecisionTreeTrainer {
+    trainModel
+    evaluateModel
+}
 
-    ModelTrainer <|-- NeuralNetworkTrainer
-    ModelTrainer <|-- DecisionTreeTrainer
-````
+ModelTrainer <|-- NeuralNetworkTrainer
+ModelTrainer <|-- DecisionTreeTrainer
+```
 
 ---
 
@@ -303,11 +302,11 @@ The only thing that changes is **how training is done** and sometimes **how savi
 
 ```mermaid
 flowchart TD
-    A[trainPipeline()] --> B[loadData()]
-    B --> C[preprocessData()]
-    C --> D[trainModel()]
-    D --> E[evaluateModel()]
-    E --> F[saveModel()]
+A[trainPipeline] --> B[loadData]
+B --> C[preprocessData]
+C --> D[trainModel]
+D --> E[evaluateModel]
+E --> F[saveModel]
 ```
 
 ---
@@ -316,27 +315,26 @@ flowchart TD
 
 ```mermaid
 classDiagram
-    class ModelTrainer {
-        <<abstract>>
-        +trainPipeline()
-        #loadData()
-        #preprocessData()
-        #trainModel()
-        #evaluateModel()
-        #saveModel()
-    }
+class ModelTrainer {
+    trainPipeline
+    loadData
+    preprocessData
+    trainModel
+    evaluateModel
+    saveModel
+}
 
-    class NeuralNetworkTrainer {
-        +trainModel()
-        +saveModel()
-    }
+class NeuralNetworkTrainer {
+    trainModel
+    saveModel
+}
 
-    class DecisionTreeTrainer {
-        +trainModel()
-    }
+class DecisionTreeTrainer {
+    trainModel
+}
 
-    ModelTrainer <|-- NeuralNetworkTrainer
-    ModelTrainer <|-- DecisionTreeTrainer
+ModelTrainer <|-- NeuralNetworkTrainer
+ModelTrainer <|-- DecisionTreeTrainer
 ```
 
 ---

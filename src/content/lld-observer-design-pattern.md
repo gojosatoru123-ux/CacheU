@@ -103,30 +103,28 @@ There are two key roles:
 ```mermaid
 classDiagram
     class Subject {
-        <<interface>>
-        +subscribe()
-        +unsubscribe()
-        +notify()
+        +subscribe
+        +unsubscribe
+        +notify
     }
 
     class Observer {
-        <<interface>>
-        +update()
+        +update
     }
 
     class ConcreteSubject {
-        +subscribe()
-        +unsubscribe()
-        +notify()
-        +getState()
+        +subscribe
+        +unsubscribe
+        +notify
+        +getState
     }
 
     class ConcreteObserver {
-        +update()
+        +update
     }
 
-    Subject <|.. ConcreteSubject
-    Observer <|.. ConcreteObserver
+    Subject <|-- ConcreteSubject
+    Observer <|-- ConcreteObserver
     ConcreteSubject --> Observer
 ```
 
@@ -215,12 +213,12 @@ It may:
 
 ```mermaid
 flowchart TD
-    A[Observer subscribes] --> B[Subject stores observer]
-    B --> C[Subject state changes]
-    C --> D[Subject calls notify()]
-    D --> E[Loop through observers]
-    E --> F[Call update() on each observer]
-    F --> G[Observers react]
+    A[Observer Subscribes] --> B[Subject Stores Observer]
+    B --> C[Subject State Changes]
+    C --> D[Subject Calls Notify]
+    D --> E[Loop Through Observers]
+    E --> F[Call Update On Each Observer]
+    F --> G[Observers React]
 ```
 
 ---
@@ -280,37 +278,35 @@ This keeps the notification lightweight.
 
 ```mermaid
 classDiagram
-    class Subject {
-        <<interface>>
-        +subscribe(observer)
-        +unsubscribe(observer)
-        +notify()
-    }
+class Subject {
+    subscribe
+    unsubscribe
+    notify
+}
 
-    class ConcreteSubject {
-        -observers
-        -state
-        +subscribe(observer)
-        +unsubscribe(observer)
-        +notify()
-        +getState()
-        +setState()
-    }
+class ConcreteSubject {
+    observers
+    state
+    subscribe
+    unsubscribe
+    notify
+    getState
+    setState
+}
 
-    class Observer {
-        <<interface>>
-        +update()
-    }
+class Observer {
+    update
+}
 
-    class ConcreteObserver {
-        -subject
-        +update()
-    }
+class ConcreteObserver {
+    subject
+    update
+}
 
-    Subject <|.. ConcreteSubject
-    Observer <|.. ConcreteObserver
-    ConcreteSubject --> Observer
-    ConcreteObserver --> ConcreteSubject
+Subject <|-- ConcreteSubject
+Observer <|-- ConcreteObserver
+ConcreteSubject --> Observer
+ConcreteObserver --> ConcreteSubject
 ```
 
 ---

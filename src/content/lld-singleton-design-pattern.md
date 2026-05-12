@@ -44,10 +44,10 @@ The Singleton pattern ensures a class has only one instance and provides a singl
 
 ```mermaid
 flowchart TD
-    A[Client Code] --> B[getInstance()]
-    B --> C{Instance exists?}
-    C -->|No| D[Create one object]
-    C -->|Yes| E[Return existing object]
+    A[Client Code] --> B[getInstance]
+    B --> C{Instance exists}
+    C -- No --> D[Create one object]
+    C -- Yes --> E[Return existing object]
     D --> F[Singleton Instance]
     E --> F
 ```
@@ -431,7 +431,7 @@ This version is not fully thread-safe.
 
 # Singleton example in Java
 
-```java id="singleton_java_01"
+```java
 class Singleton {
     private static Singleton instance;
 
@@ -478,7 +478,7 @@ public class Main {
 
 Python does not have private constructors like Java or C++, so Singleton is usually implemented using class-level control.
 
-```python id="singleton_python_01"
+```python
 class Singleton:
     _instance = None
 
@@ -540,7 +540,7 @@ flowchart TD
 
 ## Eager Singleton example in Java
 
-```java id="singleton_java_eager_01"
+```java
 class Singleton {
     private static final Singleton instance = new Singleton();
 
@@ -568,7 +568,7 @@ class Singleton {
 
 A safer version uses synchronized access.
 
-```java id="singleton_java_threadsafe_01"
+```java
 class Singleton {
     private static Singleton instance;
 
@@ -595,7 +595,7 @@ That prevents two threads from creating two objects.
 
 # Double-checked locking in Java
 
-```java id="singleton_java_dcl_01"
+```java
 class Singleton {
     private static volatile Singleton instance;
 
@@ -631,7 +631,7 @@ This is a common thread-safe Singleton approach.
 
 An enum-based Singleton is often considered one of the safest approaches in Java.
 
-```java id="singleton_enum_java_01"
+```java
 enum Singleton {
     INSTANCE;
 

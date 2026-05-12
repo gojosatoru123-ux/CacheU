@@ -383,8 +383,7 @@ The pattern usually contains:
 ```mermaid
 classDiagram
 
-class Iterator {
-    <<interface>>
+class IteratorInterface {
     +hasNext()
     +next()
 }
@@ -401,7 +400,7 @@ class Playlist {
     +getIterator()
 }
 
-Iterator <|.. PlaylistIterator
+IteratorInterface <|.. PlaylistIterator
 Playlist --> PlaylistIterator
 ```
 
@@ -484,7 +483,7 @@ sequenceDiagram
 
 # Step 1: Song class
 
-```java id="e8y4fd"
+```java
 class Song {
     private String name;
 
@@ -502,7 +501,7 @@ class Song {
 
 # Step 2: Iterator Interface
 
-```java id="2p3t88"
+```java
 interface Iterator {
     boolean hasNext();
     Song next();
@@ -513,7 +512,7 @@ interface Iterator {
 
 # Step 3: Playlist Iterator
 
-```java id="tbmny7"
+```java
 import java.util.List;
 
 class PlaylistIterator implements Iterator {
@@ -538,7 +537,7 @@ class PlaylistIterator implements Iterator {
 
 # Step 4: Playlist
 
-```java id="o5utp7"
+```java
 import java.util.ArrayList;
 import java.util.List;
 
@@ -559,7 +558,7 @@ class Playlist {
 
 # Step 5: Client
 
-```java id="5ghwqg"
+```java
 public class Main {
     public static void main(String[] args) {
 
@@ -585,10 +584,10 @@ public class Main {
 
 ```mermaid
 flowchart TD
-    A[Client] --> B[getIterator()]
-    B --> C[PlaylistIterator Created]
-    C --> D[hasNext()]
-    D --> E[next()]
+    A[Client] --> B["getIterator()"]
+    B --> C["PlaylistIterator Created"]
+    C --> D["hasNext()"]
+    D --> E["next()"]
     E --> F[Print Song]
 ```
 
@@ -903,7 +902,7 @@ Many languages already use Iterator internally.
 
 # Java
 
-```java id="o6w4zj"
+```java
 Iterator<Integer> iterator = list.iterator();
 ```
 
@@ -911,7 +910,7 @@ Iterator<Integer> iterator = list.iterator();
 
 # Python
 
-```python id="2vk3of"
+```python
 for item in collection:
 ```
 
@@ -921,7 +920,7 @@ Python internally uses iterators.
 
 # C++
 
-```cpp id="d4rj2r"
+```cpp
 vector<int>::iterator it
 ```
 

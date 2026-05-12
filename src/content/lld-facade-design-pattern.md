@@ -646,12 +646,12 @@ Instead of exposing all those details to the client, we can wrap them in a facad
 
 ```mermaid
 flowchart TD
-    A[Client] --> B[PaymentFacade.makePayment()]
-    B --> C[Validate User]
-    B --> D[Check Balance]
-    B --> E[Verify Security]
-    B --> F[Create Transaction]
-    B --> G[Send Notification]
+A[Client] --> B[PaymentFacade make payment]
+B --> C[Validate user]
+B --> D[Check balance]
+B --> E[Verify security]
+B --> F[Create transaction]
+B --> G[Send notification]
 ```
 
 ---

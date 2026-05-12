@@ -187,72 +187,68 @@ In simpler words:
 ```mermaid
 classDiagram
     class Robot {
-        +setWalkBehavior()
-        +setTalkBehavior()
-        +setFlyBehavior()
-        +performWalk()
-        +performTalk()
-        +performFly()
+        +setWalkBehavior
+        +setTalkBehavior
+        +setFlyBehavior
+        +performWalk
+        +performTalk
+        +performFly
     }
 
     class WalkBehavior {
-        <<interface>>
-        +walk()
+        +walk
     }
 
     class TalkBehavior {
-        <<interface>>
-        +talk()
+        +talk
     }
 
     class FlyBehavior {
-        <<interface>>
-        +fly()
+        +fly
     }
 
     class NormalWalk {
-        +walk()
+        +walk
     }
 
     class NoWalk {
-        +walk()
+        +walk
     }
 
     class NormalTalk {
-        +talk()
+        +talk
     }
 
     class NoTalk {
-        +talk()
+        +talk
     }
 
     class FlyWithWings {
-        +fly()
+        +fly
     }
 
     class FlyWithJets {
-        +fly()
+        +fly
     }
 
     class NoFly {
-        +fly()
+        +fly
     }
 
     Robot --> WalkBehavior
     Robot --> TalkBehavior
     Robot --> FlyBehavior
 
-    WalkBehavior <|.. NormalWalk
-    WalkBehavior <|.. NoWalk
+    WalkBehavior <|-- NormalWalk
+    WalkBehavior <|-- NoWalk
 
-    TalkBehavior <|.. NormalTalk
-    TalkBehavior <|.. NoTalk
+    TalkBehavior <|-- NormalTalk
+    TalkBehavior <|-- NoTalk
 
-    FlyBehavior <|.. FlyWithWings
-    FlyBehavior <|.. FlyWithJets
-    FlyBehavior <|.. NoFly
+    FlyBehavior <|-- FlyWithWings
+    FlyBehavior <|-- FlyWithJets
+    FlyBehavior <|-- NoFly
 ```
-
 ---
 
 # Why composition beats inheritance here

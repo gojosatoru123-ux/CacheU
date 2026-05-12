@@ -150,23 +150,23 @@ Prototype is useful because it:
 
 ```mermaid
 classDiagram
+
     class Prototype {
-        <<interface>>
-        +clone()
+        +clone
     }
 
     class ConcretePrototype {
         -fields
-        +clone()
+        +clone
     }
 
     class Client {
-        +createObject()
+        +createObject
     }
 
     class PrototypeRegistry {
         -prototypes
-        +getPrototype()
+        +getPrototype
     }
 
     Prototype <|.. ConcretePrototype
@@ -266,10 +266,10 @@ The client:
 
 ```mermaid
 flowchart TD
-    A[Client] --> B[Existing Prototype]
-    B --> C[clone()]
-    C --> D[New Object]
-    D --> E[Optional customization]
+    A["Client"] --> B["Existing Prototype"]
+    B --> C["clone"]
+    C --> D["New Object"]
+    D --> E["Optional customization"]
 ```
 
 ---
@@ -335,10 +335,10 @@ Instead of creating them manually every time, the client asks the registry for a
 
 ```mermaid
 flowchart TD
-    A[Client requests object] --> B[Prototype Registry]
-    B --> C[Return matching prototype]
-    C --> D[clone()]
-    D --> E[Custom object created]
+    A["Client requests object"] --> B["Prototype Registry"]
+    B --> C["Return matching prototype"]
+    C --> D["clone"]
+    D --> E["Custom object created"]
 ```
 
 ---
@@ -453,20 +453,20 @@ That is usually not what we want.
 
 ```mermaid
 classDiagram
+
     class Prototype {
-        <<interface>>
-        +clone()
+        +clone
     }
 
     class NPCPrototype {
         -name
         -health
         -inventory
-        +clone()
+        +clone
     }
 
     class Client {
-        +createNPC()
+        +createNPC
     }
 
     Prototype <|.. NPCPrototype

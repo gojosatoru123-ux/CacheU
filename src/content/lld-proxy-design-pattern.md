@@ -99,28 +99,28 @@ The Proxy pattern provides a surrogate or placeholder for another object to cont
 
 ```mermaid
 classDiagram
-    class Subject {
-        <<interface>>
-        +request()
-    }
 
-    class RealSubject {
-        +request()
-    }
+class Subject {
+    request
+}
 
-    class Proxy {
-        -realSubject
-        +request()
-    }
+class RealSubject {
+    request
+}
 
-    class Client {
-        +use()
-    }
+class Proxy {
+    realSubject
+    request
+}
 
-    Subject <|.. RealSubject
-    Subject <|.. Proxy
-    Proxy --> RealSubject
-    Client --> Subject
+class Client {
+    use
+}
+
+Subject <|-- RealSubject
+Subject <|-- Proxy
+Proxy --> RealSubject
+Client --> Subject
 ```
 
 ---
@@ -247,10 +247,11 @@ With proxy:
 ```mermaid
 flowchart TD
     A[Client creates proxy] --> B[Proxy stores image path]
-    B --> C{display() called?}
-    C -->|No| D[Real object not created]
-    C -->|Yes| E[Create real image]
-    E --> F[Delegate display()]
+    B --> C{display called}
+
+    C -- No --> D[Real object not created]
+    C -- Yes --> E[Create real image]
+    E --> F[Delegate display]
 ```
 
 ---
@@ -259,25 +260,25 @@ flowchart TD
 
 ```mermaid
 classDiagram
-    class Image {
-        <<interface>>
-        +display()
-    }
 
-    class RealImage {
-        -fileName
-        +display()
-    }
+class Image {
+    display
+}
 
-    class ImageProxy {
-        -fileName
-        -realImage
-        +display()
-    }
+class RealImage {
+    fileName
+    display
+}
 
-    Image <|.. RealImage
-    Image <|.. ImageProxy
-    ImageProxy --> RealImage
+class ImageProxy {
+    fileName
+    realImage
+    display
+}
+
+Image <|-- RealImage
+Image <|-- ImageProxy
+ImageProxy --> RealImage
 ```
 
 ---
@@ -466,29 +467,29 @@ flowchart TD
 
 ```mermaid
 classDiagram
-    class Document {
-        <<interface>>
-        +unlockPDF()
-    }
 
-    class RealDocument {
-        +unlockPDF()
-    }
+class Document {
+    unlockPDF
+}
 
-    class DocumentProxy {
-        -user
-        -realDocument
-        +unlockPDF()
-    }
+class RealDocument {
+    unlockPDF
+}
 
-    class User {
-        +isPremium
-    }
+class DocumentProxy {
+    user
+    realDocument
+    unlockPDF
+}
 
-    Document <|.. RealDocument
-    Document <|.. DocumentProxy
-    DocumentProxy --> RealDocument
-    DocumentProxy --> User
+class User {
+    isPremium
+}
+
+Document <|-- RealDocument
+Document <|-- DocumentProxy
+DocumentProxy --> RealDocument
+DocumentProxy --> User
 ```
 
 ---
@@ -548,7 +549,7 @@ int main() {
     return 0;
 }
 ```
-```java id="proxy_protection_java_01"
+```java
 interface Document {
     void unlockPDF();
 }
@@ -598,7 +599,7 @@ public class Main {
     }
 }
 ```
-```python id="proxy_protection_python_01"
+```python
 from abc import ABC, abstractmethod
 
 class Document(ABC):
@@ -680,23 +681,23 @@ flowchart TD
 
 ```mermaid
 classDiagram
-    class DataService {
-        <<interface>>
-        +fetchData()
-    }
 
-    class RemoteDataService {
-        +fetchData()
-    }
+class DataService {
+    fetchData
+}
 
-    class DataServiceProxy {
-        -remoteConnection
-        +fetchData()
-    }
+class RemoteDataService {
+    fetchData
+}
 
-    DataService <|.. RemoteDataService
-    DataService <|.. DataServiceProxy
-    DataServiceProxy --> RemoteDataService
+class DataServiceProxy {
+    remoteConnection
+    fetchData
+}
+
+DataService <|-- RemoteDataService
+DataService <|-- DataServiceProxy
+DataServiceProxy --> RemoteDataService
 ```
 
 ---
@@ -826,23 +827,23 @@ This gives us:
 
 ```mermaid
 classDiagram
-    class Subject {
-        <<interface>>
-        +operation()
-    }
 
-    class RealSubject {
-        +operation()
-    }
+class Subject {
+    operation
+}
 
-    class Proxy {
-        -realSubject
-        +operation()
-    }
+class RealSubject {
+    operation
+}
 
-    Subject <|.. RealSubject
-    Subject <|.. Proxy
-    Proxy --> RealSubject
+class Proxy {
+    realSubject
+    operation
+}
+
+Subject <|-- RealSubject
+Subject <|-- Proxy
+Proxy --> RealSubject
 ```
 
 ---

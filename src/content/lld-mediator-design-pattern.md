@@ -117,29 +117,28 @@ It promotes loose coupling by preventing objects from referring to each other di
 
 ```mermaid
 classDiagram
+
     class Mediator {
-        <<interface>>
-        +sendMessage()
-        +register()
+        +sendMessage
+        +register
     }
 
     class ChatMediator {
         -users
-        +sendMessage()
-        +register()
+        +sendMessage
+        +register
     }
 
     class Colleague {
-        <<interface>>
-        +send()
-        +receive()
+        +send
+        +receive
     }
 
     class User {
         -name
         -mediator
-        +send()
-        +receive()
+        +send
+        +receive
     }
 
     Mediator <|.. ChatMediator
@@ -147,7 +146,6 @@ classDiagram
     ChatMediator --> User
     User --> Mediator
 ```
-
 ---
 
 # Why Mediator is useful

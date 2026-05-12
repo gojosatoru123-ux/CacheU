@@ -303,7 +303,6 @@ Instead, define a common abstraction and extend it by adding new classes.
 ```mermaid
 classDiagram
     class Storage {
-        <<abstract>>
         +save(data)
     }
 
@@ -585,16 +584,15 @@ Instead of forcing `Square` to inherit from `Rectangle`, both can implement a co
 ```mermaid
 classDiagram
     class Shape {
-        <<abstract>>
-        +area()
+        +area
     }
 
     class Rectangle {
-        +area()
+        +area
     }
 
     class Square {
-        +area()
+        +area
     }
 
     Shape <|-- Rectangle
@@ -622,22 +620,20 @@ Split the contract into smaller abstractions.
 ```mermaid
 classDiagram
     class DepositAccount {
-        <<abstract>>
-        +deposit()
+        +deposit
     }
 
     class WithdrawableAccount {
-        <<abstract>>
-        +withdraw()
+        +withdraw
     }
 
     class FixedDepositAccount {
-        +deposit()
+        +deposit
     }
 
     class SavingsAccount {
-        +deposit()
-        +withdraw()
+        +deposit
+        +withdraw
     }
 
     DepositAccount <|-- FixedDepositAccount
@@ -835,23 +831,19 @@ Split the interface into smaller interfaces.
 ```mermaid
 classDiagram
     class Printer {
-        <<interface>>
-        +print()
+        +print
     }
 
     class Scanner {
-        <<interface>>
-        +scan()
+        +scan
     }
 
     class FaxMachine {
-        <<interface>>
-        +fax()
+        +fax
     }
 
     class Photocopier {
-        <<interface>>
-        +copy()
+        +copy
     }
 ```
 
@@ -989,25 +981,24 @@ Instead, create an abstraction like `Persistence`.
 ```mermaid
 classDiagram
     class Persistence {
-        <<interface>>
-        +save()
+        +save
     }
 
     class MongoPersistence {
-        +save()
+        +save
     }
 
     class SqlPersistence {
-        +save()
+        +save
     }
 
     class CassandraPersistence {
-        +save()
+        +save
     }
 
     class Application {
-        -Persistence persistence
-        +run()
+        -persistence : Persistence
+        +run
     }
 
     Persistence <|-- MongoPersistence

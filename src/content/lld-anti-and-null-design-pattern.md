@@ -76,35 +76,6 @@ This guide focuses on developmental and architectural issues.
 
 ---
 
-# Mind Map
-
-```mermaid
-mindmap
-  root((Anti-Patterns))
-    Spaghetti Code
-      tangled logic
-      hard to follow
-      brittle changes
-    God Object
-      too many responsibilities
-      central hub
-      hard to test
-    Hard Coding
-      fixed values in code
-      poor flexibility
-      painful updates
-    DRY Violation
-      copy paste
-      duplicated logic
-      inconsistent updates
-    Gold Plating
-      over-engineering
-      unnecessary complexity
-      wasted effort
-````
-
----
-
 # 1. Spaghetti Code
 
 Spaghetti Code is code that is tangled, confusing, and difficult to understand.
@@ -803,22 +774,22 @@ service2.make_payment(1000)
 
 ```mermaid
 classDiagram
+
     class Logger {
-        <<interface>>
-        +log()
+        +log
     }
 
     class ConsoleLogger {
-        +log()
+        +log
     }
 
     class NullLogger {
-        +log()
+        +log
     }
 
     class PaymentService {
         -logger
-        +makePayment()
+        +makePayment
     }
 
     Logger <|.. ConsoleLogger

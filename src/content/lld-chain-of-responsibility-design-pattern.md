@@ -96,38 +96,37 @@ The pattern helps us build systems that are:
 
 ```mermaid
 classDiagram
-    class Handler {
-        <<interface>>
-        +setNext()
-        +handle()
-    }
+class Handler {
+    setNext
+    handle
+}
 
-    class ThousandHandler {
-        +handle()
-    }
+class ThousandHandler {
+    handle
+}
 
-    class FiveHundredHandler {
-        +handle()
-    }
+class FiveHundredHandler {
+    handle
+}
 
-    class TwoHundredHandler {
-        +handle()
-    }
+class TwoHundredHandler {
+    handle
+}
 
-    class OneHundredHandler {
-        +handle()
-    }
+class OneHundredHandler {
+    handle
+}
 
-    Handler <|.. ThousandHandler
-    Handler <|.. FiveHundredHandler
-    Handler <|.. TwoHundredHandler
-    Handler <|.. OneHundredHandler
-    ThousandHandler --> Handler
-    FiveHundredHandler --> Handler
-    TwoHundredHandler --> Handler
-    OneHundredHandler --> Handler
+Handler <|-- ThousandHandler
+Handler <|-- FiveHundredHandler
+Handler <|-- TwoHundredHandler
+Handler <|-- OneHundredHandler
+
+ThousandHandler --> Handler
+FiveHundredHandler --> Handler
+TwoHundredHandler --> Handler
+OneHundredHandler --> Handler
 ```
-
 ---
 
 # Chain of Responsibility vs Linked List

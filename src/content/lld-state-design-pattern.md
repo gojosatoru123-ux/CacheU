@@ -153,65 +153,65 @@ stateDiagram-v2
 
 ```mermaid
 classDiagram
-    class State {
-        <<interface>>
-        +insertCoin()
-        +selectItem()
-        +dispense()
-        +returnCoin()
-        +refill()
-    }
 
-    class NoCoinState {
-        +insertCoin()
-        +selectItem()
-        +dispense()
-        +returnCoin()
-        +refill()
-    }
+class State {
+    insertCoin()
+    selectItem()
+    dispense()
+    returnCoin()
+    refill()
+}
 
-    class HasCoinState {
-        +insertCoin()
-        +selectItem()
-        +dispense()
-        +returnCoin()
-        +refill()
-    }
+class NoCoinState {
+    insertCoin()
+    selectItem()
+    dispense()
+    returnCoin()
+    refill()
+}
 
-    class DispenseState {
-        +insertCoin()
-        +selectItem()
-        +dispense()
-        +returnCoin()
-        +refill()
-    }
+class HasCoinState {
+    insertCoin()
+    selectItem()
+    dispense()
+    returnCoin()
+    refill()
+}
 
-    class SoldOutState {
-        +insertCoin()
-        +selectItem()
-        +dispense()
-        +returnCoin()
-        +refill()
-    }
+class DispenseState {
+    insertCoin()
+    selectItem()
+    dispense()
+    returnCoin()
+    refill()
+}
 
-    class VendingMachine {
-        -currentState
-        -inventory
-        +setState()
-        +insertCoin()
-        +selectItem()
-        +dispense()
-        +returnCoin()
-        +refill()
-    }
+class SoldOutState {
+    insertCoin()
+    selectItem()
+    dispense()
+    returnCoin()
+    refill()
+}
 
-    State <|.. NoCoinState
-    State <|.. HasCoinState
-    State <|.. DispenseState
-    State <|.. SoldOutState
-    VendingMachine --> State
+class VendingMachine {
+    -currentState
+    -inventory
+    setState()
+    insertCoin()
+    selectItem()
+    dispense()
+    returnCoin()
+    refill()
+}
+
+State <|.. NoCoinState
+State <|.. HasCoinState
+State <|.. DispenseState
+State <|.. SoldOutState
+
+VendingMachine --> State
 ```
-
 ---
 
 # Core Concept: Context and State
@@ -305,11 +305,11 @@ The vending machine may support:
 
 ```mermaid
 flowchart TD
-    A[NoCoinState] -->|insertCoin()| B[HasCoinState]
-    B -->|selectItem()| C[DispenseState]
-    C -->|dispense()| D[NoCoinState]
-    D -->|inventory empty| E[SoldOutState]
-    E -->|refill()| A
+    A["NoCoinState"] -->|insertCoin| B["HasCoinState"]
+    B -->|selectItem| C["DispenseState"]
+    C -->|dispense| D["NoCoinState"]
+    D -->|inventory empty| E["SoldOutState"]
+    E -->|refill| A
 ```
 
 ---

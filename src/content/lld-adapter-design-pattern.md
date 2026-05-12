@@ -187,29 +187,27 @@ It allows classes to work together that could not otherwise because of incompati
 
 ```mermaid
 classDiagram
-    class Target {
-        <<interface>>
-        +getJsonData()
-    }
+class Target {
+    getJsonData
+}
 
-    class Adaptee {
-        +getXmlData()
-    }
+class Adaptee {
+    getXmlData
+}
 
-    class Adapter {
-        -adaptee
-        +getJsonData()
-    }
+class Adapter {
+    adaptee
+    getJsonData
+}
 
-    class Client {
-        +consumeData()
-    }
+class Client {
+    consumeData
+}
 
-    Target <|.. Adapter
-    Adapter --> Adaptee
-    Client --> Target
+Target <|-- Adapter
+Adapter --> Adaptee
+Client --> Target
 ```
-
 ---
 
 # How Adapter works
@@ -238,14 +236,13 @@ The adapter sits in between.
 
 ```mermaid
 flowchart TD
-    A[Client] --> B[getJsonData()]
-    B --> C[Adapter]
-    C --> D[getXmlData()]
-    D --> E[XML data]
-    E --> F[Convert XML to JSON]
-    F --> G[JSON returned to client]
+A[Client] --> B[Request JSON data]
+B --> C[Adapter]
+C --> D[Call get XML data]
+D --> E[XML data]
+E --> F[Convert XML to JSON]
+F --> G[Return JSON to client]
 ```
-
 ---
 
 # Why Adapter protects your code
@@ -330,24 +327,22 @@ This is the most common approach.
 
 ```mermaid
 classDiagram
-    class Target {
-        <<interface>>
-        +request()
-    }
+class Target {
+    request
+}
 
-    class Adapter {
-        -adaptee
-        +request()
-    }
+class Adapter {
+    adaptee
+    request
+}
 
-    class Adaptee {
-        +specificRequest()
-    }
+class Adaptee {
+    specificRequest
+}
 
-    Target <|.. Adapter
-    Adapter --> Adaptee
+Target <|-- Adapter
+Adapter --> Adaptee
 ```
-
 ---
 
 ## 2. Class Adapter
@@ -387,24 +382,22 @@ Composition makes adapters easier to maintain and extend.
 
 ```mermaid
 classDiagram
-    class IReports {
-        <<interface>>
-        +getJsonData()
-    }
+class IReports {
+    getJsonData
+}
 
-    class XmlDataProvider {
-        +getXmlData()
-    }
+class XmlDataProvider {
+    getXmlData
+}
 
-    class XmlDataProviderAdapter {
-        -xmlProvider
-        +getJsonData()
-    }
+class XmlDataProviderAdapter {
+    xmlProvider
+    getJsonData
+}
 
-    IReports <|.. XmlDataProviderAdapter
-    XmlDataProviderAdapter --> XmlDataProvider
+IReports <|-- XmlDataProviderAdapter
+XmlDataProviderAdapter --> XmlDataProvider
 ```
-
 ---
 
 # A complete example in C++

@@ -152,34 +152,33 @@ There are three main roles:
 
 ```mermaid
 classDiagram
-    class FileSystemItem {
-        <<interface>>
-        +getName()
-        +getSize()
-        +display()
-    }
+class FileSystemItem {
+    getName
+    getSize
+    display
+}
 
-    class File {
-        -name
-        -size
-        +getName()
-        +getSize()
-        +display()
-    }
+class File {
+    name
+    size
+    getName
+    getSize
+    display
+}
 
-    class Folder {
-        -name
-        -children
-        +add()
-        +remove()
-        +getName()
-        +getSize()
-        +display()
-    }
+class Folder {
+    name
+    children
+    add
+    remove
+    getName
+    getSize
+    display
+}
 
-    FileSystemItem <|.. File
-    FileSystemItem <|.. Folder
-    Folder --> FileSystemItem
+FileSystemItem <|-- File
+FileSystemItem <|-- Folder
+Folder --> FileSystemItem
 ```
 
 ---
@@ -740,24 +739,23 @@ A panel can contain buttons, text boxes, and other panels.
 
 ```mermaid
 classDiagram
-    class MenuComponent {
-        <<interface>>
-        +display()
-    }
+class MenuComponent {
+    display
+}
 
-    class MenuItem {
-        +display()
-    }
+class MenuItem {
+    display
+}
 
-    class Menu {
-        -children
-        +add()
-        +display()
-    }
+class Menu {
+    children
+    add
+    display
+}
 
-    MenuComponent <|.. MenuItem
-    MenuComponent <|.. Menu
-    Menu --> MenuComponent
+MenuComponent <|-- MenuItem
+MenuComponent <|-- Menu
+Menu --> MenuComponent
 ```
 
 A menu item is a leaf.
@@ -769,33 +767,32 @@ A submenu is a composite.
 
 ```mermaid
 classDiagram
-    class Graphic {
-        <<interface>>
-        +move()
-        +draw()
-    }
+class Graphic {
+    move
+    draw
+}
 
-    class Circle {
-        +move()
-        +draw()
-    }
+class Circle {
+    move
+    draw
+}
 
-    class Rectangle {
-        +move()
-        +draw()
-    }
+class Rectangle {
+    move
+    draw
+}
 
-    class Group {
-        -children
-        +add()
-        +move()
-        +draw()
-    }
+class Group {
+    children
+    add
+    move
+    draw
+}
 
-    Graphic <|.. Circle
-    Graphic <|.. Rectangle
-    Graphic <|.. Group
-    Group --> Graphic
+Graphic <|-- Circle
+Graphic <|-- Rectangle
+Graphic <|-- Group
+Group --> Graphic
 ```
 
 A single circle is a leaf.

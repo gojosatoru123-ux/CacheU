@@ -196,30 +196,30 @@ The Flyweight pattern is a structural design pattern used to reduce memory usage
 
 ```mermaid
 classDiagram
-    class Flyweight {
-        <<interface>>
-        +operation()
-    }
 
-    class ConcreteFlyweight {
-        -intrinsicState
-        +operation()
-    }
+class Flyweight {
+    operation()
+}
 
-    class FlyweightFactory {
-        -pool
-        +getFlyweight()
-    }
+class ConcreteFlyweight {
+    -intrinsicState
+    operation()
+}
 
-    class Context {
-        -extrinsicState
-        -flyweight
-        +render()
-    }
+class FlyweightFactory {
+    -pool
+    getFlyweight()
+}
 
-    Flyweight <|.. ConcreteFlyweight
-    FlyweightFactory --> Flyweight
-    Context --> Flyweight
+class Context {
+    -extrinsicState
+    -flyweight
+    render()
+}
+
+Flyweight <|.. ConcreteFlyweight
+FlyweightFactory --> Flyweight
+Context --> Flyweight
 ```
 
 ---
