@@ -5,6 +5,8 @@ import path from "path";
 import { contentManifestPlugin } from './vite-plugin-content-manifest';
 import { sitemapPlugin } from './vite-plugin-sitemap';
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 export default defineConfig({
   // 'base' is typically '/' for standard frontend deployments
   base: "/", 
@@ -13,7 +15,7 @@ export default defineConfig({
     tailwindcss(),
     contentManifestPlugin(),
     sitemapPlugin(),
-    
+    cloudflare()
   ],
   resolve: {
     alias: {
