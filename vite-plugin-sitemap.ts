@@ -24,6 +24,8 @@ function collectUrls(contentDir: string): SitemapEntry[] {
   const urls: SitemapEntry[] = [
     { loc: SITE_URL,          priority: '1.0', changefreq: 'weekly' },
     { loc: `${SITE_URL}/home`, priority: '0.9', changefreq: 'weekly' },
+    { loc: `${SITE_URL}/terms`, priority: '0.9', changefreq: 'weekly' },
+    { loc: `${SITE_URL}/privacy-policy`, priority: '0.8', changefreq: 'weekly' },
   ];
 
   const practiceDir = path.join(contentDir, 'practice');
