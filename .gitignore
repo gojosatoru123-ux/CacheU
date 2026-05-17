@@ -46,3 +46,9 @@ Thumbs.db
 # Vite/TypeScript Specific
 .vite/
 *.tsbuildinfo
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
