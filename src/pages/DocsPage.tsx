@@ -203,7 +203,7 @@ export default function DocsPage() {
           <code className="bg-slate-100 px-1.5 py-0.5 rounded text-sm">{slug}</code> doesn't exist.
         </p>
         <Link
-          href="/docs/lld-design-patterns"
+          href="/docs/lld-introduction"
           className="inline-flex items-center gap-2 text-sm font-medium text-violet-600 hover:text-violet-700"
         >
           <ArrowLeft className="w-4 h-4" /> Back to Getting Started

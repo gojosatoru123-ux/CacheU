@@ -6,6 +6,7 @@ import {
   LayersIcon,
 } from 'lucide-react';
 import { MANIFEST, CATEGORIES, CATEGORY_ORDER } from '../lib/content';
+import Footer from '@/components/Footer';
 
 // ─── Dynamic data from MANIFEST ──────────────────────────────────────────────
 const totalArticles = MANIFEST.length;
@@ -564,7 +565,7 @@ export default function LandingPage() {
         {/* ════════════════════════════════════════════════════════
             FOOTER
         ════════════════════════════════════════════════════════ */}
-        <footer className="border-t border-white/5 px-6 md:px-12 py-10">
+        {/* <footer className="border-t border-white/5 px-6 md:px-12 py-10">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <img src="/cacheu_logo.webp" alt="CacheU" className="w-7 h-7 rounded-md opacity-60" />
@@ -575,7 +576,8 @@ export default function LandingPage() {
               <span>© 2025</span>
             </div>
           </div>
-        </footer>
+        </footer> */}
+        <Footer/>
       </div>
 
       {/* Keyframe for hero entrance */}

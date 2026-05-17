@@ -21,7 +21,7 @@ export default function NotFoundPage() {
           Back to Home
         </Link>
         <Link
-          href="/docs/getting-started"
+          href="/home"
           className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 font-semibold px-5 py-2.5 rounded-xl hover:bg-slate-200 transition-colors text-sm"
         >
           <Search className="w-4 h-4" />

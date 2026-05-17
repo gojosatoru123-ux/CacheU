@@ -8,6 +8,7 @@ import { MANIFEST, CATEGORIES, CATEGORY_ORDER } from '../lib/content';
 import { useProgress } from '../lib/progress';
 import { Roadmap } from '../components/Roadmap';
 import { cn } from '@/lib/utils';
+import Footer from '@/components/Footer';
 
 // ─── Per-category visual config (same palette as Roadmap/Sidebar) ─────────────
 const CATEGORY_CONFIG: Record<string, {
@@ -495,6 +496,7 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+      <Footer/>
 
     </div>
   );

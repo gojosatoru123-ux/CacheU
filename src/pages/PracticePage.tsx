@@ -10,6 +10,7 @@ import {
   BookOpen, Trophy, RotateCcw, Sparkles, Target, Network,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Footer from '@/components/Footer';
 
 const DIFFICULTY_STYLES = {
   Easy:   { badge: 'bg-emerald-100 text-emerald-700 border-emerald-200', dot: 'bg-emerald-500', label: 'Easy' },

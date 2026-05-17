@@ -26,8 +26,8 @@ export function Header() {
           { href: '/home', label: 'Home' },
           { href: '/docs/lld-introduction', label: 'LLD' },
           { href: '/docs/introduction', label: 'HLD' },
-          { href: '/docs/websec-cors', label: 'WEB Security' },
-          { href: '/docs/backend-01-what-is-backend', label: 'Backend Design' },
+          { href: '/docs/cross-origin-resource-sharing', label: 'WEB Security' },
+          { href: '/docs/what-is-backend', label: 'Backend Design' },
           { href: '/docs/design-a-chat-system', label: 'Design Series' },
         ].map(({ href, label }) => (
           <Link

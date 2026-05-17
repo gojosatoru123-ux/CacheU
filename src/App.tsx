@@ -14,6 +14,8 @@ const DocsPage     = lazy(() => import('./pages/DocsPage'));
 const PracticePage = lazy(() => import('./pages/PracticePage'));
 const MindMapPage  = lazy(() => import('./pages/MindMapPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
+const TermsAndConditionsPage = lazy(() => import('./pages/TermsAndConditionsPage'));
 
 const queryClient = new QueryClient();
 
@@ -127,6 +129,26 @@ function HomeLayout() {
   );
 }
 
+function PrivacyPolicyLayout() {
+  return (
+    <main className="max-w-5xl mx-auto px-6 py-16">
+      <Suspense fallback={<PageSkeleton />}>
+        <PrivacyPolicyPage />
+      </Suspense>
+    </main>
+  );
+}
+
+function TermsAndConditionsLayout() {
+  return (
+    <main className="max-w-5xl mx-auto px-6 py-16">
+      <Suspense fallback={<PageSkeleton />}>
+        <TermsAndConditionsPage />
+      </Suspense>
+    </main>
+  );
+}
+
 // ─── Router ───────────────────────────────────────────────────────────────────
 function Router() {
   return (
@@ -140,6 +162,8 @@ function Router() {
       <Route path="/docs/:slug" component={DocsLayout} />
       <Route path="/practice/:slug" component={PracticeLayout} />
       <Route path="/mindmap/:slug" component={MindMapLayout} />
+      <Route path="/privacy-policy" component={PrivacyPolicyLayout} />
+      <Route path="/terms" component={TermsAndConditionsLayout} />
       <Route path="/docs">
         <Redirect to="/docs/lld-design-patterns" />
       </Route>
