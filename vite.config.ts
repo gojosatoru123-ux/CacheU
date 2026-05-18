@@ -2,33 +2,51 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
-import { contentManifestPlugin } from './vite-plugin-content-manifest';
-import { sitemapPlugin } from './vite-plugin-sitemap';
+import prerender from "vite-plugin-prerender";
+
+import { contentManifestPlugin } from "./vite-plugin-content-manifest";
+import { sitemapPlugin } from "./vite-plugin-sitemap";
 
 export default defineConfig({
-  // 'base' is typically '/' for standard frontend deployments
-  base: "/", 
+  base: "/",
+
   plugins: [
     react(),
     tailwindcss(),
+
+    // Generates article manifest
     contentManifestPlugin(),
+
+    // Generates sitemap.xml
     sitemapPlugin(),
-    
+
+    // PRE-RENDER important routes for SEO
+    prerender({
+      routes: [
+        "/",
+        "/docs",
+        "/practice",
+        "/mindmap",
+        "/about",
+      ],
+      // Optional: ensures head/meta updates finish before snapshot
+      renderAfterTime: 500,
+    }),
   ],
+
   resolve: {
     alias: {
-      // Simplifies imports: use '@/' to point to your src folder
       "@": path.resolve(__dirname, "./src"),
-      // Adjusted assets path to stay within the frontend project structure
       "@assets": path.resolve(__dirname, "./attached_assets"),
     },
   },
+
   server: {
     port: 3000,
     strictPort: true,
-    // Allows access from your local network
-    host: true, 
+    host: true,
   },
+
   build: {
     outDir: "dist",
     emptyOutDir: true,
